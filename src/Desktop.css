@@ -1,0 +1,26 @@
+.Desktop {
+	display: inline-block;
+	height: 100vh;
+	width: 100vh;
+	background-color: #1E1F1F;
+	z-index: 1;
+}
+
+.bg-rectangles-top {
+	left: 5%;
+	top: 0%;
+	position: absolute;
+	width: 20%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	z-index: 1;
+}
+
+.bg-rectangle {
+	display: inline-block;
+	position: absolute;
+	height: 50%;
+	width: 5%;
+	background-color: #FFC700
+}

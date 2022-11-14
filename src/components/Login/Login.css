@@ -10,9 +10,9 @@
 	height: 30vh;
 
 	min-width: 350px;
-	min-height: 175px;
+	min-height: 263px;
 	max-width: 500px;
-	max-height: 250px;
+	max-height: 384px;
 
 	background-color: var(--primary-interface-color);
 	border-radius: 60px;
@@ -30,6 +30,7 @@
 	display: flex;
 	position: relative;
 	margin: 0 auto;
+	margin-top: 5vh;
 	bottom: 0%;
 
 	height: 50%;

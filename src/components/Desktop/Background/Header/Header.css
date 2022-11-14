@@ -1,0 +1,12 @@
+@import "./../../../../globals.css";
+
+.Header {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0%;
+	margin: 0 auto;
+
+	color: var(--primary-interface-color);
+	font: calc(5vmin + 25px) "Outfit";
+}

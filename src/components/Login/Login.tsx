@@ -25,9 +25,9 @@ class Login extends React.Component {
 				if (element === "username" && counter === total_length - 1)
 					this.setState({user_done: true});
 				else if (element === "password" && counter === total_length - 1) {
-					setTimeout(() => {
+					setTimeout(() => { // wait 500ms before starting animation
 						this.setState({pass_done: true});
-					}, 500)
+					}, 1500)
 				}
 			}, delay, i, text.length);
 			i++;

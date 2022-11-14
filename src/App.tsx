@@ -1,21 +1,25 @@
 import React from 'react';
-import './Desktop.css';
+import './App.css';
 import Login from './components/Login/Login'
 import Title from './components/Title/Title'
+import Desktop from './components/Desktop/Desktop'
 
-class Desktop extends React.Component {
+// 
+
+class App extends React.Component {
 	state = {
-		state: "login"
+		state: "desktop"
 	}
 
 	render() {
 		return (
-			<div className="Desktop">
+			<div className="Canvas">
 				{this.state.state === "login" && <Title/>}
 				{this.state.state === "login" && <Login/>}
+				{this.state.state === "desktop" && <Desktop/>}
 			</div>
 		)
 	}
 }
 
-export default Desktop;
+export default App;

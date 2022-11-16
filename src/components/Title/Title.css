@@ -6,6 +6,9 @@
 }
 
 @keyframes bigger {
+	0% {
+		top:20vmin;
+	}
 	100% {
 		top: 12vmin;
 		height: 15vmin;
@@ -27,7 +30,6 @@
 
 	width: 100vmin;
 	height: 1.5vmin;
-	/* background-color: black; */
 	background-color: var(--primary-background-color);
 }
 
@@ -39,6 +41,6 @@
 
 	z-index: 0;
 
-	color: var(--primary-interface-color);
+	color: var(--header-color);
 	font: 15vmin "Outfit";
 }

@@ -1,10 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit&display=swap');
 
-:root {
+/* :root {
 	--primary-background-color: #2D2424;
 	--secondary-background-color: #EFCB68;
 	--primary-interface-color: #EFCB68;
 	--secondary-interface-color: #1E1F1F;
 	--header-color: #EFCB68;
+	--text-color: #2D2424;
+} */
+
+:root {
+	--primary-background-color: #3A3335;
+	--secondary-background-color: #EB5E55;
+	--primary-interface-color: #EB5E55;
+	--secondary-interface-color: #C6D8D3;
+	--header-color: #EB5E55;
 	--text-color: #2D2424;
 }

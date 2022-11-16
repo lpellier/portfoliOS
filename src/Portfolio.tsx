@@ -7,22 +7,21 @@ import Desktop from './components/Desktop/Desktop'
 
 class Portfolio extends React.Component {
 	state = {
-		state: "desktop"
+		state: "login"
 	}
 
 	render() {
 		const website_state = this.state.state;
 		return (
 			<div className="Portfolio">
-				{website_state === "desktop" && 
-				<div>
-					<Desktop/>
-				</div>}
-				{website_state === "login" && 
+				{website_state === "login"?
 				<div>
 					<Title/>
 					<Login/>
-				</div>}
+				</div>:null}
+				{website_state === "desktop"? 
+				<Desktop/>
+				:null}
 			</div>
 		)
 	}

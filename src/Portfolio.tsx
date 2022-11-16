@@ -7,7 +7,7 @@ import Desktop from './components/Desktop/Desktop'
 
 class Portfolio extends React.Component {
 	state = {
-		state: "login"
+		state: "desktop"
 	}
 
 	render() {

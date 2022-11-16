@@ -9,7 +9,7 @@ class Header extends React.Component {
 		writing_text: false,
 		interval_header: 0,
 		old_header_tab_index: 0,
-		countdown: 3,
+		countdown: 20,
 		interval_pipe: 0,
 		blinking_pipe: "|..."
 	}
@@ -32,7 +32,7 @@ class Header extends React.Component {
 		this.setState({header_value : this.randomHeaderValue()});
 		this.setState({interval_header : setInterval(() => {
 			if (!this.state.writing_text && this.state.header_value.length > 0) {
-				this.setState({countdown: 3, header_value : this.state.header_value.slice(0, -1)});
+				this.setState({countdown: 20, header_value : this.state.header_value.slice(0, -1)});
 			}
 			else if (!this.state.writing_text && this.state.header_value.length === 0) {
 				this.setState({writing_text : true, next_header_value : this.randomHeaderValue(), header_index : 0});
@@ -55,7 +55,7 @@ class Header extends React.Component {
 	render() {
 		return (
 			<div className="Header">
-				<h1>{this.state.header_value + "|..."}</h1>
+				<h1>{this.state.header_value + "|"}</h1>
 			</div>
 		)
 	}

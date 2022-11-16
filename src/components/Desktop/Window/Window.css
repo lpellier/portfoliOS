@@ -1,0 +1,14 @@
+@import "./../../../globals.css";
+
+.Window {
+	position:absolute;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	top: 25%;
+	width: 70vw;
+	height: 50vh;
+	z-index: 2;
+	background-color: var(--secondary-interface-color);
+}

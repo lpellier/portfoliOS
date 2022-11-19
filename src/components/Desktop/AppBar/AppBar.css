@@ -1,17 +1,17 @@
 @import "./../../../globals.css";
 
 .OpenedState {
-	position: absolute;
-	bottom: 5%;
+	position: relative;
+	bottom: 7%;
 	left:0;
 	right:0;
 	margin-left: auto;
 	margin-right: auto;
-	width: 1vh;
-	height: 1vh;
-	border-radius: 100%;
+	width: 1vmin;
+	height: 1vmin;
+	border-radius: 50%;
 	background-color: white;
-	/* z-index: 1; */
+	z-index: 1;
 }
 
 .AppBar {
@@ -36,8 +36,8 @@
 
 	justify-content: space-evenly;
 	
-	background-color: var(--secondary-interface-color);
-	border: calc(0.5vmin + 5px) solid var(--primary-interface-color);
+	background: radial-gradient(circle, var(--secondary-background-color) 0%, var(--primary-interface-color) 100%);;
+	/* border: calc(0.5vmin + 5px) solid #2D2424; */
 }
 
 .App {
@@ -61,12 +61,11 @@
 	position: relative;
 	font: calc(5vmin + 15px) "Outfit";
 	color: var(--primary-interface-color);
-	animation-direction: reverse;
 }
 
 .App:hover ~ .InfoText{
 	display: block;
-	animation: fade-in 1s ease-in;
+	animation: fade-in 0.5s ease-in;
 	animation-fill-mode: forwards;
 }
 .App:hover {

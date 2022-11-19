@@ -14,7 +14,8 @@
 	max-width: 500px;
 	max-height: 384px;
 
-	background-color: var(--primary-interface-color);
+	background: radial-gradient(circle, var(--primary-interface-color) 0%, var(--secondary-background-color) 100%);
+	
 	border-radius: 60px;
 }
 

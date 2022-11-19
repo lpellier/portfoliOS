@@ -1,14 +1,186 @@
 @import "./../../../globals.css";
 
-.Window {
-	position:absolute;
+.ButtonFlex {
+	position: absolute;
+	display: flex;
+	width: 15%;
+	height: 100%;
+	right: 0%;
+	justify-content: space-evenly;
+}
+
+#MinimizeButton {
+	border-radius: 0.5vmin 0 0 0.5vmin;
+	background-color: #e9c46a;
+	animation: minRevertColorChange 0.2s ease-in;
+	animation-fill-mode: forwards;
+}
+#MinimizeButton:hover {
+	animation: minColorChange 0.2s ease-in;
+	animation-fill-mode: forwards;
+}
+#MaximizeButton {
+	background-color: #688D74;
+	animation: maxRevertColorChange 0.2s ease-in;
+	animation-fill-mode: forwards;
+}
+#MaximizeButton:hover {
+	animation: maxColorChange 0.2s ease-in;
+	animation-fill-mode: forwards;
+}
+#QuitButton {
+	border-radius: 0 0.75vmin 0 0;
+	background-color: #C55966;
+	animation: quitRevertColorChange 0.2s ease-in;
+	animation-fill-mode: forwards;
+}
+#QuitButton:hover {
+	animation: quitColorChange 0.2s ease-in;
+	animation-fill-mode: forwards;
+}
+
+.WindowButton {
+	border: none;
+	width: 34%;
+	height: 30px;
+	max-height: 30px;
+	cursor: pointer;
+}
+
+.WindowTitle {
+	position: absolute;
+	top: 0%;
+	margin: 0;
+
 	left: 0;
 	right: 0;
 	margin-left: auto;
 	margin-right: auto;
-	top: 25%;
-	width: 70vw;
-	height: 50vh;
-	z-index: 2;
+	font: 125% "Outfit";
+	color: white;
+	animation: showTitle 1s ease-in;
+}
+
+@keyframes showTitle {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes minColorChange {
+	100% {
+		background-color: #EED595;
+	}
+}
+@keyframes minRevertColorChange {
+	from {
+		background-color: #EED595;
+	}
+	to {
+		background-color: #e9c46a;
+	}
+}
+@keyframes maxColorChange {
+	100% {
+		background-color: #7EA089;
+	}
+}
+@keyframes maxRevertColorChange {
+	from {
+		background-color: #7EA089;
+	}
+	to {
+		background-color: #688D74;
+	}
+}
+@keyframes quitColorChange {
+	100% {
+		background-color: #CF7781;
+	}
+}
+@keyframes quitRevertColorChange {
+	from {
+		background-color: #CF7781;
+	}
+	to {
+		background-color: #C55966;
+	}
+}
+
+.WindowDefault:before {
+    position:absolute;
+    z-index:-1;
+    top:0;
+    left:0;
+    width:100%;
+    height: 30px;
+    content:"";
+	background: radial-gradient(circle, rgba(244,97,90,1) 0%, rgba(250,136,62,1) 100%);
+	border-radius: 1vmin 1vmin 0 0;
+}
+
+.WindowDefault {
+	position:absolute;
+	margin: 0;
+	width: 0;
+	height: 0;
+	
 	background-color: var(--secondary-interface-color);
+	border: calc(0.5vmin + 1px) solid #18191d;
+	border-radius: 2vmin;
+}
+
+.WindowSpawn {
+	animation: spawnWindow 0.2s ease-in;
+	animation-fill-mode: forwards;
+}
+
+.WindowMaximized {
+	animation: maximizeWindow 0.2s ease-in;
+	animation-fill-mode: forwards;
+}
+
+.WindowMaximizedReverse {
+	animation: maximizeWindowReverse 0.2s ease-in;
+	animation-fill-mode: forwards;
+}
+
+@keyframes maximizeWindowReverse {
+	0% {
+		top: 0;
+		left: 0;
+		width: 98vw;
+		height: 98vh;
+	}
+	100% {
+		width: 70vw;
+		height: 50vh;
+		min-width: 400px;
+		min-height: 400px;
+	}
+}
+
+@keyframes maximizeWindow {
+	100% {
+		top: 0;
+		left: 0;
+		width: 98vw;
+		height: 98vh;
+	}
+}
+
+@keyframes spawnWindow {
+	0% {
+		width: 0;
+		height: 0;
+	}
+	100% {
+		width: 70vw;
+		height: 50vh;
+		min-width: 400px;
+		min-height: 400px;
+	}
 }

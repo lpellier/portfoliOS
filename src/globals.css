@@ -10,10 +10,10 @@
 } */
 
 :root {
-	--primary-background-color: #3A3335;
-	--secondary-background-color: #EB5E55;
-	--primary-interface-color: #EB5E55;
-	--secondary-interface-color: #C6D8D3;
-	--header-color: #EB5E55;
+	--primary-background-color: #1E1F24;
+	--secondary-background-color: #F4615A;
+	--primary-interface-color: #FA883E;
+	--secondary-interface-color: #1E1F1F;
+	--header-color: #F4615A;
 	--text-color: #2D2424;
 }

@@ -10,8 +10,6 @@ class Header extends React.Component {
 		interval_header: 0,
 		old_header_tab_index: 0,
 		countdown: 20,
-		interval_pipe: 0,
-		blinking_pipe: "|..."
 	}
 
 	randomHeaderValue() : string {
@@ -43,7 +41,8 @@ class Header extends React.Component {
 			else if (this.state.writing_text && this.state.header_value === this.state.next_header_value) {
 				if (this.state.countdown <= 0)
 					this.setState({writing_text: false});
-				this.setState({countdown: this.state.countdown - 1});
+				else
+					this.setState({countdown: this.state.countdown - 1});
 			}
 		}, 150)});
 	}

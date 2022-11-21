@@ -2,7 +2,7 @@
 
 .OpenedState {
 	position: relative;
-	bottom: 7%;
+	bottom: -15%;
 	left:0;
 	right:0;
 	margin-left: auto;
@@ -12,6 +12,8 @@
 	border-radius: 50%;
 	background-color: white;
 	z-index: 1;
+	animation: higher 0.2s ease-in;
+	animation-fill-mode: forwards;
 }
 
 .AppBar {
@@ -29,7 +31,7 @@
 
 	border-radius: 60px;
 
-	min-width: 490px;
+	min-width: 600px;
 	min-height: 70px;
 	/* max-width: 700px;
 	max-height: 100px; */
@@ -44,8 +46,8 @@
 	position: relative;
 	display: inline-block;
 	width: auto;
-	height: 9vh;
-	min-height: 70px;
+	height: 9vmin;
+	min-height: 68px;
 	max-height: 110%;
 	background-repeat: no-repeat;
 	background-color: rgba(0, 0, 0, 0);
@@ -55,10 +57,13 @@
 }
 
 .InfoText {
-	margin: 0 0 0 0;
 	display: none;
-	top:10%;
-	position: relative;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	bottom: -200%;
+	position: absolute;
 	font: calc(5vmin + 15px) "Outfit";
 	color: var(--primary-interface-color);
 }
@@ -66,6 +71,10 @@
 .App:hover ~ .InfoText{
 	display: block;
 	animation: fade-in 0.5s ease-in;
+	animation-fill-mode: forwards;
+}
+.App:hover ~.OpenedState {
+	animation: lower 0.2s ease-in;
 	animation-fill-mode: forwards;
 }
 .App:hover {
@@ -84,6 +93,15 @@
 @keyframes fade-out {
 	from { opacity: 1; }
 	to {opacity: 0;}
+}
+
+@keyframes lower {
+	from { bottom: -15%; }
+	to {bottom: -25%;}
+}
+@keyframes higher {
+	from { bottom: -25%; }
+	to {bottom: -15%;}
 }
 
 @keyframes bigger {

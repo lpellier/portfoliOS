@@ -3,7 +3,7 @@
 .ButtonFlex {
 	position: absolute;
 	display: flex;
-	width: 15%;
+	width: 85px;
 	height: 100%;
 	right: 0%;
 	justify-content: space-evenly;
@@ -149,6 +149,7 @@
 	border-radius: 2vmin;
 }
 
+/* https://stackoverflow.com/questions/18481550/how-to-dynamically-create-keyframe-css-animations */
 .WindowSpawn {
 	animation: spawnWindow 0.2s ease-in;
 	animation-fill-mode: forwards;
@@ -209,8 +210,8 @@
 		height: 0;
 	}
 	100% {
-		width: 70vw;
-		height: 50vh;
+		width: 400px;
+		height: 400px;
 		min-width: 400px;
 		min-height: 400px;
 	}

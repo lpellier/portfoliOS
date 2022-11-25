@@ -24,7 +24,6 @@ class Title extends React.Component {
 
 	render() {
 		let striketrough_id : string = this.state.finished_logging ? "strikethrough-animation" : "strikethrough";
-		console.log(striketrough_id)
 		return (
 			<div id="title">
 				<div id={striketrough_id} className="strikethrough"/>

@@ -3,7 +3,8 @@
 .ButtonFlex {
 	position: absolute;
 	display: flex;
-	width: 85px;
+	width: 25%;
+	max-width: 145px;
 	height: 100%;
 	right: 0%;
 	justify-content: space-evenly;
@@ -42,8 +43,7 @@
 .WindowButton {
 	border: none;
 	width: 34%;
-	height: 30px;
-	max-height: 30px;
+	height: 40px;
 	cursor: pointer;
 }
 
@@ -56,7 +56,7 @@
 	right: 0;
 	margin-left: auto;
 	margin-right: auto;
-	font: 125% "Outfit";
+	font: 175% "Outfit";
 	color: white;
 	animation: showTitle 1s ease-in;
 }
@@ -131,7 +131,7 @@
     top:0;
     left:0;
     width:100%;
-    height: 30px;
+    height: 40px;
     content:"";
 	background: radial-gradient(circle, rgba(244,97,90,1) 0%, rgba(250,136,62,1) 100%);
 	border-radius: 1vmin 1vmin 0 0;
@@ -141,12 +141,14 @@
 	display: block;
 	position:absolute;
 	margin: 0;
-	width: 0;
-	height: 0;
+	width: 600px;
+	height: 400px;
 	
 	background-color: var(--secondary-interface-color);
 	border: calc(0.5vmin + 1px) solid #18191d;
 	border-radius: 2vmin;
+	resize: both;
+	overflow: auto;
 }
 
 /* https://stackoverflow.com/questions/18481550/how-to-dynamically-create-keyframe-css-animations */
@@ -182,8 +184,8 @@
 	100% {
 		width: 70vw;
 		height: 50vh;
-		min-width: 400px;
-		min-height: 400px;
+		min-width: 200px;
+		min-height: 200px;
 	}
 }
 
@@ -210,9 +212,7 @@
 		height: 0;
 	}
 	100% {
-		width: 400px;
-		height: 400px;
-		min-width: 400px;
-		min-height: 400px;
+		min-width: 200px;
+		min-height: 200px;
 	}
 }

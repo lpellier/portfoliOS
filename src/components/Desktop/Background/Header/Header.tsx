@@ -16,7 +16,10 @@ class Header extends React.Component {
 		let value_tab = [
 			"Code",
 			"Design",
-			"Game"
+			"Game",
+			"Think",
+			"Tinker",
+			"Experiment"
 		]
 		let value_tab_before = value_tab.slice(0, (this.state.old_header_tab_index - 1 < 0 ? 0 : this.state.old_header_tab_index));
 		let value_tab_after = value_tab.slice(this.state.old_header_tab_index + 1);

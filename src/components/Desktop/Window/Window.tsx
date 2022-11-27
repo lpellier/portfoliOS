@@ -5,7 +5,7 @@ import './Window.css';
 
 // ! https://www.copycat.dev/blog/react-markdown/
 
-class Window extends React.Component<{component: any, putWindowFront: any, destroyWindow: any, info: {name: string, pos: {x: number, y: number}, z_index: number, opened: boolean; scrollbar: boolean}}> {
+class Window extends React.Component<{component: any, putWindowFront: any, destroyWindow: any, info: {name: string, pos: {x: number, y: number}, width: number, height: number, z_index: number, opened: boolean; scrollbar: boolean}}> {
 	state = {
 		maximized: false,
 		maximized_once: false,
@@ -13,41 +13,8 @@ class Window extends React.Component<{component: any, putWindowFront: any, destr
 		quit: false,
 		width: 0,
 		height: 0,
-		// oldWinX: window.innerWidth,
-		// oldWinY: window.innerHeight,
 		info: ""
 	}
-	// constructor(props: any) {
-	// 	super(props)
-	// 	// this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
-	// }
-
-	// updateWindowDimensions() {
-	// 	this.setState({
-	// 		pos: {
-	// 			x: this.state.pos.x * (window.innerWidth / this.state.oldWinX),
-	// 			y: this.state.pos.y * (window.innerHeight / this.state.oldWinY)
-	// 		},
-	// 		oldWinX: window.innerWidth,
-	// 		oldWinY: window.innerHeight
-	// 	})
-	// 	let win = document.getElementById(this.props.info.name);
-	// 	let rect = win?.getBoundingClientRect();
-	// 	if (this.state.pos.x + (rect?rect.width:0) > window.innerWidth) {
-	// 		this.setState({
-	// 			pos: {
-	// 				x: 35 * this.props.info.z_index,
-	// 			}
-	// 		})
-	// 	}
-	// 	else if (this.state.pos.y + (rect?rect.height:0) > window.innerHeight) {
-	// 		this.setState({
-	// 			pos: {
-	// 				y: 35 * this.props.info.z_index
-	// 			}
-	// 		})
-	// 	}
-	// }
 
 	componentDidMount(): void {
 		// window.addEventListener('resize', this.updateWindowDimensions)
@@ -70,8 +37,8 @@ class Window extends React.Component<{component: any, putWindowFront: any, destr
 		this.setState({z_index: new_index, minimized: false})
 	}
 
-	handleMouseDown() {
-		this.props.putWindowFront(this.props.info.name, true);
+	handleMouseDown(event: any) {
+		this.props.putWindowFront(this.props.info.name, true, event);
 	}
 
 	render() {

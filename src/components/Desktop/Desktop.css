@@ -5,8 +5,20 @@
 	width: 100vw;
 }
 
-.nw-resize {
-	cursor: nw-resize;
+.nwse-resize {
+	cursor: nwse-resize;
+}
+
+.nesw-resize {
+	cursor: nesw-resize;
+}
+
+.ew-resize {
+	cursor: ew-resize;
+}
+
+.ns-resize {
+	cursor: ns-resize;
 }
 
 .default {

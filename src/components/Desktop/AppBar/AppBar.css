@@ -78,6 +78,7 @@
 	animation-fill-mode: forwards;
 }
 .App:hover {
+	cursor: pointer;
 	animation: bigger 0.2s ease-out;
 	animation-fill-mode: forwards;
 }

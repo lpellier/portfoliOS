@@ -4,7 +4,6 @@ import Login from './components/Login/Login'
 import Title from './components/Title/Title'
 import Desktop from './components/Desktop/Desktop'
 
-
 class Portfolio extends React.Component {
 	state = {
 		state: "desktop"

@@ -102,6 +102,77 @@
 	d: path("M 12,20 12,20")
 }
 
+#pong-player-1 {
+	animation: player-1-animation 1.5s ease;
+	animation-fill-mode: both;
+	animation-iteration-count: infinite;
+	animation-play-state: paused;
+}
+
+#pong-player-2 {
+	animation: player-2-animation 1.5s ease;
+	animation-fill-mode: both;
+	animation-iteration-count: infinite;
+	animation-play-state: paused;
+}
+
+#pong-ball {
+	animation: ball-animation 1.5s linear;
+	animation-fill-mode: both;
+	animation-iteration-count: infinite;
+	animation-play-state: paused;
+}
+
+#pong:hover #pong-player-1 {
+	animation-play-state: running;
+}
+#pong:hover #pong-player-2 {
+	animation-play-state: running;
+}
+#pong:hover #pong-ball {
+	animation-play-state: running;
+}
+
+
+@keyframes player-1-animation {
+	0% {
+		d: path("M 6,8 6,12");
+	}
+	75% {
+		d: path("M 6,13 6,17");
+	}
+	100% {
+		d: path("M 6,8 6,12");
+	}
+}
+@keyframes player-2-animation {
+	0% {
+		d: path("M 18,13 18,17");
+	}
+	50% {
+		d: path("M 18,7 18,11");
+	}
+	100% {
+		d: path("M 18,13 18,17");
+	}
+}
+@keyframes ball-animation {
+	0% {
+		d: path("M 12,12 12,12");
+	}
+	25% {
+		d: path("M 16,9 16,9");
+	}
+	50% {
+		d: path("M 12,13 12,13");
+	}
+	75% {
+		d: path("M 8,16 8,16");
+	}
+	100% {
+		d: path("M 12,12 12,12");
+	}
+}
 #ServerDot1 {
 	animation: slide-left-right1 0.75s ease-in;
 	animation-fill-mode: both;
@@ -142,5 +213,28 @@
 	}
 	100% {	
 		d: path("M 9,15 9,15");
+	}
+}
+
+#about-me-info {
+	animation: about-me-bounce 0.5s cubic-bezier(0.25, 0.35, 0.15, 0.75);
+	animation-fill-mode: both;
+	animation-iteration-count: infinite;
+	animation-play-state: paused;
+}
+
+#about-me:hover #about-me-info {
+	animation-play-state: running;
+}
+
+@keyframes about-me-bounce {
+	0% {
+		d: path("M 12,8 12,8");
+	}
+	50% {
+		d: path("M 12,10.5 12,10.5");
+	}
+	100% {
+		d: path("M 12,8 12,8");
 	}
 }

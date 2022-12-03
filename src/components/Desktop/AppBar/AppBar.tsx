@@ -73,9 +73,9 @@ class AppBar extends React.Component<{appState: any, spawnWindow: any}> {
 						id="pong">
 						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
 						<rect x="3" y="5" width="18" height="14" rx="2" />
-						<rect fill="#F4615A" x="6" y="8" width="1" height="4"/>
-						<rect fill="#F4615A" x="17" y="13" width="1" height="4"/>
-						<rect fill="#F4615A" x="12" y="9" width="1" height="1"/>
+						<path strokeWidth="1.5" id="pong-player-1" fill="#F4615A" d="M 6,8 6,12"/>
+						<path strokeWidth="1.5" id="pong-player-2" fill="#F4615A" d="M 18,13 18,17"/>
+						<path strokeWidth="2" id="pong-ball" fill="#F4615A" d="M 12,12 12,12"/>
 					</svg>
 					<h3 className='InfoText'>Pong</h3>
 					{pong?.opened && <div className='OpenedState'/>}
@@ -85,7 +85,7 @@ class AppBar extends React.Component<{appState: any, spawnWindow: any}> {
 						id="about-me">
 						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
 						<circle cx="12" cy="12" r="9" />
-						<line strokeWidth="1.75" x1="12" y1="8" x2="12" y2="8.10" />
+						<path id="about-me-info" strokeWidth="1.75" d="M 12,8 12,8"/>
 						<polyline strokeWidth="1.5" points="11 12 12 12 12 16 13 16" />
 					</svg>
 					<h3 className='InfoText'>About me</h3>

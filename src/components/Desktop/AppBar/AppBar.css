@@ -88,3 +88,59 @@
 	cursor: pointer;
 	transform: scale(1.25, 1.25);
 }
+
+#cub3d:hover #cub-line-1 {
+	transition: 0.75s;
+	d: path("M 8,17 12,19");
+}
+#cub3d:hover #cub-line-2 {
+	transition: 0.75s;
+	d: path("M 16,17 12,20");
+}
+#cub3d:hover #cub-line-3 {
+	transition: 0.75s;
+	d: path("M 12,20 12,20")
+}
+
+#ServerDot1 {
+	animation: slide-left-right1 0.75s ease-in;
+	animation-fill-mode: both;
+	animation-iteration-count: infinite;
+	animation-play-state: paused;
+}
+#ServerDot2 {
+	animation: slide-left-right2 0.75s ease-in;
+	animation-fill-mode: both;
+	animation-iteration-count: infinite;
+	animation-play-state: paused;
+}
+
+#server_projects:hover #ServerDot1 {
+	animation-play-state: running;
+}
+#server_projects:hover #ServerDot2 {
+	animation-play-state: running;
+}
+
+@keyframes slide-left-right1 {
+	0% {
+		d: path("M 9,11 9,11");
+	}
+	50% {
+		d: path("M 15,11 15,11");
+	}
+	100% {	
+		d: path("M 9,11 9,11");
+	}
+}
+@keyframes slide-left-right2 {
+	0% {
+		d: path("M 9,15 9,15");
+	}
+	50% {
+		d: path("M 15,15 15,15");
+	}
+	100% {	
+		d: path("M 9,15 9,15");
+	}
+}

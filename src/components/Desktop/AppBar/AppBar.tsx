@@ -21,8 +21,8 @@ class AppBar extends React.Component<{appState: any, spawnWindow: any}> {
 						<path d="M5 4h4l3 3h7a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2" />
 						<rect strokeWidth="0.75px" x="7" y="9" width="10" height="4" rx="1.5"/>
 						<rect strokeWidth="0.75px" x="7" y="13" width="10" height="4" rx="1.5"/>
-						<path d="M 9,11 9,11"/>
-						<path d="M 9,15 9,15"/>
+						<path id="ServerDot1" d="M 9,11 9,11"/>
+						<path id="ServerDot2" d="M 9,15 9,15"/>
 					</svg>
 					<h3 className='InfoText'>Server Projects</h3>
 					{server_projects?.opened && <div className='OpenedState'/>}
@@ -38,7 +38,8 @@ class AppBar extends React.Component<{appState: any, spawnWindow: any}> {
 					{cpp_projects?.opened && <div className='OpenedState'/>}
 				</div>
 				<div>
-					<svg xmlns="http://www.w3.org/2000/svg" className="App" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1" stroke="#F4615A" fill="none" strokeLinecap="round" strokeLinejoin="round" onClick={() => this.props.spawnWindow("Spoon")}>
+					<svg xmlns="http://www.w3.org/2000/svg" className="App" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1" stroke="#F4615A" fill="none" strokeLinecap="round" strokeLinejoin="round" onClick={() => this.props.spawnWindow("Spoon")}
+						id="spoon">
 						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
 						<path d="M 4,4 H14 a2,2 0 0 1 2,2 V11 M 4,4 A 2,2 0 0 0 3,6 V15 A 2,2 0 0 0 4,17 H11"/>
 						<circle cx="12.5" cy="7.5" r=".5" fill="currentColor" />
@@ -51,22 +52,25 @@ class AppBar extends React.Component<{appState: any, spawnWindow: any}> {
 					{tpoon?.opened && <div className='OpenedState'/>}
 				</div>
 				<div>
-					<svg xmlns="http://www.w3.org/2000/svg" className="App" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1" stroke="#F4615A" fill="none" strokeLinecap="round" strokeLinejoin="round"  onClick={() => this.props.spawnWindow("Cub3D")} >
+					<svg xmlns="http://www.w3.org/2000/svg" className="App" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1" stroke="#F4615A" fill="none" strokeLinecap="round" strokeLinejoin="round"  onClick={() => this.props.spawnWindow("Cub3D")}
+						id="cub3d">
 						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
 						<polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3" />
 						<line x1="12" y1="4" x2="12" y2="12.5"/>
 						<line x1="4.5" y1="16" x2="12" y2="12.5" />
 						<line x1="20" y1="16.5" x2="12" y2="12.5" />
 						<polyline fill="#F4615A" points="12,7.5 16,9.75 16,14.25 12,16.5 8,14.25 8,9.75 12,7.5" />
-						<line stroke="#1E1F1F" x1="7" y1="9" x2="12" y2="12"/>
-						<line stroke="#1E1F1F" x1="17" y1="9" x2="12" y2="12"/>
-						<line stroke="#1E1F1F" x1="12" y1="17" x2="12" y2="12"/>
+						<path id="cub-line-1" stroke="#1E1F1F" d="M 7,9 12,12" />
+						<path id="cub-line-2" stroke="#1E1F1F" d="M 17,9 12,12" />
+						<path id="cub-line-3" stroke="#1E1F1F" d="M 12,17 12,12" />
+						{/* <line id="cub-line-3" stroke="#1E1F1F" x1="12" y1="17" x2="12" y2="12"/> */}
 					</svg>
 					<h3 className='InfoText'>Cub3D</h3>
 					{cub3d?.opened && <div className='OpenedState'/>}
 				</div>
 				<div>
-					<svg xmlns="http://www.w3.org/2000/svg" className="App" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1" stroke="#F4615A" fill="none" strokeLinecap="round" strokeLinejoin="round" onClick={() => this.props.spawnWindow("Pong")} >
+					<svg xmlns="http://www.w3.org/2000/svg" className="App" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1" stroke="#F4615A" fill="none" strokeLinecap="round" strokeLinejoin="round" onClick={() => this.props.spawnWindow("Pong")}
+						id="pong">
 						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
 						<rect x="3" y="5" width="18" height="14" rx="2" />
 						<rect fill="#F4615A" x="6" y="8" width="1" height="4"/>
@@ -77,7 +81,8 @@ class AppBar extends React.Component<{appState: any, spawnWindow: any}> {
 					{pong?.opened && <div className='OpenedState'/>}
 				</div>
 				<div>
-					<svg xmlns="http://www.w3.org/2000/svg" className="App" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1" stroke="#F4615A" fill="none" strokeLinecap="round" strokeLinejoin="round" onClick={() => this.props.spawnWindow("About me")} >
+					<svg xmlns="http://www.w3.org/2000/svg" className="App" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1" stroke="#F4615A" fill="none" strokeLinecap="round" strokeLinejoin="round" onClick={() => this.props.spawnWindow("About me")}
+						id="about-me">
 						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
 						<circle cx="12" cy="12" r="9" />
 						<line strokeWidth="1.75" x1="12" y1="8" x2="12" y2="8.10" />
@@ -87,7 +92,8 @@ class AppBar extends React.Component<{appState: any, spawnWindow: any}> {
 					{about_me?.opened && <div className='OpenedState'/>}
 				</div>
 				<div>
-					<svg xmlns="http://www.w3.org/2000/svg" className="App" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1" stroke="#F4615A" fill="none" strokeLinecap="round" strokeLinejoin="round" onClick={() => this.props.spawnWindow("Settings")} >
+					<svg xmlns="http://www.w3.org/2000/svg" className="App" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1" stroke="#F4615A" fill="none" strokeLinecap="round" strokeLinejoin="round" onClick={() => this.props.spawnWindow("Settings")}
+						id="settings">
 						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
 						<path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" />
 						<circle cx="12" cy="12" r="3" />

@@ -32,7 +32,9 @@ class AppBar extends React.Component<{appState: any, spawnWindow: any}> {
 						id="cpp_projects">
 						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
 						<path d="M5 4h4l3 3h7a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2" />
-						<text strokeWidth="0.75px" x="5" y= "15" className="Icon">C++</text>
+						<text strokeWidth="0.75" x="5" y= "15" className="Icon">C</text>
+						<path strokeLinecap='square' strokeLinejoin='round' strokeWidth="1.30" id="cpp-plus-1" d="M 11.5,12.5 H14.5 M 13,14 V11"/>
+						<path strokeLinecap='square' strokeLinejoin='round' strokeWidth="1.30" id="cpp-plus-2" d="M 16,12.5 H19 M 17.5,14 V11"/>
 					</svg>
 					<h3 className='InfoText'>C++ Projects</h3>
 					{cpp_projects?.opened && <div className='OpenedState'/>}
@@ -41,12 +43,23 @@ class AppBar extends React.Component<{appState: any, spawnWindow: any}> {
 					<svg xmlns="http://www.w3.org/2000/svg" className="App" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1" stroke="#F4615A" fill="none" strokeLinecap="round" strokeLinejoin="round" onClick={() => this.props.spawnWindow("Spoon")}
 						id="spoon">
 						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-						<path d="M 4,4 H14 a2,2 0 0 1 2,2 V11 M 4,4 A 2,2 0 0 0 3,6 V15 A 2,2 0 0 0 4,17 H11"/>
-						<circle cx="12.5" cy="7.5" r=".5" fill="currentColor" />
-						<circle cx="7.5" cy="12.5" r=".5" fill="currentColor" />
+						<rect id="spoon-die-1" x="4" y="4" width="12" height="12" rx="2" />
+						<circle opacity="0" id="spoon-die-1-center" cx="10" cy="10" r=".5" fill="currentColor" />
+						<circle opacity="0" id="spoon-die-1-leftup" cx="7" cy="7" r=".5" fill="currentColor" />
+						<circle opacity="0" id="spoon-die-1-rightdown" cx="13" cy="13" r=".5" fill="currentColor" />
+						<circle opacity="1" id="spoon-die-1-rightup" cx="13" cy="7" r=".5" fill="currentColor" />
+						<circle opacity="1" id="spoon-die-1-leftdown" cx="7" cy="13" r=".5" fill="currentColor" />
+						<circle opacity="0" id="spoon-die-1-left" cx="7" cy="10" r=".5" fill="currentColor" />
+						<circle opacity="0" id="spoon-die-1-right" cx="13" cy="10" r=".5" fill="currentColor" />
 						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-						<rect x="11" y="11" width="12" height="12" rx="2" />
-						<circle cx="17" cy="17" r=".5" fill="currentColor" />
+						<rect id="spoon-die-2" x="11" y="11" width="12" height="12" rx="2" />
+						<circle opacity="1" id="spoon-die-2-center" cx="17" cy="17" r=".5" fill="currentColor" />
+						<circle opacity="0" id="spoon-die-2-leftup" cx="14" cy="14" r=".5" fill="currentColor" />
+						<circle opacity="0" id="spoon-die-2-rightdown" cx="20" cy="20" r=".5" fill="currentColor" />
+						<circle opacity="0" id="spoon-die-2-rightup" cx="20" cy="14" r=".5" fill="currentColor" />
+						<circle opacity="0" id="spoon-die-2-leftdown" cx="14" cy="20" r=".5" fill="currentColor" />
+						<circle opacity="0" id="spoon-die-2-left" cx="14" cy="17" r=".5" fill="currentColor" />
+						<circle opacity="0" id="spoon-die-2-right" cx="20" cy="17" r=".5" fill="currentColor" />
 					</svg>
 					<h3 className='InfoText'>Spoon</h3>
 					{tpoon?.opened && <div className='OpenedState'/>}
@@ -56,13 +69,6 @@ class AppBar extends React.Component<{appState: any, spawnWindow: any}> {
 						<svg id="cub-svg" xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1" stroke="#F4615A" fill="none" strokeLinecap="round" strokeLinejoin="round">
 							<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
 							<polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3" />
-							<line x1="12" y1="4" x2="12" y2="12.5"/>
-							<line x1="4.5" y1="16" x2="12" y2="12.5" />
-							<line x1="20" y1="16.5" x2="12" y2="12.5" />
-							<polyline className="interior-cube" fill="#F4615A" points="12,7.5 16,9.75 16,14.25 12,16.5 8,14.25 8,9.75 12,7.5" />
-							<path className="interior-cube" id="cub-line-1" stroke="#1E1F1F" d="M 7,9 12,12" />
-							<path className="interior-cube" id="cub-line-2" stroke="#1E1F1F" d="M 17,9 12,12" />
-							<path className="interior-cube" id="cub-line-3" stroke="#1E1F1F" d="M 12,17 12,12" />
 						</svg>
 						<div className='scene'>
 							<div className="cube">
@@ -96,7 +102,7 @@ class AppBar extends React.Component<{appState: any, spawnWindow: any}> {
 						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
 						<circle cx="12" cy="12" r="9" />
 						<path id="about-me-info" strokeWidth="1.75" d="M 12,8 12,8"/>
-						<polyline strokeWidth="1.5" points="11 12 12 12 12 16 13 16" />
+						<path id="about-me-i" strokeWidth="1.5" d="M 11,12 H12 V16 H13"/>
 					</svg>
 					<h3 className='InfoText'>About me</h3>
 					{about_me?.opened && <div className='OpenedState'/>}

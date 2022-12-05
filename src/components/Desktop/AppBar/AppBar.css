@@ -89,28 +89,104 @@
 	transform: scale(1.25, 1.25);
 }
 
+#cpp-plus-1 {
+	animation: cpp-1-animation 1.5s ease;
+	animation-fill-mode: both;
+	animation-iteration-count: infinite;
+	animation-play-state: paused;
+}
+#cpp-plus-2 {
+	animation: cpp-2-animation 1.5s ease;
+	animation-fill-mode: both;
+	animation-iteration-count: infinite;
+	animation-play-state: paused;
+}
+
+#cpp_projects:hover #cpp-plus-1 {
+	animation-play-state: running;
+}
+#cpp_projects:hover #cpp-plus-2 {
+	animation-play-state: running;
+}
+
+@keyframes cpp-1-animation {
+	0% {
+		d: path("M 11.5,12.5 H14.5 M 13,14 V11");
+	}
+	25% {
+		d: path("M 11.5,15.5 H14.5 M 13,17 V14");	
+	}
+	50% {
+		d: path("M 16,15.5 H19 M 17.5,17 V14");	
+	}
+	75% {
+		d: path("M 16,12.5 H19 M 17.5,14 V11");		
+	}
+	100% {
+		d: path("M 11.5,12.5 H14.5 M 13,14 V11");	
+	}
+}
+@keyframes cpp-2-animation {
+	0% {
+		d: path("M 16,12.5 H19 M 17.5,14 V11");
+	}
+	25% {
+		d: path("M 16,10 H19 M 17.5,11.5 V8.5");	
+	}
+	50% {
+		d: path("M 11.5,10 H14.5 M 13,11.5 V8.5");	
+	}
+	75% {
+		d: path("M 11.5,12.5 H14.5 M 13,14 V11");		
+	}
+	100% {
+		d: path("M 16,12.5 H19 M 17.5,14 V11");	
+	}
+}
+
+#spoon-die-1 {
+	fill: var(--secondary-interface-color);
+	z-index: 1;
+}
+#spoon-die-2 {
+	fill: var(--secondary-interface-color);
+	z-index: 2;
+}
+
 #cub3d:hover .scene .cube {
 	animation-play-state: running;
 }
 
+#cub3d {
+	position: relative;
+	display: grid;
+	grid-template-columns: 1fr;
+}
+
 .scene {
-	position: absolute;
 	width: 22px;
 	height: 22px;
 	perspective: 600px;
+	grid-row-start: 1;
+	grid-column-start: 1;
 }
 #cub-svg {
-	position: absolute;
+	height: 70px;
+	width: auto;
+	grid-row-start: 1;
+	grid-column-start: 1;
 }
 
 .cube {
 	width: 100%;
 	height: 100%;
+	left: 115%;
+	top: 115%;
 	position: absolute;
 	transform-style: preserve-3d;
 	transform-origin: center;
-	/* transform: translateZ(-100px); */
-	animation: rotate-cube 4s linear;
+	transform: rotateX(-35deg);
+	animation: rotate-cube 4s ease;
 	animation-play-state: paused;
 	animation-fill-mode: both;
 	animation-iteration-count: infinite;
@@ -120,40 +196,24 @@
 	border: 2px solid var(--secondary-interface-color);
 	background-color: var(--header-color);
 	position: absolute;
-	width: 22px;
-	height: 22px;
+	width: 15px;
+	height: 15px;
 }
 
-.cube__face--front  { transform: rotateY(45deg)  translateZ(12px); }
-.cube__face--right  { transform: rotateY(135deg)  translateZ(12px); }
-.cube__face--back   { transform: rotateY(225deg)  translateZ(12px); }
-.cube__face--left   { transform: rotateY(-45deg)  translateZ(12px); }
-.cube__face--top    { transform: rotateY(45deg) rotateX( 90deg) translateZ(12px); }
-.cube__face--bottom { transform: rotateY(45deg) rotateX(-90deg) translateZ(12px); }
+.cube__face--front  { transform: rotateY(45deg)  translateZ(9px); }
+.cube__face--right  { transform: rotateY(135deg)  translateZ(9px); }
+.cube__face--back   { transform: rotateY(225deg)  translateZ(9px); }
+.cube__face--left   { transform: rotateY(-45deg)  translateZ(9px); }
+.cube__face--top    { transform: rotateY(45deg) rotateX( 90deg) translateZ(9px); }
+.cube__face--bottom { transform: rotateY(45deg) rotateX(-90deg) translateZ(9px); }
 
 @keyframes rotate-cube {
-	0% {
-		transform: rotateX(-45deg);
+	from {
+		transform: rotateX(-35deg);
 	}
-	50% {
-		transform: rotateX(-360deg);
+	to {
+		transform: rotateX(-394deg);
 	}
-	100% {
-		transform: rotateX(0deg);
-	}
-}
-
-#cub3d:hover #cub-line-1 {
-	/* transition: 0.75s;
-	d: path("M 8,17 12,19"); */
-}
-#cub3d:hover #cub-line-2 {
-	/* transition: 0.75s;
-	d: path("M 16,17 12,20"); */
-}
-#cub3d:hover #cub-line-3 {
-	/* transition: 0.75s;
-	d: path("M 12,20 12,20") */
 }
 
 #pong-player-1 {
@@ -271,13 +331,23 @@
 }
 
 #about-me-info {
-	animation: about-me-bounce 0.5s cubic-bezier(0.25, 0.35, 0.15, 0.75);
+	animation: about-me-bounce 0.5s ease-in-out;
+	animation-fill-mode: both;
+	animation-iteration-count: infinite;
+	animation-play-state: paused;
+}
+
+#about-me-i {
+	animation: about-me-shake 1.5s ease;
 	animation-fill-mode: both;
 	animation-iteration-count: infinite;
 	animation-play-state: paused;
 }
 
 #about-me:hover #about-me-info {
+	animation-play-state: running;
+}
+#about-me:hover #about-me-i {
 	animation-play-state: running;
 }
 
@@ -291,6 +361,19 @@
 	100% {
 		d: path("M 12,8 12,8");
 	}
+}
+@keyframes about-me-shake {
+	0% {
+		d: path("M 11,12 H12 V16 H13");
+	}
+	35% {
+		d: path("M 13,12 H12 V16 H11");
+	}
+	100% {
+		d: path("M 11,12 H12 V16 H13");
+		
+	}
+
 }
 
 #settings-cog {

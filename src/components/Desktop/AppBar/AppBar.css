@@ -89,17 +89,71 @@
 	transform: scale(1.25, 1.25);
 }
 
+#cub3d:hover .scene .cube {
+	animation-play-state: running;
+}
+
+.scene {
+	position: absolute;
+	width: 22px;
+	height: 22px;
+	perspective: 600px;
+}
+#cub-svg {
+	position: absolute;
+}
+
+.cube {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	transform-style: preserve-3d;
+	transform-origin: center;
+	/* transform: translateZ(-100px); */
+	animation: rotate-cube 4s linear;
+	animation-play-state: paused;
+	animation-fill-mode: both;
+	animation-iteration-count: infinite;
+}
+
+.cube__face {
+	border: 2px solid var(--secondary-interface-color);
+	background-color: var(--header-color);
+	position: absolute;
+	width: 22px;
+	height: 22px;
+}
+
+.cube__face--front  { transform: rotateY(45deg)  translateZ(12px); }
+.cube__face--right  { transform: rotateY(135deg)  translateZ(12px); }
+.cube__face--back   { transform: rotateY(225deg)  translateZ(12px); }
+.cube__face--left   { transform: rotateY(-45deg)  translateZ(12px); }
+.cube__face--top    { transform: rotateY(45deg) rotateX( 90deg) translateZ(12px); }
+.cube__face--bottom { transform: rotateY(45deg) rotateX(-90deg) translateZ(12px); }
+
+@keyframes rotate-cube {
+	0% {
+		transform: rotateX(-45deg);
+	}
+	50% {
+		transform: rotateX(-360deg);
+	}
+	100% {
+		transform: rotateX(0deg);
+	}
+}
+
 #cub3d:hover #cub-line-1 {
-	transition: 0.75s;
-	d: path("M 8,17 12,19");
+	/* transition: 0.75s;
+	d: path("M 8,17 12,19"); */
 }
 #cub3d:hover #cub-line-2 {
-	transition: 0.75s;
-	d: path("M 16,17 12,20");
+	/* transition: 0.75s;
+	d: path("M 16,17 12,20"); */
 }
 #cub3d:hover #cub-line-3 {
-	transition: 0.75s;
-	d: path("M 12,20 12,20")
+	/* transition: 0.75s;
+	d: path("M 12,20 12,20") */
 }
 
 #pong-player-1 {
@@ -236,5 +290,26 @@
 	}
 	100% {
 		d: path("M 12,8 12,8");
+	}
+}
+
+#settings-cog {
+	animation: rotating-cog 3s linear;
+	animation-fill-mode: both;
+	animation-iteration-count: infinite;
+	animation-play-state: paused;
+	transform-origin: center;
+}
+
+#settings:hover #settings-cog {
+	animation-play-state: running;
+}
+
+@keyframes rotating-cog {
+	0% {
+		transform: rotateZ(0)
+	}
+	100% {
+		transform: rotateZ(360deg)
 	}
 }

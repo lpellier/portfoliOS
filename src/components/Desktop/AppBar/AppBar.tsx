@@ -52,19 +52,29 @@ class AppBar extends React.Component<{appState: any, spawnWindow: any}> {
 					{tpoon?.opened && <div className='OpenedState'/>}
 				</div>
 				<div>
-					<svg xmlns="http://www.w3.org/2000/svg" className="App" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1" stroke="#F4615A" fill="none" strokeLinecap="round" strokeLinejoin="round"  onClick={() => this.props.spawnWindow("Cub3D")}
-						id="cub3d">
-						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-						<polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3" />
-						<line x1="12" y1="4" x2="12" y2="12.5"/>
-						<line x1="4.5" y1="16" x2="12" y2="12.5" />
-						<line x1="20" y1="16.5" x2="12" y2="12.5" />
-						<polyline fill="#F4615A" points="12,7.5 16,9.75 16,14.25 12,16.5 8,14.25 8,9.75 12,7.5" />
-						<path id="cub-line-1" stroke="#1E1F1F" d="M 7,9 12,12" />
-						<path id="cub-line-2" stroke="#1E1F1F" d="M 17,9 12,12" />
-						<path id="cub-line-3" stroke="#1E1F1F" d="M 12,17 12,12" />
-						{/* <line id="cub-line-3" stroke="#1E1F1F" x1="12" y1="17" x2="12" y2="12"/> */}
-					</svg>
+					<div id="cub3d" className="App" onClick={() => this.props.spawnWindow("Cub3D")} >
+						<svg id="cub-svg" xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1" stroke="#F4615A" fill="none" strokeLinecap="round" strokeLinejoin="round">
+							<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+							<polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3" />
+							<line x1="12" y1="4" x2="12" y2="12.5"/>
+							<line x1="4.5" y1="16" x2="12" y2="12.5" />
+							<line x1="20" y1="16.5" x2="12" y2="12.5" />
+							<polyline className="interior-cube" fill="#F4615A" points="12,7.5 16,9.75 16,14.25 12,16.5 8,14.25 8,9.75 12,7.5" />
+							<path className="interior-cube" id="cub-line-1" stroke="#1E1F1F" d="M 7,9 12,12" />
+							<path className="interior-cube" id="cub-line-2" stroke="#1E1F1F" d="M 17,9 12,12" />
+							<path className="interior-cube" id="cub-line-3" stroke="#1E1F1F" d="M 12,17 12,12" />
+						</svg>
+						<div className='scene'>
+							<div className="cube">
+								<div className="cube__face cube__face--front"></div>
+								<div className="cube__face cube__face--back"></div>
+								<div className="cube__face cube__face--right"></div>
+								<div className="cube__face cube__face--left"></div>
+								<div className="cube__face cube__face--top"></div>
+								<div className="cube__face cube__face--bottom"></div>
+							</div>
+						</div>
+					</div>
 					<h3 className='InfoText'>Cub3D</h3>
 					{cub3d?.opened && <div className='OpenedState'/>}
 				</div>
@@ -95,7 +105,7 @@ class AppBar extends React.Component<{appState: any, spawnWindow: any}> {
 					<svg xmlns="http://www.w3.org/2000/svg" className="App" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1" stroke="#F4615A" fill="none" strokeLinecap="round" strokeLinejoin="round" onClick={() => this.props.spawnWindow("Settings")}
 						id="settings">
 						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-						<path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" />
+						<path id="settings-cog" d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" />
 						<circle cx="12" cy="12" r="3" />
 					</svg>
 					<h3 className='InfoText'>Settings</h3>

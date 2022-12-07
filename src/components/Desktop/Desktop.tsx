@@ -19,6 +19,7 @@ import FolderServer from './Apps/FolderServer/FolderServer';
 	// TODO Every click needs to have a feel to it, perhaps ripple effect
 	// TODO Cute animations for each of the icons :
 		// ? Spoon : the dice change value very quickly
+		// ? not a fan of the about-me animation and the c++ one
 
 // ? Functionnality
 	// TODO When a window is dragged to a side, snap it to that side

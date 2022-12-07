@@ -1,1 +1,59 @@
 @import "./../../../globals.css";
+
+.Background {
+	display: flex;
+
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+
+	top: -50%;
+	width: 200px;
+	position: relative;
+
+	flex-direction: row;
+	justify-content: space-evenly;
+
+	animation: title-goes-down 4.5s forwards ease;
+}
+
+@keyframes title-goes-down {
+	40% {
+		top: 15%;
+		width: 200px;
+	}
+	100% {
+		top: 15%;
+		width: 800px;	
+	}
+}
+
+.letter {
+	position: relative;
+	border-radius: 25px;
+	font: 120px "Outfit";
+	color: var(--secondary-background-color);
+	width: 150px;
+	height: 170px;
+	text-align: center;
+}
+
+.letter.portfolio {
+	background-color: var(--secondary-interface-color);
+	box-shadow: 5px 5px 5px #00000020;
+	width: 10px;
+	overflow: hidden;
+	color: rgba(0,0,0,0);
+	height: 125px;
+	font-size: 100px;
+	animation: show-full-title 1.5s forwards ease;
+	animation-delay: 2.5s;
+}
+
+@keyframes show-full-title {
+	100% {
+		color: var(--secondary-background-color);
+		width: 500px;
+	}
+}

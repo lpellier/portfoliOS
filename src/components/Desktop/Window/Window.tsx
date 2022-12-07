@@ -43,6 +43,15 @@ class Window extends React.Component<{component: any, id: number, putWindowFront
 				style={{zIndex: this.props.info.z_index, top: this.props.info.pos.y, left: this.props.info.pos.x}} 
 				id={this.props.info.name} 
 				className={window_classes}>
+				<div className='content'>
+					{this.props.info.scrollbar && 
+						<Scrollbar className='Scrollbar' style={{ width: width ? width : 600, height: height? height - 40 : 400}}>
+							<this.props.component width={width ? width : 600} height={height? height - 40 : 400}/>
+						</Scrollbar>}
+					{!this.props.info.scrollbar &&
+						<this.props.component id={this.props.id} width={width ? width : 600} height={height? height : 400}/>
+					}
+				</div>
 				<h3 className="WindowTitle">{this.props.info.name}</h3>
 				<div className='ButtonFlex'>
 					<button className="WindowButton" id='MinimizeButton' onClick={() => {this.setState({minimized: true})}}>
@@ -83,16 +92,6 @@ class Window extends React.Component<{component: any, id: number, putWindowFront
 							<path id="quitButtonPath4" d="M 5,19 9,15"/>
 						</svg>
 					</button>
-				</div>
-				<div className='content'>
-					{this.props.info.scrollbar && 
-						<Scrollbar className='Scrollbar' style={{ width: width ? width : 600, height: height? height - 40 : 400}}>
-							<this.props.component width={width ? width : 600} height={height? height - 40 : 400}/>
-						</Scrollbar>}
-					{!this.props.info.scrollbar &&
-						<this.props.component id={this.props.id} width={width ? width : 600} height={height? height - 40 : 400}/>
-					}
-					
 				</div>
 			</div>
 		)

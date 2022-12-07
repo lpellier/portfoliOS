@@ -56,8 +56,18 @@ class Header extends React.Component {
 
 	render() {
 		return (
-			<div className="Header">
-				<h1>{this.state.header_value + "|"}</h1>
+			<div className='osPortfolio'>
+				<div className="row">
+					<div className='cell size-2'></div>
+					<div className='cell size-2'></div>
+					<div className='cell size-2'></div>
+					<div className='cell size-2'></div>
+					<div className='cell size-2'></div>
+					<div className='cell size-2'></div>
+					<div className='cell size-2'></div>
+					<div className='cell size-2'></div>
+					<div className='cell size-2'></div>
+				</div>
 			</div>
 		)
 	}

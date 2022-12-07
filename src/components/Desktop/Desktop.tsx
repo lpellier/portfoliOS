@@ -6,18 +6,36 @@ import Window from './Window/Window';
 import Game from './Apps/Pong/Game'
 import FolderServer from './Apps/FolderServer/FolderServer';
 
-// TODO Dynamic animations
-// TODO When a window is dragged to a side, snap it to that side
+// ? Appearance
+	// TODO Dynamic window animations
+		// ? Instead of appearing from the left, windows could fade in and get a bit bigger
+	// ? Custom mouse pointer ?
+	// TODO Create a logo
+	// TODO Revamp login screen
+		// ? Starts with dark screen, loading animation and "Welcome"
+		// ? Background screen, with hour, weather that kind of thing
+		// ? Animation like the user is trying to connect
+		// ? Lucas profile already exists, user inputs password and presses enter
+	// TODO Every click needs to have a feel to it, perhaps ripple effect
+	// TODO Cute animations for each of the icons :
+		// ? Spoon : the dice change value very quickly
 
-// TODO Settings -> modify appearance of website
-// TODO Cute animations for each of the icons :
-	// ? Server : the dots on the server go left to right
-	// ? C++ : the + go left to right getting big at first then disappearing
-	// ? Spoon : the dice change value very quickly
-	// ? Cub3d : 3d cube rotation ?
-	// ? Pong : a fake game cycle is played
-	// ? Info : the dot jumps up and down on the I
-	// ? Settings : the cog rotates
+// ? Functionnality
+	// TODO When a window is dragged to a side, snap it to that side
+	// TODO Mobile webapp
+	// TODO Connect login screen to desktop screen
+	// TODO Integrate Pong
+	// TODO Folder needs a file structure
+	// TODO Files need to be implemented (pdfs, readmes)
+	// TODO Import my cv as a file
+	// TODO Code Cub3D in javascript
+	// TODO Integrate Spoon and revamp it a bit
+	// TODO Backend for pong multiplayer
+	// TODO Some sort of tutorial message ?
+	// TODO Settings -> modify appearance of website
+		// ? Ability to change the background ?
+		// ? Ability to change the color theme ?
+		// ? Ability to change font-size, icon-size ?
 
 type DesktopState = {
 	windows: Map<string, {name: string, pos: {x: number, y: number}, z_index: number, opened: boolean; scrollbar: boolean}>,

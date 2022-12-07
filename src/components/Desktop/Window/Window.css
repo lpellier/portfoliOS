@@ -6,6 +6,7 @@
 	width: 145px;
 	height: 40px;
 	right: 0%;
+	justify-items: center;
 	justify-content: space-evenly;
 }
 
@@ -15,7 +16,6 @@
 	cursor: pointer;
 	width: 35px;
 	height: 40px;
-	top: 5px;
 }
 
 svg path {
@@ -62,7 +62,6 @@ svg path {
 
 .WindowTitle {
 	position: absolute;
-	top: 0%;
 	margin: 0;
 
 	left: 0;
@@ -81,9 +80,8 @@ svg path {
 	right: 0;
 	margin-left: auto;
 	margin-right: auto;
-	top: 40px;
 	width: 100%;
-	height: calc(100% - 40px);
+	height: 100%;
 }
 
 .Scrollbar {
@@ -101,7 +99,6 @@ svg path {
 }
 
 .WindowDefault {
-	display: block;
 	position:absolute;
 	margin: 0;
 	width: 600px;
@@ -115,7 +112,6 @@ svg path {
 	box-shadow: 5px 5px 5px #00000020;
 	resize: both;
 	overflow: hidden;
-	transition: width 2s, height 2s;
 }
 
 /* https://stackoverflow.com/questions/18481550/how-to-dynamically-create-keyframe-css-animations */

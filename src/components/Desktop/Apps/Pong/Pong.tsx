@@ -46,7 +46,6 @@ export const defineSketch = (id: number, initialWidth: number, initialHeight: nu
 		p.setup = () => {
 			parent = document.getElementById("canvas-parent" + id);
 			canvas = p.createCanvas(initialWidth, initialHeight).parent(parent);
-			console.log(canvas.width, canvas.height)
 			for (let i = 0; i < 150; i++) {
 				circles.push(new MovingCircle({x: Math.random() * initialWidth, y: Math.random() * initialHeight}, Math.random() * 30 + 20))
 			}

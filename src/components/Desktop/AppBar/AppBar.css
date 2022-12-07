@@ -39,7 +39,8 @@
 	max-height: 100px;
 
 	justify-content: space-evenly;
-	
+	align-items: center;
+
 	/* background: radial-gradient(circle, var(--secondary-background-color) 0%, var(--primary-interface-color) 100%);; */
 	/* border: calc(0.5vmin + 5px) solid #2D2424; */
 }
@@ -47,17 +48,12 @@
 .App {
 	position: relative;
 	display: inline-block;
-	top: 10%;
 	transition: transform 0.2s;
 	width: auto;
-	/* height: 9vmin; */
-	/* min-height: 68px; */
 	height: 70px;
 	background-repeat: no-repeat;
 	background-color: rgba(0, 0, 0, 0);
 	border: none;
-	animation: smaller 0.2s ease-out;
-	animation-fill-mode: forwards;
 }
 
 .Icon {

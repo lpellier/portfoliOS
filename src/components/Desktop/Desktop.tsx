@@ -113,7 +113,11 @@ class Desktop extends React.Component {
 		let wins_cpy = this.state.windows;
 		let win_info = wins_cpy.get(win_name);
 		if (document.getElementById(win_name) && win_info) {
-			win_info.classes = "WindowDefault WindowSpawn"
+			if (win_info.classes.includes("Minimized"))
+				win_info.classes = "WindowDefault WindowSpawn"
+			else
+				win_info.classes = "WindowDefault"
+				
 			wins_cpy.set(win_name, win_info);
 			this.setState({
 				windows: wins_cpy

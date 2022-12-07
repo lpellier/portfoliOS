@@ -3,19 +3,19 @@ import './Desktop.css';
 import Background from './Background/Background'
 import AppBar from './AppBar/AppBar'
 import Window from './Window/Window';
-import Game from './Apps/Pong/Game'
+import Game from './Apps/Pong/Pong'
 import FolderServer from './Apps/FolderServer/FolderServer';
 
+// ? Bugs
+
 // ? Appearance
-	// TODO Dynamic window animations
-		// ? Instead of appearing from the left, windows could fade in and get a bit bigger
-	// ? Custom mouse pointer ?
-	// TODO Create a logo
 	// TODO Revamp login screen
 		// ? Starts with dark screen, loading animation and "Welcome"
 		// ? Background screen, with hour, weather that kind of thing
 		// ? Animation like the user is trying to connect
 		// ? Lucas profile already exists, user inputs password and presses enter
+	// TODO Create a logo
+	// ? Custom mouse pointer ?
 	// TODO Every click needs to have a feel to it, perhaps ripple effect
 	// TODO Cute animations for each of the icons :
 		// ? Spoon : the dice change value very quickly
@@ -38,7 +38,7 @@ import FolderServer from './Apps/FolderServer/FolderServer';
 		// ? Ability to change font-size, icon-size ?
 
 type DesktopState = {
-	windows: Map<string, {name: string, pos: {x: number, y: number}, z_index: number, opened: boolean; scrollbar: boolean}>,
+	windows: Map<string, {name: string, classes: string, pos: {x: number, y: number}, z_index: number, opened: boolean; scrollbar: boolean}>,
 	win_dragged: string,
 	global: {x: number, y: number},
 	old_global: {x: number, y: number},
@@ -47,7 +47,7 @@ type DesktopState = {
 
 class Desktop extends React.Component {
 	state : DesktopState = {
-		windows: new Map<string, {name: string, pos: {x: number, y: number}, z_index: number, opened: boolean; scrollbar: boolean}>(),
+		windows: new Map<string, {name: string, classes: string, pos: {x: number, y: number}, z_index: number, opened: boolean; scrollbar: boolean}>(),
 		win_dragged: "",
 		global: {x: 0, y: 0},
 		old_global: {x: 0, y: 0},
@@ -56,13 +56,13 @@ class Desktop extends React.Component {
 
 	componentDidMount(): void {
 		let wins = this.state.windows;
-		wins.set("Server Projects", {name: "Server Projects", pos: {x: 0, y: 0}, z_index: 0, opened: false, scrollbar: true});
-		wins.set("C++ Projects", {name: "C++ Projects", pos: {x: 0, y: 0}, z_index: 0, opened: false, scrollbar: true});
-		wins.set("Spoon", {name: "Spoon", pos: {x: 0, y: 0}, z_index: 0, opened: false, scrollbar: false});
-		wins.set("Cub3D", {name: "Cub3D", pos: {x: 0, y: 0}, z_index: 0, opened: false, scrollbar: false});
-		wins.set("Pong", {name: "Pong", pos: {x: 0, y: 0}, z_index: 0, opened: false, scrollbar: false});
-		wins.set("About me", {name: "About me", pos: {x: 0, y: 0}, z_index: 0, opened: false, scrollbar: true});
-		wins.set("Settings", {name: "Settings", pos: {x: 0, y: 0}, z_index: 0, opened: false, scrollbar: true});
+		wins.set("Server Projects", {name: "Server Projects", classes: "WindowDefault", pos: {x: 0, y: 0}, z_index: 0, opened: false, scrollbar: true});
+		wins.set("C++ Projects", {name: "C++ Projects", classes: "WindowDefault", pos: {x: 0, y: 0}, z_index: 0, opened: false, scrollbar: true});
+		wins.set("Spoon", {name: "Spoon", classes: "WindowDefault", pos: {x: 0, y: 0}, z_index: 0, opened: false, scrollbar: false});
+		wins.set("Cub3D", {name: "Cub3D", classes: "WindowDefault", pos: {x: 0, y: 0}, z_index: 0, opened: false, scrollbar: false});
+		wins.set("Pong", {name: "Pong", classes: "WindowDefault", pos: {x: 0, y: 0}, z_index: 0, opened: false, scrollbar: false});
+		wins.set("About me", {name: "About me", classes: "WindowDefault", pos: {x: 0, y: 0}, z_index: 0, opened: false, scrollbar: true});
+		wins.set("Settings", {name: "Settings", classes: "WindowDefault", pos: {x: 0, y: 0}, z_index: 0, opened: false, scrollbar: true});
 	}
 
 	putWindowFront(win_name: string, dragged: boolean, event: any) {
@@ -98,21 +98,39 @@ class Desktop extends React.Component {
 		return count;
 	}
 
-	spawnWindow(win_name : string) : void {
-		if (document.getElementById(win_name)) {
-			this.putWindowFront(win_name, false, null)
-			return ;
-		}
+	setClasses(win_name: string, classes: string) {
 		let wins_cpy = this.state.windows;
 		let win_info = wins_cpy.get(win_name);
 		if (win_info) {
+			win_info.classes = classes;
+			wins_cpy.set(win_name, win_info);
+			this.setState({windows: wins_cpy});
+		}
+	}
+
+	spawnWindow(win_name : string) : void {
+		let wins_cpy = this.state.windows;
+		let win_info = wins_cpy.get(win_name);
+		if (document.getElementById(win_name) && win_info) {
+			win_info.classes = "WindowDefault WindowSpawn"
+			wins_cpy.set(win_name, win_info);
+			this.setState({
+				windows: wins_cpy
+			})
+			this.putWindowFront(win_name, false, null)
+		}
+		else if (win_info) {
 			win_info.opened = true;
 			win_info.z_index = this.getLastZIndex();
+			win_info.pos = {
+				x: window.innerWidth / 2 - 300,
+				y: window.innerHeight / 2 - 200
+			}
 			wins_cpy.set(win_name, win_info);
+			this.setState({
+				windows: wins_cpy
+			})
 		}
-		this.setState({
-			windows: wins_cpy
-		})
 	}
 
 	destroyWindow(win_name: string): void {
@@ -163,7 +181,7 @@ class Desktop extends React.Component {
 	render() {
 		let server_projects = this.state.windows.get("Server Projects");
 		let cpp_projects = this.state.windows.get("C++ Projects");
-		let tpoon = this.state.windows.get("Spoon");
+		let spoon = this.state.windows.get("Spoon");
 		let cub3d = this.state.windows.get("Cub3D");
 		let pong = this.state.windows.get("Pong");
 		let about_me = this.state.windows.get("About me");
@@ -177,36 +195,43 @@ class Desktop extends React.Component {
 						<Window key={1} component={FolderServer} id={1} // ?
 						putWindowFront={this.putWindowFront.bind(this)}
 						destroyWindow={this.destroyWindow.bind(this)}
+						setClasses={this.setClasses.bind(this)}
 						info={server_projects}/>}
 					{cpp_projects?.opened && 
 						<Window key={2} component={FolderServer} id={2} // ?
 						putWindowFront={this.putWindowFront.bind(this)}
 						destroyWindow={this.destroyWindow.bind(this)}
+						setClasses={this.setClasses.bind(this)}
 						info={cpp_projects}/>}
-					{tpoon?.opened && 
+					{spoon?.opened && 
 						<Window key={3} component={FolderServer} id={3} // ?
 						putWindowFront={this.putWindowFront.bind(this)}
 						destroyWindow={this.destroyWindow.bind(this)}
-						info={tpoon}/>}
+						setClasses={this.setClasses.bind(this)}
+						info={spoon}/>}
 					{cub3d?.opened && 
 						<Window key={4} component={FolderServer} id={4} // ?
 						putWindowFront={this.putWindowFront.bind(this)}
 						destroyWindow={this.destroyWindow.bind(this)}
+						setClasses={this.setClasses.bind(this)}
 						info={cub3d}/>}
 					{pong?.opened && 
 						<Window key={5} component={Game} id={5} // ?
 						putWindowFront={this.putWindowFront.bind(this)}
 						destroyWindow={this.destroyWindow.bind(this)}
+						setClasses={this.setClasses.bind(this)}
 						info={pong}/>}
 					{about_me?.opened && 
 						<Window key={6} component={FolderServer} id={6} // ?
 						putWindowFront={this.putWindowFront.bind(this)}
 						destroyWindow={this.destroyWindow.bind(this)}
+						setClasses={this.setClasses.bind(this)}
 						info={about_me}/>}
 					{settings?.opened && 
 						<Window key={7} component={FolderServer} id={7} // ?
 						putWindowFront={this.putWindowFront.bind(this)}
 						destroyWindow={this.destroyWindow.bind(this)}
+						setClasses={this.setClasses.bind(this)}
 						info={settings}/>}
 				</div>
 			</div>

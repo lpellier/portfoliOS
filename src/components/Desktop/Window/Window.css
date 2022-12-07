@@ -18,47 +18,21 @@
 	height: 40px;
 }
 
-svg path {
-	transition: 0.2s;
-}
-.icon-tabler-minimize:hover #minimizeButtonPath1 {
-	d: path("M14 18v-2a2 2 0 0 1 2 -2h2")
-}
-.icon-tabler-minimize:hover #minimizeButtonPath2 {
-	d: path("M14 6v2a2 2 0 0 0 2 2h2")
-}
-.icon-tabler-minimize:hover #minimizeButtonPath3 {
-	d: path("M6 14h2a2 2 0 0 1 2 2v2")
-}
-.icon-tabler-minimize:hover #minimizeButtonPath4 {
-	d: path("M6 10h2a2 2 0 0 0 2 -2v-2")
-}
+svg path { transition: 0.2s; }
+.icon-tabler-minimize:hover #minimizeButtonPath1 { d: path("M14 18v-2a2 2 0 0 1 2 -2h2") }
+.icon-tabler-minimize:hover #minimizeButtonPath2 { d: path("M14 6v2a2 2 0 0 0 2 2h2") }
+.icon-tabler-minimize:hover #minimizeButtonPath3 { d: path("M6 14h2a2 2 0 0 1 2 2v2") }
+.icon-tabler-minimize:hover #minimizeButtonPath4 { d: path("M6 10h2a2 2 0 0 0 2 -2v-2") }
 
-.icon-tabler-maximize:hover #maximizeButtonPath1 {
-	d: path("M2 6v-2a2 2 0 0 1 2 -2h2")
-}
-.icon-tabler-maximize:hover #maximizeButtonPath2 {
-	d: path("M2 18v2a2 2 0 0 0 2 2h2")
-}
-.icon-tabler-maximize:hover #maximizeButtonPath3 {
-	d: path("M18 2h2a2 2 0 0 1 2 2v2")
-}
-.icon-tabler-maximize:hover #maximizeButtonPath4 {
-	d: path("M18 22h2a2 2 0 0 0 2 -2v-2")
-}
+.icon-tabler-maximize:hover #maximizeButtonPath1 { d: path("M2 6v-2a2 2 0 0 1 2 -2h2") }
+.icon-tabler-maximize:hover #maximizeButtonPath2 { d: path("M2 18v2a2 2 0 0 0 2 2h2") }
+.icon-tabler-maximize:hover #maximizeButtonPath3 { d: path("M18 2h2a2 2 0 0 1 2 2v2") }
+.icon-tabler-maximize:hover #maximizeButtonPath4 { d: path("M18 22h2a2 2 0 0 0 2 -2v-2") }
 
-.icon-tabler-square-off:hover #quitButtonPath1 {
-	d: path("M 5,5 12,12")
-}
-.icon-tabler-square-off:hover #quitButtonPath2 {
-	d: path("M 19,19 12,12")
-}
-.icon-tabler-square-off:hover #quitButtonPath3 {
-	d: path("M 19,5 12,12")
-}
-.icon-tabler-square-off:hover #quitButtonPath4 {
-	d: path("M 5,19 12,12")
-}
+.icon-tabler-square-off:hover #quitButtonPath1 { d: path("M 5,5 12,12") }
+.icon-tabler-square-off:hover #quitButtonPath2 { d: path("M 19,19 12,12") }
+.icon-tabler-square-off:hover #quitButtonPath3 { d: path("M 19,5 12,12") }
+.icon-tabler-square-off:hover #quitButtonPath4 { d: path("M 5,19 12,12") }
 
 .WindowTitle {
 	position: absolute;
@@ -100,9 +74,12 @@ svg path {
 
 .WindowDefault {
 	position:absolute;
+	display: block;
 	margin: 0;
 	width: 600px;
 	height: 400px;
+	min-width: 400px;
+	min-height: 300px;
 	
 	background-color: rgba(30, 31, 31, 0.95);
 	/* disable in settings */
@@ -111,44 +88,47 @@ svg path {
 	border-radius: 8px;
 	box-shadow: 5px 5px 5px #00000020;
 	resize: both;
+	opacity: 1;
 	overflow: hidden;
+
+	transition: width 100ms, height 100ms;
 }
 
 /* https://stackoverflow.com/questions/18481550/how-to-dynamically-create-keyframe-css-animations */
-.WindowSpawn {
-	animation: spawnWindow 0.2s ease-in;
-	animation-fill-mode: forwards;
-}
-
-.WindowMaximized {
-	animation: maximizeWindow 0.2s ease-in;
-	animation-fill-mode: forwards;
-}
-
-.WindowMaximizedReverse {
-	animation: maximizeWindowReverse 0.2s ease-in;
-	animation-fill-mode: forwards;
-}
-.WindowQuit {
-	animation: quitWindow 0.2s ease-in;
-	animation-fill-mode: forwards;
-}
-.WindowMinimized {
-	display: none;
-}
+.WindowSpawn 				{ animation: spawnWindow				0.5s ease forwards; }
+.WindowQuit 				{ animation: quitWindow					0.5s ease forwards; }
+.WindowMaximized	 		{ animation: maximizeWindow				0.5s ease forwards; }
+.WindowMaximizedReverse		{ animation: maximizeWindowReverse		0.5s ease forwards; }
+.WindowMaximizedMinimized	{ animation: minimizeMaximizedWindow	0.5s ease forwards; }
+.WindowMinimized 			{ animation: minimizeWindow				0.5s ease forwards; }
 
 @keyframes maximizeWindowReverse {
 	0% {
 		top: 0;
 		left: 0;
-		width: 98vw;
-		height: 98vh;
+		width: 100vw;
+		height: 100vh;
 	}
 	100% {
-		width: 70vw;
-		height: 50vh;
-		min-width: 200px;
-		min-height: 200px;
+	}
+}
+
+@keyframes minimizeMaximizedWindow {
+	0% {
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;	
+		display: block;
+		transform: scale(1);
+	}
+	99% {
+		display: block;
+		transform: scale(0);
+	}
+	100% {
+		display: none;
+		transform: scale(0);
 	}
 }
 
@@ -156,26 +136,46 @@ svg path {
 	100% {
 		top: 0;
 		left: 0;
-		width: 98vw;
-		height: 98vh;
+		width: 100vw;
+		height: 100vh;
 	}
 }
-@keyframes quitWindow {
+
+@keyframes minimizeWindow {
+	0% {
+		display: block;
+		transform: scale(1);
+	}
+	99% {
+		display: block;
+		transform: scale(0);
+	}
 	100% {
-		top: 0;
-		left: 0;
-		width: 0;
-		height: 0;
+		display: none;
+		transform: scale(0);
+	}
+}
+
+@keyframes quitWindow {
+	0% {
+		transform: scale(1);
+		opacity: 1;
+	}
+	50% {
+		transform: scale(0.5);
+		opacity: 0;
+	}
+	100% {
+		transform: scale(0);
+		opacity: 0;
 	}
 }
 
 @keyframes spawnWindow {
 	0% {
-		width: 0;
-		height: 0;
+		transform: scale(0);
 	}
 	100% {
-		min-width: 450px;
-		min-height: 200px;
+		transform: scale(1);
 	}
 }

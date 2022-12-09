@@ -4,23 +4,3 @@
 	height: 100vh;
 	width: 100vw;
 }
-
-.nwse-resize {
-	cursor: nwse-resize;
-}
-
-.nesw-resize {
-	cursor: nesw-resize;
-}
-
-.ew-resize {
-	cursor: ew-resize;
-}
-
-.ns-resize {
-	cursor: ns-resize;
-}
-
-.default {
-	cursor: default;
-}

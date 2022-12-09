@@ -1,6 +1,11 @@
 @import "./../../../globals.css";
 
 .Background {
+	width: 100%;
+	height: 100%;
+}
+
+.title {
 	display: flex;
 
 	left: 0;
@@ -55,5 +60,31 @@
 	100% {
 		color: var(--secondary-background-color);
 		width: 500px;
+	}
+}
+
+.clickEffect {
+	position: fixed;
+	box-sizing: border-box;
+	border: 1px solid var(--secondary-background-color);
+	border-radius: 50%;
+	animation: clickEffect 0.35s ease;
+	z-index: 1;
+}
+
+@keyframes clickEffect {
+	0% {
+		opacity: 1;
+		width: 0.5em;
+		height: 0.5em;
+		margin: -0.25em;
+		border-width: 0.5em;
+	}
+	100% {
+		opacity: 0.2;
+		width: 5em;
+		height: 5em;
+		margin: -2.5em;
+		border-width: 0.03em;
 	}
 }

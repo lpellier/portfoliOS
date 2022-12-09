@@ -149,6 +149,10 @@
 	z-index: 2;
 }
 
+g {
+	transition: opacity 200ms;	
+}
+
 #cub3d:hover .scene .cube {
 	animation-play-state: running;
 }

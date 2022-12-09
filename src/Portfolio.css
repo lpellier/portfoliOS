@@ -1,14 +1,150 @@
 @import "globals.css";
 
 .Portfolio {
-	display: block;
+	/* display: flex;
+	flex-direction: column; */
 	margin: 0 0 0 0;
 	height: 100vh;
 	width: 100vw;
 	z-index: 0;
-	text-align: center;
+	/* text-align: center;
+	justify-content: center;
+	justify-items: center;
+	align-items: center; */
+	gap: 0px;
 	background-color: var(--primary-background-color);
 	/* background: linear-gradient(90deg, var(--primary-background-color), var(--secondary-interface-color), var(--primary-background-color), var(--secondary-interface-color));
 	background-size: 400% 400%;
 	animation: gradient 15s ease infinite; */
+}
+
+#logo {
+	position: absolute;
+	opacity: 0;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	animation: logo-anim 1.5s forwards ease;
+	animation-delay: 0.5s;
+}
+
+@keyframes logo-anim {
+	33% {
+		opacity: 1;
+		-webkit-transform: translate(-50%, -50%);
+		transform: translate(-50%, -50%);
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: translate(-50%, -125%);
+		transform: translate(-50%, -125%);
+	}
+}
+@keyframes fade-in {
+	100% {
+		opacity: 1;
+	}
+}
+
+#welcome-text {
+	position: absolute;
+	opacity: 0;
+	margin: 0;
+	padding: 0;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	color: white;
+	background: none;
+	font: 3em "Outfit";
+	animation: fade-in 1s forwards ease;
+	animation-delay: 1.5s;
+}
+
+#loading-back {
+	stroke: #FFFFFF50;
+}
+
+#loading-part {
+	animation: rotate-loading 1s both ease infinite;
+	animation-delay: 3s;
+	transform-origin: 25px 25px;
+}
+
+#loading {
+	position: absolute;
+	opacity: 0;
+	margin: 0;
+	padding: 0;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate(-50%, 100%);
+	transform: translate(-50%, 125%);
+	animation: fade-in 0.5s ease 2.5s forwards;
+}
+
+@keyframes rotate-loading {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+#background {
+	position: absolute;
+	height: 100vh;
+	width: 100vw;
+	transform: rotate(180deg);
+	background-position: center;
+	background-size: cover;
+	z-index: 1;
+	background-image: url("../public/images/background.jpg");
+}
+
+#opacity-bg {
+	position: absolute;
+	height: 100vh;
+	width: 100vw;
+	z-index: 2;
+	background: linear-gradient(90deg, rgba(0,0,0,0.9) 40%, rgba(0,0,0,0.1) 100%);
+}
+
+#dates {
+	left: 50px;
+	top: 50%;
+	transform: translateY(-50%);
+	position: absolute;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	align-items: baseline;
+	gap: 30px;
+	z-index: 3;
+}
+
+#time {
+	margin: 0;
+	padding: 0;
+	font: 6em "Outfit";
+	color: white;
+}
+#date {
+	margin-top: -50px;
+	padding: 0;
+	font: 2em "Outfit";
+	color: rgba(255, 255, 255, 0.5);
+}
+.break {
+	flex-basis: 100%;
+	height: 0;
+}
+
+#lock-logo {
+	z-index: 3;
+	position: absolute;
+	bottom: 0;
 }

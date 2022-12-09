@@ -1,12 +1,15 @@
-import React from 'react';
-import './Desktop.css';
-import Background from './Background/Background'
-import AppBar from './AppBar/AppBar'
-import Window from './Window/Window';
-import Game from './Apps/Pong/Pong'
-import FolderServer from './Apps/FolderServer/FolderServer';
+import Background from		'./Background/Background'
+import AppBar from			'./AppBar/AppBar'
+import Window from			'./Window/Window';
+import Pong from			'./Apps/Pong/Pong'
+import Spoon from			'./Apps/Spoon/Spoon'
+import FolderServer from	'./Apps/FolderServer/FolderServer';
+import						'./Desktop.css';
+import React from			'react';
 
 // ? Bugs
+	// TODO Opened state disturbs apps placement in app bar
+	// TODO In Spoon app, pressing space after maximizing windows causes weird issue
 
 // ? Appearance
 	// TODO Revamp login screen
@@ -16,9 +19,8 @@ import FolderServer from './Apps/FolderServer/FolderServer';
 		// ? Lucas profile already exists, user inputs password and presses enter
 	// TODO Create a logo
 	// ? Custom mouse pointer ?
-	// TODO Every click needs to have a feel to it, perhaps ripple effect
 	// TODO Cute animations for each of the icons :
-		// ? Spoon : the dice change value very quickly
+		// ? Pong : should add another few hits in animation
 		// ? not a fan of the about-me animation and the c++ one
 
 // ? Functionnality
@@ -31,7 +33,7 @@ import FolderServer from './Apps/FolderServer/FolderServer';
 	// TODO Import my cv as a file
 	// TODO Code Cub3D in javascript
 	// TODO Integrate Spoon and revamp it a bit
-	// TODO Backend for pong multiplayer
+	// ? Backend for pong multiplayer
 	// TODO Some sort of tutorial message ?
 	// TODO Settings -> modify appearance of website
 		// ? Ability to change the background ?
@@ -191,6 +193,7 @@ class Desktop extends React.Component {
 		let pong = this.state.windows.get("Pong");
 		let about_me = this.state.windows.get("About me");
 		let settings = this.state.windows.get("Settings");
+		
 		return (
 			<div id="Desktop" className={"Desktop " + this.state.mouseClass} onMouseMove={this.handleMouseMove.bind(this)} onMouseLeave={this.handleMouseUp.bind(this)} onMouseUp={this.handleMouseUp.bind(this)}>
 				<Background/>
@@ -209,7 +212,7 @@ class Desktop extends React.Component {
 						setClasses={this.setClasses.bind(this)}
 						info={cpp_projects}/>}
 					{spoon?.opened && 
-						<Window key={3} component={FolderServer} id={3} // ?
+						<Window key={3} component={Spoon} id={3} // ?
 						putWindowFront={this.putWindowFront.bind(this)}
 						destroyWindow={this.destroyWindow.bind(this)}
 						setClasses={this.setClasses.bind(this)}
@@ -221,7 +224,7 @@ class Desktop extends React.Component {
 						setClasses={this.setClasses.bind(this)}
 						info={cub3d}/>}
 					{pong?.opened && 
-						<Window key={5} component={Game} id={5} // ?
+						<Window key={5} component={Pong} id={5} // ?
 						putWindowFront={this.putWindowFront.bind(this)}
 						destroyWindow={this.destroyWindow.bind(this)}
 						setClasses={this.setClasses.bind(this)}

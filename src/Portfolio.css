@@ -1,21 +1,12 @@
 @import "globals.css";
 
 .Portfolio {
-	/* display: flex;
-	flex-direction: column; */
+	position: absolute;
 	margin: 0 0 0 0;
 	height: 100vh;
 	width: 100vw;
-	z-index: 0;
-	/* text-align: center;
-	justify-content: center;
-	justify-items: center;
-	align-items: center; */
-	gap: 0px;
+	z-index: -4;
 	background-color: var(--primary-background-color);
-	/* background: linear-gradient(90deg, var(--primary-background-color), var(--secondary-interface-color), var(--primary-background-color), var(--secondary-interface-color));
-	background-size: 400% 400%;
-	animation: gradient 15s ease infinite; */
 }
 
 #logo {
@@ -101,29 +92,44 @@
 	transform: rotate(180deg);
 	background-position: center;
 	background-size: cover;
-	z-index: 1;
+	z-index: -1;
 	background-image: url("../public/images/background.jpg");
+	background-repeat: repeat;
 }
 
 #opacity-bg {
 	position: absolute;
 	height: 100vh;
 	width: 100vw;
-	z-index: 2;
+	z-index: 0;
 	background: linear-gradient(90deg, rgba(0,0,0,0.9) 40%, rgba(0,0,0,0.1) 100%);
 }
 
-#dates {
-	left: 50px;
-	top: 50%;
-	transform: translateY(-50%);
+#screensaver {
+	height: 100vh;
 	position: absolute;
+	display: flex;
+	flex-direction: column;
+	align-items: baseline;
+	justify-content: center;
+	opacity: 0;
+	animation: fade-in 0.5s forwards;
+}
+
+@keyframes fade-in {
+	100% {
+		opacity: 1;
+	}
+}
+
+#dates {
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: row;
 	align-items: baseline;
 	gap: 30px;
-	z-index: 3;
+	margin-left: 20px;
+	z-index: 1;
 }
 
 #time {
@@ -133,7 +139,7 @@
 	color: white;
 }
 #date {
-	margin-top: -50px;
+	margin-top: -45px;
 	padding: 0;
 	font: 2em "Outfit";
 	color: rgba(255, 255, 255, 0.5);
@@ -143,8 +149,136 @@
 	height: 0;
 }
 
-#lock-logo {
-	z-index: 3;
+#loading-flex {
+	opacity: 0;
+	animation: fade-in 1s forwards;	
+}
+#desktop-flex {
+	opacity: 0;
+	animation: fade-in 0.5s forwards;	
+}
+
+#lock-flex {
+	margin-top: auto;
+	display: flex;
+	z-index: 1;
+	align-items: center;
+}
+
+#login-text {
+	font: 1.75em "Outfit";
+	color: white;
+}
+
+#login-flex {
 	position: absolute;
-	bottom: 0;
+	opacity: 0;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-60%);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 15px;
+	z-index: 1;
+	animation: fade-in 0.5s forwards;
+}
+
+#profile-pic {
+	width: 20vmin;
+	height: 20vmin;
+
+	border-radius: 50%;
+	z-index: 2;
+	background-image: url('./../public/images/pdp2.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	border: 3px solid #F4615A;
+}
+
+#profile-name {
+	color: white;
+	font: 1.5em "Outfit";
+}
+
+#password-flex {
+	margin-top: 20px;
+	margin-left: 30px;
+	padding: 0;
+	display: flex;
+	height: 70px;
+	width: 30vw;
+	align-items: center;
+	flex-direction: row;
+}
+#password-input {
+	background: none;
+	flex-basis: 1;
+	margin-bottom: 5px;
+	align-self: flex-end;
+	justify-self: flex-end;
+	border: none;
+	border-bottom: 3px solid #F4615A;
+	width: 100%;
+
+	color: white;
+	font: 1.25em "Outfit";
+	text-align: center;
+}
+#password-input:focus {
+	outline: none;
+}
+
+#password-eye {
+	align-self: flex-end;
+	transform: scale(0);
+	justify-self: flex-end;
+	transition: transform 0.2s;
+}
+
+#password-input:focus ~ #password-eye {
+	transform: scale(1);
+}
+
+#inner-eye {
+	transition: 0.5s;
+}
+#password-eye:hover > #inner-eye {
+	ry: 2px;
+}
+#password-eye:hover {
+	transform: scale(1.25);
+}
+
+#login-button {
+	margin-top: 20px;
+	width: 100px;
+	height: 35px;
+	border-radius: 5px;
+	color: #F4615A;
+	border: none;
+	font: 1.5em "Outfit";
+	text-align: center;
+	transform: scale(1);
+	background-color: var(--secondary-interface-color);
+	transition: background-color 0.4s;
+	animation: button-login-attract 0.5s 2.5s infinite both ease;
+}
+
+@keyframes button-login-attract {
+	0% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.05);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+
+#login-button:hover {
+	background-color: #2D2424;
 }

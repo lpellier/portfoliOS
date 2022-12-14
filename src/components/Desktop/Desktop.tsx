@@ -10,13 +10,9 @@ import React from			'react';
 // ? Bugs
 	// TODO Opened state disturbs apps placement in app bar
 	// TODO In Spoon app, pressing space after maximizing windows causes weird issue
+	// TODO Shouldn't register key presses and mouse cliks for apps not in focus
 
 // ? Appearance
-	// TODO Revamp login screen
-		// ? Starts with dark screen, loading animation and "Welcome"
-		// ? Background screen, with hour, weather that kind of thing
-		// ? Animation like the user is trying to connect
-		// ? Lucas profile already exists, user inputs password and presses enter
 	// TODO Create a logo
 	// ? Custom mouse pointer ?
 	// TODO Cute animations for each of the icons :
@@ -26,13 +22,11 @@ import React from			'react';
 // ? Functionnality
 	// TODO When a window is dragged to a side, snap it to that side
 	// TODO Mobile webapp
-	// TODO Connect login screen to desktop screen
 	// TODO Integrate Pong
 	// TODO Folder needs a file structure
 	// TODO Files need to be implemented (pdfs, readmes)
 	// TODO Import my cv as a file
 	// TODO Code Cub3D in javascript
-	// TODO Integrate Spoon and revamp it a bit
 	// ? Backend for pong multiplayer
 	// TODO Some sort of tutorial message ?
 	// TODO Settings -> modify appearance of website

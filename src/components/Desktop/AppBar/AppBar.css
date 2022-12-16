@@ -21,8 +21,8 @@
 	width: 75vw;
 	height: 15vh;
 
-	/* border: 2px solid var(--secondary-background-color); */
-	background-color: var(--secondary-interface-color);
+	/* border: 2px solid var(--red); */
+	background-color: var(--black);
 	box-shadow: 5px 5px 5px #00000020;
 	border-radius: 25px;
 
@@ -34,7 +34,7 @@
 	justify-content: space-evenly;
 	align-items: center;
 
-	/* background: radial-gradient(circle, var(--secondary-background-color) 0%, var(--primary-interface-color) 100%);; */
+	/* background: radial-gradient(circle, var(--red) 0%, var(--primary-interface-color) 100%);; */
 	/* border: calc(0.5vmin + 5px) solid #2D2424; */
 }
 
@@ -70,7 +70,7 @@
 	margin: 0;
 	padding: 0;
 	font: calc(5vmin + 15px) "Outfit";
-	color: var(--header-color);
+	color: var(--red);
 	opacity: 0;
 }
 
@@ -138,11 +138,11 @@
 }
 
 #spoon-die-1 {
-	fill: var(--secondary-interface-color);
+	fill: var(--black);
 	z-index: 1;
 }
 #spoon-die-2 {
-	fill: var(--secondary-interface-color);
+	fill: var(--black);
 	z-index: 2;
 }
 
@@ -190,8 +190,8 @@ g {
 }
 
 .cube__face {
-	border: 2px solid var(--secondary-interface-color);
-	background-color: var(--header-color);
+	border: 2px solid var(--black);
+	background-color: var(--red);
 	position: absolute;
 	width: 15px;
 	height: 15px;

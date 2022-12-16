@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './AppBar.css';
 
+const RED = "#F4615A";
+
 export default function AppBar(props : any) {
 	const [app_info_text, setAppInfoText] = useState("Server Projects");
 
@@ -60,7 +62,7 @@ export default function AppBar(props : any) {
 						onMouseEnter={() => changeInfoText(server_projects?.name, true)} 
 						onMouseLeave={() => changeInfoText(server_projects?.name, false)} 
 						onClick={() => props.spawnWindow("Server Projects")} 
-						viewBox="0 0 24 24" strokeWidth="1" stroke="#F4615A" 
+						viewBox="0 0 24 24" strokeWidth="1" stroke={RED} 
 						fill="none" strokeLinecap="round" strokeLinejoin="round">
 						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
 						<path d="M5 4h4l3 3h7a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2"/>
@@ -76,7 +78,7 @@ export default function AppBar(props : any) {
 						onMouseEnter={() => changeInfoText(cpp_projects?.name, true)} 
 						onMouseLeave={() => changeInfoText(cpp_projects?.name, false)} 
 						onClick={() => props.spawnWindow("C++ Projects")} 
-						viewBox="0 0 24 24" strokeWidth="1" stroke="#F4615A" 
+						viewBox="0 0 24 24" strokeWidth="1" stroke={RED} 
 						fill="none" strokeLinecap="round" strokeLinejoin="round">
 						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
 						<path d="M5 4h4l3 3h7a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2"/>
@@ -90,7 +92,7 @@ export default function AppBar(props : any) {
 					<svg xmlns="http://www.w3.org/2000/svg" className="App" id="spoon"
 						onMouseEnter={() => changeInfoText(spoon?.name, true)} 
 						onMouseLeave={() => changeInfoText(spoon?.name, false)} 
-						viewBox="0 0 24 24" strokeWidth="1" stroke="#F4615A" 
+						viewBox="0 0 24 24" strokeWidth="1" stroke={RED} 
 						fill="none" strokeLinecap="round" strokeLinejoin="round" 
 						onClick={() => props.spawnWindow("Spoon")}> 
 						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -175,7 +177,7 @@ export default function AppBar(props : any) {
 						onMouseLeave={() => changeInfoText(cub3d?.name, false)} 
 						onClick={() => props.spawnWindow("Cub3D")}>
 						<svg id="cub-svg" xmlns="http://www.w3.org/2000/svg" 
-							viewBox="0 0 24 24" strokeWidth="1" stroke="#F4615A" 
+							viewBox="0 0 24 24" strokeWidth="1" stroke={RED} 
 							fill="none" strokeLinecap="round" strokeLinejoin="round">
 							<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
 							<polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3"/>
@@ -198,13 +200,13 @@ export default function AppBar(props : any) {
 						onMouseEnter={() => changeInfoText(pong?.name, true)} 
 						onMouseLeave={() => changeInfoText(pong?.name, false)} 
 						onClick={() => props.spawnWindow("Pong")}
-						viewBox="0 0 24 24" strokeWidth="1" stroke="#F4615A" 
+						viewBox="0 0 24 24" strokeWidth="1" stroke={RED} 
 						fill="none" strokeLinecap="round" strokeLinejoin="round">
 						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
 						<rect x="3" y="5" width="18" height="14" rx="2"/>
-						<path strokeWidth="1.5" id="pong-player-1" fill="#F4615A" d="M 6,8 6,12"/>
-						<path strokeWidth="1.5" id="pong-player-2" fill="#F4615A" d="M 18,13 18,17"/>
-						<path strokeWidth="2" id="pong-ball" fill="#F4615A" d="M 12,12 12,12"/>
+						<path strokeWidth="1.5" id="pong-player-1" fill={RED} d="M 6,8 6,12"/>
+						<path strokeWidth="1.5" id="pong-player-2" fill={RED} d="M 18,13 18,17"/>
+						<path strokeWidth="2" id="pong-ball" fill={RED} d="M 12,12 12,12"/>
 					</svg>
 					<div style={{opacity: (pong?.opened ? 1 : 0)}} className='OpenedState'/>
 				</div>
@@ -213,7 +215,7 @@ export default function AppBar(props : any) {
 						onMouseEnter={() => changeInfoText(about_me?.name, true)} 
 						onMouseLeave={() => changeInfoText(about_me?.name, false)} 
 						onClick={() => props.spawnWindow("About me")}
-						viewBox="0 0 24 24" strokeWidth="1" stroke="#F4615A" 
+						viewBox="0 0 24 24" strokeWidth="1" stroke={RED} 
 						fill="none" strokeLinecap="round" strokeLinejoin="round">
 						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
 						<circle cx="12" cy="12" r="9"/>
@@ -227,7 +229,7 @@ export default function AppBar(props : any) {
 						onMouseEnter={() => changeInfoText(settings?.name, true)} 
 						onMouseLeave={() => changeInfoText(settings?.name, false)} 
 						onClick={() => props.spawnWindow("Settings")}
-						viewBox="0 0 24 24" strokeWidth="1" stroke="#F4615A" 
+						viewBox="0 0 24 24" strokeWidth="1" stroke={RED} 
 						fill="none" strokeLinecap="round" strokeLinejoin="round">
 						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
 						<path id="settings-cog" d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"/>

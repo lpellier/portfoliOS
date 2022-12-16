@@ -5,6 +5,8 @@ import './Window.css';
 
 // ! https://www.copycat.dev/blog/react-markdown/
 
+const RED = "#F4615A";
+
 export default function Window(props: {component: any, id: number, putWindowFront: any, destroyWindow: any, setClasses: any, info: {name: string, classes: string, pos: {x: number, y: number}, z_index: number, opened: boolean; scrollbar: boolean}}) {
 
 	useEffect(() => {
@@ -45,7 +47,7 @@ export default function Window(props: {component: any, id: number, putWindowFron
 					else
 						props.setClasses(props.info.name, "WindowDefault WindowMinimized");
 				}}>
-					<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-minimize" viewBox="0 0 24 24" strokeWidth="2" stroke="#F4615A" fill="none" strokeLinecap="round" strokeLinejoin="round">
+					<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-minimize" viewBox="0 0 24 24" strokeWidth="2" stroke={RED} fill="none" strokeLinecap="round" strokeLinejoin="round">
 						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
 						<path id="minimizeButtonPath1" d="M15 19v-2a2 2 0 0 1 2 -2h2" />
 						<path id="minimizeButtonPath2" d="M15 5v2a2 2 0 0 0 2 2h2" />
@@ -64,7 +66,7 @@ export default function Window(props: {component: any, id: number, putWindowFron
 						props.setClasses(props.info.name, "WindowDefault WindowMaximized");
 					props.putWindowFront(props.info.name);}
 				}>
-					<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-maximize" viewBox="0 0 24 24" strokeWidth="2" stroke="#F4615A" fill="none" strokeLinecap="round" strokeLinejoin="round">
+					<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-maximize" viewBox="0 0 24 24" strokeWidth="2" stroke={RED} fill="none" strokeLinecap="round" strokeLinejoin="round">
 						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
 						<path id="maximizeButtonPath1" d="M4 8v-2a2 2 0 0 1 2 -2h2" />
 						<path id="maximizeButtonPath2" d="M4 16v2a2 2 0 0 0 2 2h2" />
@@ -77,7 +79,7 @@ export default function Window(props: {component: any, id: number, putWindowFron
 						props.destroyWindow(props.info.name)
 					}, 500)
 				}}>
-					<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-square-off" viewBox="0 0 24 24" strokeWidth="2" stroke="#F4615A" fill="none" strokeLinecap="round" strokeLinejoin="round">
+					<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-square-off" viewBox="0 0 24 24" strokeWidth="2" stroke={RED} fill="none" strokeLinecap="round" strokeLinejoin="round">
 						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
 						<rect x="4" y="4" width="16" height="16" rx="2" ry="2" />
 						<path id="quitButtonPath1" d="M 5,5 9,9"/>

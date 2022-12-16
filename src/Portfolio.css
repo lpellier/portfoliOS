@@ -6,7 +6,7 @@
 	height: 100vh;
 	width: 100vw;
 	z-index: -4;
-	background-color: var(--primary-background-color);
+	background-color: var(--background-color);
 }
 
 #logo {
@@ -210,7 +210,7 @@
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
-	border: 3px solid #F4615A;
+	border: 3px solid var(--red);
 }
 
 #profile-name {
@@ -234,7 +234,7 @@
 	border: none;
 	border: 3px solid transparent;
 	border-radius: 5px;
-	border-bottom: 3px solid #F4615A;
+	border-bottom: 3px solid var(--red);
 	transition: border 0.2s;
 
 	height: 100%;
@@ -246,9 +246,9 @@
 }
 #password-input:focus {
 	outline: none;
-	border-top: 3px solid #F4615A;
-	border-left: 3px solid #F4615A;
-	border-right: 3px solid #F4615A;
+	border-top: 3px solid var(--red);
+	border-left: 3px solid var(--red);
+	border-right: 3px solid var(--red);
 }
 
 #password-eye {
@@ -278,12 +278,12 @@
 	width: calc(var(--size-100) * 1.5);
 	height: var(--size-50);
 	border-radius: 5px;
-	color: #F4615A;
+	color: var(--red);
 	border: none;
 	font: var(--size-30) "Outfit";
 	text-align: center;
 	transform: scale(1);
-	background-color: var(--secondary-interface-color);
+	background-color: var(--black);
 	transition: background-color 0.4s;
 	animation: button-login-attract 0.75s 2.5s infinite both ease;
 }

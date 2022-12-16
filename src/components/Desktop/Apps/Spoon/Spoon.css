@@ -10,7 +10,7 @@ input[type=range].spoon-slider {
 	outline: none;
 	color: #1E1F24;                  /* sert pour couleur de référence, via currentColor, pour le curseur */
 	opacity: .8;
-	background: #F4615A;             /* sert pour couleur de fond de la zone de déplacement */
+	background: var(--red);             /* sert pour couleur de fond de la zone de déplacement */
 	box-sizing: border-box;       /* même modèle de boîte pour tous */
 	transition: opacity .2s;
 	border-radius: 5000px;

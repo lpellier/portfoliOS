@@ -170,7 +170,7 @@ export default function Portfolio() {
 			show_screensaver &&
 			<div id="screensaver">
 				<div id="dates">
-					<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 100 100" strokeWidth="8" stroke="#F4615A" fill="none" strokeLinecap="round" strokeLinejoin="round" 
+					<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 100 100" strokeWidth="8" stroke="var(--red)" fill="none" strokeLinecap="round" strokeLinejoin="round" 
 						id="date-logo">
 						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
 						<circle fill="none" cx="50" cy="50" r="45"/>
@@ -179,10 +179,10 @@ export default function Portfolio() {
 					</svg>
 					<h1 id='time'>{getTime(time)}</h1>
 					<div className="break"/>
-					<h1 id='date' style={{color: "#F4615A"}}>{getDate(time)}</h1>
+					<h1 id='date' style={{color: "var(--red)"}}>{getDate(time)}</h1>
 				</div>
 				<div id='lock-flex'>
-					<svg xmlns="http://www.w3.org/2000/svg" id="lock-logo" width="75" height="75" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#F4615A" fill="none" strokeLinecap="round" strokeLinejoin="round">
+					<svg xmlns="http://www.w3.org/2000/svg" id="lock-logo" width="75" height="75" viewBox="0 0 24 24" strokeWidth="1.5" stroke="var(--red)" fill="none" strokeLinecap="round" strokeLinejoin="round">
 						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
 						<path d="M4 8v-2a2 2 0 0 1 2 -2h2" />
 						<path d="M4 16v2a2 2 0 0 0 2 2h2" />
@@ -203,7 +203,7 @@ export default function Portfolio() {
 				<div id="profile-name">Lucas Pellier</div>
 				<div id="password-flex">
 					<input readOnly={true} type="password" value={passwd_value.slice(0, pass_length)} placeholder='Password' id="password-input"/>
-					<svg onMouseEnter={() => switchPasswdVisibility()} onMouseLeave={() => switchPasswdVisibility()} xmlns="http://www.w3.org/2000/svg" id="password-eye" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#F4615A" fill="none" strokeLinecap="round" strokeLinejoin="round">
+					<svg onMouseEnter={() => switchPasswdVisibility()} onMouseLeave={() => switchPasswdVisibility()} xmlns="http://www.w3.org/2000/svg" id="password-eye" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1.5" stroke="var(--red)" fill="none" strokeLinecap="round" strokeLinejoin="round">
 						<ellipse id="inner-eye" cx="12" cy="12" rx="2" ry="0.5" />
 						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
 						<path d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7" />
@@ -216,10 +216,10 @@ export default function Portfolio() {
 		{
 			show_loading &&
 			<div>
-				<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#F4615A" fill="none" strokeLinecap="round" strokeLinejoin="round" 
+				<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" strokeWidth="1.5" stroke="var(--red)" fill="none" strokeLinecap="round" strokeLinejoin="round" 
 					id="logo">
 					<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-					<circle fill="#F4615A" cx="12" cy="12" r="1.5"/>
+					<circle fill="var(--red)" cx="12" cy="12" r="1.5"/>
 					<path d="M 17 10 19 12 17 14"/>
 					<path d="M 10 17 12 19 14 17"/>
 					<path d="M 7 10 5 12 7 14"/>
@@ -229,7 +229,7 @@ export default function Portfolio() {
 					<h1 id="welcome-text">Welcome Lucas</h1>
 					<svg id="loading" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
 						<circle strokeWidth="5" id="loading-back" fill="none" cx="25" cy="25" r="20"/>
-						<path id="loading-part" strokeWidth="5" stroke="#F4615A" fill="none" d="M 25 45 A 20 20 0 0 0 25 5"/>
+						<path id="loading-part" strokeWidth="5" stroke="var(--red)" fill="none" d="M 25 45 A 20 20 0 0 0 25 5"/>
 					</svg>
 				</div>
 			</div>

@@ -13,9 +13,18 @@ import React, {useState, useEffect} from	'react';
 // ! Important
 	// TODO Mobile webapp
 	// TODO Integrate Pong
-	// TODO Files need to be implemented
-		// ? html content designed like markdown to present each and every one of my projects
-		// ? about-me section will have my cv designed on markdown
+	// TODO Folder
+		// ? A Folder is a flex container, displaying all files and subfolders contained in it
+		// ? When a pdf is opened, open it in new window
+		// ? Even if the folder containing the pdf closes, the window containing the pdf stays open
+		// ? When a subfolder is opened, instead of opening new window, just change current window
+		// ? to the new one and add reverse button
+	// TODO Files
+		// ? A File is essentially a button with an icon representing what it contains (pdfs, markdown)
+		// ? When clicked, switches folder window to a file window containing markdown
+		// ? Markdown to present each and every one of my projects
+		// ? On each project, the subject will be available to open on a new window 
+		// ? about-me section will have my cv designed on markdown aswell as the actual pdf cv
 	// TODO Code Cub3D in javascript
 	// TODO Settings -> modify appearance of website
 		// ? Ability to change the background ?

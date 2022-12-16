@@ -8,6 +8,9 @@ const DIE_STROKE_DIV = 10;
 const DIE_RADIUS_DIV = 50;
 const POINT_RADIUS_DIV = 30;
 
+const RED = "#F4615A";
+const BLACK = "#1E1F1F";
+
 // ? need to wrap p5 sketch in another function to pass arguments
 export const defineSketch = (id: number, initialWidth: number, initialHeight: number) : any => {
 	return (p: any) => {
@@ -43,7 +46,7 @@ export const defineSketch = (id: number, initialWidth: number, initialHeight: nu
 				p.translate(this.pos.x, this.pos.y);
 				
 				p.fill("#1E1F24")
-				p.stroke("#F4615A")
+				p.stroke(RED)
 				p.strokeWeight(5)
 
 				if (!game_paused && this.cur_angle.x === this.set_angle.x && this.cur_angle.y === this.set_angle.y) {
@@ -126,7 +129,7 @@ export const defineSketch = (id: number, initialWidth: number, initialHeight: nu
 			drawFaces() {
 				p.push();
 				p.noStroke();
-				p.fill("#F4615A")
+				p.fill(RED)
 				
 				// ? Face 1
 				p.push();
@@ -256,7 +259,7 @@ export const defineSketch = (id: number, initialWidth: number, initialHeight: nu
 			}
 
 			p.clear();
-			p.background("#1E1F1F");
+			p.background(BLACK);
 
 			for (let die of dice) {
 				die.draw();
@@ -264,7 +267,7 @@ export const defineSketch = (id: number, initialWidth: number, initialHeight: nu
 
 			p.push();
 			p.textSize(24);
-			p.fill("#F4615A")
+			p.fill(RED)
 			let info_text = "Press space to stop the dice";
 			p.push();
 			p.textAlign(p.CENTER)

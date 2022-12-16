@@ -3,14 +3,6 @@ import './AppBar.css';
 
 export default function AppBar(props : any) {
 	const [app_info_text, setAppInfoText] = useState("Server Projects");
-	const [wins, setWins] = useState(props.appState);
-	const [server_projects, setServer] = useState(wins.get("Server Projects"));
-	const [cpp_projects, setCPP] = useState(wins.get("C++ Projects"));
-	const [spoon, setSpoon] = useState(wins.get("Spoon"));
-	const [cub3d, setCub] = useState(wins.get("Cub3D"));
-	const [pong, setPong] = useState(wins.get("Pong"));
-	const [about_me, setAbout] = useState(wins.get("About me"));
-	const [settings, setSettings] = useState(wins.get("Settings"));
 
 	const changeDiceValues = (die_nbr: number) => {
 		let rand;
@@ -49,16 +41,15 @@ export default function AppBar(props : any) {
 		}
 	}
 
-	useEffect(() => {
-		setWins(props.appState);
-		setServer(wins.get("Server Projects"));
-		setCPP(wins.get("C++ Projects"));
-		setSpoon(wins.get("Spoon"));
-		setCub(wins.get("Cub3D"));
-		setPong(wins.get("Pong"));
-		setAbout(wins.get("About me"));
-		setSettings(wins.get("Settings"));
-	}, [props.appState, wins])
+
+	let windows = props.appState;
+	let server_projects = windows.get("Server Projects");
+	let cpp_projects = windows.get("C++ Projects");
+	let spoon = windows.get("Spoon");
+	let cub3d = windows.get("Cub3D");
+	let pong = windows.get("Pong");
+	let about_me = windows.get("About me");
+	let settings = windows.get("Settings");
 
 	return (
 		<div id="app-bar-flex">

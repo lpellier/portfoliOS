@@ -99,17 +99,14 @@ export default function Desktop() {
 		let wins_cpy = windows;
 		let win_info = wins_cpy.get(win_name);
 		if (document.getElementById(win_name) && win_info) {
-			if (win_info.classes.includes("Minimized"))
-				win_info.classes = "WindowDefault WindowSpawn"
-			else
-				win_info.classes = "WindowDefault"
-				
+			win_info.classes = "WindowDefault WindowSpawn"
 			wins_cpy.set(win_name, win_info);
 			setWindows(wins_cpy)
 			putWindowFront(win_name, false, null)
 		}
 		else if (win_info) {
 			win_info.opened = true;
+			win_info.classes = "WindowDefault WindowSpawn"
 			win_info.z_index = getLastZIndex();
 			win_info.pos = {
 				x: window.innerWidth / 2 - 300,

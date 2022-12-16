@@ -200,7 +200,7 @@
 
 #profile-name {
 	color: white;
-	font: 1.5em "Outfit";
+	font: 2.5em "Outfit";
 }
 
 #password-flex {
@@ -209,7 +209,7 @@
 	padding: 0;
 	display: flex;
 	height: 70px;
-	width: 30vw;
+	width: calc(20vw + 200px);
 	align-items: center;
 	flex-direction: row;
 }
@@ -224,7 +224,7 @@
 	width: 100%;
 
 	color: white;
-	font: 1.25em "Outfit";
+	font: 2.5em "Outfit";
 	text-align: center;
 }
 #password-input:focus {

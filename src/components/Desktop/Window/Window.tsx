@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import { Scrollbar } from 'react-scrollbars-custom';
 // import README from "./README.md"
 import './Window.css';
@@ -14,6 +14,7 @@ export default function Window(props: {component: any, id: number, putWindowFron
 		}, 500) 
 	}, [])
 
+	
 	const handleMouseDown = (event: any) => {
 		props.putWindowFront(props.info.name, true, event);
 	}

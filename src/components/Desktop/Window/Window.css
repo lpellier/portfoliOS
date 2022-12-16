@@ -36,7 +36,9 @@ svg path { transition: 0.2s; }
 
 .WindowTitle {
 	position: absolute;
+	width: 170px;
 	margin: 0;
+	text-align: center;
 
 	left: 0;
 	right: 0;

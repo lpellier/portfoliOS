@@ -11,25 +11,24 @@
 
 #logo {
 	position: absolute;
-	opacity: 0;
+	top: -50%;
 	left: 50%;
-	top: 50%;
-	-webkit-transform: translate(-50%, -50%);
+	width: var(--size-100);
+	height: var(--size-100);
 	transform: translate(-50%, -50%);
+	opacity: 0;
 	animation: logo-anim 1.5s forwards ease;
 	animation-delay: 0.5s;
 }
 
 @keyframes logo-anim {
 	33% {
+		top: -50%;
 		opacity: 1;
-		-webkit-transform: translate(-50%, -50%);
-		transform: translate(-50%, -50%);
 	}
-	100% {
+	100% {	
+		top: 25%;
 		opacity: 1;
-		-webkit-transform: translate(-50%, -125%);
-		transform: translate(-50%, -125%);
 	}
 }
 @keyframes fade-in {
@@ -39,17 +38,12 @@
 }
 
 #welcome-text {
-	position: absolute;
 	opacity: 0;
 	margin: 0;
 	padding: 0;
-	left: 50%;
-	top: 50%;
-	-webkit-transform: translate(-50%, -50%);
-	transform: translate(-50%, -50%);
 	color: white;
 	background: none;
-	font: 3em "Outfit";
+	font: var(--size-50) "Outfit";
 	animation: fade-in 1s forwards ease;
 	animation-delay: 1.5s;
 }
@@ -65,15 +59,29 @@
 }
 
 #loading {
-	position: absolute;
 	opacity: 0;
 	margin: 0;
 	padding: 0;
+	width: var(--size-50);
+	height: var(--size-50);
+	animation: fade-in 0.5s ease 2.5s forwards;
+}
+#loading-flex {
+	display: flex;
+	position: absolute;
+	flex-direction: column;
+	align-items: center;
+
+	margin-top: clamp(42px, 8.4vh, 84px);
+
+	width: 100%;
+	gap: clamp(42px, 8.4vh, 84px);
+
+	opacity: 0;
 	left: 50%;
 	top: 50%;
-	-webkit-transform: translate(-50%, 100%);
-	transform: translate(-50%, 125%);
-	animation: fade-in 0.5s ease 2.5s forwards;
+	transform: translate(-50%, -50%);
+	animation: fade-in 1s forwards;	
 }
 
 @keyframes rotate-loading {
@@ -111,7 +119,6 @@
 	display: flex;
 	flex-direction: column;
 	align-items: baseline;
-	justify-content: center;
 	opacity: 0;
 	animation: fade-in 0.5s forwards;
 }
@@ -122,11 +129,21 @@
 	}
 }
 
+#date-logo {
+	width: var(--size-70);
+	height: var(--size-70);
+}
+
+#lock-logo {
+	width: var(--size-70);
+	height: var(--size-70);
+}
+
 #dates {
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: row;
-	align-items: baseline;
+	align-items: center;
 	gap: 30px;
 	margin-left: 20px;
 	z-index: 1;
@@ -135,24 +152,26 @@
 #time {
 	margin: 0;
 	padding: 0;
-	font: 6em "Outfit";
+	font: var(--size-100) "Outfit";
 	color: white;
 }
 #date {
 	margin-top: -45px;
 	padding: 0;
-	font: 2em "Outfit";
+	font: var(--size-40) "Outfit";
 	color: rgba(255, 255, 255, 0.5);
 }
+
+#login-text {
+	font: var(--size-40) "Outfit";
+	color: white;
+}
+
 .break {
 	flex-basis: 100%;
 	height: 0;
 }
 
-#loading-flex {
-	opacity: 0;
-	animation: fade-in 1s forwards;	
-}
 #desktop-flex {
 	opacity: 0;
 	animation: fade-in 0.5s forwards;	
@@ -165,10 +184,6 @@
 	align-items: center;
 }
 
-#login-text {
-	font: 1.75em "Outfit";
-	color: white;
-}
 
 #login-flex {
 	position: absolute;
@@ -186,8 +201,8 @@
 }
 
 #profile-pic {
-	width: 20vmin;
-	height: 20vmin;
+	width: calc(var(--size-100) * 2);
+	height: calc(var(--size-100) * 2);
 
 	border-radius: 50%;
 	z-index: 2;
@@ -200,35 +215,33 @@
 
 #profile-name {
 	color: white;
-	font: 2.5em "Outfit";
+	font: var(--size-50) "Outfit";
 }
 
 #password-flex {
-	margin-top: 20px;
-	margin-left: 30px;
 	padding: 0;
+	margin-top: clamp(0px, 12vh, 120px);
+	margin-left: calc(var(--size-70) / 2 + 5px);
 	display: flex;
-	height: 70px;
-	width: calc(20vw + 200px);
-	align-items: center;
+	width: calc(var(--size-100) * 5);
 	flex-direction: row;
+	align-items: center;
 }
 #password-input {
 	background: none;
 	flex-basis: 1;
 	margin-bottom: 5px;
-	align-self: flex-end;
-	justify-self: flex-end;
 	border: none;
 	border: 3px solid transparent;
 	border-radius: 5px;
 	border-bottom: 3px solid #F4615A;
 	transition: border 0.2s;
 
+	height: 100%;
 	width: 100%;
 
 	color: white;
-	font: 2.5em "Outfit";
+	font: var(--size-40) "Outfit";
 	text-align: center;
 }
 #password-input:focus {
@@ -239,9 +252,10 @@
 }
 
 #password-eye {
-	align-self: flex-end;
+	margin-left: 10px;
+	width: var(--size-50);
+	height: var(--size-50);
 	transform: scale(0);
-	justify-self: flex-end;
 	transition: transform 0.2s;
 }
 
@@ -261,17 +275,17 @@
 
 #login-button {
 	margin-top: 20px;
-	width: 100px;
-	height: 35px;
+	width: calc(var(--size-100) * 1.5);
+	height: var(--size-50);
 	border-radius: 5px;
 	color: #F4615A;
 	border: none;
-	font: 1.5em "Outfit";
+	font: var(--size-30) "Outfit";
 	text-align: center;
 	transform: scale(1);
 	background-color: var(--secondary-interface-color);
 	transition: background-color 0.4s;
-	animation: button-login-attract 0.5s 2.5s infinite both ease;
+	animation: button-login-attract 0.75s 2.5s infinite both ease;
 }
 
 @keyframes button-login-attract {
@@ -279,7 +293,7 @@
 		transform: scale(1);
 	}
 	50% {
-		transform: scale(1.05);
+		transform: scale(1.1);
 	}
 	100% {
 		transform: scale(1);

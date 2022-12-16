@@ -24,10 +24,10 @@ export default function Window(props: {component: any, id: number, putWindowFron
 
 	return (
 		<div 
-			onMouseDown={handleMouseDown}
-			style={{zIndex: props.info.z_index, top: props.info.pos.y, left: props.info.pos.x}} 
-			id={props.info.name} 
-			className={props.info.classes}>
+		onMouseDown={handleMouseDown}
+		style={{zIndex: props.info.z_index, top: props.info.pos.y, left: props.info.pos.x}} 
+		id={props.info.name} 
+		className={props.info.classes}>
 			<div className='content'>
 				{props.info.scrollbar && 
 					<Scrollbar className='Scrollbar' style={{ width: width ? width : 600, height: height? height : 400}}>

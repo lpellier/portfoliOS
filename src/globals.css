@@ -7,4 +7,14 @@
 	--secondary-interface-color: #1E1F1F;
 	--header-color: #F4615A;
 	--text-color: #2D2424;
+
+	--size-100: clamp(60px, 12vw, 120px);
+	--size-90: clamp(54px, 10.8vw, 108px);
+	--size-80: clamp(48px, 9.6vw, 96px);
+	--size-70: clamp(42px, 8.4vw, 84px);
+	--size-60: clamp(36px, 7.2vw, 72px);
+	--size-50: clamp(30px, 6vw, 60px);
+	--size-40: clamp(24px, 4.8vw, 48px);
+	--size-30: clamp(18px, 3.6vw, 36px);
+	--size-20: clamp(12px, 2.4vw, 24px);
 }

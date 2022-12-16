@@ -10,7 +10,6 @@ import React, {useState, useEffect} from	'react';
 // ? Bugs
 	// TODO In Spoon app, pressing space after maximizing windows causes weird issue
 	// TODO Shouldn't register key presses and mouse cliks for apps not in focus
-	// TODO Some ui elements are not responsive enough (like login for example)
 
 // ? Functionnality
 	// ! Important

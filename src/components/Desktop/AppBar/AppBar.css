@@ -18,8 +18,8 @@
 	margin: 0;
 	padding: 0;
 
-	width: 70vw;
-	height: 10vh;
+	width: 75vw;
+	height: 15vh;
 
 	/* border: 2px solid var(--secondary-background-color); */
 	background-color: var(--secondary-interface-color);
@@ -62,7 +62,7 @@
 	padding: 0;
 	bottom: 0;
 	left: 50%;
-	gap: 10px;
+	gap: 15px;
 	transform: translate(-50%, -25%);
 }
 

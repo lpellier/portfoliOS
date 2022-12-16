@@ -111,8 +111,6 @@ svg path { transition: 0.2s; }
 		width: 100vw;
 		height: 100vh;
 	}
-	100% {
-	}
 }
 
 @keyframes minimizeMaximizedWindow {

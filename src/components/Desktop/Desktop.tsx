@@ -8,11 +8,9 @@ import										'./Desktop.css';
 import React, {useState, useEffect} from	'react';
 
 // ? Bugs
-	// TODO In Spoon app, pressing space after maximizing windows causes weird issue
 	// TODO Shouldn't register key presses and mouse cliks for apps not in focus
 
-// ? Functionnality
-	// ! Important
+// ! Important
 	// TODO Mobile webapp
 	// TODO Integrate Pong
 	// TODO Files need to be implemented
@@ -24,12 +22,12 @@ import React, {useState, useEffect} from	'react';
 		// ? Ability to change the color theme ?
 		// ? Ability to change font-size, icon-size ?
 
-	// ? Eventually
+// ? Eventually
 	// ? When a window is dragged to a side, snap it to that side
 	// ? Some sort of tutorial message ?
 	// ? Create a logo
 
-	//   Maybe
+//   Maybe
 	//   Backend for pong multiplayer
 	//   Custom mouse pointer ?
 

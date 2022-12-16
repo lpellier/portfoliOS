@@ -143,6 +143,12 @@ export default function Portfolio() {
 		document.addEventListener('click', advanceToLogin) 
 		time_interval = setInterval(() => setTime(new Date()), 1000);
 
+		window.onkeydown=function(e) {
+			if(e.key === " " || e.key === "PageDown" || e.key === "PageUp"){
+				e.preventDefault();
+			}
+		}
+
 		return () => {
 			clearInterval(time_interval);
 			clearInterval(pass_interval);

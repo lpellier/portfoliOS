@@ -15,13 +15,17 @@ import React, {useState, useEffect} from	'react';
 	// TODO Integrate Pong
 	// TODO Folder
 		// ? A Folder is a flex container, displaying all files and subfolders contained in it
-		// ? When a pdf is opened, open it in new window
-		// ? Even if the folder containing the pdf closes, the window containing the pdf stays open
+		// ? When a file is opened, open it in new window
+		// ? Even if the folder containing the file closes, the window containing the file stays open
 		// ? When a subfolder is opened, instead of opening new window, just change current window
 		// ? to the new one and add reverse button
-	// TODO Files
+
+		// ? Every single window must be imported into desktop ?
+		// ? Sounds like this will cause optimization issues, will look into it
+		// ? When a file is double-clicked, spawn a window in desktop
+		// TODO Files
 		// ? A File is essentially a button with an icon representing what it contains (pdfs, markdown)
-		// ? When clicked, switches folder window to a file window containing markdown
+		// ? When clicked, opens a new window to a file window containing markdown
 		// ? Markdown to present each and every one of my projects
 		// ? On each project, the subject will be available to open on a new window 
 		// ? about-me section will have my cv designed on markdown aswell as the actual pdf cv
@@ -35,6 +39,7 @@ import React, {useState, useEffect} from	'react';
 	// ? When a window is dragged to a side, snap it to that side
 	// ? Some sort of tutorial message ?
 	// ? Create a logo
+	// ? Togglable funny pop-ups ? "Coders hate him", "Wanna make you code 20% shorter"
 
 //   Maybe
 	//   Backend for pong multiplayer

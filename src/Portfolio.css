@@ -11,23 +11,23 @@
 
 #logo {
 	position: absolute;
-	top: -50%;
+	top: 40%;
 	left: 50%;
 	width: var(--size-100);
 	height: var(--size-100);
 	transform: translate(-50%, -50%);
 	opacity: 0;
-	animation: logo-anim 1.5s forwards ease;
-	animation-delay: 0.5s;
+	animation: logo-anim 2.5s forwards ease;
+	animation-delay: 1s;
 }
 
 @keyframes logo-anim {
 	33% {
-		top: -50%;
+		top: 40%;
 		opacity: 1;
 	}
 	100% {	
-		top: 25%;
+		top: 30%;
 		opacity: 1;
 	}
 }

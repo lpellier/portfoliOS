@@ -46,7 +46,7 @@ export default function AppBar(props : any) {
 
 	let windows = props.appState;
 	let server_projects = windows.get("Server Projects");
-	let cpp_projects = windows.get("C++ Projects");
+	let cpp_projects = windows.get("C/C++ Projects");
 	let spoon = windows.get("Spoon");
 	let cub3d = windows.get("Cub3D");
 	let pong = windows.get("Pong");
@@ -77,7 +77,7 @@ export default function AppBar(props : any) {
 					<svg xmlns="http://www.w3.org/2000/svg" className="App" id="cpp_projects"
 						onMouseEnter={() => changeInfoText(cpp_projects?.name, true)} 
 						onMouseLeave={() => changeInfoText(cpp_projects?.name, false)} 
-						onClick={() => props.spawnWindow("C++ Projects")} 
+						onClick={() => props.spawnWindow("C/C++ Projects")} 
 						viewBox="0 0 24 24" strokeWidth="1" stroke={RED} 
 						fill="none" strokeLinecap="round" strokeLinejoin="round">
 						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>

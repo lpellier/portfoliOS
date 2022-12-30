@@ -1,0 +1,47 @@
+
+#PDFViewer {
+	display: relative;
+}
+
+.file-pdf {
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+
+.button-pdf {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	border: none;
+	background-color: rgba(40, 41, 53, 0.85);
+	backdrop-filter: blur(8px);
+	border-radius: 50%;
+	transition: transform 100ms;
+}
+
+#button-pdf-left {
+	left: calc(50% - 20px);
+	bottom: 11px;
+	transform: translate(-100%, 0);
+}
+.button-pdf:hover {
+	transform: scale(1.2);
+}
+
+#button-pdf-right {
+	left: calc(50% - 20px);
+	bottom: 11px;
+	transform: translate(100%, 0);
+}
+
+#button-pdf-plus {
+	top: calc(50% - 20px);
+	transform: translate(0, -100%);
+	right: 11px;
+}
+#button-pdf-minus {
+	top: calc(50% - 20px);
+	transform: translate(0, 100%);
+	right: 11px;
+}

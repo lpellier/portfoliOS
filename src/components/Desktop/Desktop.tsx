@@ -3,9 +3,16 @@ import AppBar from							'./AppBar/AppBar'
 import Window from							'./Window/Window';
 import Pong from							'./Apps/Pong/Pong'
 import Spoon from							'./Apps/Spoon/Spoon'
-import FolderServer from					'./Apps/FolderServer/FolderServer';
+
+import Folder from './Apps/Folder/Folder';
+import File from './Apps/File/File';
+
 import										'./Desktop.css';
 import React, {useState, useEffect} from	'react';
+import Cub3D from './Apps/Cub3D/Cub3D';
+import AboutMe from './Apps/AboutMe/AboutMe';
+import Settings from './Apps/Settings/Settings';
+import PDFViewer from './Apps/PDFViewer/PDFViewer';
 
 // ? Bugs
 	// TODO Shouldn't register key presses and mouse cliks for apps not in focus
@@ -30,14 +37,17 @@ import React, {useState, useEffect} from	'react';
 		// ? On each project, the subject will be available to open on a new window 
 		// ? about-me section will have my cv designed on markdown aswell as the actual pdf cv
 	// TODO Code Cub3D in javascript
+	// TODO Interesting background
 	// TODO Settings -> modify appearance of website
 		// ? Ability to change the background ?
 		// ? Ability to change the color theme ?
 		// ? Ability to change font-size, icon-size ?
 
 // ? Eventually
+	// ? Redo login animation
+	// ? Redo c++ icon -> rename to c & c++ projects : animation is just ++ moving from top to bottom
 	// ? When a window is dragged to a side, snap it to that side
-	// ? Some sort of tutorial message ?
+	// ? Some sort of tutorial message / tool tips ?
 	// ? Create a logo
 	// ? Togglable funny pop-ups ? "Coders hate him", "Wanna make you code 20% shorter"
 
@@ -53,13 +63,27 @@ export default function Desktop() {
 
 	useEffect(() => {
 		let wins = windows;
-		wins.set("Server Projects", {name: "Server Projects", classes: "WindowDefault", pos: {x: 0, y: 0}, z_index: 0, opened: false, scrollbar: true});
-		wins.set("C++ Projects", {name: "C++ Projects", classes: "WindowDefault", pos: {x: 0, y: 0}, z_index: 0, opened: false, scrollbar: true});
+		wins.set("Server Projects", {name: "Server Projects", classes: "WindowDefault", pos: {x: 0, y: 0}, z_index: 0, opened: false, scrollbar: false});
+		wins.set("ft_server", {name: "ft_server", classes: "WindowDefault", pos: {x: 0, y: 0}, z_index: 0, opened: false, scrollbar: true});
+		wins.set("ft_services", {name: "ft_services", classes: "WindowDefault", pos: {x: 0, y: 0}, z_index: 0, opened: false, scrollbar: true});
+		
+		wins.set("C/C++ Projects", {name: "C/C++ Projects", classes: "WindowDefault", pos: {x: 0, y: 0}, z_index: 0, opened: false, scrollbar: true});
+		wins.set("101_C", {name: "101_C", classes: "WindowDefault", pos: {x: 0, y: 0}, z_index: 0, opened: false, scrollbar: true});
+		wins.set("ft_containers", {name: "ft_containers", classes: "WindowDefault", pos: {x: 0, y: 0}, z_index: 0, opened: false, scrollbar: true});
+		wins.set("get_next_line", {name: "get_next_line", classes: "WindowDefault", pos: {x: 0, y: 0}, z_index: 0, opened: false, scrollbar: true});
+		wins.set("minishell", {name: "minishell", classes: "WindowDefault", pos: {x: 0, y: 0}, z_index: 0, opened: false, scrollbar: true});
+		wins.set("Subject minishell", {name: "Subject minishell", classes: "WindowDefault", pos: {x: 0, y: 0}, z_index: 0, opened: false, scrollbar: true});
+		wins.set("matrix", {name: "matrix", classes: "WindowDefault", pos: {x: 0, y: 0}, z_index: 0, opened: false, scrollbar: true});
+		wins.set("philosophers", {name: "philosophers", classes: "WindowDefault", pos: {x: 0, y: 0}, z_index: 0, opened: false, scrollbar: true});
+		wins.set("push_swap", {name: "push_swap", classes: "WindowDefault", pos: {x: 0, y: 0}, z_index: 0, opened: false, scrollbar: true});
+		wins.set("ft_printf", {name: "ft_printf", classes: "WindowDefault", pos: {x: 0, y: 0}, z_index: 0, opened: false, scrollbar: true});
+		wins.set("ready_set_boole", {name: "ready_set_boole", classes: "WindowDefault", pos: {x: 0, y: 0}, z_index: 0, opened: false, scrollbar: true});
+		
 		wins.set("Spoon", {name: "Spoon", classes: "WindowDefault", pos: {x: 0, y: 0}, z_index: 0, opened: false, scrollbar: false});
 		wins.set("Cub3D", {name: "Cub3D", classes: "WindowDefault", pos: {x: 0, y: 0}, z_index: 0, opened: false, scrollbar: false});
 		wins.set("Pong", {name: "Pong", classes: "WindowDefault", pos: {x: 0, y: 0}, z_index: 0, opened: false, scrollbar: false});
-		wins.set("About me", {name: "About me", classes: "WindowDefault", pos: {x: 0, y: 0}, z_index: 0, opened: false, scrollbar: true});
-		wins.set("Settings", {name: "Settings", classes: "WindowDefault", pos: {x: 0, y: 0}, z_index: 0, opened: false, scrollbar: true});
+		wins.set("About me", {name: "About me", classes: "WindowDefault", pos: {x: 0, y: 0}, z_index: 0, opened: false, scrollbar: false});
+		wins.set("Settings", {name: "Settings", classes: "WindowDefault", pos: {x: 0, y: 0}, z_index: 0, opened: false, scrollbar: false});
 		setWindows(wins);
 	}, [])
 
@@ -173,7 +197,21 @@ export default function Desktop() {
 	// }
 	
 	let server_projects = windows.get("Server Projects");
-	let cpp_projects = windows.get("C++ Projects");
+	let ft_server = windows.get("ft_server");
+	let ft_services = windows.get("ft_services");
+
+	let cpp_projects = windows.get("C/C++ Projects");
+	let c_101 = windows.get("101_C");
+	let ft_containers = windows.get("ft_containers");
+	let get_next_line = windows.get("get_next_line");
+	let matrix = windows.get("matrix");
+	let minishell = windows.get("minishell");
+	let minishell_sub = windows.get("Subject minishell");
+	let philosophers = windows.get("philosophers");
+	let ft_printf = windows.get("ft_printf");
+	let push_swap = windows.get("push_swap");
+	let ready_set_boole = windows.get("ready_set_boole");
+
 	let spoon = windows.get("Spoon");
 	let cub3d = windows.get("Cub3D");
 	let pong = windows.get("Pong");
@@ -186,44 +224,139 @@ export default function Desktop() {
 			<AppBar appState={windows} spawnWindow={spawnWindow}/>
 			<div className='windows'>
 				{server_projects?.opened && 
-					<Window key={1} component={FolderServer} id={1}
+					<Window key={1} component={<Folder name="Server Projects" spawnWindow={spawnWindow}/>} id={1}
 					putWindowFront={putWindowFront}
+					spawnWindow={spawnWindow}
 					destroyWindow={destroyWindow}
 					setClasses={setClasses}
 					info={server_projects}/>}
-				{cpp_projects?.opened && 
-					<Window key={2} component={FolderServer} id={2}
+				{ft_server?.opened && 
+					<Window key={1.1} component={<File name="" content_path="" spawnWindow={spawnWindow} />} id={1.1}
 					putWindowFront={putWindowFront}
+					spawnWindow={spawnWindow}
+					destroyWindow={destroyWindow}
+					setClasses={setClasses}
+					info={ft_server}/>}
+				{ft_services?.opened && 
+					<Window key={1.2} component={<File name="" content_path="" spawnWindow={spawnWindow} />} id={1.2}
+					putWindowFront={putWindowFront}
+					spawnWindow={spawnWindow}
+					destroyWindow={destroyWindow}
+					setClasses={setClasses}
+					info={ft_services}/>}
+
+				{cpp_projects?.opened && 
+					<Window key={2} component={<Folder name="C/C++ Projects" spawnWindow={spawnWindow}/>} id={2}
+					putWindowFront={putWindowFront}
+					spawnWindow={spawnWindow}
 					destroyWindow={destroyWindow}
 					setClasses={setClasses}
 					info={cpp_projects}/>}
-				{spoon?.opened && 
-					<Window key={3} component={Spoon} id={3}
+				{c_101?.opened && 
+					<Window key={2.1} component={<File name="" content_path="" spawnWindow={spawnWindow} />} id={2.1}
 					putWindowFront={putWindowFront}
+					spawnWindow={spawnWindow}
+					destroyWindow={destroyWindow}
+					setClasses={setClasses}
+					info={c_101}/>}
+				{ft_containers?.opened && 
+					<Window key={2.2} component={<File name="" content_path="" spawnWindow={spawnWindow} />} id={2.2}
+					putWindowFront={putWindowFront}
+					spawnWindow={spawnWindow}
+					destroyWindow={destroyWindow}
+					setClasses={setClasses}
+					info={ft_containers}/>}
+				{get_next_line?.opened && 
+					<Window key={2.3} component={<File name="" content_path="" spawnWindow={spawnWindow} />} id={2.3}
+					putWindowFront={putWindowFront}
+					spawnWindow={spawnWindow}
+					destroyWindow={destroyWindow}
+					setClasses={setClasses}
+					info={get_next_line}/>}
+				{matrix?.opened && 
+					<Window key={2.4} component={<File name="" content_path="" spawnWindow={spawnWindow} />} id={2.4}
+					putWindowFront={putWindowFront}
+					spawnWindow={spawnWindow}
+					destroyWindow={destroyWindow}
+					setClasses={setClasses}
+					info={matrix}/>}
+				{minishell?.opened && 
+					<Window key={2.5} component={<File name="minishell" content_path="" spawnWindow={spawnWindow} />} id={2.5}
+					putWindowFront={putWindowFront}
+					spawnWindow={spawnWindow}
+					destroyWindow={destroyWindow}
+					setClasses={setClasses}
+					info={minishell}/>}
+				{minishell_sub?.opened && 
+					<Window key={2.55} component={<PDFViewer name="Subject minishell" pdf_path="./assets/minishell.subject.pdf"/>} id={2.55}
+					putWindowFront={putWindowFront}
+					spawnWindow={spawnWindow}
+					destroyWindow={destroyWindow}
+					setClasses={setClasses}
+					info={minishell_sub}/>}
+				{philosophers?.opened && 
+					<Window key={2.6} component={<File name="" content_path="" spawnWindow={spawnWindow} />} id={2.6}
+					putWindowFront={putWindowFront}
+					spawnWindow={spawnWindow}
+					destroyWindow={destroyWindow}
+					setClasses={setClasses}
+					info={philosophers}/>}
+				{ft_printf?.opened && 
+					<Window key={2.7} component={<File name="" content_path="" spawnWindow={spawnWindow} />} id={2.7}
+					putWindowFront={putWindowFront}
+					spawnWindow={spawnWindow}
+					destroyWindow={destroyWindow}
+					setClasses={setClasses}
+					info={ft_printf}/>}
+				{push_swap?.opened && 
+					<Window key={2.8} component={<File name="" content_path="" spawnWindow={spawnWindow} />} id={2.8}
+					putWindowFront={putWindowFront}
+					spawnWindow={spawnWindow}
+					destroyWindow={destroyWindow}
+					setClasses={setClasses}
+					info={push_swap}/>}
+				{ready_set_boole?.opened && 
+					<Window key={2.9} component={<File name="" content_path="" spawnWindow={spawnWindow} />} id={2.9}
+					putWindowFront={putWindowFront}
+					spawnWindow={spawnWindow}
+					destroyWindow={destroyWindow}
+					setClasses={setClasses}
+					info={ready_set_boole}/>}
+
+
+
+				{spoon?.opened && 
+					<Window key={3} component={<Spoon/>} id={3}
+					putWindowFront={putWindowFront}
+					spawnWindow={spawnWindow}
 					destroyWindow={destroyWindow}
 					setClasses={setClasses}
 					info={spoon}/>}
 				{cub3d?.opened && 
-					<Window key={4} component={FolderServer} id={4}
+					<Window key={4} component={<Cub3D/>} id={4}
 					putWindowFront={putWindowFront}
+					spawnWindow={spawnWindow}
 					destroyWindow={destroyWindow}
 					setClasses={setClasses}
 					info={cub3d}/>}
 				{pong?.opened && 
-					<Window key={5} component={Pong} id={5}
+					<Window key={5} component={<Pong/>} id={5}
 					putWindowFront={putWindowFront}
+					spawnWindow={spawnWindow}
 					destroyWindow={destroyWindow}
 					setClasses={setClasses}
 					info={pong}/>}
 				{about_me?.opened && 
-					<Window key={6} component={FolderServer} id={6}
+					<Window key={6} component={<AboutMe/>} id={6}
 					putWindowFront={putWindowFront}
+					spawnWindow={spawnWindow}
 					destroyWindow={destroyWindow}
 					setClasses={setClasses}
 					info={about_me}/>}
 				{settings?.opened && 
-					<Window key={7} component={FolderServer} id={7}
+					<Window key={7} component={<Settings/>} id={7}
 					putWindowFront={putWindowFront}
+					spawnWindow={spawnWindow}
 					destroyWindow={destroyWindow}
 					setClasses={setClasses}
 					info={settings}/>}

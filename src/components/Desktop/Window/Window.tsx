@@ -1,13 +1,12 @@
 import React, {useEffect} from 'react';
-import { Scrollbar } from 'react-scrollbars-custom';
-// import README from "./README.md"
+
 import './Window.css';
 
 // ! https://www.copycat.dev/blog/react-markdown/
 
 const RED = "#F4615A";
 
-export default function Window(props: {component: any, id: number, putWindowFront: any, destroyWindow: any, setClasses: any, info: {name: string, classes: string, pos: {x: number, y: number}, z_index: number, opened: boolean; scrollbar: boolean}}) {
+export default function Window(props: {component: any, id: number, putWindowFront: any, spawnWindow: any, destroyWindow: any, setClasses: any, info: {name: string, classes: string, pos: {x: number, y: number}, z_index: number, opened: boolean; scrollbar: boolean}}) {
 
 	useEffect(() => {
 		props.setClasses(props.info.name, "WindowDefault WindowSpawn");
@@ -31,13 +30,14 @@ export default function Window(props: {component: any, id: number, putWindowFron
 		id={props.info.name} 
 		className={props.info.classes}>
 			<div className='content'>
-				{props.info.scrollbar && 
+				{/* {props.info.scrollbar && 
 					<Scrollbar className='Scrollbar' style={{ width: width ? width : 600, height: height? height : 400}}>
-						<props.component width={width ? width : 600} height={height? height : 400}/>
+						<props.component spawnWindow={props.spawnWindow}
+							width={width ? width : 600} height={height? height : 400}/>
 					</Scrollbar>}
 				{!props.info.scrollbar &&
-					<props.component id={props.id} width={width ? width : 600} height={height? height : 400}/>
-				}
+					} */}
+				{props.component}
 			</div>
 			<h3 className="WindowTitle">{props.info.name}</h3>
 			<div className='ButtonFlex'>
@@ -75,7 +75,8 @@ export default function Window(props: {component: any, id: number, putWindowFron
 					</svg>
 				</button>
 				<button className="WindowButton" id='QuitButton' onClick={() => {
-					props.setClasses(props.info.name, "WindowDefault WindowQuit");						setTimeout(() => {
+					props.setClasses(props.info.name, "WindowDefault WindowQuit");
+					setTimeout(() => {
 						props.destroyWindow(props.info.name)
 					}, 500)
 				}}>

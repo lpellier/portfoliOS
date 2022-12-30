@@ -13,8 +13,8 @@
 	position: absolute;
 	top: 40%;
 	left: 50%;
-	width: var(--size-100);
-	height: var(--size-100);
+	width: var(--size-50);
+	height: var(--size-50);
 	transform: translate(-50%, -50%);
 	opacity: 0;
 	animation: logo-anim 2.5s forwards ease;
@@ -43,7 +43,7 @@
 	padding: 0;
 	color: white;
 	background: none;
-	font: var(--size-50) "Outfit";
+	font: var(--size-30) "Outfit";
 	animation: fade-in 1s forwards ease;
 	animation-delay: 1.5s;
 }
@@ -62,8 +62,8 @@
 	opacity: 0;
 	margin: 0;
 	padding: 0;
-	width: var(--size-50);
-	height: var(--size-50);
+	width: var(--size-30);
+	height: var(--size-30);
 	animation: fade-in 0.5s ease 2.5s forwards;
 }
 #loading-flex {
@@ -130,13 +130,13 @@
 }
 
 #date-logo {
-	width: var(--size-70);
-	height: var(--size-70);
+	width: var(--size-30);
+	height: var(--size-30);
 }
 
 #lock-logo {
-	width: var(--size-70);
-	height: var(--size-70);
+	width: var(--size-40);
+	height: var(--size-40);
 }
 
 #dates {
@@ -144,7 +144,7 @@
 	flex-wrap: wrap;
 	flex-direction: row;
 	align-items: center;
-	gap: 30px;
+	gap: 20px;
 	margin-left: 20px;
 	z-index: 1;
 }
@@ -152,18 +152,18 @@
 #time {
 	margin: 0;
 	padding: 0;
-	font: var(--size-100) "Outfit";
+	font: var(--size-50) "Outfit";
 	color: white;
 }
 #date {
 	margin-top: -45px;
 	padding: 0;
-	font: var(--size-40) "Outfit";
+	font: var(--size-20) "Outfit";
 	color: rgba(255, 255, 255, 0.5);
 }
 
 #login-text {
-	font: var(--size-40) "Outfit";
+	font: var(--size-30) "Outfit";
 	color: white;
 }
 
@@ -201,8 +201,8 @@
 }
 
 #profile-pic {
-	width: calc(var(--size-100) * 2);
-	height: calc(var(--size-100) * 2);
+	width: var(--size-100);
+	height: var(--size-100);
 
 	border-radius: 50%;
 	z-index: 2;
@@ -215,7 +215,7 @@
 
 #profile-name {
 	color: white;
-	font: var(--size-50) "Outfit";
+	font: var(--size-30) "Outfit";
 }
 
 #password-flex {
@@ -223,7 +223,7 @@
 	margin-top: clamp(0px, 12vh, 120px);
 	margin-left: calc(var(--size-70) / 2 + 5px);
 	display: flex;
-	width: calc(var(--size-100) * 5);
+	width: calc(var(--size-50) * 5);
 	flex-direction: row;
 	align-items: center;
 }
@@ -241,7 +241,7 @@
 	width: 100%;
 
 	color: white;
-	font: var(--size-40) "Outfit";
+	font: var(--size-20) "Outfit";
 	text-align: center;
 }
 #password-input:focus {
@@ -275,12 +275,12 @@
 
 #login-button {
 	margin-top: 20px;
-	width: calc(var(--size-100) * 1.5);
-	height: var(--size-50);
+	width: var(--size-100); 
+	height: var(--size-30);
 	border-radius: 5px;
 	color: var(--red);
 	border: none;
-	font: var(--size-30) "Outfit";
+	font: var(--size-20) "Outfit";
 	text-align: center;
 	transform: scale(1);
 	background-color: var(--black);

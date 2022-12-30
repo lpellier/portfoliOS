@@ -15,7 +15,11 @@
 	background: none;
 	cursor: pointer;
 	width: 35px;
-	height: 40px;
+	height: 35px;
+	background-color: #28293595;
+	backdrop-filter: blur(8px);
+	border-radius: 50%;
+	z-index: 2;
 }
 
 svg path { transition: 0.2s; }
@@ -36,7 +40,7 @@ svg path { transition: 0.2s; }
 
 .WindowTitle {
 	position: absolute;
-	width: 170px;
+	width: 200px;
 	margin: 0;
 	text-align: center;
 
@@ -45,8 +49,11 @@ svg path { transition: 0.2s; }
 	margin-left: auto;
 	margin-right: auto;
 	font: 25px "Outfit";
-	color: var(--red);
-	
+	color: var(--text-color);
+	background-color: #28293595;
+	backdrop-filter: blur(8px);
+	border-radius: 5000px;
+	z-index: 2;
 	animation: showTitle 1s ease-in;
 }
 
@@ -81,12 +88,11 @@ svg path { transition: 0.2s; }
 	margin: 0;
 	width: 600px;
 	height: 400px;
-	min-width: 400px;
+	min-width: 500px;
 	min-height: 300px;
 	
-	background-color: rgba(30, 31, 31, 0.95);
+	background-color: var(--black);
 	/* disable in settings */
-	backdrop-filter: blur(8px);
 	border: none;
 	border-radius: 8px;
 	box-shadow: 5px 5px 5px #00000020;

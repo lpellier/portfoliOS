@@ -18,24 +18,15 @@
 	margin: 0;
 	padding: 0;
 
-	width: 75vw;
-	height: 15vh;
+	width: clamp(550px, 75vw, 750px);
+	height: 80px;
 
-	/* border: 2px solid var(--red); */
 	background-color: var(--black);
 	box-shadow: 5px 5px 5px #00000020;
 	border-radius: 25px;
 
-	min-width: 600px;
-	min-height: 90px;
-	max-width: 750px;
-	max-height: 100px;
-
 	justify-content: space-evenly;
 	align-items: center;
-
-	/* background: radial-gradient(circle, var(--red) 0%, var(--primary-interface-color) 100%);; */
-	/* border: calc(0.5vmin + 5px) solid #2D2424; */
 }
 
 .App {
@@ -69,8 +60,8 @@
 #app-name-text {
 	margin: 0;
 	padding: 0;
-	font: calc(5vmin + 15px) "Outfit";
-	color: var(--red);
+	font: var(--size-40) "Outfit";
+	color: var(--text-color);
 	opacity: 0;
 }
 

@@ -31,12 +31,13 @@ let		time_interval : any;
 let		pass_interval : any;
 
 export default function Portfolio() {
+
 	const [time, setTime] = useState(new Date());
 	const [show_background, setBackground] = useState(true);
 	const [show_screensaver, setScreenSaver] = useState(true);
 	const [show_login, setLogin] = useState(false);
 	const [show_loading, setLoading] = useState(false);
-	const [show_desktop, setDesktop] = useState(false);
+	const [show_desktop, setDesktop] = useState(false); // ! should be set to false
 	const [pass_length, setPassLength] = useState(0);
 
 	const advanceToLogin = () => {
@@ -85,6 +86,9 @@ export default function Portfolio() {
 		if (e && e.key !== "Enter")
 			return ;
 		document.removeEventListener('keypress', advanceToLoading)
+
+		// ? remove interval for password
+		clearInterval(pass_interval);
 
 		// ? display loading page
 		setLoading(true);
@@ -153,8 +157,6 @@ export default function Portfolio() {
 			clearInterval(time_interval);
 			clearInterval(pass_interval);
 		}
-	// ? disable dependency warning
-	// eslint-disable-next-line
 	}, [])
 
 	return (

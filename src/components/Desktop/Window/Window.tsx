@@ -1,51 +1,90 @@
-import React, {useEffect} from 'react';
-
+import React, {FunctionComponent, lazy, ReactElement, Suspense, useCallback, useEffect, useState} from 'react';
 import './Window.css';
+import { RED } from '../../../globals';
+import { IWindow } from '../../../types';
 
-// ! https://www.copycat.dev/blog/react-markdown/
+const filesList: string[] = [
+	'ft_server',
+	'ft_services',
+	'101_C',
+	'get_next_line',
+	'matrix',
+	'ready_set_boole',
+	'minishell',
+	'philosophers',
+	'ft_printf',
+	'push_swap'
+];
 
-const RED = "#F4615A";
+const Dice = lazy(() => import("./../Apps/Dice/Dice"));
+const Cub3D = lazy(() => import("./../Apps/Cub3D/Cub3D"));
+const Pong = lazy(() => import("./../Apps/Pong/Pong"));
+const Folder = lazy(() => import("./../Apps/Folder/Folder"));
+const AboutMe = lazy(() => import("./../Apps/AboutMe/AboutMe"));
+const Settings = lazy(() => import("./../Apps/Settings/Settings"));
+const PDFViewer = lazy(() => import("./../Apps/PDFViewer/PDFViewer"));
+const File = lazy(() => import("./../Apps/File/File"));
 
-export default function Window(props: {component: any, id: number, putWindowFront: any, spawnWindow: any, destroyWindow: any, setClasses: any, info: {name: string, classes: string, pos: {x: number, y: number}, z_index: number, opened: boolean; scrollbar: boolean}}) {
+const Window: FunctionComponent<IWindow> = ({name, pos, z_index, unMinimized, dragWindow, spawnWindow, destroyWindow}): ReactElement => {
+	const [classes, setClasses] = useState<string>("WindowDefault WindowSpawn")
+	const [component, setComponent] = useState<ReactElement | undefined>(undefined)
+
+	const getComponent = useCallback((win_name: string): ReactElement | undefined => {
+		if (win_name === "Dice")
+			return <Dice/>;
+		else if (win_name === "Cub3D")
+			return <Cub3D/>
+		else if (win_name === "Pong")
+			return <Pong/>
+		else if (win_name === "Server Projects" || win_name === "C/C++ Projects")
+			return <Folder name={win_name} spawnWindow={spawnWindow}/>
+		else if (win_name === "About me")
+			return <AboutMe/>
+		else if (win_name === "Settings")
+			return <Settings/>
+		else if (win_name.includes("Subject ")) // ? Subject is the prefix for files opened 
+			return <PDFViewer name={win_name} pdf_path={`./assets/${win_name.substring(8)}.subject.pdf`}/>
+		else if (filesList.includes(win_name))
+			return <File name={win_name} content_path={`./assets/${win_name}.md`} spawnWindow={spawnWindow}/>
+		else {
+			console.error('win name not recognized:', win_name);
+			return undefined;
+		}
+	}, [spawnWindow]);
 
 	useEffect(() => {
-		props.setClasses(props.info.name, "WindowDefault WindowSpawn");
-		setTimeout(() => {
-			props.setClasses(props.info.name, "WindowDefault");
-		}, 500) 
-	}, [])
+		setComponent(getComponent(name))
+	}, [getComponent, name])
 
+	useEffect(() => {
+		setClasses("WindowDefault WindowSpawn")
+		setTimeout(() => {
+			setClasses("WindowDefault");
+		}, 500)
+	}, [unMinimized])
 	
 	const handleMouseDown = (event: any) => {
-		props.putWindowFront(props.info.name, true, event);
+		dragWindow(name, event);
 	}
-	
-	let width = document.getElementById(props.info.name)?.clientWidth;
-	let height = document.getElementById(props.info.name)?.clientHeight;
 
 	return (
 		<div 
-		onMouseDown={handleMouseDown}
-		style={{zIndex: props.info.z_index, top: props.info.pos.y, left: props.info.pos.x}} 
-		id={props.info.name} 
-		className={props.info.classes}>
+			onMouseDown={handleMouseDown}
+			style={{zIndex: z_index, top: pos.y, left: pos.x}} 
+			id={name} 
+			className={classes}>
 			<div className='content'>
-				{/* {props.info.scrollbar && 
-					<Scrollbar className='Scrollbar' style={{ width: width ? width : 600, height: height? height : 400}}>
-						<props.component spawnWindow={props.spawnWindow}
-							width={width ? width : 600} height={height? height : 400}/>
-					</Scrollbar>}
-				{!props.info.scrollbar &&
-					} */}
-				{props.component}
+				<Suspense>
+					{component}
+				</Suspense>
 			</div>
-			<h3 className="WindowTitle">{props.info.name}</h3>
+			<h3 className="WindowTitle">{name}</h3>
 			<div className='ButtonFlex'>
-				<button className="WindowButton" id='MinimizeButton' onClick={() => {
-					if (props.info.classes.includes("WindowMaximized"))
-						props.setClasses(props.info.name, "WindowDefault WindowMaximizedMinimized");
+				{!name.includes("window-") && <button className="WindowButton" id='MinimizeButton' onClick={() => {
+					if (classes.includes("WindowMaximized"))
+						setClasses("WindowDefault WindowMaximizedMinimized");
 					else
-						props.setClasses(props.info.name, "WindowDefault WindowMinimized");
+						setClasses("WindowDefault WindowMinimized");
 				}}>
 					<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-minimize" viewBox="0 0 24 24" strokeWidth="2" stroke={RED} fill="none" strokeLinecap="round" strokeLinejoin="round">
 						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -54,17 +93,17 @@ export default function Window(props: {component: any, id: number, putWindowFron
 						<path id="minimizeButtonPath3" d="M5 15h2a2 2 0 0 1 2 2v2" />
 						<path id="minimizeButtonPath4" d="M5 9h2a2 2 0 0 0 2 -2v-2" />
 					</svg>
-				</button>
+				</button>}
 				<button className="WindowButton" id='MaximizeButton' onClick={() => {
-					if (props.info.classes.includes("WindowMaximized")) {
-						props.setClasses(props.info.name, "WindowDefault WindowMaximizedReverse");
+					if (classes.includes("WindowMaximized")) {
+						setClasses("WindowDefault WindowMaximizedReverse");
 						setTimeout(() => {
-							props.setClasses(props.info.name, "WindowDefault");
+							setClasses("WindowDefault");
 						}, 500)
 					}
 					else
-						props.setClasses(props.info.name, "WindowDefault WindowMaximized");
-					props.putWindowFront(props.info.name);}
+						setClasses("WindowDefault WindowMaximized");
+					}
 				}>
 					<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-maximize" viewBox="0 0 24 24" strokeWidth="2" stroke={RED} fill="none" strokeLinecap="round" strokeLinejoin="round">
 						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -75,9 +114,9 @@ export default function Window(props: {component: any, id: number, putWindowFron
 					</svg>
 				</button>
 				<button className="WindowButton" id='QuitButton' onClick={() => {
-					props.setClasses(props.info.name, "WindowDefault WindowQuit");
+					setClasses("WindowDefault WindowQuit");
 					setTimeout(() => {
-						props.destroyWindow(props.info.name)
+						destroyWindow(name)
 					}, 500)
 				}}>
 					<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-square-off" viewBox="0 0 24 24" strokeWidth="2" stroke={RED} fill="none" strokeLinecap="round" strokeLinejoin="round">
@@ -93,3 +132,5 @@ export default function Window(props: {component: any, id: number, putWindowFron
 		</div>
 	)
 }
+
+export default Window;

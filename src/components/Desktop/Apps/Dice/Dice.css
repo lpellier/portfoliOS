@@ -3,7 +3,7 @@
 	height: 100%;
 }
 
-input[type=range].spoon-slider {
+input[type=range].dice-slider {
 	-webkit-appearance: none;     /*nécessaire pour Chrome */
 	padding: 0;                   /* nécessaire pour IE */
 	font: inherit;                /* même rendu suivant font document */
@@ -17,14 +17,14 @@ input[type=range].spoon-slider {
 	cursor: pointer;
   }
 
-  input[type=range].spoon-slider::-moz-range-thumb {
+  input[type=range].dice-slider::-moz-range-thumb {
 	width: 1em;
 	height: 80%;
 	border: none;
 	border-radius: 5000px;
 	background: currentColor;
   }
-  input[type=range].spoon-slider::-webkit-slider-thumb {
+  input[type=range].dice-slider::-webkit-slider-thumb {
 	-webkit-appearance: none;       /* également nécessaire sur le curseur */
 	width: 1em;
 	height: 80%;                /* s'adapte à la hauteur de l'input */
@@ -32,7 +32,7 @@ input[type=range].spoon-slider {
 	border-radius: 5000px;               /* pris en compte sur Webkit et Edge */
 	background: currentColor;       /* pris en compte sur Webkit only */
   }
-  input[type=range].spoon-slider::-ms-thumb {
+  input[type=range].dice-slider::-ms-thumb {
 	width: 1em;
 	height: 80%;                /* s'adapte à la hauteur de l'input */
 	border: none;                   /* supprimer la bordure */

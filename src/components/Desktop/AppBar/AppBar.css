@@ -128,11 +128,11 @@
 	}
 }
 
-#spoon-die-1 {
+#dice-die-1 {
 	fill: var(--black);
 	z-index: 1;
 }
-#spoon-die-2 {
+#dice-die-2 {
 	fill: var(--black);
 	z-index: 2;
 }

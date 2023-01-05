@@ -1,7 +1,7 @@
-import { useEffect } from "react";
+import { FunctionComponent, useEffect } from "react";
 import "./AboutMe.css"
 
-export default function AboutMe(props: any) {
+const AboutMe: FunctionComponent = (props: any) => {
 	useEffect(() => {
 	}, []);
 
@@ -10,3 +10,5 @@ export default function AboutMe(props: any) {
 		</div>
 	)
 }
+
+export default AboutMe;

@@ -15,4 +15,7 @@
 	--size-40: clamp(24px, 4.8vw, 48px);
 	--size-30: clamp(18px, 3.6vw, 36px);
 	--size-20: clamp(12px, 2.4vw, 24px);
+
+	--default-win-width: 500px;
+	--default-win-height: 300px;
 }

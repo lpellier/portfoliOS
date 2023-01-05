@@ -86,13 +86,12 @@ svg path { transition: 0.2s; }
 	position:absolute;
 	display: block;
 	margin: 0;
-	width: 600px;
-	height: 400px;
+	width: var(--default-win-width);
+	height: var(--default-win-height);
 	min-width: 500px;
-	min-height: 300px;
+	min-height: 200px;
 	
 	background-color: var(--black);
-	/* disable in settings */
 	border: none;
 	border-radius: 8px;
 	box-shadow: 5px 5px 5px #00000020;

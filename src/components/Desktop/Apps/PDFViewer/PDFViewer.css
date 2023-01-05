@@ -21,27 +21,35 @@
 }
 
 #button-pdf-left {
-	left: calc(50% - 20px);
+	left: calc(50% - 60px);
 	bottom: 11px;
-	transform: translate(-100%, 0);
 }
 .button-pdf:hover {
 	transform: scale(1.2);
 }
 
 #button-pdf-right {
-	left: calc(50% - 20px);
+	left: calc(50% + 20px);
 	bottom: 11px;
-	transform: translate(100%, 0);
 }
 
 #button-pdf-plus {
-	top: calc(50% - 20px);
-	transform: translate(0, -100%);
-	right: 11px;
+	top: calc(50% - 60px);
+	right: 22px;
 }
 #button-pdf-minus {
-	top: calc(50% - 20px);
-	transform: translate(0, 100%);
-	right: 11px;
+	top: calc(50% + 20px);
+	right: 22px;
+}
+
+#page-number {
+	position: absolute;
+	margin: 0;
+	left: 50%;
+	bottom: 20px;
+	
+	transform: translate(-50%, 0%);
+	font: var(--size-10) "Outfit";
+	color: black;
+
 }

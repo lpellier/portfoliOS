@@ -1,7 +1,7 @@
 import "./Pong.css"
 
 // ? need to wrap p5 sketch in another function to pass arguments
-export const defineSketch = (id: number, initialWidth: number, initialHeight: number) : any => {
+export const defineSketch = (initialWidth: number, initialHeight: number) : any => {
 	return (p: any) => {
 		class MovingCircle {
 			pos: {x: number, y: number}
@@ -44,7 +44,7 @@ export const defineSketch = (id: number, initialWidth: number, initialHeight: nu
 
 		// ? called once upon load
 		p.setup = () => {
-			parent = document.getElementById("canvas-parent" + id);
+			parent = document.getElementById("canvas-pong-parent");
 			canvas = p.createCanvas(initialWidth, initialHeight).parent(parent);
 			for (let i = 0; i < 150; i++) {
 				circles.push(new MovingCircle({x: Math.random() * initialWidth, y: Math.random() * initialHeight}, Math.random() * 30 + 20))
@@ -54,7 +54,7 @@ export const defineSketch = (id: number, initialWidth: number, initialHeight: nu
 		// ? called once every frame
 		p.draw = () => {
 			// ? if window is quit, delete p5 sketch
-			if (p.frameCount % 60 === 0 && !document.getElementById("canvas-parent" + id)) {
+			if (p.frameCount % 60 === 0 && !document.getElementById("canvas-pong-parent")) {
 				p.remove();
 				return ;
 			}

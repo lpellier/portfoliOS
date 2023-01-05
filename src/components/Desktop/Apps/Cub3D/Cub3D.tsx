@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import { FunctionComponent, useEffect } from "react";
 import "./Cub3D.css"
+import { ISketch } from "../../../../types";
 
-export default function Cub3D(props: any) {
+const Cub3D: FunctionComponent<ISketch> = () => {
 	useEffect(() => {
 	}, []);
 
@@ -10,3 +11,5 @@ export default function Cub3D(props: any) {
 		</div>
 	)
 }
+
+export default Cub3D;

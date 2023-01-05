@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack5';
 import { Scrollbar } from "react-scrollbars-custom";
 import "./PDFViewer.css"
+import { IPDFViewer } from "../../../../types";
+import { default_win_width, default_win_height } from "../../../../globals";
 
-// ? Takes pdf path as prop
-export default function PDFViewer(props: {name: string, pdf_path: string}) {
+const PDFViewer: FunctionComponent<IPDFViewer> = ({name, pdf_path}) => {
 	const [numPages, setNumPages] = useState(1);
 	const [pageNumber, setPageNumber] = useState(1);
 	const [scale, setScale] = useState(1);
@@ -24,7 +25,7 @@ export default function PDFViewer(props: {name: string, pdf_path: string}) {
 	const rightPage = (): void => {
 		setPageNumber(() => {
 			let newPageNumber = pageNumber + 1;
-			if (newPageNumber >= numPages)
+			if (newPageNumber >= numPages + 1)
 				newPageNumber = 1;
 			return newPageNumber;
 		})
@@ -37,20 +38,22 @@ export default function PDFViewer(props: {name: string, pdf_path: string}) {
 	}
 	const decrementScale = (): void => {
 		setScale(() => {
-			return scale - 0.5 < 1 ? 1 : scale - 0.5;
+			return scale - 0.5 < 0.5 ? 0.5 : scale - 0.5;
 		})
 	}
 
 	useEffect(() => {
 	}, []);
 	
-	let width = document.getElementById(props.name)?.clientWidth;
-	let height = document.getElementById(props.name)?.clientHeight;
+	let width = document.getElementById(name)?.clientWidth;
+	let height = document.getElementById(name)?.clientHeight;
+
+	console.log('render')
 
 	return (
 		<div id="PDFViewer">
-			<Scrollbar style={{ width: width ? width : 600, height: height? height : 400}} className='Scrollbar'>
-				<Document className="file-pdf" file={props.pdf_path} onLoadSuccess={onDocumentLoadSuccess}>
+			<Scrollbar style={{ width: width ? width : default_win_width, height: height? height : default_win_height}} className='Scrollbar'>
+				<Document className="file-pdf" file={pdf_path} onLoadSuccess={onDocumentLoadSuccess}>
 						<Page scale={scale} renderAnnotationLayer={false} renderTextLayer={false} pageNumber={pageNumber}/>
 				</Document>
 			</Scrollbar>
@@ -93,6 +96,9 @@ export default function PDFViewer(props: {name: string, pdf_path: string}) {
 					<line x1="20" y1="50" x2="80" y2="50" />
 				</svg>
 			</button>
+			<p id="page-number" style={{fontFamily: "Outfit"}}>{pageNumber} / {numPages}</p>
 		</div>
 	)
 }
+
+export default PDFViewer;

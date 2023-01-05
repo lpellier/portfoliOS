@@ -1,4 +1,4 @@
-import "./Spoon.css"
+import "./Dice.css"
 
 const DIAGONAL = (w: number, h: number) => Math.floor(Math.sqrt(Math.pow(w, 2) + Math.pow(h, 2)));
 
@@ -12,7 +12,7 @@ const RED = "#F4615A";
 const BLACK = "#1E1F1F";
 
 // ? need to wrap p5 sketch in another function to pass arguments
-export const defineSketch = (id: number, initialWidth: number, initialHeight: number) : any => {
+export const defineSketch = (initialWidth: number, initialHeight: number) : any => {
 	return (p: any) => {
 		class Die {
 			size: number = 0;
@@ -222,12 +222,12 @@ export const defineSketch = (id: number, initialWidth: number, initialHeight: nu
 
 		// ? called once upon load
 		p.setup = () => {
-			parent = document.getElementById("canvas-parent" + id);
+			parent = document.getElementById("canvas-dice-parent");
 			canvas = p.createCanvas(initialWidth, initialHeight, p.WEBGL).parent(parent);
 
 			slider_speed = p.createSlider(1, 15, 6, 1);
 			slider_speed.parent(parent)
-			slider_speed.addClass("spoon-slider");
+			slider_speed.addClass("dice-slider");
 			slider_speed.position(20, 30);
 			slider_speed.style("width", initialWidth / 10 + 20 + "px");
 
@@ -241,7 +241,7 @@ export const defineSketch = (id: number, initialWidth: number, initialHeight: nu
 		// ? called once every frame
 		p.draw = () => {
 			// ? if window is quit, delete p5 sketch
-			if (p.frameCount % 60 === 0 && !document.getElementById("canvas-parent" + id)) {
+			if (p.frameCount % 60 === 0 && !document.getElementById("canvas-dice-parent")) {
 				p.remove();
 				return ;
 			}

@@ -16,8 +16,8 @@
 	flex-direction: column;
 
 	column-gap: 10px;
-	width: 100px;
-	height: 100px;
+	width: 90px;
+	height: 90px;
 	align-items: center;
 }
 
@@ -49,7 +49,6 @@
 }
 
 @keyframes spawnOutline {
-	
 	0% {
 		opacity: 1;
 		height: 50px;

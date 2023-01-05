@@ -158,7 +158,7 @@ export default function Portfolio() {
 			clearInterval(pass_interval);
 		}
 	}, [])
-
+	
 	return (
 		<div className="Portfolio">
 		{

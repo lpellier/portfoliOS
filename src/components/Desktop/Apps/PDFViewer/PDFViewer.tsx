@@ -48,8 +48,6 @@ const PDFViewer: FunctionComponent<IPDFViewer> = ({name, pdf_path}) => {
 	let width = document.getElementById(name)?.clientWidth;
 	let height = document.getElementById(name)?.clientHeight;
 
-	console.log('render')
-
 	return (
 		<div id="PDFViewer">
 			<Scrollbar style={{ width: width ? width : default_win_width, height: height? height : default_win_height}} className='Scrollbar'>

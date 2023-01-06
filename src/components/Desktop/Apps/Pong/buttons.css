@@ -1,0 +1,121 @@
+#main-menu-button-grid {
+	display: flex;
+	flex-direction: row;
+	position: absolute;
+	gap: 10%;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+	left: 12.5%;
+	bottom: 20%;
+}
+
+#button-create {
+	flex-grow: 1;
+	z-index: 2;
+}
+
+#button-join {
+	flex-grow: 1;
+	z-index: 2;
+}
+
+#button-matchmaking {
+	flex-grow: 1;
+	z-index: 2;
+}
+
+#create-menu-button-grid {
+	display: flex;
+	flex-direction: row;
+	position: absolute;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+	gap: 2%;
+	top: 25%;
+	left: 7%;
+}
+
+#button-return {
+	position: absolute;
+}
+
+#button-sound {
+	position: absolute;
+}
+
+#button-anyone {
+	flex-grow: 1;
+	z-index: 2;
+}
+
+#button-local {
+	flex-grow: 1;
+	z-index: 2;
+}
+
+#button-invitation {
+	flex-grow: 1;
+	z-index: 2;
+}
+
+#button-ai {
+	position: absolute;
+	padding: 0;
+	top: 40%;
+	right: 5.5%;
+}
+
+#buttons-plus-minus {
+	position: absolute;
+	display: flex;
+	left: 46%;
+	top: 40%;
+	flex-direction: column;
+	z-index: 2;
+}
+
+#button-validate {
+	position: absolute;
+	padding: 0;
+	bottom: 5%;
+	left: 36%;
+	z-index: 1;
+}
+
+#button-opp-left-ok {
+	position: absolute;
+	padding: 0;
+	bottom: 5%;
+	left: 38%;
+	z-index: 0;
+}
+
+#button-map-original {
+	position: absolute;
+	/* bottom: 20%;
+	left: 8.5%; */
+}
+#button-map-city {
+	position: absolute;
+	/* bottom: 20%;
+	left: 38.5%; */
+}
+#button-map-casino {
+	position: absolute;
+	/* bottom: 20%;
+	left: 68.5%; */
+}
+#button-map-secret {
+	position: absolute;
+	/* bottom: 20%;
+	left: 68.5%; */
+}
+
+#button-spectate {
+	position: absolute;
+	top: 3%;
+	left: 4%;
+	z-index: 1;
+}

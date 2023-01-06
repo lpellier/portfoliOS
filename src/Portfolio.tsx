@@ -37,7 +37,7 @@ export default function Portfolio() {
 	const [show_screensaver, setScreenSaver] = useState(true);
 	const [show_login, setLogin] = useState(false);
 	const [show_loading, setLoading] = useState(false);
-	const [show_desktop, setDesktop] = useState(false); // ! should be set to false
+	const [show_desktop, setDesktop] = useState(true); // ! should be set to false
 	const [pass_length, setPassLength] = useState(0);
 
 	const advanceToLogin = () => {
@@ -161,7 +161,7 @@ export default function Portfolio() {
 	
 	return (
 		<div className="Portfolio">
-		{
+		{/* {
 			show_background && 
 			<div onClick={(e: any) => clickEffect(e)}>
 				<div id="background"/>
@@ -235,7 +235,7 @@ export default function Portfolio() {
 					</svg>
 				</div>
 			</div>
-		}
+		} */}
 
 		{
 			show_desktop &&

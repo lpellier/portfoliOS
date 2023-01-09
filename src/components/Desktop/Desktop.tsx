@@ -10,7 +10,6 @@ import { default_win_height, default_win_width } from '../../globals';
 
 // ! Important
 	// TODO Mobile webapp
-	// TODO Integrate Pong
 	// TODO Code Cub3D in javascript
 	// TODO Interesting background
 	// TODO Settings -> modify appearance of website
@@ -20,15 +19,15 @@ import { default_win_height, default_win_width } from '../../globals';
 
 // ? Eventually
 	// ? Redo login animation
-	// ? Redo c++ icon -> rename to c & c++ projects : animation is just ++ moving from top to bottom
 	// ? When a window is dragged to a side, snap it to that side
 	// ? Some sort of tutorial message / tool tips ?
 	// ? Create a logo
 	// ? Togglable funny pop-ups ? "Coders hate him", "Wanna make your code 20% shorter"
+	// ? Custom mouse pointer ?
+	// ? Window resizable from all directions
 
 //   Maybe
 	//   Backend for pong multiplayer
-	//   Custom mouse pointer ?
 
 const Window = lazy(() => import("./Window/Window"))
 
@@ -51,7 +50,8 @@ const Desktop: FunctionComponent = () => {
 		if (!rect)
 			return ;
 
-		if (!(event.clientY / rect.bottom >= 0.9 && event.clientX / rect.right >= 0.9))
+		// if (!(event.clientY / rect.bottom >= 0.9 && event.clientX / rect.right >= 0.9))
+		if (event.clientY - rect.top <= 35) // ? Drag is only active when click the window header
 			setDraggedWindow(win_name);
 	}
 

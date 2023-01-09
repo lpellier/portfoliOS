@@ -1,7 +1,7 @@
 @import "./../../../globals.css";
 
 .ButtonFlex {
-	position: absolute;
+	margin-top: 2px;
 	display: flex;
 	width: 145px;
 	height: 40px;
@@ -16,8 +16,6 @@
 	cursor: pointer;
 	width: 35px;
 	height: 35px;
-	background-color: #28293595;
-	backdrop-filter: blur(8px);
 	border-radius: 50%;
 	z-index: 2;
 }
@@ -38,34 +36,35 @@ svg path { transition: 0.2s; }
 .icon-tabler-square-off:hover #quitButtonPath3 { d: path("M 19,5 12,12") }
 .icon-tabler-square-off:hover #quitButtonPath4 { d: path("M 5,19 12,12") }
 
+.window-header {
+	display: flex;
+	position: relative;
+	width: 100%;
+	height: 35px;
+	
+	background-color: var(--black);
+	outline: 2px solid var(--background-color);
+	box-shadow: 5px 5px 5px #00000020;
+	backdrop-filter: blur(8px);
+}
+
 .WindowTitle {
-	position: absolute;
 	width: 200px;
 	margin: 0;
 	text-align: center;
 
-	left: 0;
-	right: 0;
-	margin-left: auto;
-	margin-right: auto;
 	font: 25px "Outfit";
 	color: var(--text-color);
-	background-color: #28293595;
-	backdrop-filter: blur(8px);
 	border-radius: 5000px;
 	z-index: 2;
 	animation: showTitle 1s ease-in;
+	flex-basis: 100%;
 }
 
 .content {
 	margin: 0;
-	position: absolute;
-	left: 0;
-	right: 0;
-	margin-left: auto;
-	margin-right: auto;
 	width: 100%;
-	height: 100%;
+	height: calc(100% - 35px);
 }
 
 .Scrollbar {

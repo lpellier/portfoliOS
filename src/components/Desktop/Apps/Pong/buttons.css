@@ -112,10 +112,3 @@
 	/* bottom: 20%;
 	left: 68.5%; */
 }
-
-#button-spectate {
-	position: absolute;
-	top: 3%;
-	left: 4%;
-	z-index: 1;
-}

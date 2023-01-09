@@ -411,13 +411,15 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 			highlightSpectateButton,
 			resetSpectateButton,
 			consts.WIDTH * 0.1,
-			consts.HEIGHT * 0.1
+			consts.HEIGHT * 0.15
 			);
 			this.spectate.style("background-color", "rgba(0, 0, 0, 0)");
 			this.spectate.style(
 			"border",
 			(consts.DIAGONAL / 250).toString() + "px solid white"
 			);
+			this.spectate.style("position", "absolute");
+			this.spectate.position(consts.WIDTH * 0.04, consts.HEIGHT * 0.03 + 35);
 
 			this.hide();
 			this.addParent();
@@ -579,6 +581,7 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 			"border-width",
 			(consts.DIAGONAL / 250).toString() + "px"
 			);
+			this.spectate.position(consts.WIDTH * 0.04, consts.HEIGHT * 0.03 + 35);
 		}
 
 		delete() {
@@ -760,6 +763,7 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 		PLAYER_WIDTH: number;
 		PLAYER_HEIGHT: number;
 		PLAYER_SPEED: number;
+		AI_SPEED: number;
 
 		BREAKOUT_WIDTH: number;
 		BREAKOUT_HEIGHT: number;
@@ -815,15 +819,9 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 			this.OLD_WIDTH = this.WIDTH;
 			this.OLD_HEIGHT = this.HEIGHT;
 
-			let width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-			let height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-			this.WIDTH = width;
-			this.HEIGHT = this.WIDTH / 1.6;
+			this.WIDTH = parent.clientWidth;
+			this.HEIGHT = parent.clientHeight;
 
-			if (this.HEIGHT > height * 5 / 6) {
-			this.HEIGHT = (height * 5) / 6;
-			this.WIDTH = this.HEIGHT * 1.6;
-			}
 			this.DIAGONAL = Math.sqrt(
 			Math.pow(this.WIDTH, 2) + Math.pow(this.HEIGHT, 2)
 			);
@@ -831,6 +829,7 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 			this.PLAYER_WIDTH = this.WIDTH / 80;
 			this.PLAYER_HEIGHT = this.HEIGHT / 9;
 			this.PLAYER_SPEED = this.DIAGONAL / 125;
+			this.AI_SPEED = this.DIAGONAL / 175;
 
 			this.BREAKOUT_WIDTH = this.PLAYER_WIDTH * 0.8;
 			this.BREAKOUT_HEIGHT = this.PLAYER_HEIGHT * 0.8;
@@ -890,18 +889,11 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 
 
 		setWindowSize() {
-			let width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-			let height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 			this.OLD_WIDTH = this.WIDTH;
 			this.OLD_HEIGHT = this.HEIGHT;
 
-			this.WIDTH = width;
-			this.HEIGHT = this.WIDTH / 1.6;
-
-			if (this.HEIGHT > height * 5 / 6) {
-			this.HEIGHT = (height * 5) / 6;
-			this.WIDTH = this.HEIGHT * 1.6;
-			}
+			this.WIDTH = parent.clientWidth;
+			this.HEIGHT = parent.clientHeight;
 			this.DIAGONAL = Math.sqrt(
 			Math.pow(this.WIDTH, 2) + Math.pow(this.HEIGHT, 2)
 			);
@@ -913,6 +905,7 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 			this.PLAYER_WIDTH = this.WIDTH / 80;
 			this.PLAYER_HEIGHT = this.HEIGHT / 9;
 			this.PLAYER_SPEED = this.DIAGONAL / 125;
+			this.AI_SPEED = this.DIAGONAL / 175;
 
 			this.BREAKOUT_WIDTH = this.PLAYER_WIDTH * 0.8;
 			this.BREAKOUT_HEIGHT = this.PLAYER_HEIGHT * 0.8;
@@ -1562,8 +1555,8 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 			this.velocity[1] = -consts.PLAYER_SPEED;
 			if (game.local && game.ai && this.index === 2) {
 				this.velocity[1] = -pos_diff;
-				if (this.velocity[1] < -consts.PLAYER_SPEED)
-					this.velocity[1] = -consts.PLAYER_SPEED;
+				if (this.velocity[1] < -consts.AI_SPEED)
+					this.velocity[1] = -consts.AI_SPEED;
 			}
 			this.calculateNewPos();
 		}
@@ -1572,8 +1565,8 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 			this.velocity[1] = consts.PLAYER_SPEED;
 			if (game.local && game.ai && this.index === 2) {
 				this.velocity[1] = -pos_diff;
-				if (this.velocity[1] > consts.PLAYER_SPEED)
-					this.velocity[1] = consts.PLAYER_SPEED;
+				if (this.velocity[1] > consts.AI_SPEED)
+					this.velocity[1] = consts.AI_SPEED;
 			}
 			this.calculateNewPos();
 		}
@@ -1737,9 +1730,8 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 		const parent = document.getElementById(id);
 		if (!parent)
 			return ;
-		while (parent?.firstChild) {
-			// @ts-ignore : next-line // don't know why an error shows up on vs code
-		parent.removeChild(parent.lastChild);
+		while (parent.lastChild)  {
+			parent.removeChild(parent.lastChild);
 		}
 	}
 
@@ -1833,15 +1825,8 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 		if (bumpers) for (let bumper of bumpers) bumper.resize();
 	}
 
-	p.windowResized = () => {
-		p.noLoop();
-		resizeEverything();
-
-		p.resizeCanvas(consts.WIDTH, consts.HEIGHT);
-		p.loop();
-	}
-
 	p.preload = () => {
+		parent = document.getElementById("canvas-pong-parent");
 		consts = new Consts();
 		keys = new Keys();
 
@@ -1852,7 +1837,9 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 	let parent: any;
 
 	p.setup = () => {
-		parent = document.getElementById("canvas-pong-parent");
+		canvas = p.createCanvas(consts.WIDTH, consts.HEIGHT);
+		canvas.parent(parent);
+
 		let frames = spritedata.frames;
 		for (let i = 0; i < frames.length; i++) {
 			let pos = frames[i].position;
@@ -1890,9 +1877,6 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 			p.remove();
 			return ;
 		}
-
-		canvas = p.createCanvas(consts.WIDTH, consts.HEIGHT);
-		canvas.parent(parent);
 		p.background(0);
 		p.textFont(consts.FONT);
 		p.frameRate(60);
@@ -1920,6 +1904,7 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 	let height: number;
 		
 	p.draw = () => {
+		parent = document.getElementById("canvas-pong-parent");
 		if (!parent) {
 			deleteEverything();
 			p.remove();
@@ -1931,8 +1916,6 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 		
 		if (width !== canvas.width || height !== canvas.height) {
 			p.noLoop();
-			consts.WIDTH = width;
-			consts.HEIGHT = height;
 			resizeEverything();
 
 			p.resizeCanvas(consts.WIDTH, consts.HEIGHT);
@@ -2382,11 +2365,22 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 				ai_diff += consts.PLAYER_HEIGHT * 0.05;
 
 			ai_pos = game.players[1].pos[1] + ai_diff;
-			let pos_diff = ai_pos - game.pong.cY();
-
-			if (pos_diff > 0) game.players[1].moveUp(pos_diff);
-			else if (pos_diff < 0) game.players[1].moveDown(pos_diff);
-			else game.players[1].velocity[1] = 0;
+			if (game.pong.velocity[0] > 0) {
+				let pos_diff = ai_pos - game.pong.cY();
+	
+				if (pos_diff > 0) game.players[1].moveUp(pos_diff);
+				else if (pos_diff < 0) game.players[1].moveDown(pos_diff);
+				else game.players[1].velocity[1] = 0;
+			}
+			else {
+				let dist = consts.HEIGHT / 2 - (game.players[1].pos[1] + game.players[1].height / 2);
+				if (dist < 0) {
+					game.players[1].moveUp(-dist);
+				} 
+				else {
+					game.players[1].moveDown(-dist);	
+				}
+			}
 			} else if (game.map.name !== "secret") {
 			if (p.keyIsDown(p.UP_ARROW)) game.players[1].moveUp(0);
 			else if (p.keyIsDown(p.DOWN_ARROW)) game.players[1].moveDown(0);

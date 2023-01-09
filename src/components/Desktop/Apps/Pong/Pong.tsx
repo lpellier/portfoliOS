@@ -2,7 +2,6 @@ import p5 from "p5";
 import { FunctionComponent, useEffect } from "react";
 import { defineSketch } from "./Sketch";
 import "./Pong.css"
-import "./canvas.css"
 import "./buttons.css"
 import "./inputs.css"
 import { ISketch } from "../../../../types";
@@ -221,9 +220,9 @@ const Pong: FunctionComponent<ISketch> = () => {
 	return (
 		<div className="Canvas" id={"canvas-pong-parent"}>
 			<div id="main-menu-button-grid">
-				<div id="button-create"/>
-				<div id="button-join"/>
-				<div id="button-matchmaking"/>
+				<div id="button-create" className="large-button"/>
+				<div id="button-join" className="large-button"/>
+				<div id="button-matchmaking" className="large-button"/>
 			</div>
 			<div id="create-menu-button-grid">
 				<div id="button-anyone"/>

@@ -10,7 +10,7 @@ const Background: FunctionComponent = () => {
 		document.body.appendChild(d);
 		d.addEventListener('animationend', () => {d.parentElement?.removeChild(d)})
 	}
-
+	
 	return (
 		<div className="Background" onClick={(e: any) => clickEffect(e)}>
 			<div className='title'>

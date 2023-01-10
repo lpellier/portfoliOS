@@ -1,9 +1,10 @@
 import "./Pong.css"
 import { audio_files } from "./Pong";
+import p5 from "p5";
 
 // ? need to wrap p5 sketch in another function to pass arguments
 export const defineSketch = (initialWidth: number, initialHeight: number) : any => {
-	return (p: any) => {
+	return (p: p5) => {
 		
 		p.disableFriendlyErrors = true;
 
@@ -1053,7 +1054,6 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 			else if (this.pong.value !== -1) this.score[0] += this.pong.value;
 			}
 			setTimeout(() => {
-			if (!parent) return;
 			if (this.over()) {
 				this.setState("game-over");
 				return;
@@ -1062,12 +1062,12 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 			this.timer = 2;
 			for (let i = 0; i < 3; i++) {
 				setTimeout(() => {
-				if (!parent) return;
-				this.timer--;
-				if (this.timer === 0) audio_files.playBip(audio_files.BIP_FINAL);
-				else if (this.timer > 0) audio_files.playBip(audio_files.BIP);
-				if (this.timer === -1 && this.state === "relaunch-countdown")
-					this.setState("in-game");
+					// ? Might want to check for existence of canvas before playing sounds
+					this.timer--;
+					if (this.timer === 0) audio_files.playBip(audio_files.BIP_FINAL);
+					else if (this.timer > 0) audio_files.playBip(audio_files.BIP);
+					if (this.timer === -1 && this.state === "relaunch-countdown")
+						this.setState("in-game");
 				}, i * 1000);
 			}
 			if (invert) this.pong.relaunchPong("right");
@@ -2334,13 +2334,13 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 			game.setState("in-menu");
 		}
 
-		function opponentLeftMenu() {
-		game.setState("opponent-left-menu");
-		buttons.hide();
-		if (buttons.opponent_left_ok.parent())
-			buttons.opponent_left_ok.parent().style["z-index"] = 2; // deal with buttons overlapping
-		buttons.opponent_left_ok.show();
-		}
+		// function opponentLeftMenu() {
+		// game.setState("opponent-left-menu");
+		// buttons.hide();
+		// if (buttons.opponent_left_ok.parent())
+		// 	buttons.opponent_left_ok.parent().style["z-index"] = 2; // deal with buttons overlapping
+		// buttons.opponent_left_ok.show();
+		// }
 
 		let ai_diff : number = 0;
 		let new_ai_diff : number = 0;

@@ -11,6 +11,7 @@ import { default_win_height, default_win_width } from '../../globals';
 // ! Important
 	// TODO Mobile webapp
 	// TODO Code Cub3D in javascript
+	// TODO Presentation for each of my projects
 	// TODO Interesting background
 	// TODO Settings -> modify appearance of website
 		// ? Ability to change the background ?
@@ -121,7 +122,7 @@ const Desktop: FunctionComponent = () => {
 	}
 
 	const handleMouseUp = () => {
-		setDraggedWindow("");
+		if (win_dragged !== "") setDraggedWindow("");
 		setTimeout(() => {
 			setForcedUpdate((current) => !current);
 		}, 100);

@@ -1,5 +1,3 @@
-@import "globals.css";
-
 .Portfolio {
 	position: absolute;
 	margin: 0 0 0 0;
@@ -101,7 +99,7 @@
 	background-position: center;
 	background-size: cover;
 	z-index: -1;
-	background-image: url("../public/images/background.jpg");
+	background-image: url("./../../public/images/background.jpg");
 	background-repeat: repeat;
 }
 
@@ -206,7 +204,7 @@
 
 	border-radius: 50%;
 	z-index: 2;
-	background-image: url('./../public/images/pdp2.jpg');
+	background-image: url('./../../public/images/pdp2.jpg');
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;

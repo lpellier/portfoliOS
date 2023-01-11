@@ -1,5 +1,5 @@
 import { FunctionComponent, useEffect, useState } from "react";
-import "./File.css"
+import "styles/File.css"
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from "remark-gfm";
 import { Scrollbar } from "react-scrollbars-custom";

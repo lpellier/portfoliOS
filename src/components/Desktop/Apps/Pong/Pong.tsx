@@ -1,9 +1,9 @@
 import p5 from "p5";
 import { FunctionComponent, useEffect } from "react";
 import { defineSketch } from "./Sketch";
-import "./Pong.css"
-import "./buttons.css"
-import "./inputs.css"
+import "styles/Pong.css"
+import "styles/buttons.css"
+import "styles/inputs.css"
 import { ISketch } from "../../../../types";
 import { default_win_height, default_win_width } from "../../../../globals";
 

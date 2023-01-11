@@ -1,7 +1,7 @@
 import { FunctionComponent, useEffect, useState } from "react";
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack5';
 import { Scrollbar } from "react-scrollbars-custom";
-import "./PDFViewer.css"
+import "styles/PDFViewer.css"
 import { IPDFViewer } from "../../../../types";
 import { default_win_width, default_win_height } from "../../../../globals";
 

@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
-import './AppBar.css';
+import 'styles/AppBar.css';
 import { RED } from '../../../globals';
 import { IAppBar } from '../../../types';
 
@@ -48,7 +48,7 @@ const AppBar: FunctionComponent<IAppBar> = ({opened_apps, spawnWindow}) => {
 			<h3 id='app-name-text'>{app_info_text}</h3>
 			<div className="AppBar">
 				<div>
-					<svg xmlns="http://www.w3.org/2000/svg" className="App" id="server_projects"
+					<svg xmlns="http://www.w3.org/2000/svg" className="App" id="icon-server_projects"
 						onMouseEnter={() => changeInfoText("Server Projects", true)} 
 						onMouseLeave={() => changeInfoText("Server Projects", false)} 
 						onClick={() => spawnWindow("Server Projects")} 
@@ -64,7 +64,7 @@ const AppBar: FunctionComponent<IAppBar> = ({opened_apps, spawnWindow}) => {
 					<div style={{opacity: (opened_apps.includes("Server Projects") ? 1 : 0)}} className='OpenedState'/>
 				</div>
 				<div>
-					<svg xmlns="http://www.w3.org/2000/svg" className="App" id="cpp_projects"
+					<svg xmlns="http://www.w3.org/2000/svg" className="App" id="icon-cpp_projects"
 						onMouseEnter={() => changeInfoText("C/C++ Projects", true)} 
 						onMouseLeave={() => changeInfoText("C/C++ Projects", false)} 
 						onClick={() => spawnWindow("C/C++ Projects")} 
@@ -79,7 +79,7 @@ const AppBar: FunctionComponent<IAppBar> = ({opened_apps, spawnWindow}) => {
 					<div style={{opacity: (opened_apps.includes("C/C++ Projects") ? 1 : 0)}} className='OpenedState'/>
 				</div>
 				<div>
-					<svg xmlns="http://www.w3.org/2000/svg" className="App" id="dice"
+					<svg xmlns="http://www.w3.org/2000/svg" className="App" id="icon-dice"
 						onMouseEnter={() => changeInfoText("Dice", true)} 
 						onMouseLeave={() => changeInfoText("Dice", false)} 
 						viewBox="0 0 24 24" strokeWidth="1" stroke={RED} 
@@ -162,7 +162,7 @@ const AppBar: FunctionComponent<IAppBar> = ({opened_apps, spawnWindow}) => {
 					<div style={{opacity: (opened_apps.includes("Dice") ? 1 : 0)}} className='OpenedState'/>
 				</div>
 				<div>
-					<div id="cub3d" className="App" 
+					<div id="icon-cub3d" className="App" 
 						onMouseEnter={() => changeInfoText("Cub3D", true)} 
 						onMouseLeave={() => changeInfoText("Cub3D", false)} 
 						onClick={() => spawnWindow("Cub3D")}>
@@ -186,7 +186,7 @@ const AppBar: FunctionComponent<IAppBar> = ({opened_apps, spawnWindow}) => {
 					<div style={{opacity: (opened_apps.includes("Cub3D") ? 1 : 0)}} className='OpenedState'/>
 				</div>
 				<div>
-					<svg xmlns="http://www.w3.org/2000/svg" id="pong" className="App" 
+					<svg xmlns="http://www.w3.org/2000/svg" id="icon-pong" className="App" 
 						onMouseEnter={() => changeInfoText("Pong", true)} 
 						onMouseLeave={() => changeInfoText("Pong", false)} 
 						onClick={() => spawnWindow("Pong")}
@@ -201,7 +201,7 @@ const AppBar: FunctionComponent<IAppBar> = ({opened_apps, spawnWindow}) => {
 					<div style={{opacity: (opened_apps.includes("Pong") ? 1 : 0)}} className='OpenedState'/>
 				</div>
 				<div>
-					<svg xmlns="http://www.w3.org/2000/svg" className="App" id="about-me" 
+					<svg xmlns="http://www.w3.org/2000/svg" className="App" id="icon-about-me" 
 						onMouseEnter={() => changeInfoText("About me", true)} 
 						onMouseLeave={() => changeInfoText("About me", false)} 
 						onClick={() => spawnWindow("About me")}
@@ -215,7 +215,7 @@ const AppBar: FunctionComponent<IAppBar> = ({opened_apps, spawnWindow}) => {
 					<div style={{opacity: (opened_apps.includes("About me") ? 1 : 0)}} className='OpenedState'/>
 				</div>
 				<div>
-					<svg xmlns="http://www.w3.org/2000/svg" className="App" id="settings"
+					<svg xmlns="http://www.w3.org/2000/svg" className="App" id="icon-settings"
 						onMouseEnter={() => changeInfoText("Settings", true)} 
 						onMouseLeave={() => changeInfoText("Settings", false)} 
 						onClick={() => spawnWindow("Settings")}

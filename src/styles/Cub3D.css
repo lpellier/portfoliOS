@@ -72,4 +72,42 @@
 	height: 50px;
 	background-color: #00000000;
 	border: none;
+	z-index: 1;
+}
+
+#map-editor-flex {
+	display: flex;	
+}
+
+#map-editor-grid {
+	position: relative;
+	display: flex;
+	left: 50%;
+	transform: translateX(-50%);
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 80%;
+	margin-top: 50px;
+	margin-bottom: 50px; /* needs to be size of sprite-bar + comfortable margin */
+	gap: 5px;
+}
+
+.map-editor-row {
+	display: flex;
+	flex-basis: 80%;
+	flex-direction: row;
+	height: 20px;
+	width: 100%;
+	gap: 5px;
+}
+
+.grid-tile {
+	width: clamp(15px, 10%, 25px);
+	height: 20px;
+	background-color: white;
+}
+
+.tile-wall {
+	background-color: #00000095;
 }

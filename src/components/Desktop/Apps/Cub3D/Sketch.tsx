@@ -1,5 +1,5 @@
 import p5, { Vector } from "p5";
-import "./Cub3D.css"
+import "styles/Cub3D.css"
 
 const RED = "#F4615A";
 const BLACK = "#1E1F1F";

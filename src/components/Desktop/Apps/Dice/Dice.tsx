@@ -1,7 +1,7 @@
 import p5 from "p5";
 import { FunctionComponent, useEffect } from "react";
 import { defineSketch } from "./Sketch";
-import "./Dice.css"
+import "styles/Dice.css"
 import { ISketch } from "../../../../types";
 import { default_win_height, default_win_width } from "../../../../globals";
 

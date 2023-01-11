@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './Portfolio.css';
+import 'styles/Portfolio.css';
 import Desktop from './components/Desktop/Desktop'
 
 // ? Returns a string containing hours and minutes

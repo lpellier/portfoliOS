@@ -1,4 +1,4 @@
-import "./Dice.css"
+import "styles/Dice.css"
 
 const DIAGONAL = (w: number, h: number) => Math.floor(Math.sqrt(Math.pow(w, 2) + Math.pow(h, 2)));
 

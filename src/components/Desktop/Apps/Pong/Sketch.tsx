@@ -1,4 +1,4 @@
-import "./Pong.css"
+import "styles/Pong.css"
 import { audio_files } from "./Pong";
 import p5 from "p5";
 

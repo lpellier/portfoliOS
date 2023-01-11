@@ -1,5 +1,3 @@
-@import "./../../../globals.css";
-
 .OpenedState {
 	position: absolute;
 	bottom: 0%;
@@ -86,10 +84,10 @@
 	animation-play-state: paused;
 }
 
-#cpp_projects:hover #cpp-plus-1 {
+#icon-cpp_projects:hover #cpp-plus-1 {
 	animation-play-state: running;
 }
-#cpp_projects:hover #cpp-plus-2 {
+#icon-cpp_projects:hover #cpp-plus-2 {
 	animation-play-state: running;
 }
 
@@ -141,11 +139,11 @@ g {
 	transition: opacity 200ms;	
 }
 
-#cub3d:hover .scene .cube {
+#icon-cub3d:hover .scene .cube {
 	animation-play-state: running;
 }
 
-#cub3d {
+#icon-cub3d {
 	position: relative;
 	display: grid;
 	grid-template-columns: 1fr;
@@ -225,13 +223,13 @@ g {
 	animation-play-state: paused;
 }
 
-#pong:hover #pong-player-1 {
+#icon-pong:hover #pong-player-1 {
 	animation-play-state: running;
 }
-#pong:hover #pong-player-2 {
+#icon-pong:hover #pong-player-2 {
 	animation-play-state: running;
 }
-#pong:hover #pong-ball {
+#icon-pong:hover #pong-ball {
 	animation-play-state: running;
 }
 
@@ -288,10 +286,10 @@ g {
 	animation-play-state: paused;
 }
 
-#server_projects:hover #ServerDot1 {
+#icon-server_projects:hover #ServerDot1 {
 	animation-play-state: running;
 }
-#server_projects:hover #ServerDot2 {
+#icon-server_projects:hover #ServerDot2 {
 	animation-play-state: running;
 }
 
@@ -332,10 +330,10 @@ g {
 	animation-play-state: paused;
 }
 
-#about-me:hover #about-me-info {
+#icon-about-me:hover #about-me-info {
 	animation-play-state: running;
 }
-#about-me:hover #about-me-i {
+#icon-about-me:hover #about-me-i {
 	animation-play-state: running;
 }
 
@@ -372,7 +370,7 @@ g {
 	transform-origin: center;
 }
 
-#settings:hover #settings-cog {
+#icon-settings:hover #settings-cog {
 	animation-play-state: running;
 }
 

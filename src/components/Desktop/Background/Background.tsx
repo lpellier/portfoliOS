@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import './Background.css';
+import 'styles/Background.css';
 
 const Background: FunctionComponent = () => {
 	const clickEffect = (e: any) => {

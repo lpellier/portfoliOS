@@ -1,5 +1,5 @@
 import React, {FunctionComponent, lazy, ReactElement, Suspense, useCallback, useEffect, useState} from 'react';
-import './Window.css';
+import 'styles/Window.css';
 import { RED } from '../../../globals';
 import { IWindow } from '../../../types';
 

@@ -38,6 +38,12 @@ export interface IAppBar {
 	spawnWindow: Function;
 }
 
+export interface IGridTile {
+	content:		number;
+	win_width:		number | undefined;
+	win_height:		number | undefined;
+}
+
 // ? Type of the actual window component
 export interface IWindow {
 	name: string,

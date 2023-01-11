@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import "./Settings.css"
+import "styles/Settings.css"
 
 export default function Settings(props: any) {
 	useEffect(() => {

@@ -1,16 +1,20 @@
 import Background from						'./Background/Background'
 import AppBar from							'./AppBar/AppBar'
-import										'./Desktop.css';
+import										'styles/Desktop.css';
 import React, {useState, useRef, FunctionComponent, lazy, Suspense} from	'react';
 import { IWin } from '../../types';
 import { default_win_height, default_win_width } from '../../globals';
 
 // ? Bugs
 	// TODO Shouldn't register key presses and mouse cliks for apps not in focus
+	// TODO no immediate rerender after window class change
+	// TODO in cub3d menu, separator sticking out
 
 // ! Important
 	// TODO Mobile webapp
 	// TODO Code Cub3D in javascript
+		// ? Map editor
+			// TODO options bar (click on an option to be able to place it on tiles)
 	// TODO Presentation for each of my projects
 	// TODO Interesting background
 	// TODO Settings -> modify appearance of website
@@ -52,7 +56,7 @@ const Desktop: FunctionComponent = () => {
 			return ;
 
 		// if (!(event.clientY / rect.bottom >= 0.9 && event.clientX / rect.right >= 0.9))
-		if (event.clientY - rect.top <= 35) // ? Drag is only active when click the window header
+		if (event.clientY - rect.top <= 55) // ? Drag is only active when click the window header
 			setDraggedWindow(win_name);
 	}
 

@@ -1,0 +1,183 @@
+
+#map-editor-flex {
+	display: flex;	
+}
+
+#map-editor-scrollbar {
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+#map-editor-grid {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	/* width: 80%; */
+	padding: 25px;
+	/* left: 50%; */
+	/* margin-top: 50px;
+	margin-bottom: 50px;  */
+	/* needs to be size of sprite-bar + comfortable margin */
+	gap: 1px;
+}
+
+.map-editor-row {
+	display: flex;
+	flex-basis: 80%;
+	flex-direction: row;
+	height: 20px;
+	width: 100%;
+	gap: 1px;
+}
+
+.grid-tile {
+	width: 100%;
+	min-width: 15px;
+	min-height: 15px;
+	background-color: white;
+}
+
+.tile-wall {
+	background-color: #00000095;
+}
+
+#button-toggle-menu {
+	position: absolute;
+	padding: 0;
+	right: 0;
+
+	border: 2px solid var(--red);
+	border-radius: 5000px;
+	background-color: var(--black);
+	width: clamp(10px, 5%, 25px);
+	height: 50%;
+	top: 50%;
+	transform: translate(50%, -50%);
+}
+
+#button-toggle-arrow-1 {
+	transform: translateX(-30%);
+	transition: transform 100ms;
+}
+#button-toggle-menu:hover #button-toggle-arrow-1 {
+	transform: translateX(-37%);
+}
+#button-toggle-arrow-2 {
+	transform: translateX(-30%);
+	transition: transform 100ms;
+}
+#button-toggle-menu:hover #button-toggle-arrow-2 {
+	transform: translateX(-23%);
+}
+
+#map-editor-togglable-menu {
+	position: absolute;
+	bottom: 1%;
+
+	border: 2px solid var(--red);
+	border-radius: 15px;
+	transform: translateX(-13%);
+	width: 100%;
+	height: clamp(100px, 20%, 150px);
+	background-color: var(--black);
+}
+
+#toggle-menu-flex {
+	position: absolute;
+	display: flex;
+	height: 100%;
+	flex-direction: row;
+	margin-left: 15%;
+}
+
+#menu-size-flex {
+	display: flex;
+	height: 100%;
+	width: 40%;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.menu-size-item {
+	display: flex;
+	height: 50%;
+	width: clamp(100px, 25%, 250px);
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+}
+
+.menu-size-button {
+	padding: 0;
+	height: 25px;
+	width: 25px;
+
+	border: none;
+	border-radius: 50%;
+	background: none;
+	transition: transform 150ms;
+}
+
+.menu-size-button:hover {
+	transform: scale(1.25);
+}
+
+h3 {
+	font: 20px "Outfit";
+	color: white;
+	margin: 0;
+}
+
+.menu-size-text {
+	padding-right: 15px;
+}
+
+.menu-size-icon {
+	width: 25px;
+	height: 25px;
+	background: none;
+}
+
+.menu-separator {
+	height: 100%;
+	width: 2px;
+	margin-left: 10px;
+	margin-right: 10px;
+	background-color: var(--red);
+}
+
+#menu-items-flex {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+
+	gap: 20px;
+	align-content: center;
+}
+
+.menu-item-flex {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 3px;
+}
+
+.menu-item {
+	width: clamp(20px, 100%, 60px);
+	min-height: 10px;
+}
+
+.item-empty { background-color: white; }
+.item-wall { background-color: var(--blue); }
+.item-spawn { background-color: var(--green); }
+.item-enemy { background-color: var(--red); }
+.item-pickup { background-color: var(--yellow); }
+

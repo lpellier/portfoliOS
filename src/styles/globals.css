@@ -3,6 +3,9 @@
 :root {
 	--background-color: #1E1F24;
 	--red: #F4615A;
+	--yellow: #DDB955;
+	--green: #439775;
+	--blue: #3D5467;
 	--black: #282935;
 	--text-color: #FFFFFF;
 
@@ -16,8 +19,8 @@
 	--size-30: clamp(18px, 3.6vw, 36px);
 	--size-20: clamp(12px, 2.4vw, 24px);
 
-	--default-win-width: 500px;
-	--default-win-height: 300px;
+	--default-win-width: 600px;
+	--default-win-height: 400px;
 }
 
 .Canvas {

@@ -40,8 +40,6 @@ export interface IAppBar {
 
 export interface IGridTile {
 	content:		number;
-	win_width:		number | undefined;
-	win_height:		number | undefined;
 }
 
 // ? Type of the actual window component

@@ -23,6 +23,9 @@ import { default_win_height, default_win_width } from '../../globals';
 		// ? Ability to change font-size, icon-size ?
 
 // ? Eventually
+	// ? Probably need to pass width/height of window as props to content
+		// ? to create a useEffect rerendering whenever these values change
+	// ? Click effect on button (to give feedback)
 	// ? Redo login animation
 	// ? When a window is dragged to a side, snap it to that side
 	// ? Some sort of tutorial message / tool tips ?
@@ -32,6 +35,9 @@ import { default_win_height, default_win_width } from '../../globals';
 	// ? Window resizable from all directions
 
 //   Maybe
+	//	 Should I redesign pong menu in react, only starting a p5 sketch when a match is started
+		// cons -> lose the retro style
+		// pros -> stay coherent to style website, looks beautiful af, needs much less code for the app
 	//   Backend for pong multiplayer
 
 const Window = lazy(() => import("./Window/Window"))

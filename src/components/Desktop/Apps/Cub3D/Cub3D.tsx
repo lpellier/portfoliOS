@@ -1,40 +1,38 @@
-import { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent, useState } from "react";
 import "styles/Cub3D.css"
-import { ISketch, IGridTile } from "../../../../types";
-import { defineSketch } from "./Sketch";
+import { ISketch } from "../../../../types";
+import { defineSketch } from "./Sketch/Sketch";
 import p5 from "p5";
-import { default_win_width, default_win_height, RED } from "../../../../globals";
-import { Scrollbar } from "react-scrollbars-custom";
+import { default_win_width, default_win_height } from "../../../../consts";
 import MapEditor from "./MapEditor";
 
-// eslint-disable-next-line
 let p: p5 | null = null;
 
 const Cub3D: FunctionComponent<ISketch> = () => {
 	const [selected_app, setApp] = useState<number>(0);
 
 	const goToMapEditor = () => {
+		eraseSketch();
 		animateMenuShrink();
 		setTimeout(() => setApp(-1), 250);
 	}
 	const goToMenu = () => {
+		eraseSketch();
 		setApp(0);
 	}
 	const goToSketch = () => {
-		if (p === null) {
-			animateMenuShrink();
-			setTimeout(() => {
-				setApp(1);
-				let cub3dSketch = defineSketch(default_win_width, default_win_height)
-				p = new p5(cub3dSketch)
-			}, 200)
-		}
+		eraseSketch();
+		animateMenuShrink();
+		setTimeout(() => {
+			setApp(1);
+			let cub3dSketch = defineSketch(default_win_width, default_win_height)
+			p = new p5(cub3dSketch)
+		}, 200)
 	}
-	const removeSketch = () => {
+	const eraseSketch = () => {
 		if (p !== null) {
 			p.remove();
 			p = null;
-			goToMenu();
 		}
 	}
 
@@ -103,7 +101,7 @@ const Cub3D: FunctionComponent<ISketch> = () => {
 			{ selected_app === 1 &&
 				<div className="Canvas" id={"canvas-cub3d-parent"}>
 					<button className="cub3d-button-return"
-						onClick={removeSketch}>
+						onClick={goToMenu}>
 						<svg xmlns="http://www.w3.org/2000/svg" className="icon-arrow-back" width="50" height="50" 
 							viewBox="0 0 24 24" strokeWidth="1.5" stroke="#F4615A" 
 							strokeLinecap="round" strokeLinejoin="round">

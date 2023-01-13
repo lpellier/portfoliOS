@@ -14,12 +14,7 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	/* width: 80%; */
 	padding: 25px;
-	/* left: 50%; */
-	/* margin-top: 50px;
-	margin-bottom: 50px;  */
-	/* needs to be size of sprite-bar + comfortable margin */
 	gap: 1px;
 }
 
@@ -33,10 +28,13 @@
 }
 
 .grid-tile {
-	width: 100%;
-	min-width: 15px;
-	min-height: 15px;
+	width: 20px;
+	height: 20px;
 	background-color: white;
+}
+
+.grid-tile:hover {
+	cursor: pointer;
 }
 
 .tile-wall {
@@ -51,25 +49,24 @@
 	border: 2px solid var(--red);
 	border-radius: 5000px;
 	background-color: var(--black);
-	width: clamp(10px, 5%, 25px);
+	z-index: 1;
+	width: 25px;
 	height: 50%;
 	top: 50%;
 	transform: translate(50%, -50%);
 }
 
 #button-toggle-arrow-1 {
-	transform: translateX(-30%);
 	transition: transform 100ms;
 }
 #button-toggle-menu:hover #button-toggle-arrow-1 {
-	transform: translateX(-37%);
+	transform: translateX(-15%);
 }
 #button-toggle-arrow-2 {
-	transform: translateX(-30%);
 	transition: transform 100ms;
 }
 #button-toggle-menu:hover #button-toggle-arrow-2 {
-	transform: translateX(-23%);
+	transform: translateX(15%);
 }
 
 #map-editor-togglable-menu {
@@ -130,6 +127,7 @@ h3 {
 	font: 20px "Outfit";
 	color: white;
 	margin: 0;
+	transition: color 150ms;
 }
 
 .menu-size-text {
@@ -168,6 +166,13 @@ h3 {
 	flex-direction: column;
 	align-items: center;
 	gap: 3px;
+
+	transition: transform 150ms;
+}
+
+.menu-item-flex:hover {
+	transform: scale(1.25);
+	cursor: pointer;
 }
 
 .menu-item {
@@ -181,3 +186,25 @@ h3 {
 .item-enemy { background-color: var(--red); }
 .item-pickup { background-color: var(--yellow); }
 
+.button-save {
+	position: absolute;
+	background-color: var(--background-color);
+	border: none;
+	border-radius: 5px;
+	width: 80px;
+	height: 50px;
+	right: 2%;
+	top: calc(5% + 35px);
+}
+.button-save h3 {
+	color: white;
+	font: 25px "Outfit";
+	transition: color 150ms;
+}
+
+.button-save:hover {
+	transform: scale(1.10);
+}
+.button-save:hover h3 {
+	color: var(--red);
+}

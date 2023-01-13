@@ -3,12 +3,13 @@ import AppBar from							'./AppBar/AppBar'
 import										'styles/Desktop.css';
 import React, {useState, useRef, FunctionComponent, lazy, Suspense} from	'react';
 import { IWin } from '../../types';
-import { default_win_height, default_win_width } from '../../globals';
+import { default_win_height, default_win_width } from '../../consts';
 
 // ? Bugs
 	// TODO Shouldn't register key presses and mouse cliks for apps not in focus
 	// TODO no immediate rerender after window class change
 	// TODO in cub3d menu, separator sticking out
+	// TODO in cub3d map editor, resizing window should cause the scrollbar to update
 
 // ! Important
 	// TODO Mobile webapp

@@ -143,9 +143,9 @@ export default function Portfolio() {
 
 	useEffect(() => {
 		// ? listen for any click our key press to advance to login page
-		// ! document.addEventListener('keypress', advanceToLogin) 
-		// ! document.addEventListener('click', advanceToLogin) 
-		// ! time_interval = setInterval(() => setTime(new Date()), 1000);
+		document.addEventListener('keypress', advanceToLogin) 
+		document.addEventListener('click', advanceToLogin) 
+		time_interval = setInterval(() => setTime(new Date()), 1000);
 
 		window.onkeydown=function(e) {
 			if(e.key === " " || e.key === "PageDown" || e.key === "PageUp"){

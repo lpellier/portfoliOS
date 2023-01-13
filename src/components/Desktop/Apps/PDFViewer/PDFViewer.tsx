@@ -3,7 +3,7 @@ import { Document, Page } from 'react-pdf/dist/esm/entry.webpack5';
 import { Scrollbar } from "react-scrollbars-custom";
 import "styles/PDFViewer.css"
 import { IPDFViewer } from "../../../../types";
-import { default_win_width, default_win_height } from "../../../../globals";
+import { default_win_width, default_win_height } from "../../../../consts";
 
 const PDFViewer: FunctionComponent<IPDFViewer> = ({name, pdf_path}) => {
 	const [numPages, setNumPages] = useState(1);

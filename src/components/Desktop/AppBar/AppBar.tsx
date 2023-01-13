@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState } from 'react';
 import 'styles/AppBar.css';
-import { RED } from '../../../globals';
+import { RED } from '../../../consts';
 import { IAppBar } from '../../../types';
 
 const AppBar: FunctionComponent<IAppBar> = ({opened_apps, spawnWindow}) => {

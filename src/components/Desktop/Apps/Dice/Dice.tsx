@@ -3,7 +3,7 @@ import { FunctionComponent, useEffect } from "react";
 import { defineSketch } from "./Sketch";
 import "styles/Dice.css"
 import { ISketch } from "../../../../types";
-import { default_win_height, default_win_width } from "../../../../globals";
+import { default_win_height, default_win_width } from "../../../../consts";
 
 let p: any = null;
 

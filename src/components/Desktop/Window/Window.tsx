@@ -1,6 +1,6 @@
 import React, {FunctionComponent, lazy, ReactElement, Suspense, useCallback, useEffect, useState} from 'react';
 import 'styles/Window.css';
-import { RED } from '../../../globals';
+import { RED } from '../../../consts';
 import { IWindow } from '../../../types';
 
 const filesList: string[] = [

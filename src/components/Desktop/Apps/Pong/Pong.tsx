@@ -5,7 +5,7 @@ import "styles/Pong.css"
 import "styles/buttons.css"
 import "styles/inputs.css"
 import { ISketch } from "../../../../types";
-import { default_win_height, default_win_width } from "../../../../globals";
+import { default_win_height, default_win_width } from "../../../../consts";
 
 class AudioFiles {
 	PADDLE_HIT_1: any;

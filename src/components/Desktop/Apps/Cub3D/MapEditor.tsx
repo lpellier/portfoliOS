@@ -1,8 +1,9 @@
 import { FunctionComponent, useEffect, useRef, useState } from "react";
 import "styles/MapEditor.css"
-import { default_win_width, default_win_height, RED } from "../../../../globals";
+import { default_win_width, default_win_height, RED } from "../../../../consts";
 import { Scrollbar } from "react-scrollbars-custom";
 import { IGridTile, IPos } from "../../../../types";
+import { useCookies } from "react-cookie";
 
 const GridTile: FunctionComponent<IGridTile> = ({content}) => {
 	let typeClass: string = "";
@@ -23,6 +24,8 @@ const GridTile: FunctionComponent<IGridTile> = ({content}) => {
 }
 
 const MapEditor: FunctionComponent = () => {
+	const [cookies, setCookie] = useCookies(['cub3d-map']);
+
 	const [menu_toggled, setToggledMenu] = useState<boolean>(false);
 	const [grid, setGrid] = useState<number[][]>([
 		[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -41,10 +44,16 @@ const MapEditor: FunctionComponent = () => {
 
 	const [shift_down, setShift] = useState<boolean>(false);
 	const [scrollbar_size, setScrollBar] = useState<IPos>({x: 0, y: 0})
+	const [tile_selected, setTile] = useState<number>(0)
 
 	useEffect(() => {
 		document.addEventListener('keydown', keyDownHandler)
 		document.addEventListener('keyup', keyUpHandler)
+
+		let saved_map = localStorage.getItem('cub3d-map');
+		if (saved_map)
+			setGrid(JSON.parse(saved_map))
+
 		updateScrollBar();
 		return (() => {
 			document.removeEventListener('keydown', keyDownHandler);
@@ -166,7 +175,7 @@ const MapEditor: FunctionComponent = () => {
 		})
 		div = document.getElementById("icon-toggle-menu");
 		div?.animate([{ 
-			transform: "scaleX(-1) translateX(60%)"
+			transform: "scaleX(-1)"
 		}
 		], {
 			duration: 300,
@@ -194,13 +203,33 @@ const MapEditor: FunctionComponent = () => {
 		})
 	}
 
+	const calculateGridIndexes = (e: any) => {
+		let rect = document.getElementById("map-editor-grid")?.getBoundingClientRect();
+		if (!rect)
+			return ;
+		let x = Math.floor((e.clientX - rect.left - 25) / 21); // ? 25px padding
+		let y = Math.floor((e.clientY - rect.top - 25) / 21);
+		
+		if ((grid.length > 0 && x >= 0 && x < grid[0].length) && (y >= 0 && y < grid.length)) {
+			setGrid((current) => {
+				let newGrid = current;
+				newGrid[y][x] = tile_selected;
+				return newGrid;
+			})
+		}
+	}
+
+	const saveMap = () => {
+		localStorage.setItem('cub3d-map', JSON.stringify(grid));
+	}
+
 	let row_key = 0;
 	let tile_key = 0;
 
 	return (
 		<div>
 			<Scrollbar id='map-editor-scrollbar' style={{ width: scrollbar_size.x, height: scrollbar_size.y}} className='Scrollbar'>
-				<div id="map-editor-grid">
+				<div id="map-editor-grid" onClick={calculateGridIndexes}>
 					{
 						grid.map((row) => {
 							row_key++;
@@ -218,11 +247,11 @@ const MapEditor: FunctionComponent = () => {
 			</Scrollbar>
 			<div id="map-editor-togglable-menu">
 				<button id="button-toggle-menu" onClick={animateTogglableMenu}>
-					<svg xmlns="http://www.w3.org/2000/svg" id="icon-toggle-menu" width="35" height="100%" 
-						viewBox="0 0 50 35" strokeWidth="4" stroke="white" fill="none" 
+					<svg xmlns="http://www.w3.org/2000/svg" id="icon-toggle-menu" width="100%" height="100%" 
+						viewBox="0 0 25 50" strokeWidth="4" stroke="white" fill="none" 
 						strokeLinecap="round" strokeLinejoin="round">
-						<path id="button-toggle-arrow-1" d="M 30,5 20,17.5 30,30"/>
-						<path id="button-toggle-arrow-2" d="M 30,5 20,17.5 30,30"/>
+						<path id="button-toggle-arrow-1" d="M 17,15 10,25 17,35"/>
+						<path id="button-toggle-arrow-2" d="M 17,15 10,25 17,35"/>
 					</svg>
 				</button>
 				<div id="toggle-menu-flex">
@@ -266,29 +295,30 @@ const MapEditor: FunctionComponent = () => {
 					</div>
 					<div className='menu-separator'/>
 					<div id='menu-items-flex'>
-						<div className="menu-item-flex">
+						<div className="menu-item-flex" onClick={() => setTile(0)}>
 							<div className="menu-item item-empty"/>
-							<h3>Empty</h3>
+							<h3 style={{color: (tile_selected === 0 ? "var(--red)" : "white")}}>Empty</h3>
 						</div>
-						<div className="menu-item-flex">
+						<div className="menu-item-flex" onClick={() => setTile(1)}>
 							<div className="menu-item item-wall"/>
-							<h3>Wall</h3>
+							<h3 style={{color: (tile_selected === 1 ? "var(--red)" : "white")}}>Wall</h3>
 						</div>
-						<div className="menu-item-flex">
+						<div className="menu-item-flex" onClick={() => setTile(2)}>
 							<div className="menu-item item-spawn"/>
-							<h3>Spawn</h3>
+							<h3 style={{color: (tile_selected === 2 ? "var(--red)" : "white")}}>Spawn</h3>
 						</div>
-						<div className="menu-item-flex">
+						<div className="menu-item-flex" onClick={() => setTile(3)}>
 							<div className="menu-item item-enemy"/>
-							<h3>Enemy</h3>
+							<h3 style={{color: (tile_selected === 3 ? "var(--red)" : "white")}}>Enemy</h3>
 						</div>
-						<div className="menu-item-flex">
+						<div className="menu-item-flex" onClick={() => setTile(4)}>
 							<div className="menu-item item-pickup"/>
-							<h3>Pickup</h3>
+							<h3 style={{color: (tile_selected === 4 ? "var(--red)" : "white")}}>Pickup</h3>
 						</div>
 					</div>
 				</div>
 			</div>
+			<button className="button-save" onClick={saveMap}><h3>SAVE</h3></button>
 		</div>
 	)
 }

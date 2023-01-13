@@ -4,7 +4,7 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from "remark-gfm";
 import { Scrollbar } from "react-scrollbars-custom";
 import { IFile } from "../../../../types";
-import { default_win_height, default_win_width } from "../../../../globals";
+import { default_win_height, default_win_width } from "../../../../consts";
 
 const File: FunctionComponent<IFile> = ({name, content_path, spawnWindow}) => {
 	const [markdown, setMarkdown] = useState('');

@@ -28,3 +28,9 @@
 	height: 100%;
 	overflow: hidden;
 }
+
+button {
+	cursor: pointer;
+	transition: transform 150ms;
+}
+

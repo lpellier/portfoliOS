@@ -34,6 +34,24 @@ export class Ray {
 		this.rayCast(grid);
 	}
 
+	reset(pos: Vector, dir: Vector) {
+		this.pos = pos;
+		this.dir = dir;
+		
+		this.unitStepSize = new Vector(
+			Math.sqrt(1 + (this.dir.y / this.dir.x) * (this.dir.y / this.dir.x)),
+			Math.sqrt(1 + (this.dir.x / this.dir.y) * (this.dir.x / this.dir.y)));
+	
+		this.mapCheck = new Vector(Math.floor(this.pos.x), Math.floor(this.pos.y));
+		this.rayLength1D = new Vector(0, 0);
+		
+		this.step = new Vector(0, 0);
+		this.intersection = new Vector(0, 0);
+
+		this.dist = 0;
+		this.side = false;
+	}
+
 	rayCast(grid: number[][]) {
 		this.unitStepSize = new Vector(
 			Math.sqrt(1 + (this.dir.y / this.dir.x) * (this.dir.y / this.dir.x)),
@@ -83,7 +101,7 @@ export class Ray {
 
 			if (this.mapCheck.x >= 0 && this.mapCheck.x < grid[0].length &&
 				this.mapCheck.y >= 0 && this.mapCheck.y < grid.length) {	
-				if (grid[this.mapCheck.y][this.mapCheck.x] === 1) {
+				if (grid[this.mapCheck.y][this.mapCheck.x] > 0) {
 					wallFound = true;
 				}
 			}

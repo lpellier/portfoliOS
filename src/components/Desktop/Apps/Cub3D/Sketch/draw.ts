@@ -1,6 +1,6 @@
 import p5 from "p5";
 import { BLUE, RED, YELLOW } from "../../../../../consts";
-import { RAY_COUNT } from "./constants";
+import { RAY_COUNT, TEX_HEIGHT, TEX_WIDTH } from "./constants";
 import { Player } from "./Player";
 
 export function LightenDarkenColor(color: string, amount: number) {
@@ -30,39 +30,10 @@ export function LightenDarkenColor(color: string, amount: number) {
     return (usePound?"#":"") + (g | (b << 8) | (r << 16)).toString(16);
 }
 
-export function drawSketch(p: p5, grid: number[][], player: Player, w: number, h: number) {
-	let rayWidth = w / RAY_COUNT;
-
-	p.push();
-	p.noStroke();
-	for (let i = 0; i < player.rays.length; i++) {
-		let ray = player.rays[i];
-		let d: number;
-		if (ray.side === true) {
-			p.fill(LightenDarkenColor(BLUE, -20));
-			d = ray.rayLength1D.y - ray.unitStepSize.y;	
-		} else {
-			p.fill(BLUE)
-			d = ray.rayLength1D.x - ray.unitStepSize.x;
-		}
-
-		d = Math.floor(h / d);
-		p.rect(i * rayWidth, h / 2 - d / 2, rayWidth, d)
-	}
-}
-
-export function drawBorder(p: p5, w: number, h: number) {
-	p.stroke(RED);
-	p.strokeWeight(3)
-	p.fill('rgba(0,0,0,0)')
-	p.rect(3, 3, w - 6, h - 6);
-	p.pop();
-}
-
-export const drawFPS = (p: p5, player: Player, frameRate: number, frameTime: number, width: number) => {
+export const drawFPS = (p: p5, frameRate: number) => {
 	p.push();
 	p.fill(YELLOW)
 	p.textSize(20)
-	p.text(frameRate.toString().substring(0, 4), width - 50, 25);
+	p.text(frameRate.toString().substring(0, 4), p.width - 50, 25);
 	p.pop();
 }

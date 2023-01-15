@@ -11,3 +11,7 @@ export function perpendicularClockWise(v: Vector) {
 export function perpendicularCounterClockWise(v: Vector) {
 	return new Vector(-v.y, v.x);
 }
+
+export function degreesToRadians(degrees: number) {
+	return degrees * Math.PI / 180;
+}

@@ -15,17 +15,17 @@ export class Player {
 
 	rays: Ray[];
 
-	constructor(pos: Vector, p: p5, grid: number[][]) {
+	constructor(pos: Vector, grid: number[][]) {
 		this.pos = new Vector(pos.x + 0.5, pos.y + 0.5);
 		this.dir = new Vector(0, -1);
 
 		this.rays = [];
-		this.walk_speed = 10;
-		this.rotate_speed = 5;
-		this.mouse_sensitivity = 5;
+		this.walk_speed = 0;
+		this.rotate_speed = 0;
+		this.mouse_sensitivity = 0;
 
 		for (let i = 0; i < RAY_COUNT; i++) {
-			this.rays.push(new Ray(this.pos, p5.Vector.rotate(this.dir, p.radians((-FOV / 2) + i * (FOV / RAY_COUNT))), grid))
+			this.rays.push(new Ray(this.pos, p5.Vector.rotate(this.dir, degreesToRadians((-FOV / 2) + i * (FOV / RAY_COUNT))), grid))
 		}
 	}
 

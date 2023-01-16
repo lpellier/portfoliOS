@@ -1,8 +1,9 @@
-import p5 from "p5";
+import p5, { Vector } from "p5";
 import "styles/Cub3D.css"
 import { BLACK } from "../../../../../consts";
-import { RAY_COUNT, TEX_HEIGHT, TEX_WIDTH } from "./constants";
+import { FOV, MOUSE_SENSITIVITY, RAYCASTER_HEIGHT, RAYCASTER_WIDTH, RAY_COUNT, ROTATE_SPEED, TEX_HEIGHT, TEX_WIDTH, WALK_SPEED } from "./constants";
 import { drawFPS } from "./draw";
+import { degreesToRadians } from "./helper";
 import { Map } from "./Map";
 import { Player } from "./Player";
 
@@ -10,13 +11,7 @@ export let PREVIEW_BLOCK_WIDTH = 10;
 export let PREVIEW_BLOCK_HEIGHT = 10;
 export let PLAYER_RADIUS = PREVIEW_BLOCK_WIDTH;
 
-const WALK_SPEED = 0.0015;
-const ROTATE_SPEED = 0.075;
 
-const RAYCASTER_WIDTH = 300;
-const RAYCASTER_HEIGHT = 182;
-
-const MOUSE_SENSITIVITY = 0.0025;
 
 // ? On map editor, select a wall tile and preview it in 3d with textures on walls
 // ? Player should have a width on map for collisions with wall
@@ -25,28 +20,32 @@ const MOUSE_SENSITIVITY = 0.0025;
 export const defineSketch = (initialWidth: number, initialHeight: number) : any => {
 	return (p: p5) => {
 		// ? Global variables
-		let canvas: any;
-		let raycaster: any;
-		let parent: any;
+		let canvas:		any;
+		let raycaster:	any;
+		let parent:		any;
 
-		let font: any;
+		let font:		any;
 
-		let oldTime: number;
-		let time: number;
+		let oldTime:	number;
+		let time:		number;
 
 		let frameTime: number;
 		let frameRate: number;
 
-		let sprites: p5.Image[];
-		let textures: p5.Image[];
-		let spritedata : any;
-		let spritesheet : p5.Image;
-		let texturedata : any;
-		let texturesheet : p5.Image;
+		let sprites:	p5.Image[];
+		let textures:	p5.Image[];
+		
+		let floor_texture:		p5.Image; // ? wood
+		let ceiling_texture:	p5.Image; // ? stone
+
+		let spritedata :	any;
+		let texturedata :	any;
+		let spritesheet :	p5.Image;
+		let texturesheet :	p5.Image;
 		
 		// ? Game variables
-		let map: Map;
-		let player: Player;
+		let map:	Map;
+		let player:	Player;
 
 		p.preload = () => {
 			font = p.loadFont("/assets/Outfit-Regular.ttf");
@@ -69,27 +68,21 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 			// ? if window is quit, delete p5 sketch
 			if (!document.getElementById("canvas-cub3d-parent")) {
 				p.remove();
-				return ;
 			}
 			// ? resize canvas when window is resized
 			if (parent.clientWidth !== canvas.width || parent.clientHeight !== canvas.height) {
 				updateVariables(parent.clientWidth, parent.clientHeight);
 			}
 			
-			if (p.frameCount % 15 === 0) {
-				frameRate = (1 / frameTime);
-				player.walk_speed = WALK_SPEED * frameRate;
-				player.rotate_speed = ROTATE_SPEED * frameRate;
-				player.mouse_sensitivity = MOUSE_SENSITIVITY * frameRate;
-			}
 			player.move(p, map.grid);
 
 			raycaster.loadPixels();
-			drawSketch(); 
+			clearPixels();
+			floorAndCeilCasting();
+			rayCasting(); 
 			raycaster.updatePixels();
-
-			p.image(raycaster, 0, 0, canvas.width, canvas.height, 0, 0)
 			
+			p.image(raycaster, 0, 0, canvas.width, canvas.height, 0, 0)
 
 			map.draw(p);
 			player.draw(p);
@@ -101,11 +94,55 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 				player.rotateDir(map.grid, p.movedX * player.mouse_sensitivity);	
 		}
 
-		const drawSketch = () => {
-			let texture: p5.Image;
-			let rayWidth = Math.floor(raycaster.width / RAY_COUNT);
+		const floorAndCeilCasting = () => {
+			for (let y = 0; y < raycaster.height; y++) {
+				let left_ray_dir = p5.Vector.rotate(player.dir, degreesToRadians(-FOV / 2));
+				let right_ray_dir = p5.Vector.rotate(player.dir, degreesToRadians(FOV / 2));
 
-			clearPixels();
+				let posY = y - raycaster.height / 2;
+
+				let posZ = 0.5 * raycaster.height;
+
+				let row_distance = posZ / posY;
+
+				let floor_step = new Vector(
+					row_distance * (right_ray_dir.x - left_ray_dir.x) / raycaster.width,
+					row_distance * (right_ray_dir.y - left_ray_dir.y) / raycaster.width
+				);
+
+				let floor = new Vector(
+					player.pos.x + row_distance * left_ray_dir.x,
+					player.pos.y + row_distance * left_ray_dir.y
+				);
+
+				for (let x = 0; x < raycaster.width; x++) {
+					let cell = new Vector(
+						Math.floor(floor.x),
+						Math.floor(floor.y)
+					);
+
+					let t = new Vector(
+						Math.floor(TEX_WIDTH * (floor.x - cell.x)) & (TEX_WIDTH - 1),
+						Math.floor(TEX_HEIGHT * (floor.y - cell.y)) & (TEX_HEIGHT - 1)
+					);
+
+					floor.add(floor_step);
+
+					let color: {r: number, g: number, b: number, a: number};
+
+					color = getPixelColor(floor_texture, {x: t.x, y: t.y});
+					setPixelInRaycaster({x: x, y: y}, color);
+
+					color = getPixelColor(ceiling_texture, {x: t.x, y: t.y});
+					setPixelInRaycaster({x: x, y: raycaster.height - y - 1}, color);
+				}
+			}
+		}
+
+		const rayCasting = () => {
+			let texture: p5.Image;
+			let rayWidth = raycaster.width / RAY_COUNT;
+
 			for (let i = 0; i < player.rays.length; i += 1) {
 				let ray = player.rays[i];
 				let perpWallDist: number;
@@ -150,7 +187,7 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 					let textureColor = getPixelColor(texture, {x: textureX, y: textureY});
 					for (let j = 0; j < rayWidth; j++) {
 						let x = Math.floor(i * rayWidth + j);
-						setPixel({x: x, y: y}, textureColor)
+						setPixelInRaycaster({x: x, y: y}, textureColor)
 					}
 				}
 			}
@@ -170,12 +207,12 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 		const clearPixels = () => {
 			for (let x = 0; x < raycaster.width; x++) {
 				for (let y = 0; y < raycaster.height; y++) {
-					setPixel({x: x, y: y}, {r: 0, g: 0, b: 0, a: 0});
+					setPixelInRaycaster({x: x, y: y}, {r: 0, g: 0, b: 0, a: 0});
 				}
 			}
 		}
 
-		const setPixel = (pos: {x: number, y: number}, color: {r: number, g: number, b: number, a: number}) => {
+		const setPixelInRaycaster = (pos: {x: number, y: number}, color: {r: number, g: number, b: number, a: number}) => {
 			const index = 4 * (pos.y * raycaster.width + pos.x);
 			raycaster.pixels[index]		= color.r;
 			raycaster.pixels[index + 1]	= color.g;
@@ -202,6 +239,7 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 			for (let i = 0; i < tex.length; i++) {
 				let pos = tex[i].position;
 				let img = texturesheet.get(pos.x, pos.y, pos.w, pos.h);
+				img.resize(TEX_WIDTH, TEX_HEIGHT);
 				textures.push(img);	
 				textures[i].loadPixels();
 			}
@@ -228,11 +266,11 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 			p.requestPointerLock();
 
 			p.textFont(font);
-			p.frameRate(60);
+			p.frameRate(30);
 
-			frameTime = 0;
-			frameRate = 0;
-
+			frameTime = 0.02;
+			frameRate = 30;
+			
 			map = new Map();
 
 			let saved_map = localStorage.getItem("cub3d-map");
@@ -243,8 +281,14 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 				// ? set default map
 			}
 
-			player = new Player(map.getPlayerPos(), p, map.grid);
+			player = new Player(map.getPlayerPos(), map.grid);
 
+			player.walk_speed = WALK_SPEED * frameTime;
+			player.rotate_speed = ROTATE_SPEED * frameTime;
+			player.mouse_sensitivity = MOUSE_SENSITIVITY * frameTime;
+
+			floor_texture = textures[69];
+			ceiling_texture = textures[23];
 			updateVariables(initialWidth, initialHeight);
 		}
 		
@@ -260,7 +304,8 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 		const calculateFrameTime = () => {
 			oldTime = time;
 			time = p.millis();
-			frameTime = (time- oldTime) / 1000;
+			frameTime = (time - oldTime) / 1000;
+			frameRate = (1 / frameTime);
 		}
 
 	}

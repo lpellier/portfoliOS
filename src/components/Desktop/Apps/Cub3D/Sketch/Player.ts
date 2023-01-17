@@ -8,6 +8,7 @@ import { PLAYER_RADIUS, PREVIEW_BLOCK_HEIGHT, PREVIEW_BLOCK_WIDTH } from "./Sket
 export class Player {
 	pos: Vector;
 	dir: Vector;
+	plane: Vector;
 
 	walk_speed: number;
 	rotate_speed: number;
@@ -18,6 +19,8 @@ export class Player {
 	constructor(pos: Vector, grid: number[][]) {
 		this.pos = new Vector(pos.x + 0.5, pos.y + 0.5);
 		this.dir = new Vector(0, -1);
+		this.plane = new Vector(0.66, 0);
+
 
 		this.rays = [];
 		this.walk_speed = 0;
@@ -78,6 +81,7 @@ export class Player {
 		else if (amount < -10)
 			amount = -10;
 		this.dir.rotate(degreesToRadians(amount));
+		this.plane.rotate(degreesToRadians(amount));
 		this.resetRays(grid);
 	}
 

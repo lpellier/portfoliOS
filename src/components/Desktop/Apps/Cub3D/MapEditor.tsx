@@ -24,8 +24,6 @@ const GridTile: FunctionComponent<IGridTile> = ({content}) => {
 }
 
 const MapEditor: FunctionComponent = () => {
-	const [cookies, setCookie] = useCookies(['cub3d-map']);
-
 	const [menu_toggled, setToggledMenu] = useState<boolean>(false);
 	const [grid, setGrid] = useState<number[][]>([
 		[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],

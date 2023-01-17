@@ -3,7 +3,7 @@ import "styles/Cub3D.css"
 import { BLACK } from "../../../../../consts";
 import { FOV, MOUSE_SENSITIVITY, RAYCASTER_HEIGHT, RAYCASTER_WIDTH, RAY_COUNT, ROTATE_SPEED, TEX_HEIGHT, TEX_WIDTH, WALK_SPEED } from "./constants";
 import { drawFPS } from "./draw";
-import { degreesToRadians } from "./helper";
+import { degreesToRadians, perpendicularClockWise, perpendicularCounterClockWise } from "./helper";
 import { Map } from "./Map";
 import { Player } from "./Player";
 
@@ -11,7 +11,11 @@ export let PREVIEW_BLOCK_WIDTH = 10;
 export let PREVIEW_BLOCK_HEIGHT = 10;
 export let PLAYER_RADIUS = PREVIEW_BLOCK_WIDTH;
 
-
+interface Sprite {
+	x:			number,
+	y:			number,
+	texture:	number
+}
 
 // ? On map editor, select a wall tile and preview it in 3d with textures on walls
 // ? Player should have a width on map for collisions with wall
@@ -47,6 +51,11 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 		let map:	Map;
 		let player:	Player;
 
+		let ZBuffer: number[];
+		let visibleSprites: Sprite[];
+		let spriteOrder: number[];
+		let spriteDistance: number[];
+
 		p.preload = () => {
 			font = p.loadFont("/assets/Outfit-Regular.ttf");
 			spritedata = p.loadJSON("/assets/sprites/wolf-objects.json");
@@ -80,7 +89,9 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 			clearPixels();
 			floorAndCeilCasting();
 			rayCasting(); 
+			spriteCasting();
 			raycaster.updatePixels();
+			
 			
 			p.image(raycaster, 0, 0, canvas.width, canvas.height, 0, 0)
 
@@ -94,10 +105,74 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 				player.rotateDir(map.grid, p.movedX * player.mouse_sensitivity);	
 		}
 
+		const spriteCasting = () => {
+			for (let i = 0; i < visibleSprites.length; i++) {
+				spriteOrder[i] = i;
+				spriteDistance[i] = ((player.pos.x - visibleSprites[i].x) * (player.pos.x - visibleSprites[i].x) + (player.pos.y - visibleSprites[i].y) * (player.pos.y - visibleSprites[i].y))
+			}
+			sortSprites();
+		
+			for (let i = 0; i < visibleSprites.length; i++) {
+				let sprite = new Vector(
+					visibleSprites[spriteOrder[i]].x - player.pos.x,
+					visibleSprites[spriteOrder[i]].y - player.pos.y
+					);
+				
+				let invDet = 1.0 / (player.plane.x * player.dir.y - player.dir.x * player.plane.y)
+
+				let transform = new Vector(
+					invDet * (player.dir.y * sprite.x - player.dir.x * sprite.y),
+					invDet * (-player.plane.y * sprite.x + player.plane.x * sprite.y)
+				)
+
+				let spriteScreenX = Math.floor((raycaster.width / 2) * (1 + transform.x / transform.y))
+				
+				let spriteHeight = Math.abs(Math.floor(raycaster.height / transform.y))
+				let drawStartY = -spriteHeight / 2 + raycaster.height / 2;
+				if (drawStartY < 0) drawStartY = 0;
+				let drawEndY = spriteHeight / 2 + raycaster.height / 2;
+				if (drawEndY >= raycaster.height) drawEndY = raycaster.height - 1;
+
+				let spriteWidth = Math.abs(Math.floor(raycaster.height / transform.y))
+				let drawStartX = -spriteWidth / 2 + spriteScreenX;
+				if (drawStartX < 0) drawStartX = 0;
+				let drawEndX = spriteWidth / 2 + spriteScreenX;
+				if (drawEndX >= raycaster.width) drawEndX = raycaster.width - 1;
+
+				for (let stripe = drawStartX; stripe < drawEndX; stripe++) {
+					let textureX = Math.floor(256 * (stripe - (-spriteWidth / 2 + spriteScreenX)) * TEX_WIDTH / spriteWidth) / 256;
+
+					if (transform.y > 0 && stripe > 0 && stripe < raycaster.width && transform.y < ZBuffer[stripe]) {
+						for (let y = drawStartY; y < drawEndY; y++) {
+							let d = y * 256 - raycaster.height * 128 + spriteHeight * 128;
+							let textureY = ((d * TEX_HEIGHT) / spriteHeight) / 256;
+							let color = getPixelColor(sprites[visibleSprites[spriteOrder[i]].texture], {x: textureX, y: textureY});
+							setPixelInRaycaster({x: stripe, y: y}, color);
+						}
+					}
+				}
+			}
+		}
+
+		const sortSprites = () => {
+			for (let i = 0; i < visibleSprites.length; i++) {
+				for (let j = i + 1; j < visibleSprites.length; j++) {
+					if (spriteDistance[i] < spriteDistance[j]) {
+						let tmpDist = spriteDistance[i];
+						let tmpOrder = spriteOrder[i];
+						spriteDistance[i] = spriteDistance[j];
+						spriteOrder[i] = spriteOrder[j];
+						spriteDistance[j] = tmpDist;
+						spriteOrder[j] = tmpOrder;
+					}
+				}
+			}
+		}
+
 		const floorAndCeilCasting = () => {
 			for (let y = 0; y < raycaster.height; y++) {
-				let left_ray_dir = p5.Vector.rotate(player.dir, degreesToRadians(-FOV / 2));
-				let right_ray_dir = p5.Vector.rotate(player.dir, degreesToRadians(FOV / 2));
+				let left_ray_dir = p5.Vector.sub(player.dir, player.plane);
+				let right_ray_dir = p5.Vector.add(player.dir, player.plane);
 
 				let posY = y - raycaster.height / 2;
 
@@ -190,6 +265,7 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 						setPixelInRaycaster({x: x, y: y}, textureColor)
 					}
 				}
+				ZBuffer[i] = perpWallDist;
 			}
 		}
 
@@ -273,12 +349,13 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 			
 			map = new Map();
 
-			let saved_map = localStorage.getItem("cub3d-map");
+			// let saved_map = localStorage.getItem("cub3d-map");
+			let saved_map = null;
 			if (saved_map) {
 				map.grid = JSON.parse(saved_map);
 			}
 			else {
-				// ? set default map
+				map.defaultMap();
 			}
 
 			player = new Player(map.getPlayerPos(), map.grid);
@@ -289,9 +366,40 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 
 			floor_texture = textures[69];
 			ceiling_texture = textures[23];
+
+			initializeSprites();
+
 			updateVariables(initialWidth, initialHeight);
 		}
-		
+
+		const initializeSprites = () => {
+			visibleSprites = [];
+
+			for (let y = 0; y < map.grid.length; y++) {
+				for (let x = 0; x < map.grid[y].length; x++) {
+					let check = map.grid[y][x];
+					if (check < 0) {
+						visibleSprites.push({x: x + 0.5, y: y + 0.5, texture: check * -1});
+					}
+				}
+			}
+
+			ZBuffer = [];
+			for (let i = 0; i < raycaster.width; i++) {
+				ZBuffer.push(0);
+			}
+
+			spriteOrder = [];
+			for (let i = 0; i < visibleSprites.length; i++) {
+				spriteOrder.push(0);
+			}
+			
+			spriteDistance = [];
+			for (let i = 0; i < visibleSprites.length; i++) {
+				spriteDistance.push(0);
+			}
+		}
+
 		const updateVariables = (width: number, height: number) => {
 			p.noLoop();
 			p.resizeCanvas(width, height);

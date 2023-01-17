@@ -100,8 +100,9 @@ export class Ray {
 			}
 
 			if (this.mapCheck.x >= 0 && this.mapCheck.x < grid[0].length &&
-				this.mapCheck.y >= 0 && this.mapCheck.y < grid.length) {	
-				if (grid[this.mapCheck.y][this.mapCheck.x] > 0 && grid[this.mapCheck.y][this.mapCheck.x] !== 2) {
+				this.mapCheck.y >= 0 && this.mapCheck.y < grid.length) {
+				let check = grid[this.mapCheck.y][this.mapCheck.x];
+				if (check > 0 && check !== 2) {
 					wallFound = true;
 				}
 			}

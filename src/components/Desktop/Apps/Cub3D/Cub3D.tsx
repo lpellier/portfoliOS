@@ -5,6 +5,7 @@ import { defineSketch } from "./Sketch/Sketch";
 import p5 from "p5";
 import { default_win_width, default_win_height } from "../../../../consts";
 import MapEditor from "./MapEditor";
+import Canvas from "./Canvas";
 
 let p: p5 | null = null;
 
@@ -25,8 +26,8 @@ const Cub3D: FunctionComponent<ISketch> = () => {
 		animateMenuShrink();
 		setTimeout(() => {
 			setApp(1);
-			let cub3dSketch = defineSketch(default_win_width, default_win_height)
-			p = new p5(cub3dSketch)
+			// let cub3dSketch = defineSketch(default_win_width, default_win_height)
+			// p = new p5(cub3dSketch)
 		}, 200)
 	}
 	const eraseSketch = () => {
@@ -99,16 +100,17 @@ const Cub3D: FunctionComponent<ISketch> = () => {
 				</div>
 			}
 			{ selected_app === 1 &&
-				<div className="Canvas" id={"canvas-cub3d-parent"}>
-					<button className="cub3d-button-return"
-						onClick={goToMenu}>
-						<svg xmlns="http://www.w3.org/2000/svg" className="icon-arrow-back" width="50" height="50" 
-							viewBox="0 0 24 24" strokeWidth="1.5" stroke="#F4615A" 
-							strokeLinecap="round" strokeLinejoin="round">
-							<path d="M9 11l-4 4l4 4m-4 -4h11a4 4 0 0 0 0 -8h-1" />
-						</svg>
-					</button>
-				</div>
+				// <div className="Canvas" id={"canvas-cub3d-parent"}>
+				// 	<button className="cub3d-button-return"
+				// 		onClick={goToMenu}>
+				// 		<svg xmlns="http://www.w3.org/2000/svg" className="icon-arrow-back" width="50" height="50" 
+				// 			viewBox="0 0 24 24" strokeWidth="1.5" stroke="#F4615A" 
+				// 			strokeLinecap="round" strokeLinejoin="round">
+				// 			<path d="M9 11l-4 4l4 4m-4 -4h11a4 4 0 0 0 0 -8h-1" />
+				// 		</svg>
+				// 	</button>
+				// </div>
+				<Canvas/>
 			}
 		</div>
 	)

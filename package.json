@@ -59,7 +59,6 @@
   },
   "devDependencies": {
     "@types/p5": "^1.4.3",
-    "@types/pixi.js": "^5.0.0",
     "@types/react-pdf": "^6.2.0",
     "@types/react-router-dom": "^5.3.3",
     "babel-plugin-module-resolver": "^5.0.0",

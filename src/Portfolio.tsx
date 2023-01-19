@@ -10,7 +10,7 @@ function getTime(now: Date) : string {
 // ? Returns a string containing the date (dd/mm/yyyy)
 function getDate(now: Date) : string {
 	let days = now.getDate().toString().length === 1 ? "0" + now.getDate() : now.getDate();
-	let months = now.getMonth().toString().length === 1 ? "0" + now.getMonth() : now.getMonth();
+	let months = now.getMonth() + "1";
 	let year = now.getFullYear();
 	return days + "/" + months + "/" + year
 }
@@ -37,7 +37,7 @@ export default function Portfolio() {
 	const [show_screensaver, setScreenSaver] = useState(true);
 	const [show_login, setLogin] = useState(false);
 	const [show_loading, setLoading] = useState(false);
-	const [show_desktop, setDesktop] = useState(true); // ! should be set to false
+	const [show_desktop, setDesktop] = useState(false); // ! should be set to false
 	const [pass_length, setPassLength] = useState(0);
 
 	const advanceToLogin = () => {
@@ -143,9 +143,9 @@ export default function Portfolio() {
 
 	useEffect(() => {
 		// ? listen for any click our key press to advance to login page
-		// document.addEventListener('keypress', advanceToLogin) 
-		// document.addEventListener('click', advanceToLogin) 
-		// time_interval = setInterval(() => setTime(new Date()), 1000);
+		document.addEventListener('keypress', advanceToLogin) 
+		document.addEventListener('click', advanceToLogin) 
+		time_interval = setInterval(() => setTime(new Date()), 1000);
 
 		window.onkeydown=function(e) {
 			if(e.key === " " || e.key === "PageDown" || e.key === "PageUp"){
@@ -161,7 +161,7 @@ export default function Portfolio() {
 	
 	return (
 		<div className="Portfolio">
-		{/* {
+		{
 			show_background && 
 			<div onClick={(e: any) => clickEffect(e)}>
 				<div id="background"/>
@@ -235,7 +235,7 @@ export default function Portfolio() {
 					</svg>
 				</div>
 			</div>
-		} */}
+		}
 
 		{
 			show_desktop &&

@@ -1,14 +1,24 @@
 import p5, { Vector } from "p5";
 import { useEffect, useRef } from "react";
 import "styles/Canvas.css"
-import { RAYCASTER_WIDTH, RAYCASTER_HEIGHT, RAY_COUNT, TEX_WIDTH, TEX_HEIGHT, WALK_SPEED, ROTATE_SPEED, MOUSE_SENSITIVITY } from "./Sketch/constants";
+import { RAYCASTER_WIDTH, RAYCASTER_HEIGHT, RAY_COUNT, TEX_WIDTH, TEX_HEIGHT, WALK_SPEED, ROTATE_SPEED, MOUSE_SENSITIVITY, SPRITE_WIDTH, SPRITE_HEIGHT } from "./Sketch/constants";
 import { perpendicularClockWise, perpendicularCounterClockWise } from "./Sketch/helper";
 import { Map } from "./Sketch/Map";
 import { Player } from "./Sketch/Player";
 import texturesData from "./textures/wolf-walls.json"
+import spritesData from "./wolf-objects.json"
 
 const TEX_SHEET_WIDTH = 384;
 const TEX_SHEET_HEIGHT = 1216;
+
+const SPR_SHEET_WIDTH = 324;
+const SPR_SHEET_HEIGHT = 665;
+
+interface Sprite {
+	x:			number,
+	y:			number,
+	texture:	number
+}
 
 let canvas : HTMLCanvasElement | null;
 let context: CanvasRenderingContext2D | null;
@@ -18,10 +28,17 @@ let map: Map;
 let player: Player;
 let canvasData: ImageData;
 let textures: Uint8ClampedArray[];
+let sprites: Uint8ClampedArray[];
 let floor_texture: Uint8ClampedArray;
 let ceil_texture: Uint8ClampedArray;
 
 let walking: string;
+
+// ? sprites
+let ZBuffer: number[];
+let visibleSprites: Sprite[];
+let spriteOrder: number[];
+let spriteDistance: number[];
 
 const setPixelInCanvas = (pos: {x: number, y: number}, color: {r: number, g: number, b: number, a: number}) => {
     if (!context)
@@ -64,6 +81,31 @@ const getTextures = () => {
             let pos = texData[i].position;
             let img = ctx.getImageData(pos.x, pos.y, pos.w, pos.h).data;
             textures.push(img);
+        }
+        cv.remove();
+    }
+}
+const getSprites = () => {
+    sprites = [];
+    let spriteData = spritesData.sprites;
+    
+    let cv = document.createElement('canvas');
+    cv.width = SPR_SHEET_WIDTH;
+    cv.height = SPR_SHEET_HEIGHT;
+    let ctx = cv.getContext('2d');
+    if (!ctx)
+        return ;
+    let spritesSheet = new Image();
+    spritesSheet.src = './assets/sprites/wolf-objects.png';
+    spritesSheet.crossOrigin = 'anonymous';
+    spritesSheet.onload = () => {
+        if (!ctx)
+            return;
+        ctx.drawImage(spritesSheet, 0, 0);
+        for (let i = 0; i < spriteData.length; i++) {
+            let pos = spriteData[i].position;
+            let img = ctx.getImageData(pos.x, pos.y, pos.w, pos.h).data;
+            sprites.push(img);
         }
         cv.remove();
     }
@@ -163,12 +205,91 @@ const rayCasting = () => {
                 setPixelInCanvas({x: x, y: y}, textureColor)
             }
         }
-        // ZBuffer[i] = perpWallDist;
+        ZBuffer[i] = perpWallDist;
+    }
+}
+
+const spriteCasting = () => {
+    for(let i = 0; i < visibleSprites.length; i++)
+    {
+      spriteOrder[i] = i;
+      spriteDistance[i] = ((player.pos.x - visibleSprites[i].x) * (player.pos.x - visibleSprites[i].x) + (player.pos.y - visibleSprites[i].y) * (player.pos.y - visibleSprites[i].y)); //sqrt not taken, unneeded
+    }
+    sortSprites();
+
+    //after sorting the sprites, do the projection and draw them
+    for(let i = 0; i < visibleSprites.length; i++)
+    {
+      //translate visibleSprites position to relative to camera
+      let spriteX = visibleSprites[spriteOrder[i]].x - player.pos.x;
+      let spriteY = visibleSprites[spriteOrder[i]].y - player.pos.y;
+
+      //transform sprite with the inverse camera matrix
+      // [ planeX   dirX ] -1                                       [ dirY      -dirX ]
+      // [               ]       =  1/(planeX*dirY-dirX*planeY) *   [                 ]
+      // [ planeY   dirY ]                                          [ -planeY  planeX ]
+
+      let invDet = 1.0 / (player.plane.x * player.dir.y - player.dir.x * player.plane.y); //required for correct matrix multiplication
+
+      let transformX = invDet * (player.dir.y * spriteX - player.dir.x * spriteY);
+      let transformY = invDet * (-player.plane.y * spriteX + player.plane.x * spriteY); //this is actually the depth inside the screen, that what Z is in 3D
+
+      let spriteScreenX = Math.floor((RAYCASTER_WIDTH / 2) * (1 + transformX / transformY));
+
+      //calculate height of the sprite on screen
+      let spriteHeight = Math.abs(Math.floor(RAYCASTER_HEIGHT / (transformY))); //using 'transformY' instead of the real distance prevents fisheye
+      //calculate lowest and highest pixel to fill in current stripe
+      let drawStartY = -spriteHeight / 2 + RAYCASTER_HEIGHT / 2;
+      if(drawStartY < 0) drawStartY = 0;
+      let drawEndY = spriteHeight / 2 + RAYCASTER_HEIGHT / 2;
+      if(drawEndY >= RAYCASTER_HEIGHT) drawEndY = RAYCASTER_HEIGHT - 1;
+
+      //calculate width of the sprite
+      let spriteWidth = Math.abs( Math.floor (RAYCASTER_HEIGHT / (transformY)));
+      let drawStartX = -spriteWidth / 2 + spriteScreenX;
+      if(drawStartX < 0) drawStartX = 0;
+      let drawEndX = spriteWidth / 2 + spriteScreenX;
+      if(drawEndX >= RAYCASTER_WIDTH) drawEndX = RAYCASTER_WIDTH - 1;
+
+      //loop through every vertical stripe of the sprite on screen
+      for(let stripe = drawStartX; stripe < drawEndX; stripe++)
+      {
+        let texX = Math.floor(256 * (stripe - (-spriteWidth / 2 + spriteScreenX)) * SPRITE_WIDTH / spriteWidth) / 256;
+        //the conditions in the if are:
+        //1) it's in front of camera plane so you don't see things behind you
+        //2) it's on the screen (left)
+        //3) it's on the screen (right)
+        //4) ZBuffer, with perpendicular distance
+        if(transformY > 0 && stripe > 0 && stripe < RAYCASTER_WIDTH && transformY < ZBuffer[stripe])
+        for(let y = drawStartY; y < drawEndY; y++) //for every pixel of the current stripe
+        {
+          let d = (y) * 256 - RAYCASTER_HEIGHT * 128 + spriteHeight * 128; //256 and 128 factors to avoid floats
+          let texY = Math.floor(((d * SPRITE_HEIGHT) / spriteHeight) / 256);
+          let color = getPixelColor(sprites[visibleSprites[spriteOrder[i]].texture], {x: texX, y: texY})
+            setPixelInCanvas({x: stripe, y: y}, color);
+        }
+      }
+    }
+}
+
+const sortSprites = () => {
+    for (let i = 0; i < visibleSprites.length; i++) {
+        for (let j = i + 1; j < visibleSprites.length; j++) {
+            if (spriteDistance[i] < spriteDistance[j]) {
+                let tmpDist = spriteDistance[i];
+                let tmpOrder = spriteOrder[i];
+                spriteDistance[i] = spriteDistance[j];
+                spriteOrder[i] = spriteOrder[j];
+                spriteDistance[j] = tmpDist;
+                spriteOrder[j] = tmpOrder;
+            }
+        }
     }
 }
 
 const preload = () => {
     getTextures();
+    getSprites();
 }
 
 const keyDownHandler = (e: KeyboardEvent) => {
@@ -211,6 +332,7 @@ const setup = () => {
     ceil_texture = textures[23];
     map = new Map();
     map.defaultMap();
+    initializeSprites();
     canvasData = context.getImageData(0, 0, context.canvas.width, context.canvas.height);
     player = new Player(map.getPlayerPos(), map.grid);
     player.walk_speed = WALK_SPEED;
@@ -220,28 +342,59 @@ const setup = () => {
     canvas.requestPointerLock();
 }
 
+const initializeSprites = () => {
+    visibleSprites = [];
+
+    for (let y = 0; y < map.grid.length; y++) {
+        for (let x = 0; x < map.grid[y].length; x++) {
+            let check = map.grid[y][x];
+            if (check < 0) {
+                visibleSprites.push({x: x + 0.5, y: y + 0.5, texture: check * -1});
+            }
+        }
+    }
+
+    ZBuffer = [];
+    for (let i = 0; i < RAYCASTER_WIDTH; i++) {
+        ZBuffer.push(0);
+    }
+
+    spriteOrder = [];
+    for (let i = 0; i < visibleSprites.length; i++) {
+        spriteOrder.push(0);
+    }
+    
+    spriteDistance = [];
+    for (let i = 0; i < visibleSprites.length; i++) {
+        spriteDistance.push(0);
+    }
+}
+
 const draw = () => {
     if (!context)
         return;
 
     if (walking.length > 0) {
+        let walking_direction = new Vector(0, 0);
         if (walking.indexOf('z') >= 0) {
-            player.addPos(new Vector(player.dir.x, player.dir.y), map.grid)
+            walking_direction.add(new Vector(player.dir.x, player.dir.y))
         }
         if (walking.indexOf('s') >= 0) {
-            player.addPos(p5.Vector.mult(player.dir, -1), map.grid)
+            walking_direction.add(p5.Vector.mult(player.dir, -1))
         }
         if (walking.indexOf('q') >= 0) {
-            player.addPos(perpendicularClockWise(player.dir), map.grid)
+            walking_direction.add(perpendicularClockWise(player.dir))
         }
         if (walking.indexOf('d') >= 0) {
-            player.addPos(perpendicularCounterClockWise(player.dir), map.grid)
+            walking_direction.add(perpendicularCounterClockWise(player.dir))
         }
+        player.addPos(walking_direction, map.grid)
     } 
 
     context.clearRect(0, 0, context.canvas.width, context.canvas.height)
     floorAndCeilCasting();
     rayCasting();
+    spriteCasting();
     context.putImageData(canvasData, 0, 0)
 }
 
@@ -268,7 +421,7 @@ const Canvas = () => {
                         animationFrameId = window.requestAnimationFrame(render)
                     }
                     render();
-                }, 1000)
+                }, 50)
             }
         }
         return () => {

@@ -15,5 +15,5 @@ export const RAY_COUNT = 150;
 
 export const WALK_SPEED = 0.1;
 export const ROTATE_SPEED = 150;
-export const MOUSE_SENSITIVITY = 10;
+export const MOUSE_SENSITIVITY = 0.125;
 

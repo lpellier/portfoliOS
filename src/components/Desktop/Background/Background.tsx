@@ -15,7 +15,7 @@ const Background: FunctionComponent = () => {
 		<div className="Background" onClick={(e: any) => clickEffect(e)}>
 			<div className='title'>
 				<div className='letter chevrong'>{"<"}</div>
-				<div className='letter portfolio'>{"osPortfolio"}</div>
+				<div className='letter portfolio'>{"portfoliOS"}</div>
 				<div className='letter chevrond'>{">"}</div>
 			</div>
 		</div>

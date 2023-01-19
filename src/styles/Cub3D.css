@@ -76,3 +76,8 @@
 	border: none;
 	z-index: 1;
 }
+
+#cub3d-canvas {
+	position: absolute;
+	background-color: white;
+}

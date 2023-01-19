@@ -1,7 +1,7 @@
 import p5, { Vector } from "p5";
 import "styles/Cub3D.css"
 import { BLACK } from "../../../../../consts";
-import { FOV, MOUSE_SENSITIVITY, RAYCASTER_HEIGHT, RAYCASTER_WIDTH, RAY_COUNT, ROTATE_SPEED, TEX_HEIGHT, TEX_WIDTH, WALK_SPEED } from "./constants";
+import { FOV, MOUSE_SENSITIVITY, RAYCASTER_HEIGHT, RAYCASTER_WIDTH, RAY_COUNT, ROTATE_SPEED, SPRITE_HEIGHT, SPRITE_WIDTH, TEX_HEIGHT, TEX_WIDTH, WALK_SPEED } from "./constants";
 import { drawFPS } from "./draw";
 import { degreesToRadians, perpendicularClockWise, perpendicularCounterClockWise } from "./helper";
 import { Map } from "./Map";
@@ -89,7 +89,7 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 			clearPixels();
 			floorAndCeilCasting();
 			rayCasting(); 
-			spriteCasting();
+			// spriteCasting();
 			raycaster.updatePixels();
 			
 			
@@ -134,18 +134,18 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 				if (drawEndY >= raycaster.height) drawEndY = raycaster.height - 1;
 
 				let spriteWidth = Math.abs(Math.floor(raycaster.height / transform.y))
-				let drawStartX = -spriteWidth / 2 + spriteScreenX;
+				let drawStartX = Math.floor(-spriteWidth / 2 + spriteScreenX);
 				if (drawStartX < 0) drawStartX = 0;
-				let drawEndX = spriteWidth / 2 + spriteScreenX;
+				let drawEndX = Math.floor(spriteWidth / 2 + spriteScreenX);
 				if (drawEndX >= raycaster.width) drawEndX = raycaster.width - 1;
 
 				for (let stripe = drawStartX; stripe < drawEndX; stripe++) {
-					let textureX = Math.floor(256 * (stripe - (-spriteWidth / 2 + spriteScreenX)) * TEX_WIDTH / spriteWidth) / 256;
+					let textureX = Math.floor((stripe - (-spriteWidth / 2 + spriteScreenX)) * SPRITE_WIDTH / spriteWidth);
 
 					if (transform.y > 0 && stripe > 0 && stripe < raycaster.width && transform.y < ZBuffer[stripe]) {
 						for (let y = drawStartY; y < drawEndY; y++) {
-							let d = y * 256 - raycaster.height * 128 + spriteHeight * 128;
-							let textureY = ((d * TEX_HEIGHT) / spriteHeight) / 256;
+							let d = y - raycaster.height + spriteHeight;
+							let textureY = Math.floor((d * SPRITE_HEIGHT) / spriteHeight);
 							let color = getPixelColor(sprites[visibleSprites[spriteOrder[i]].texture], {x: textureX, y: textureY});
 							setPixelInRaycaster({x: stripe, y: y}, color);
 						}
@@ -349,8 +349,7 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 			
 			map = new Map();
 
-			// let saved_map = localStorage.getItem("cub3d-map");
-			let saved_map = null;
+			let saved_map = localStorage.getItem("cub3d-map");
 			if (saved_map) {
 				map.grid = JSON.parse(saved_map);
 			}

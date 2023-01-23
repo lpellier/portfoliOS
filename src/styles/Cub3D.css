@@ -15,11 +15,8 @@
 
 .cub3d-button {
 	width: 49%;
-	/* height: 100%; */
 	border: none;
-	flex-grow: 49%;
 	font-family: "Outfit";
-	/* word-wrap: ; */
 	transition: background-position 250ms, color 250ms;
 	animation: grow-height 250ms ease forwards;
 }

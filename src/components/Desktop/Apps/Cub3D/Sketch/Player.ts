@@ -18,8 +18,8 @@ export class Player {
 
 	constructor(pos: Vector, grid: number[][]) {
 		this.pos = new Vector(pos.x + 0.5, pos.y + 0.5);
-		this.dir = new Vector(0, -1);
-		this.plane = new Vector(0.66, 0);
+		this.dir = new Vector(0, 1);
+		this.plane = new Vector(-0.66, 0);
 
 
 		this.rays = [];
@@ -67,10 +67,10 @@ export class Player {
 		velocity.mult(this.walk_speed);
 		let x = this.pos.x + velocity.x;
 		let y = this.pos.y + velocity.y;
-		if (x >= 0 && x < grid[0].length && grid[Math.floor(this.pos.y)][Math.floor(x)] !== 1) {
+		if (x >= 0 && x < grid[0].length && (grid[Math.floor(this.pos.y)][Math.floor(x)] === 0 || grid[Math.floor(this.pos.y)][Math.floor(x)] === 2)) {
 			this.pos.x = x;
 		}
-		if (y >= 0 && y < grid.length && grid[Math.floor(y)][Math.floor(this.pos.x)] !== 1) {
+		if (y >= 0 && y < grid.length && (grid[Math.floor(y)][Math.floor(this.pos.x)] === 0 || grid[Math.floor(y)][Math.floor(this.pos.x)] === 2)) {
 			this.pos.y = y;
 		}
 		this.castRays(grid);

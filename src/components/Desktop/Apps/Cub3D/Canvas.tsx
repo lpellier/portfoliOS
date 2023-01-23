@@ -210,67 +210,67 @@ const rayCasting = () => {
 }
 
 const spriteCasting = () => {
-    for(let i = 0; i < visibleSprites.length; i++)
-    {
-      spriteOrder[i] = i;
-      spriteDistance[i] = ((player.pos.x - visibleSprites[i].x) * (player.pos.x - visibleSprites[i].x) + (player.pos.y - visibleSprites[i].y) * (player.pos.y - visibleSprites[i].y)); //sqrt not taken, unneeded
-    }
-    sortSprites();
+	for(let i = 0; i < visibleSprites.length; i++)
+	{
+		spriteOrder[i] = i;
+		spriteDistance[i] = ((player.pos.x - visibleSprites[i].x) * (player.pos.x - visibleSprites[i].x) + (player.pos.y - visibleSprites[i].y) * (player.pos.y - visibleSprites[i].y)); //sqrt not taken, unneeded
+	}
+	sortSprites();
 
-    //after sorting the sprites, do the projection and draw them
-    for(let i = 0; i < visibleSprites.length; i++)
-    {
-      //translate visibleSprites position to relative to camera
-      let spriteX = visibleSprites[spriteOrder[i]].x - player.pos.x;
-      let spriteY = visibleSprites[spriteOrder[i]].y - player.pos.y;
+	//after sorting the sprites, do the projection and draw them
+	for(let i = 0; i < visibleSprites.length; i++) {
+		//translate visibleSprites position to relative to camera
+		let spriteX = visibleSprites[spriteOrder[i]].x - player.pos.x;
+		let spriteY = visibleSprites[spriteOrder[i]].y - player.pos.y;
 
-      //transform sprite with the inverse camera matrix
-      // [ planeX   dirX ] -1                                       [ dirY      -dirX ]
-      // [               ]       =  1/(planeX*dirY-dirX*planeY) *   [                 ]
-      // [ planeY   dirY ]                                          [ -planeY  planeX ]
+		//transform sprite with the inverse camera matrix
+		// [ planeX	 dirX ] -1										 [ dirY		-dirX ]
+		// [				 ]		 =	1/(planeX*dirY-dirX*planeY) *	 [				 ]
+		// [ planeY	 dirY ]											[ -planeY	planeX ]
 
-      let invDet = 1.0 / (player.plane.x * player.dir.y - player.dir.x * player.plane.y); //required for correct matrix multiplication
+		let invDet = 1.0 / (player.plane.x * player.dir.y - player.dir.x * player.plane.y); //required for correct matrix multiplication
 
-      let transformX = invDet * (player.dir.y * spriteX - player.dir.x * spriteY);
-      let transformY = invDet * (-player.plane.y * spriteX + player.plane.x * spriteY); //this is actually the depth inside the screen, that what Z is in 3D
+		let transformX = invDet * (player.dir.y * spriteX - player.dir.x * spriteY);
+		let transformY = invDet * (-player.plane.y * spriteX + player.plane.x * spriteY); //this is actually the depth inside the screen, that what Z is in 3D
 
-      let spriteScreenX = Math.floor((RAYCASTER_WIDTH / 2) * (1 + transformX / transformY));
+		let spriteScreenX = Math.floor((RAYCASTER_WIDTH / 2) * (1 + transformX / transformY));
 
-      //calculate height of the sprite on screen
-      let spriteHeight = Math.abs(Math.floor(RAYCASTER_HEIGHT / (transformY))); //using 'transformY' instead of the real distance prevents fisheye
-      //calculate lowest and highest pixel to fill in current stripe
-      let drawStartY = -spriteHeight / 2 + RAYCASTER_HEIGHT / 2;
-      if(drawStartY < 0) drawStartY = 0;
-      let drawEndY = spriteHeight / 2 + RAYCASTER_HEIGHT / 2;
-      if(drawEndY >= RAYCASTER_HEIGHT) drawEndY = RAYCASTER_HEIGHT - 1;
+		//calculate height of the sprite on screen
+		let spriteHeight = Math.abs(Math.floor(RAYCASTER_HEIGHT / (transformY))); //using 'transformY' instead of the real distance prevents fisheye
+		//calculate lowest and highest pixel to fill in current stripe
+		let drawStartY = Math.floor(-spriteHeight / 2 + RAYCASTER_HEIGHT / 2);
+		if(drawStartY < 0) drawStartY = 0;
+		let drawEndY = Math.floor(spriteHeight / 2 + RAYCASTER_HEIGHT / 2);
+		if(drawEndY >= RAYCASTER_HEIGHT) drawEndY = RAYCASTER_HEIGHT - 1;
 
-      //calculate width of the sprite
-      let spriteWidth = Math.abs( Math.floor (RAYCASTER_HEIGHT / (transformY)));
-      let drawStartX = -spriteWidth / 2 + spriteScreenX;
-      if(drawStartX < 0) drawStartX = 0;
-      let drawEndX = spriteWidth / 2 + spriteScreenX;
-      if(drawEndX >= RAYCASTER_WIDTH) drawEndX = RAYCASTER_WIDTH - 1;
+		//calculate width of the sprite
+		let spriteWidth = Math.abs(Math.floor (RAYCASTER_HEIGHT / (transformY)));
+		let drawStartX = Math.floor(-spriteWidth / 2 + spriteScreenX);
+		if(drawStartX < 0) drawStartX = 0;
+		let drawEndX = Math.floor(spriteWidth / 2 + spriteScreenX);
+		if(drawEndX >= RAYCASTER_WIDTH) drawEndX = RAYCASTER_WIDTH;
 
-      //loop through every vertical stripe of the sprite on screen
-      for(let stripe = drawStartX; stripe < drawEndX; stripe++)
-      {
-        let texX = Math.floor(256 * (stripe - (-spriteWidth / 2 + spriteScreenX)) * SPRITE_WIDTH / spriteWidth) / 256;
-        //the conditions in the if are:
-        //1) it's in front of camera plane so you don't see things behind you
-        //2) it's on the screen (left)
-        //3) it's on the screen (right)
-        //4) ZBuffer, with perpendicular distance
-        if(transformY > 0 && stripe > 0 && stripe < RAYCASTER_WIDTH && transformY < ZBuffer[stripe])
-        for(let y = drawStartY; y < drawEndY; y++) //for every pixel of the current stripe
-        {
-          let d = (y) * 256 - RAYCASTER_HEIGHT * 128 + spriteHeight * 128; //256 and 128 factors to avoid floats
-          let texY = Math.floor(((d * SPRITE_HEIGHT) / spriteHeight) / 256);
-          let color = getPixelColor(sprites[visibleSprites[spriteOrder[i]].texture], {x: texX, y: texY})
-            setPixelInCanvas({x: stripe, y: y}, color);
-        }
-      }
-    }
-}
+		//loop through every vertical stripe of the sprite on screen
+		for(let stripe = drawStartX; stripe < drawEndX; stripe++)
+		{
+			let texX = Math.floor((stripe - (-spriteWidth / 2 + spriteScreenX)) * SPRITE_WIDTH / spriteWidth);
+			if (texX < 0) texX = 0;
+			if (texX >= SPRITE_WIDTH) texX = SPRITE_WIDTH - 1;
+			if(transformY > 0 && transformY < ZBuffer[Math.floor(stripe / (RAYCASTER_WIDTH / RAY_COUNT))]) {
+				for(let y = drawStartY; y < drawEndY; y++) //for every pixel of the current stripe
+				{
+					let d = Math.floor(y * 256 - RAYCASTER_HEIGHT * 128 + spriteHeight * 128); //256 and 128 factors to avoid floats
+					let texY = Math.floor(((d * SPRITE_HEIGHT) / spriteHeight) / 256);
+					if (texY < 0) texY = 0;
+					if (texY >= SPRITE_HEIGHT) texY = SPRITE_HEIGHT - 1;
+					let color = getPixelColor(sprites[visibleSprites[spriteOrder[i]].texture], {x: texX, y: texY})
+					if (!(color.r === 150 && color.g === 12 && color.b === 132))
+						setPixelInCanvas({x: stripe, y: y}, color);
+				}
+			}
+		}
+	}
+}	
 
 const sortSprites = () => {
     for (let i = 0; i < visibleSprites.length; i++) {
@@ -293,17 +293,8 @@ const preload = () => {
 }
 
 const keyDownHandler = (e: KeyboardEvent) => {
-    if (walking.indexOf('z') === -1 && (e.key === 'w' || e.key === 'z')) {
-        walking += "z";
-    }
-    if (walking.indexOf('s') === -1 && e.key === 's') {
-        walking += "s";   
-    }
-    if (walking.indexOf('q') === -1 && (e.key === 'q' || e.key === 'a')) {
-        walking += "q";
-    }
-    if (walking.indexOf('d') === -1 && e.key === 'd') {
-        walking += "d"; 
+    if (walking.indexOf(e.key) === -1 && (e.key === 'w' || e.key === 'z' || e.key === 's' || e.key === 'q' || e.key === 'a' || e.key === 'd')) {
+        walking += e.key;
     }
 }
 
@@ -331,7 +322,13 @@ const setup = () => {
     floor_texture = textures[69];
     ceil_texture = textures[23];
     map = new Map();
-    map.defaultMap();
+	let saved_map = localStorage.getItem("cub3d-map");
+	if (saved_map) {
+		map.grid = JSON.parse(saved_map);
+	}
+	else {
+		map.defaultMap();
+	}
     initializeSprites();
     canvasData = context.getImageData(0, 0, context.canvas.width, context.canvas.height);
     player = new Player(map.getPlayerPos(), map.grid);
@@ -355,7 +352,7 @@ const initializeSprites = () => {
     }
 
     ZBuffer = [];
-    for (let i = 0; i < RAYCASTER_WIDTH; i++) {
+    for (let i = 0; i < RAY_COUNT; i++) {
         ZBuffer.push(0);
     }
 
@@ -401,6 +398,11 @@ const draw = () => {
 const Canvas = () => {
     const canvasRef = useRef<(HTMLCanvasElement | null)>(null);
 
+	const requestPointerLock = () => {
+		if (canvas)
+			canvas.requestPointerLock();
+	}
+
     useEffect(() => {
         canvas = canvasRef.current;
         if (canvas) {
@@ -421,7 +423,7 @@ const Canvas = () => {
                         animationFrameId = window.requestAnimationFrame(render)
                     }
                     render();
-                }, 50)
+                }, 200)
             }
         }
         return () => {
@@ -433,7 +435,7 @@ const Canvas = () => {
     }, [])
 
     return (
-        <canvas id='cub3d-canvas' ref={canvasRef}/>
+        <canvas onClick={requestPointerLock} id='cub3d-canvas' ref={canvasRef}/>
     )
 }
 

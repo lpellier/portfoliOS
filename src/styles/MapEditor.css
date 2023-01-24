@@ -16,25 +16,25 @@
 	align-items: center;
 	
 	flex-direction: column;
-	width: 30%;
+	width: 50%;
 	height: 100%;
 }
 
 #map-editor-button-separator {
 	position: relative;
 	background-color: var(--red);
-	height: 1%;
+	height: calc(0.5% + 5px);
 	width: 100%;
 	z-index: -1;
 	/* animation: grow-height 250ms ease forwards; */
 }
 
 .map-editor-menu-button {
-	height: 24%;
+	height: 12%;
 	width: 100%;
 	border: none;
 	font-family: "Outfit";
-	font-size: 2.5em;
+	font-size: 2em;
 	transition: background-position 250ms, color 250ms;
 	/* animation: grow-height 250ms ease forwards; */
 	/* background: linear-gradient(to right, var(--black) 0% 50%, var(--red) 50% 100%); */
@@ -97,158 +97,25 @@
 	cursor: pointer;
 }
 
-#button-toggle-menu {
-	position: absolute;
-	padding: 0;
-	right: 0;
-
-	border: 2px solid var(--red);
-	border-radius: 5000px;
-	background-color: var(--black);
-	z-index: 1;
-	width: 25px;
-	height: 50%;
-	top: 50%;
-	transform: translate(50%, -50%);
-}
-
-#button-toggle-arrow-1 {
-	transition: transform 100ms;
-}
-#button-toggle-menu:hover #button-toggle-arrow-1 {
-	transform: translateX(-15%);
-}
-#button-toggle-arrow-2 {
-	transition: transform 100ms;
-}
-#button-toggle-menu:hover #button-toggle-arrow-2 {
-	transform: translateX(15%);
-}
-
-#map-editor-togglable-menu {
-	position: absolute;
-	bottom: 1%;
-
-	border: 2px solid var(--red);
-	border-radius: 15px;
-	transform: translateX(-13%);
-	width: 100%;
-	height: clamp(100px, 20%, 150px);
-	background-color: var(--black);
-}
-
-#toggle-menu-flex {
-	position: absolute;
-	display: flex;
-	height: 100%;
-	flex-direction: row;
-	margin-left: 15%;
-}
-
-#menu-size-flex {
-	display: flex;
-	height: 100%;
-	width: 40%;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-}
-
-.menu-size-item {
-	display: flex;
-	height: 50%;
-	width: clamp(100px, 25%, 250px);
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	gap: 10px;
-}
-
-.menu-size-button {
-	padding: 0;
-	height: 25px;
-	width: 25px;
-
-	border: none;
-	border-radius: 50%;
-	background: none;
-	transition: transform 150ms;
-}
-
-.menu-size-button:hover {
-	transform: scale(1.25);
-}
-
-h3 {
-	font: 20px "Outfit";
-	color: white;
-	margin: 0;
-	transition: color 150ms;
-}
-
-.menu-size-text {
-	padding-right: 15px;
-}
-
-.menu-size-icon {
-	width: 25px;
-	height: 25px;
-	background: none;
-}
-
-.menu-separator {
-	height: 100%;
-	width: 2px;
-	margin-left: 10px;
-	margin-right: 10px;
-	background-color: var(--red);
-}
-
-#menu-items-flex {
-	position: relative;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-items: center;
-	height: 100%;
-
-	gap: 20px;
-	align-content: center;
-}
-
-.menu-item-flex {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 3px;
-
-	transition: transform 150ms;
-}
-
-.menu-item-flex:hover {
-	transform: scale(1.25);
-	cursor: pointer;
-}
-
-.menu-item {
-	width: clamp(20px, 100%, 60px);
-	min-height: 10px;
-}
-
-.item-empty { background-color: white; }
-.item-wall { background-color: var(--blue); }
-.item-spawn { background-color: var(--green); }
-.item-enemy { background-color: var(--red); }
-.item-pickup { background-color: var(--yellow); }
+#item-empty { background-color: var(--background-color); }
+#item-wall { background-color: var(--blue);}
+#item-spawn { background-color: var(--green); }
+#item-enemy { background-color: var(--red); }
+#item-pickup { background-color: var(--yellow); }
 
 .button-save {
 	bottom: 5px;
 	left: 5px;
 }
+.button-save h3 {
+	margin: 0;
+}
 .button-reset {
 	bottom: 5px;
 	left: 65px
+}
+.button-reset h3 {
+	margin: 0;
 }
 
 .map-editor-button {
@@ -272,4 +139,140 @@ h3 {
 }
 .map-editor-button:hover h3 {
 	color: var(--text-color);
+}
+
+.menu-tiles {
+	position: relative;
+	display: flex;
+	height: 50%;
+	width: 100%;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	align-content: flex-start;
+	z-index: -1;
+}
+
+.menu-tile {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	height: 80px;
+	width: 100px;
+}
+
+.menu-item {
+	width: 20px;
+	height: 20px;
+	background-color: var(--blue);
+}
+
+.selected-u {
+	color: var(--black);
+	background-position: 0% 100%;
+}
+.selected-d {
+	color: var(--black);
+	background-position: 0% 0%;
+}
+
+.menu-item-text {
+	margin: 0;
+	text-align: center;
+	font-family: Pixeloid;
+	font-size: 15px;
+	color: white;
+}
+
+.variant-text {
+	position: relative;
+	margin: 0;
+	font-family: Pixeloid;
+	font-size: 10px;
+	color: white;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 20px;
+}
+.variant-text-map {
+	position: relative;
+	margin: 0;
+	font-family: Pixeloid;
+	font-size: 5px;
+	color: white;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 10px;
+}
+
+#cobblestone-1 {
+	background-color: var(--blue);
+}
+#cobblestone-2 {
+	background-color: var(--blue);
+}
+#cobblestone-3 {
+	background-color: var(--blue);
+}
+
+#stone {
+	background-color: #1E1F24;
+	background-image: linear-gradient(0deg, #1E1F24 50%, #3D5467 50%);
+	background-size: 5px 5px;
+}
+#stone-world-map {
+	background-color: #1E1F24;
+	background-image: linear-gradient(0deg, #1E1F24 50%, #3D5467 50%);
+	background-size: 5px 5px;
+}
+.menu-item-rect {
+	position: absolute;
+	background-color: var(--blue);
+	border: 1px solid var(--black);
+	height: 10px;
+	width: 10px;
+	margin: 4px;
+}
+
+#blue-stone {
+	background-image:  linear-gradient(135deg, var(--background-color) 25%, transparent 25%), linear-gradient(225deg, var(--background-color) 25%, transparent 25%), linear-gradient(45deg, var(--background-color) 25%, transparent 25%), linear-gradient(315deg, var(--background-color) 25%, var(--blue) 25%);
+	background-position:  10px 0, 10px 0, 0 0, 0 0;
+	background-size: 10px 10px;
+}
+
+#blue-stone-cell-1 {
+	background-image:  linear-gradient(135deg, var(--background-color) 25%, transparent 25%), linear-gradient(225deg, var(--background-color) 25%, transparent 25%), linear-gradient(45deg, var(--background-color) 25%, transparent 25%), linear-gradient(315deg, var(--background-color) 25%, var(--blue) 25%);
+	background-position:  10px 0, 10px 0, 0 0, 0 0;
+	background-size: 5px 5px;
+}
+#blue-stone-cell-2 {
+	background-image:  linear-gradient(135deg, var(--background-color) 25%, transparent 25%), linear-gradient(225deg, var(--background-color) 25%, transparent 25%), linear-gradient(45deg, var(--background-color) 25%, transparent 25%), linear-gradient(315deg, var(--background-color) 25%, var(--blue) 25%);
+	background-position:  10px 0, 10px 0, 0 0, 0 0;
+	background-size: 5px 5px;
+}
+
+#blue-metal {
+	background-color: #1E1F24;
+	opacity: 0.8;
+	background: linear-gradient(135deg, #3D546755 25%, transparent 25%) -10px 0/ 20px 20px, linear-gradient(225deg, #3D5467 25%, transparent 25%) -10px 0/ 20px 20px, linear-gradient(315deg, #3D546755 25%, transparent 25%) 0px 0/ 20px 20px, linear-gradient(45deg, #3D5467 25%, #1E1F24 25%) 0px 0/ 20px 20px;
+}
+#blue-metal-door {
+	background-color: #1E1F24;
+	opacity: 0.8;
+	background: linear-gradient(135deg, #3D546755 25%, transparent 25%) -10px 0/ 20px 20px, linear-gradient(225deg, #3D5467 25%, transparent 25%) -10px 0/ 20px 20px, linear-gradient(315deg, #3D546755 25%, transparent 25%) 0px 0/ 20px 20px, linear-gradient(45deg, #3D5467 25%, #1E1F24 25%) 0px 0/ 20px 20px;
+}
+
+#wood {
+	background-color: #1E1F24;
+	opacity: 0.8;
+	background-image: radial-gradient( ellipse farthest-corner at 10px 10px , #3D5467, #3D5467 50%, #1E1F24 50%);
+	background-size: 10px 10px;
+}
+
+#brick {
+	background-color: #1E1F24;
+	background-image:  linear-gradient(30deg, #3D5467 12%, transparent 12.5%, transparent 87%, #3D5467 87.5%, #3D5467), linear-gradient(150deg, #3D5467 12%, transparent 12.5%, transparent 87%, #3D5467 87.5%, #3D5467), linear-gradient(30deg, #3D5467 12%, transparent 12.5%, transparent 87%, #3D5467 87.5%, #3D5467), linear-gradient(150deg, #3D5467 12%, transparent 12.5%, transparent 87%, #3D5467 87.5%, #3D5467), linear-gradient(60deg, #3D546777 25%, transparent 25.5%, transparent 75%, #3D546777 75%, #3D546777), linear-gradient(60deg, #3D546777 25%, transparent 25.5%, transparent 75%, #3D546777 75%, #3D546777);
+	background-size: 20px 35px;
+	background-position: 0 0, 0 0, 10px 18px, 10px 18px, 0 0, 10px 18px;
 }

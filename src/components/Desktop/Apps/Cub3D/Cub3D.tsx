@@ -101,16 +101,18 @@ const Cub3D: FunctionComponent<ISketch> = () => {
 			}
 			{ selected_app === 1 &&
 				// <div className="Canvas" id={"canvas-cub3d-parent"}>
-				// 	<button className="cub3d-button-return"
-				// 		onClick={goToMenu}>
-				// 		<svg xmlns="http://www.w3.org/2000/svg" className="icon-arrow-back" width="50" height="50" 
-				// 			viewBox="0 0 24 24" strokeWidth="1.5" stroke="#F4615A" 
-				// 			strokeLinecap="round" strokeLinejoin="round">
-				// 			<path d="M9 11l-4 4l4 4m-4 -4h11a4 4 0 0 0 0 -8h-1" />
-				// 		</svg>
-				// 	</button>
 				// </div>
-				<Canvas/>
+				<div>
+					<button className="cub3d-button-return"
+						onClick={goToMenu}>
+						<svg xmlns="http://www.w3.org/2000/svg" className="icon-arrow-back" width="50" height="50" 
+							viewBox="0 0 24 24" strokeWidth="1.5" stroke="#F4615A" 
+							strokeLinecap="round" strokeLinejoin="round">
+							<path d="M9 11l-4 4l4 4m-4 -4h11a4 4 0 0 0 0 -8h-1" />
+						</svg>
+					</button>
+					<Canvas/>
+				</div>
 			}
 		</div>
 	)

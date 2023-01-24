@@ -23,6 +23,11 @@
 	--default-win-height: 400px;
 }
 
+@font-face {
+	font-family: Pixeloid;
+	src: url('./../../public/assets/fonts/PixeloidSans-JR6qo.ttf')
+}
+
 .Canvas {
 	width: 100%;
 	height: 100%;

@@ -10,12 +10,17 @@ import { default_win_height, default_win_width } from '../../consts';
 	// TODO no immediate rerender after window class change
 	// TODO in cub3d menu, separator sticking out
 	// TODO in cub3d map editor, resizing window should cause the scrollbar to update
+	// TODO shouldn't be able to remove the external walls of cub3d map
+	// TODO map should be centered when window is big enough
+	// TODO when map is ready in Map class, clean it up of 2s and ennemies maybe to make them their own class
+	// TODO on button switch menus, be sure to make the background a bit bigger to cover for potentiel holes
+	// TODO add scrollbar to map editor menu
 
 // ! Important
 	// TODO Mobile webapp
 	// TODO Code Cub3D in javascript
 		// ? Map editor
-			// TODO options bar (click on an option to be able to place it on tiles)
+			// ? Could be a canvas for performance
 	// TODO Presentation for each of my projects
 	// TODO Interesting background
 	// TODO Settings -> modify appearance of website

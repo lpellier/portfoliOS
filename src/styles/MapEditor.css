@@ -73,9 +73,6 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	padding-right: 25px;
-	padding-bottom: 25px;
-	/* padding: 25px; */
 }
 
 .map-editor-row {
@@ -87,8 +84,8 @@
 }
 
 .grid-tile {
-	width: 10px;
-	height: 10px;
+	width: 20px;
+	height: 20px;
 	background-color: white;
 	border: none;
 }
@@ -97,11 +94,11 @@
 	cursor: pointer;
 }
 
-#item-empty { background-color: var(--background-color); }
-#item-wall { background-color: var(--blue);}
-#item-spawn { background-color: var(--green); }
-#item-enemy { background-color: var(--red); }
-#item-pickup { background-color: var(--yellow); }
+.item-empty { background-color: var(--background-color); }
+.item-wall { background-color: var(--blue);}
+.item-spawn { background-color: var(--green); }
+.item-enemy { background-color: var(--red); }
+.item-pickup { background-color: var(--yellow); }
 
 .button-save {
 	bottom: 5px;
@@ -149,7 +146,6 @@
 	flex-wrap: wrap;
 	justify-content: space-evenly;
 	align-content: flex-start;
-	z-index: -1;
 }
 
 .menu-tile {
@@ -160,6 +156,8 @@
 	align-items: center;
 	height: 80px;
 	width: 100px;
+	background: none;
+	border: none;
 }
 
 .menu-item {
@@ -206,24 +204,24 @@
 	line-height: 10px;
 }
 
-#cobblestone-1 {
-	background-color: var(--blue);
+.cobblestone-1 {
+	background-color: #b1aeaa;
 }
-#cobblestone-2 {
-	background-color: var(--blue);
+.cobblestone-2 {
+	background-color: #b1aeaa;
 }
-#cobblestone-3 {
-	background-color: var(--blue);
+.cobblestone-3 {
+	background-color: #b1aeaa;
 }
 
-#stone {
-	background-color: #1E1F24;
-	background-image: linear-gradient(0deg, #1E1F24 50%, #3D5467 50%);
+.stone {
+	background-color: #7D7D7D;
+	background-image: linear-gradient(0deg, #7D7D7D 50%, #A9AAAA 50%);
 	background-size: 5px 5px;
 }
-#stone-world-map {
-	background-color: #1E1F24;
-	background-image: linear-gradient(0deg, #1E1F24 50%, #3D5467 50%);
+.stone-world-map {
+	background-color: #7D7D7D;
+	background-image: linear-gradient(0deg, #7D7D7D 50%, #A9AAAA 50%);
 	background-size: 5px 5px;
 }
 .menu-item-rect {
@@ -235,44 +233,72 @@
 	margin: 4px;
 }
 
-#blue-stone {
-	background-image:  linear-gradient(135deg, var(--background-color) 25%, transparent 25%), linear-gradient(225deg, var(--background-color) 25%, transparent 25%), linear-gradient(45deg, var(--background-color) 25%, transparent 25%), linear-gradient(315deg, var(--background-color) 25%, var(--blue) 25%);
+.blue-stone {
+	background-image:  linear-gradient(135deg, #000079 25%, transparent 25%), linear-gradient(225deg, #000079 25%, transparent 25%), linear-gradient(45deg, #000079 25%, transparent 25%), linear-gradient(315deg, #000079 25%, var(--blue) 25%);
 	background-position:  10px 0, 10px 0, 0 0, 0 0;
 	background-size: 10px 10px;
 }
 
-#blue-stone-cell-1 {
-	background-image:  linear-gradient(135deg, var(--background-color) 25%, transparent 25%), linear-gradient(225deg, var(--background-color) 25%, transparent 25%), linear-gradient(45deg, var(--background-color) 25%, transparent 25%), linear-gradient(315deg, var(--background-color) 25%, var(--blue) 25%);
+.blue-stone-cell-1 {
+	background-image:  linear-gradient(135deg, #000079 25%, transparent 25%), linear-gradient(225deg, #000079 25%, transparent 25%), linear-gradient(45deg, #000079 25%, transparent 25%), linear-gradient(315deg, #000079 25%, var(--blue) 25%);
 	background-position:  10px 0, 10px 0, 0 0, 0 0;
 	background-size: 5px 5px;
 }
-#blue-stone-cell-2 {
-	background-image:  linear-gradient(135deg, var(--background-color) 25%, transparent 25%), linear-gradient(225deg, var(--background-color) 25%, transparent 25%), linear-gradient(45deg, var(--background-color) 25%, transparent 25%), linear-gradient(315deg, var(--background-color) 25%, var(--blue) 25%);
+.blue-stone-cell-2 {
+	background-image:  linear-gradient(135deg, #000079 25%, transparent 25%), linear-gradient(225deg, #000079 25%, transparent 25%), linear-gradient(45deg, #000079 25%, transparent 25%), linear-gradient(315deg, #000079 25%, var(--blue) 25%);
 	background-position:  10px 0, 10px 0, 0 0, 0 0;
 	background-size: 5px 5px;
 }
 
-#blue-metal {
-	background-color: #1E1F24;
+.blue-metal {
+	background-color: #2BB5B5;
 	opacity: 0.8;
-	background: linear-gradient(135deg, #3D546755 25%, transparent 25%) -10px 0/ 20px 20px, linear-gradient(225deg, #3D5467 25%, transparent 25%) -10px 0/ 20px 20px, linear-gradient(315deg, #3D546755 25%, transparent 25%) 0px 0/ 20px 20px, linear-gradient(45deg, #3D5467 25%, #1E1F24 25%) 0px 0/ 20px 20px;
+	background: linear-gradient(135deg, #3D546755 25%, transparent 25%) -10px 0/ 20px 20px, linear-gradient(225deg, #3D5467 25%, transparent 25%) -10px 0/ 20px 20px, linear-gradient(315deg, #3D546755 25%, transparent 25%) 0px 0/ 20px 20px, linear-gradient(45deg, #3D5467 25%, #2BB5B5 25%) 0px 0/ 20px 20px;
 }
-#blue-metal-door {
-	background-color: #1E1F24;
+.blue-metal-door {
+	background-color: #2BB5B5;
 	opacity: 0.8;
-	background: linear-gradient(135deg, #3D546755 25%, transparent 25%) -10px 0/ 20px 20px, linear-gradient(225deg, #3D5467 25%, transparent 25%) -10px 0/ 20px 20px, linear-gradient(315deg, #3D546755 25%, transparent 25%) 0px 0/ 20px 20px, linear-gradient(45deg, #3D5467 25%, #1E1F24 25%) 0px 0/ 20px 20px;
+	background: linear-gradient(135deg, #3D546755 25%, transparent 25%) -10px 0/ 20px 20px, linear-gradient(225deg, #3D5467 25%, transparent 25%) -10px 0/ 20px 20px, linear-gradient(315deg, #3D546755 25%, transparent 25%) 0px 0/ 20px 20px, linear-gradient(45deg, #3D5467 25%, #2BB5B5 25%) 0px 0/ 20px 20px;
 }
 
-#wood {
-	background-color: #1E1F24;
+.wood {
+	background-color: #744B29;
 	opacity: 0.8;
-	background-image: radial-gradient( ellipse farthest-corner at 10px 10px , #3D5467, #3D5467 50%, #1E1F24 50%);
+	background-image: radial-gradient( ellipse farthest-corner at 10px 10px , #463516, #463516 50%, #744B29 50%);
 	background-size: 10px 10px;
 }
 
-#brick {
-	background-color: #1E1F24;
-	background-image:  linear-gradient(30deg, #3D5467 12%, transparent 12.5%, transparent 87%, #3D5467 87.5%, #3D5467), linear-gradient(150deg, #3D5467 12%, transparent 12.5%, transparent 87%, #3D5467 87.5%, #3D5467), linear-gradient(30deg, #3D5467 12%, transparent 12.5%, transparent 87%, #3D5467 87.5%, #3D5467), linear-gradient(150deg, #3D5467 12%, transparent 12.5%, transparent 87%, #3D5467 87.5%, #3D5467), linear-gradient(60deg, #3D546777 25%, transparent 25.5%, transparent 75%, #3D546777 75%, #3D546777), linear-gradient(60deg, #3D546777 25%, transparent 25.5%, transparent 75%, #3D546777 75%, #3D546777);
+.brick {
+	background-color: #282828;
+	background-image:  linear-gradient(30deg, #A30E0C 12%, transparent 12.5%, transparent 87%, #A30E0C 87.5%, #A30E0C), linear-gradient(150deg, #A30E0C 12%, transparent 12.5%, transparent 87%, #A30E0C 87.5%, #A30E0C), linear-gradient(30deg, #A30E0C 12%, transparent 12.5%, transparent 87%, #A30E0C 87.5%, #A30E0C), linear-gradient(150deg, #A30E0C 12%, transparent 12.5%, transparent 87%, #A30E0C 87.5%, #A30E0C), linear-gradient(60deg, #A30E0C77 25%, transparent 25.5%, transparent 75%, #A30E0C77 75%, #A30E0C77), linear-gradient(60deg, #A30E0C77 25%, transparent 25.5%, transparent 75%, #A30E0C77 75%, #A30E0C77);
 	background-size: 20px 35px;
 	background-position: 0 0, 0 0, 10px 18px, 10px 18px, 0 0, 10px 18px;
+}
+
+.tile-clicked {
+	position: absolute;
+	background-color: #7798AB;
+	left: 0;
+	top: 0;
+
+	border: 1px solid #7798AB;
+	border-radius: 10px;
+	z-index: 0;
+
+	animation: spawnOutline 250ms forwards ease;
+}
+@keyframes spawnOutline {
+	0% {
+		opacity: 1;
+		height: 35px;
+		width: 50px;
+		margin: -0.25em;
+		border-width: 0.5em;
+	}
+	100% {
+		opacity: 0.2;
+		height: 70px;
+		width: 100px;
+		border-width: 0.03em;
+	}
 }

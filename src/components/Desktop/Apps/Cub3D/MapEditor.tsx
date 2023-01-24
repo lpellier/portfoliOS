@@ -1,11 +1,14 @@
 import "styles/MapEditor.css"
 import { FunctionComponent, useEffect, useState } from "react";
 import { Scrollbar } from "react-scrollbars-custom";
-import { IGridTile } from "../../../../types";
-import { enemy_tiles, GridTile, player_tiles, sprites_tiles, wall_tiles } from "./tiles";
+import { GridTile } from "./tiles";
+import Walls from "./Tiles/Walls";
+import Player from "./Tiles/Player";
+import Sprites from "./Tiles/Sprites";
+import Enemies from "./Tiles/Enemies";
 
 // ! make sure map textures are recognizable
-// ! be able to select and place tiles 
+// ! on mouse hold, put multiple tiles
 // ! add a way to direct player orientation
 // ! in game, make sure that walls now start at index 2 (player spawn is 1)
 // ! in game, update floor and ceil variables
@@ -13,11 +16,11 @@ import { enemy_tiles, GridTile, player_tiles, sprites_tiles, wall_tiles } from "
 // ! transform grid to canvas (think about it first)
 // ! map check : can't remove external walls, player spawn is a must
 
+
 const MapEditor: FunctionComponent = () => {
 	const [grid, setGrid] = useState<number[][]>([]);
-	const [tile_selected, setTile] = useState<number>(1);
+	const [tile_selected, setTile] = useState<number>(2);
 	const [menu_selected, setMenuState] = useState<string>("walls");
-	const [tiles, setTiles] = useState<JSX.Element>(wall_tiles);
 
 	const defaultMap = () => {
 		setGrid([
@@ -89,8 +92,8 @@ const MapEditor: FunctionComponent = () => {
 		let rect = document.getElementById("map-editor-grid")?.getBoundingClientRect();
 		if (!rect)
 			return ;
-		let x = Math.floor((e.clientX - rect.left) / 10);
-		let y = Math.floor((e.clientY - rect.top) / 10);
+		let x = Math.floor((e.clientX - rect.left) / 20);
+		let y = Math.floor((e.clientY - rect.top) / 20);
 		
 		if ((grid.length > 0 && x >= 0 && x < grid[0].length) && (y >= 0 && y < grid.length)) {
 			setGrid((current) => {
@@ -105,9 +108,8 @@ const MapEditor: FunctionComponent = () => {
 		localStorage.setItem('cub3d-map', JSON.stringify(grid));
 	}
 
-	const setMenu = (t: JSX.Element, menu: string) => {
-		setTiles(t);
-		setMenuState(menu);
+	const selectTile = (tile: number) => {
+		setTile(tile);
 	}
 
 	let row_key = 0;
@@ -136,16 +138,19 @@ const MapEditor: FunctionComponent = () => {
 				<div id="cub3d-button-separator"/>
 				<div id="map-editor-menu">
 					<Scrollbar>
-						{tiles}
+						{ menu_selected === 'player' && <Player selectTile={selectTile}/> }
+						{ menu_selected === 'walls' && <Walls selectTile={selectTile}/> }
+						{ menu_selected === 'sprites' && <Sprites selectTile={selectTile}/> }
+						{ menu_selected === 'enemies' && <Enemies selectTile={selectTile}/> }
 					</Scrollbar>
 					<div id="map-editor-button-separator"/>
-					<button onClick={() => setMenu(player_tiles, 'player')} className={"map-editor-menu-button button-up " + (menu_selected === 'player' ? 'selected-u' : '')}>PLAYER</button>
+					<button onClick={() => setMenuState('player')} className={"map-editor-menu-button button-up " + (menu_selected === 'player' ? 'selected-u' : '')}>PLAYER</button>
 					<div id="map-editor-button-separator"/>
-					<button onClick={() => setMenu(wall_tiles, 'walls')} className={"map-editor-menu-button button-down " + (menu_selected === 'walls' ? 'selected-d' : '')}>WALLS</button>
+					<button onClick={() => setMenuState('walls')} className={"map-editor-menu-button button-down " + (menu_selected === 'walls' ? 'selected-d' : '')}>WALLS</button>
 					<div id="map-editor-button-separator"/>
-					<button onClick={() => setMenu(sprites_tiles, 'sprites')} className={"map-editor-menu-button button-up " + (menu_selected === 'sprites' ? 'selected-u' : '')}>SPRITES</button>
+					<button onClick={() => setMenuState('sprites')} className={"map-editor-menu-button button-up " + (menu_selected === 'sprites' ? 'selected-u' : '')}>SPRITES</button>
 					<div id="map-editor-button-separator"/>
-					<button onClick={() => setMenu(enemy_tiles, 'enemies')} className={"map-editor-menu-button button-down " + (menu_selected === 'enemies' ? 'selected-d' : '')}>ENEMIES</button>
+					<button onClick={() => setMenuState('enemies')} className={"map-editor-menu-button button-down " + (menu_selected === 'enemies' ? 'selected-d' : '')}>ENEMIES</button>
 				</div>
 			</div>
 			<button className="map-editor-button button-save" onClick={saveMap}><h3>SAVE</h3></button>

@@ -5,15 +5,11 @@ import { Scrollbar } from "react-scrollbars-custom";
 import { GridTile } from "./tiles";
 import Walls from "./Tiles/Walls";
 import Player from "./Tiles/Player";
-import Sprites from "./Tiles/Sprites";
+import Objects from "./Tiles/Objects";
 import Enemies from "./Tiles/Enemies";
 
-// ! make sure map textures are recognizable
 // ! on mouse hold, put multiple tiles
 // ! add a way to direct player orientation
-// ! in game, make sure that walls now start at index 2 (player spawn is 1)
-// ! in game, update floor and ceil variables
-// ! Be sure the jsons are correct
 // ! transform grid to canvas (think about it first)
 // ! map check : can't remove external walls, player spawn is a must
 
@@ -26,7 +22,7 @@ const MapEditor: FunctionComponent = () => {
 	const defaultMap = () => {
 		setGrid([
 			[2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2], 
-			[2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2], 
+			[2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1.2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2], 
 			[2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2], 
 			[2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2], 
 			[2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2], 
@@ -91,10 +87,10 @@ const MapEditor: FunctionComponent = () => {
 
 	const calculateGridIndexes = (e: any) => {
 		let rect = document.getElementById("map-editor-grid")?.getBoundingClientRect();
-		if (!rect)
+		if (!rect || e.button !== 0)
 			return ;
-		let x = Math.floor((e.clientX - rect.left) / 20);
-		let y = Math.floor((e.clientY - rect.top) / 20);
+		let x = Math.floor((e.clientX - rect.left) / 16);
+		let y = Math.floor((e.clientY - rect.top) / 16);
 		
 		if ((grid.length > 0 && x >= 0 && x < grid[0].length) && (y >= 0 && y < grid.length)) {
 			setGrid((current) => {
@@ -141,21 +137,21 @@ const MapEditor: FunctionComponent = () => {
 					<Scrollbar>
 						{ menu_selected === 'player' && <Player selectTile={selectTile}/> }
 						{ menu_selected === 'walls' && <Walls selectTile={selectTile}/> }
-						{ menu_selected === 'sprites' && <Sprites selectTile={selectTile}/> }
+						{ menu_selected === 'objects' && <Objects selectTile={selectTile}/> }
 						{ menu_selected === 'enemies' && <Enemies selectTile={selectTile}/> }
 					</Scrollbar>
 					<div id="map-editor-button-separator"/>
-					<button onClick={() => setMenuState('player')} className={"map-editor-menu-button button-up " + (menu_selected === 'player' ? 'selected-u' : '')}>PLAYER</button>
+					<button onClick={() => setMenuState('player')} className={"map-editor-menu-button button-up " + (menu_selected === 'player' ? 'selected-u' : '')}>Player</button>
 					<div id="map-editor-button-separator"/>
-					<button onClick={() => setMenuState('walls')} className={"map-editor-menu-button button-down " + (menu_selected === 'walls' ? 'selected-d' : '')}>WALLS</button>
+					<button onClick={() => setMenuState('walls')} className={"map-editor-menu-button button-down " + (menu_selected === 'walls' ? 'selected-d' : '')}>Walls</button>
 					<div id="map-editor-button-separator"/>
-					<button onClick={() => setMenuState('sprites')} className={"map-editor-menu-button button-up " + (menu_selected === 'sprites' ? 'selected-u' : '')}>SPRITES</button>
+					<button onClick={() => setMenuState('objects')} className={"map-editor-menu-button button-up " + (menu_selected === 'objects' ? 'selected-u' : '')}>Objects</button>
 					<div id="map-editor-button-separator"/>
-					<button onClick={() => setMenuState('enemies')} className={"map-editor-menu-button button-down " + (menu_selected === 'enemies' ? 'selected-d' : '')}>ENEMIES</button>
+					<button onClick={() => setMenuState('enemies')} className={"map-editor-menu-button button-down " + (menu_selected === 'enemies' ? 'selected-d' : '')}>Enemies</button>
 				</div>
 			</div>
-			<button className="map-editor-button button-save" onClick={saveMap}><h3>SAVE</h3></button>
-			<button className="map-editor-button button-reset" onClick={defaultMap}><h3>RESET</h3></button>
+			<button className="map-editor-button button-save" onClick={saveMap}><h3>Save</h3></button>
+			<button className="map-editor-button button-reset" onClick={defaultMap}><h3>Reset</h3></button>
 		</div>
 	)
 }

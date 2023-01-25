@@ -8,12 +8,12 @@ export const TEX_HEIGHT = TEX_WIDTH;
 export const SPRITE_WIDTH = 64;
 export const SPRITE_HEIGHT = SPRITE_WIDTH;
 
-export const RAYCASTER_WIDTH = 300;
+export const RAYCASTER_WIDTH = 350;
 export const RAYCASTER_HEIGHT = 200;
 
-export const RAY_COUNT = 150;
+export const RAY_COUNT = 200;
 
-export const WALK_SPEED = 0.1;
+export const WALK_SPEED = 4;
 export const ROTATE_SPEED = 150;
-export const MOUSE_SENSITIVITY = 0.125;
+export const MOUSE_SENSITIVITY = 3.5;
 

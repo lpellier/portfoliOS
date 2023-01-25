@@ -1,0 +1,229 @@
+{
+	"textures": [
+		{
+			"name": "cobblestone-1",
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 64,
+				"h": 64
+			}
+		},
+		{
+			"name": "cobblestone-1-shade",
+			"frame": {
+				"x": 64,
+				"y": 0,
+				"w": 64,
+				"h": 64
+			}
+		},
+		{
+			"name": "cobblestone-2",
+			"frame": {
+				"x": 128,
+				"y": 0,
+				"w": 64,
+				"h": 64
+			}
+		},
+		{
+			"name": "cobblestone-2-shade",
+			"frame": {
+				"x": 192,
+				"y": 0,
+				"w": 64,
+				"h": 64
+			}
+		},
+		{
+			"name": "cobblestone-3",
+			"frame": {
+				"x": 256,
+				"y": 0,
+				"w": 64,
+				"h": 64
+			}
+		},
+		{
+			"name": "cobblestone-3-shade",
+			"frame": {
+				"x": 0,
+				"y": 64,
+				"w": 64,
+				"h": 64
+			}
+		},
+		{
+			"name": "stone",
+			"frame": {
+				"x": 64,
+				"y": 64,
+				"w": 64,
+				"h": 64
+			}
+		},
+		{
+			"name": "stone-shade",
+			"frame": {
+				"x": 128,
+				"y": 64,
+				"w": 64,
+				"h": 64
+			}
+		},
+		{
+			"name": "stone-map",
+			"frame": {
+				"x": 192,
+				"y": 64,
+				"w": 64,
+				"h": 64
+			}
+		},
+		{
+			"name": "blue-stone",
+			"frame": {
+				"x": 256,
+				"y": 64,
+				"w": 64,
+				"h": 64
+			}
+		},
+		{
+			"name": "blue-stone-shade",
+			"frame": {
+				"x": 0,
+				"y": 128,
+				"w": 64,
+				"h": 64
+			}
+		},
+		{
+			"name": "blue-stone-cell-1",
+			"frame": {
+				"x": 64,
+				"y": 128,
+				"w": 64,
+				"h": 64
+			}
+		},
+		{
+			"name": "blue-stone-cell-1-shade",
+			"frame": {
+				"x": 128,
+				"y": 128,
+				"w": 64,
+				"h": 64
+			}
+		},
+		{
+			"name": "blue-stone-cell-2",
+			"frame": {
+				"x": 192,
+				"y": 128,
+				"w": 64,
+				"h": 64
+			}
+		},
+		{
+			"name": "blue-stone-cell-2-shade",
+			"frame": {
+				"x": 256,
+				"y": 128,
+				"w": 64,
+				"h": 64
+			}
+		},
+		{
+			"name": "blue-metal",
+			"frame": {
+				"x": 0,
+				"y": 192,
+				"w": 64,
+				"h": 64
+			}
+		},
+		{
+			"name": "blue-metal-shade",
+			"frame": {
+				"x": 64,
+				"y": 192,
+				"w": 64,
+				"h": 64
+			}
+		},
+		{
+			"name": "blue-metal-door",
+			"frame": {
+				"x": 128,
+				"y": 192,
+				"w": 64,
+				"h": 64
+			}
+		},
+		{
+			"name": "blue-metal-door-shade",
+			"frame": {
+				"x": 192,
+				"y": 192,
+				"w": 64,
+				"h": 64
+			}
+		},
+		{
+			"name": "blue-metal-door-open",
+			"frame": {
+				"x": 256,
+				"y": 192,
+				"w": 64,
+				"h": 64
+			}
+		},
+		{
+			"name": "blue-metal-door-open-shade",
+			"frame": {
+				"x": 0,
+				"y": 256,
+				"w": 64,
+				"h": 64
+			}
+		},
+		{
+			"name": "wood",
+			"frame": {
+				"x": 64,
+				"y": 256,
+				"w": 64,
+				"h": 64
+			}
+		},
+		{
+			"name": "wood",
+			"frame": {
+				"x": 128,
+				"y": 256,
+				"w": 64,
+				"h": 64
+			}
+		},
+		{
+			"name": "brick",
+			"frame": {
+				"x": 192,
+				"y": 256,
+				"w": 64,
+				"h": 64
+			}
+		},
+		{
+			"name": "brick",
+			"frame": {
+				"x": 256,
+				"y": 256,
+				"w": 64,
+				"h": 64
+			}
+		}
+	]
+}

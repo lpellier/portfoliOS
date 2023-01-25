@@ -8,6 +8,10 @@ const Enemies = ({selectTile}: {selectTile: Function}) => {
 
 	return (
 		<div id='enemy-tiles' className="menu-tiles">
+			<button className="menu-tile" onClick={() => clickTile('enemy-tiles', 'enemy-tile-0', 0)}>
+				<div className="menu-item item-empty" id='enemy-tile-0'/>
+				<h3 className="menu-item-text">Empty</h3>
+			</button>
 			<button className="menu-tile" onClick={() => clickTile('enemy-tiles', 'enemy-tile-1', -1)}>
 				<div className="menu-item guard" id="enemy-tile-1"/>
 				<h3 className="menu-item-text">Guard</h3>

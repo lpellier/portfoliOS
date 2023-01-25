@@ -1,40 +1,24 @@
 import { FunctionComponent, useState } from "react";
 import "styles/Cub3D.css"
 import { ISketch } from "../../../../types";
-import { defineSketch } from "./Sketch/Sketch";
-import p5 from "p5";
-import { default_win_width, default_win_height } from "../../../../consts";
 import MapEditor from "./MapEditor";
 import Canvas from "./Canvas";
-
-let p: p5 | null = null;
 
 const Cub3D: FunctionComponent<ISketch> = () => {
 	const [selected_app, setApp] = useState<number>(0);
 
 	const goToMapEditor = () => {
-		eraseSketch();
 		animateMenuShrink();
 		setTimeout(() => setApp(-1), 250);
 	}
 	const goToMenu = () => {
-		eraseSketch();
 		setApp(0);
 	}
 	const goToSketch = () => {
-		eraseSketch();
 		animateMenuShrink();
 		setTimeout(() => {
 			setApp(1);
-			// let cub3dSketch = defineSketch(default_win_width, default_win_height)
-			// p = new p5(cub3dSketch)
 		}, 200)
-	}
-	const eraseSketch = () => {
-		if (p !== null) {
-			p.remove();
-			p = null;
-		}
 	}
 
 	const animateMenuShrink = () => {
@@ -100,8 +84,6 @@ const Cub3D: FunctionComponent<ISketch> = () => {
 				</div>
 			}
 			{ selected_app === 1 &&
-				// <div className="Canvas" id={"canvas-cub3d-parent"}>
-				// </div>
 				<div>
 					<button className="cub3d-button-return"
 						onClick={goToMenu}>

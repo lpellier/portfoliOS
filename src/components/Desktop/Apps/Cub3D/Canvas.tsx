@@ -1,12 +1,12 @@
 import p5, { Vector } from "p5";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "styles/Canvas.css"
 import { RAYCASTER_WIDTH, RAYCASTER_HEIGHT, RAY_COUNT, TEX_WIDTH, TEX_HEIGHT, WALK_SPEED, ROTATE_SPEED, MOUSE_SENSITIVITY, SPRITE_WIDTH, SPRITE_HEIGHT } from "./Sketch/constants";
 import { perpendicularClockWise, perpendicularCounterClockWise } from "./Sketch/helper";
 import { Map } from "./Sketch/Map";
 import { Player } from "./Sketch/Player";
-import texturesData from "./textures/wolf-walls.json"
-import spritesData from "./wolf-objects.json"
+import texturesData from "./walls.json"
+import spritesData from "./objects.json"
 
 const TEX_SHEET_WIDTH = 384;
 const TEX_SHEET_HEIGHT = 1216;
@@ -23,6 +23,10 @@ interface Sprite {
 let canvas : HTMLCanvasElement | null;
 let context: CanvasRenderingContext2D | null;
 let frameCount : number;
+let frameTime : number;
+let frameRate : number;
+let time: number;
+let oldTime: number;
 let animationFrameId: number;
 let map: Map;
 let player: Player;
@@ -71,15 +75,15 @@ const getTextures = () => {
     if (!ctx)
         return ;
     let texturesSheet = new Image();
-    texturesSheet.src = './assets/textures/wolf-walls.png';
+    texturesSheet.src = './assets/textures/walls.png';
     texturesSheet.crossOrigin = 'anonymous';
     texturesSheet.onload = () => {
         if (!ctx)
             return;
         ctx.drawImage(texturesSheet, 0, 0);
         for (let i = 0; i < texData.length; i++) {
-            let pos = texData[i].position;
-            let img = ctx.getImageData(pos.x, pos.y, pos.w, pos.h).data;
+            let frame = texData[i].frame;
+            let img = ctx.getImageData(frame.x, frame.y, frame.w, frame.h).data;
             textures.push(img);
         }
         cv.remove();
@@ -96,15 +100,15 @@ const getSprites = () => {
     if (!ctx)
         return ;
     let spritesSheet = new Image();
-    spritesSheet.src = './assets/sprites/wolf-objects.png';
+    spritesSheet.src = './assets/sprites/objects.png';
     spritesSheet.crossOrigin = 'anonymous';
     spritesSheet.onload = () => {
         if (!ctx)
             return;
         ctx.drawImage(spritesSheet, 0, 0);
         for (let i = 0; i < spriteData.length; i++) {
-            let pos = spriteData[i].position;
-            let img = ctx.getImageData(pos.x, pos.y, pos.w, pos.h).data;
+            let frame = spriteData[i].frame;
+            let img = ctx.getImageData(frame.x, frame.y, frame.w, frame.h).data;
             sprites.push(img);
         }
         cv.remove();
@@ -169,10 +173,13 @@ const rayCasting = () => {
     for (let i = 0; i < player.rays.length; i += 1) {
         let ray = player.rays[i];
         let perpWallDist: number;
-        let textureNum = (map.grid[ray.mapCheck.y][ray.mapCheck.x] * 2) - 2;
+        let textureNum = ((map.grid[ray.mapCheck.y][ray.mapCheck.x] - 2) * 2);
         if (ray.side === true) {
             perpWallDist = ray.rayLength1D.y - ray.unitStepSize.y;
-            textureNum++;
+            if (textureNum + 1 < textures.length) {
+				textureNum++;
+			}
+				
         } else {
             perpWallDist = ray.rayLength1D.x - ray.unitStepSize.x;
         }
@@ -264,8 +271,9 @@ const spriteCasting = () => {
 					if (texY < 0) texY = 0;
 					if (texY >= SPRITE_HEIGHT) texY = SPRITE_HEIGHT - 1;
 					let color = getPixelColor(sprites[visibleSprites[spriteOrder[i]].texture], {x: texX, y: texY})
-					if (!(color.r === 150 && color.g === 12 && color.b === 132))
+					if (!(color.r === 149 && color.g === 20 && color.b === 129)) {
 						setPixelInCanvas({x: stripe, y: y}, color);
+					}
 				}
 			}
 		}
@@ -319,8 +327,8 @@ const setup = () => {
     if (!context || !canvas)
         return;
     frameCount = 0;
-    floor_texture = textures[69];
-    ceil_texture = textures[23];
+    floor_texture = textures[6];
+    ceil_texture = textures[15];
     map = new Map();
 	let saved_map = localStorage.getItem("cub3d-map");
 	if (saved_map) {
@@ -346,7 +354,7 @@ const initializeSprites = () => {
         for (let x = 0; x < map.grid[y].length; x++) {
             let check = map.grid[y][x];
             if (check < 0) {
-                visibleSprites.push({x: x + 0.5, y: y + 0.5, texture: check * -1});
+                visibleSprites.push({x: x + 0.5, y: y + 0.5, texture: (check + 3) * -1});
             }
         }
     }
@@ -396,6 +404,7 @@ const draw = () => {
 }
 
 const Canvas = () => {
+	const [frameRate, setFrameRate] = useState<number>(0);
     const canvasRef = useRef<(HTMLCanvasElement | null)>(null);
 
 	const requestPointerLock = () => {
@@ -419,8 +428,15 @@ const Canvas = () => {
     
                     const render = () => {
                         frameCount++;
+						oldTime = time;
                         draw()
-                        animationFrameId = window.requestAnimationFrame(render)
+						time = Date.now();
+                        frameTime = (time - oldTime) / 1000;
+						setFrameRate(Math.floor(1 / frameTime));
+						player.walk_speed = WALK_SPEED * frameTime;
+						player.rotate_speed = ROTATE_SPEED * frameTime;
+						player.mouse_sensitivity = MOUSE_SENSITIVITY * frameTime;			
+						animationFrameId = window.requestAnimationFrame(render)
                     }
                     render();
                 }, 200)
@@ -435,7 +451,10 @@ const Canvas = () => {
     }, [])
 
     return (
-        <canvas onClick={requestPointerLock} id='cub3d-canvas' ref={canvasRef}/>
+		<div>
+			<h3 style={{position: "absolute", zIndex: 10, color: "var(--yellow)", top: "15px"}}>{frameRate}</h3>
+			<canvas onClick={requestPointerLock} id='cub3d-canvas' ref={canvasRef}/>
+		</div>
     )
 }
 

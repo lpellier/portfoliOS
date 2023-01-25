@@ -73,21 +73,21 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	padding-right: 20px;
-	padding-bottom: 20px;
+	padding-right: 16px;
+	padding-bottom: 16px;
 }
 
 .map-editor-row {
 	display: flex;
 	flex-basis: 80%;
 	flex-direction: row;
-	height: 20px;
+	height: 16px;
 	width: 100%;
 }
 
 .grid-tile {
-	width: 20px;
-	height: 20px;
+	width: 16px;
+	height: 16px;
 	background-color: white;
 	border: none;
 }
@@ -123,7 +123,7 @@
 }
 .map-editor-button h3 {
 	color: var(--black);
-	font: 15px "Outfit";
+	font: 19px "Outfit";
 	transition: color 150ms;
 }
 
@@ -157,8 +157,8 @@
 }
 
 .menu-item {
-	width: 20px;
-	height: 20px;
+	width: 16px;
+	height: 16px;
 	background-color: var(--blue);
 }
 

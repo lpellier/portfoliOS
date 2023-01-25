@@ -1,18 +1,40 @@
 .item-empty { background-color: var(--background-color); }
 .item-wall { background-color: var(--blue);}
-.item-spawn { background-color: var(--green); }
 .item-enemy { background-color: var(--red); }
 .item-pickup { background-color: var(--yellow); }
+
+.spawn-north,
+.spawn-south,
+.spawn.west,
+.spawn-east {
+	background-color: var(--background-color);
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 8px;
+}
+
+.spawn-north { border-color: transparent transparent var(--green) transparent; }
+.spawn-south { border-color: var(--green) transparent transparent transparent; }
+.spawn-west { 
+	background-color: var(--background-color);
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 8px;
+	border-color: transparent var(--green) transparent transparent; 
+}
+.spawn-east { border-color: transparent transparent transparent var(--green); }
 
 .variant-text {
 	position: relative;
 	margin: 0;
 	font-family: Pixeloid;
-	font-size: 10px;
+	font-size: 8px;
 	color: white;
 	text-align: center;
 	vertical-align: middle;
-	line-height: 20px;
+	line-height: 16px;
 }
 
 /* ? WALLS */
@@ -32,17 +54,17 @@
 	position: absolute;
 	background-color: var(--blue);
 	border: 1px solid var(--black);
-	height: 10px;
-	width: 10px;
-	margin: 4px;
+	height: 8px;
+	width: 8px;
+	margin: 3px;
 }
 
 .blue-stone,
 .blue-stone-cell-1,
 .blue-stone-cell-2 {
 	background-image:  linear-gradient(135deg, #000079 25%, transparent 25%), linear-gradient(225deg, #000079 25%, transparent 25%), linear-gradient(45deg, #000079 25%, transparent 25%), linear-gradient(315deg, #000079 25%, var(--blue) 25%);
-	background-position:  10px 0, 10px 0, 0 0, 0 0;
-	background-size: 10px 10px;
+	background-position:  8px 0, 8px 0, 0 0, 0 0;
+	background-size: 8px 8px;
 }
 
 .blue-stone-cell-1,
@@ -54,21 +76,21 @@
 .blue-metal-door {
 	background-color: #2BB5B5;
 	opacity: 0.8;
-	background: linear-gradient(135deg, #3D546755 25%, transparent 25%) -10px 0/ 20px 20px, linear-gradient(225deg, #3D5467 25%, transparent 25%) -10px 0/ 20px 20px, linear-gradient(315deg, #3D546755 25%, transparent 25%) 0px 0/ 20px 20px, linear-gradient(45deg, #3D5467 25%, #2BB5B5 25%) 0px 0/ 20px 20px;
+	background: linear-gradient(135deg, #3D546755 25%, transparent 25%) -8px 0/ 16px 16px, linear-gradient(225deg, #3D5467 25%, transparent 25%) -8px 0/ 16px 16px, linear-gradient(315deg, #3D546755 25%, transparent 25%) 0px 0/ 16px 16px, linear-gradient(45deg, #3D5467 25%, #2BB5B5 25%) 0px 0/ 16px 16px;
 }
 
 .wood {
 	background-color: #744B29;
 	opacity: 0.8;
-	background-image: radial-gradient( ellipse farthest-corner at 10px 10px , #463516, #463516 50%, #744B29 50%);
-	background-size: 10px 10px;
+	background-image: radial-gradient( ellipse farthest-corner at 8px 8px , #463516, #463516 50%, #744B29 50%);
+	background-size: 8px 8px;
 }
 
 .brick {
 	background-color: #282828;
 	background-image:  linear-gradient(30deg, #A30E0C 12%, transparent 12.5%, transparent 87%, #A30E0C 87.5%, #A30E0C), linear-gradient(150deg, #A30E0C 12%, transparent 12.5%, transparent 87%, #A30E0C 87.5%, #A30E0C), linear-gradient(30deg, #A30E0C 12%, transparent 12.5%, transparent 87%, #A30E0C 87.5%, #A30E0C), linear-gradient(150deg, #A30E0C 12%, transparent 12.5%, transparent 87%, #A30E0C 87.5%, #A30E0C), linear-gradient(60deg, #A30E0C77 25%, transparent 25.5%, transparent 75%, #A30E0C77 75%, #A30E0C77), linear-gradient(60deg, #A30E0C77 25%, transparent 25.5%, transparent 75%, #A30E0C77 75%, #A30E0C77);
-	background-size: 20px 35px;
-	background-position: 0 0, 0 0, 10px 18px, 10px 18px, 0 0, 10px 18px;
+	background-size: 16px 35px;
+	background-position: 0 0, 0 0, 8px 18px, 8px 18px, 0 0, 8px 18px;
 }
 
 /* ? ENEMIES */
@@ -85,39 +107,136 @@
 	background-image: repeating-linear-gradient(45deg, var(--blue) 0, var(--blue) 1px, var(--red) 0, var(--red) 50%);
 }
 
-.table-1,
-.table-2 {
-	background-color: #FAAB66;
-	border-radius: 50%;
+/* ? SPRITES */
+
+.table-1 {
+	background-color: var(--background-color);
+	background-image: url('./../components/Desktop/Apps/Cub3D/Tiles/sprites/table-1.png');
+	background-repeat: no-repeat;
+	background-size: 16px 16px;
 }
-/* ! */
+
+.table-2 {
+	background-color: var(--background-color);
+	background-image: url('./../components/Desktop/Apps/Cub3D/Tiles/sprites/table-2.png');
+	background-repeat: no-repeat;
+	background-size: 16px 16px;
+}
+
 .hanging-skeleton {
-	background: linear-gradient(to right, var(--background-color) 0 30%, #EDEDED 30% 80%, var(--background-color) 80% 100%);
-	height: 20px;
-	width: 20px;
+	background-color: var(--background-color);
+	background-image: url('./../components/Desktop/Apps/Cub3D/Tiles/sprites/hanging-skeleton.png');
+	background-repeat: no-repeat;
+	background-size: 16px 16px;
+}
+
+.skeleton {
+	background-color: var(--background-color);
+	background-image: url('./../components/Desktop/Apps/Cub3D/Tiles/sprites/skeleton.png');
+	background-repeat: no-repeat;
+	background-size: 16px 16px;
+}
+.skeleton-remains {
+	background-color: var(--background-color);
+	background-image: url('./../components/Desktop/Apps/Cub3D/Tiles/sprites/skeleton-remains.png');
+	background-repeat: no-repeat;
+	background-size: 16px 16px;
 }
 
 .pillar {
-	background: linear-gradient(to right, var(--background-color) 0 30%, #EDEDED 30% 80%, var(--background-color) 80% 100%);
-	height: 20px;
-	width: 20px;
+	background-color: var(--background-color);
+	background-image: url('./../components/Desktop/Apps/Cub3D/Tiles/sprites/pillar.png');
+	background-repeat: no-repeat;
+	background-size: 16px 16px;
 }
 
+.plant-1 {
+	background-color: var(--background-color);
+	background-image: url('./../components/Desktop/Apps/Cub3D/Tiles/sprites/plant-1.png');
+	background-repeat: no-repeat;
+	background-size: 16px 16px;
+}
 
+.plant-2 {
+	background-color: var(--background-color);
+	background-image: url('./../components/Desktop/Apps/Cub3D/Tiles/sprites/plant-2.png');
+	background-repeat: no-repeat;
+	background-size: 16px 16px;
+}
 
-	/* background-color: var(--blue);
-	color: var(--red);
-	border-style: solid;
-	border-width: 4px 4px 0 0;
-	content: '';
-	display: inline-block;
-	height: 7px;
-	
-	position: relative;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -80%) rotate(-45deg);
-	vertical-align: top;
-	width: 7px; */
-	
+.well-1 {
+	background-color: var(--background-color);
+	background-image: url('./../components/Desktop/Apps/Cub3D/Tiles/sprites/well-1.png');
+	background-repeat: no-repeat;
+	background-size: 16px 16px;
+}
 
+.well-2 {
+	background-color: var(--background-color);
+	background-image: url('./../components/Desktop/Apps/Cub3D/Tiles/sprites/well-2.png');
+	background-repeat: no-repeat;
+	background-size: 16px 16px;
+}
+
+.knight-armor {
+	background-color: var(--background-color);
+	background-image: url('./../components/Desktop/Apps/Cub3D/Tiles/sprites/knight-armor.png');
+	background-repeat: no-repeat;
+	background-size: 16px 16px;
+}
+
+.blood-puddle {
+	background-color: var(--background-color);
+	background-image: url('./../components/Desktop/Apps/Cub3D/Tiles/sprites/blood-puddle.png');
+	background-repeat: no-repeat;
+	background-size: 16px 16px;
+}
+
+.cage-1 {
+	background-color: var(--background-color);
+	background-image: url('./../components/Desktop/Apps/Cub3D/Tiles/sprites/cage-1.png');
+	background-repeat: no-repeat;
+	background-size: 16px 16px;
+}
+
+.cage-2 {
+	background-color: var(--background-color);
+	background-image: url('./../components/Desktop/Apps/Cub3D/Tiles/sprites/cage-2.png');
+	background-repeat: no-repeat;
+	background-size: 16px 16px;
+}
+
+.key-1 {
+	background-color: var(--background-color);
+	background-image: url('./../components/Desktop/Apps/Cub3D/Tiles/sprites/key-1.png');
+	background-repeat: no-repeat;
+	background-size: 16px 16px;
+}
+
+.key-2 {
+	background-color: var(--background-color);
+	background-image: url('./../components/Desktop/Apps/Cub3D/Tiles/sprites/key-2.png');
+	background-repeat: no-repeat;
+	background-size: 16px 16px;
+}
+
+.bed {
+	background-color: var(--background-color);
+	background-image: url('./../components/Desktop/Apps/Cub3D/Tiles/sprites/bed.png');
+	background-repeat: no-repeat;
+	background-size: 16px 16px;
+}
+
+.barrel {
+	background-color: var(--background-color);
+	background-image: url('./../components/Desktop/Apps/Cub3D/Tiles/sprites/barrel.png');
+	background-repeat: no-repeat;
+	background-size: 16px 16px;
+}
+
+.weapons-rack {
+	background-color: var(--background-color);
+	background-image: url('./../components/Desktop/Apps/Cub3D/Tiles/sprites/weapons-rack.png');
+	background-repeat: no-repeat;
+	background-size: 16px 16px;
+}

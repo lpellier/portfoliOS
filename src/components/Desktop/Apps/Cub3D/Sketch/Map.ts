@@ -51,14 +51,38 @@ export class Map {
 		];
 	}
 
-	getPlayerPos(): Vector {
+	getPlayerPos(): {pos: Vector, dir: Vector} {
 		for (let y = 0; y < this.grid.length; y++) {
 			for (let x = 0; x < this.grid[0].length; x++) {
-				if (this.grid[y][x] === 2) {
-					return new Vector(x, y);
+				if (this.grid[y][x] === 1.1) {
+					return {
+						pos: new Vector(x, y),
+						dir: new Vector(0, -1)
+					};
+				}
+				else if (this.grid[y][x] === 1.2) {
+					return {
+						pos: new Vector(x, y),
+						dir: new Vector(0, 1)
+					};
+				}
+				else if (this.grid[y][x] === 1.3) {
+					return {
+						pos: new Vector(x, y),
+						dir: new Vector(-1, 0)
+					};
+				}
+				else if (this.grid[y][x] === 1.4) {
+					return {
+						pos: new Vector(x, y),
+						dir: new Vector(1, 0)
+					};
 				}
 			}
 		}
-		return new Vector(0, 0);
+		return {
+			pos: new Vector(0, 0),
+			dir: new Vector(0, -1)
+		};
 	}
 }

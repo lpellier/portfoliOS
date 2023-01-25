@@ -1,4 +1,5 @@
 import "styles/MapEditor.css"
+import "styles/Tiles.css"
 import { FunctionComponent, useEffect, useState } from "react";
 import { Scrollbar } from "react-scrollbars-custom";
 import { GridTile } from "./tiles";

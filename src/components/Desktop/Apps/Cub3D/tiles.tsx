@@ -58,7 +58,18 @@ export const GridTile = ({content}: {content: number}) => {
 
 	return (
 		<div className={`grid-tile ${typeId}`}>
-			<h3 className="variant-text-map">.</h3>
+			{(typeId === 'stone-world-map' || typeId === 'blue-metal-door') &&
+				<div className="menu-item-rect"/>
+			}
+			{typeId.includes('1') && 
+				<h3 className="variant-text">1</h3>
+			}
+			{typeId.includes('2') && 
+				<h3 className="variant-text">2</h3>
+			}
+			{typeId.includes('3') && 
+				<h3 className="variant-text">3</h3>
+			}
 		</div>
 	)
 }

@@ -9,11 +9,11 @@ const Sprites = ({selectTile}: {selectTile: Function}) => {
 	return (
 		<div id='sprite-tiles' className="menu-tiles">
 			<button className="menu-tile" onClick={() => clickTile('sprite-tiles', 'sprite-tile-1', -3)}>
-				<div className="menu-item table-1" id='sprite-tile-1'/>
-				<h3 className="menu-item-text">Table</h3>
+				<div className="menu-item table-1" id='sprite-tile-1'><h3 className="variant-text">1</h3></div>
+				<h3 className="menu-item-text">Table1</h3>
 			</button>
 			<button className="menu-tile" onClick={() => clickTile('sprite-tiles', 'sprite-tile-2', -4)}>
-				<div className="menu-item table-2" id='sprite-tile-2'/>
+				<div className="menu-item table-2" id='sprite-tile-2'><h3 className="variant-text">2</h3></div>
 				<h3 className="menu-item-text">Table2</h3>
 			</button>
 			<button className="menu-tile" onClick={() => clickTile('sprite-tiles', 'sprite-tile-3', -5)}>
@@ -26,7 +26,7 @@ const Sprites = ({selectTile}: {selectTile: Function}) => {
 			</button>
 			<button className="menu-tile" onClick={() => clickTile('sprite-tiles', 'sprite-tile-5', -7)}>
 				<div className="menu-item plant-1" id='sprite-tile-5'/>
-				<h3 className="menu-item-text">Plant</h3>
+				<h3 className="menu-item-text">Plant1</h3>
 			</button>
 			<button className="menu-tile" onClick={() => clickTile('sprite-tiles', 'sprite-tile-6', -8)}>
 				<div className="menu-item plant-2" id='sprite-tile-6'/>

@@ -1,5 +1,4 @@
 import { tileClicked } from './../tiles'
-import "styles/MapEditor.css"
 
 const Walls = ({selectTile}: {selectTile: Function}) => {
 	const clickTile = (parent: string, node: string, n: number) => {

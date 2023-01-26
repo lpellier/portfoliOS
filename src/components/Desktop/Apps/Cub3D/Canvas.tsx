@@ -271,7 +271,7 @@ const spriteCasting = () => {
 					if (texY < 0) texY = 0;
 					if (texY >= SPRITE_HEIGHT) texY = SPRITE_HEIGHT - 1;
 					let color = getPixelColor(sprites[visibleSprites[spriteOrder[i]].texture], {x: texX, y: texY})
-					if (!(color.r === 149 && color.g === 20 && color.b === 129)) {
+                    if (!((color.r === 149 && color.g === 20 && color.b === 129) || (color.r === 151 && color.g === 12 && color.b === 133))) {
 						setPixelInCanvas({x: stripe, y: y}, color);
 					}
 				}
@@ -301,6 +301,7 @@ const preload = () => {
 }
 
 const keyDownHandler = (e: KeyboardEvent) => {
+    
     if (walking.indexOf(e.key) === -1 && (e.key === 'w' || e.key === 'z' || e.key === 's' || e.key === 'q' || e.key === 'a' || e.key === 'd')) {
         walking += e.key;
     }
@@ -312,14 +313,8 @@ const mouseHandler = (e: MouseEvent) => {
 }
 
 const keyUpHandler = (e: KeyboardEvent) => {
-    if (e.key === 'w' || e.key === 'z') {
-        walking = walking.replaceAll('z', '');
-    } else if (e.key === 's') {
-        walking = walking.replaceAll('s', '');
-    } else if (e.key === 'q' || e.key === 'a') {
-        walking = walking.replaceAll('q', '');
-    } else if (e.key === 'd') {
-        walking = walking.replaceAll('d', '');
+    if (walking.indexOf(e.key) !== -1) {
+        walking = walking.replaceAll(e.key, '');
     }
 }
 
@@ -381,13 +376,13 @@ const draw = () => {
 
     if (walking.length > 0) {
         let walking_direction = new Vector(0, 0);
-        if (walking.indexOf('z') >= 0) {
+        if (walking.indexOf('z') >= 0 || walking.indexOf('w') >= 0) {
             walking_direction.add(new Vector(player.dir.x, player.dir.y))
         }
         if (walking.indexOf('s') >= 0) {
             walking_direction.add(p5.Vector.mult(player.dir, -1))
         }
-        if (walking.indexOf('q') >= 0) {
+        if (walking.indexOf('q') >= 0 || walking.indexOf('a') >= 0) {
             walking_direction.add(perpendicularClockWise(player.dir))
         }
         if (walking.indexOf('d') >= 0) {
@@ -420,26 +415,29 @@ const Canvas = () => {
             context = canvas.getContext('2d');
             if (context) {
                 preload();
-                setTimeout(() => {
-                    setup();
-                    document.addEventListener('keydown', keyDownHandler);
-                    document.addEventListener('keyup', keyUpHandler);
-                    document.addEventListener('mousemove', mouseHandler);
-    
-                    const render = () => {
-                        frameCount++;
-						oldTime = time;
-                        draw()
-						time = Date.now();
-                        frameTime = (time - oldTime) / 1000;
-						setFrameRate(Math.floor(1 / frameTime));
-						player.walk_speed = WALK_SPEED * frameTime;
-						player.rotate_speed = ROTATE_SPEED * frameTime;
-						player.mouse_sensitivity = MOUSE_SENSITIVITY * frameTime;			
-						animationFrameId = window.requestAnimationFrame(render)
+                let inter = setInterval(() => {
+                    if (textures.length > 0 && sprites.length > 0) {
+                        clearInterval(inter);
+                        setup();
+                        document.addEventListener('keydown', keyDownHandler);
+                        document.addEventListener('keyup', keyUpHandler);
+                        document.addEventListener('mousemove', mouseHandler);
+        
+                        const render = () => {
+                            frameCount++;
+                            oldTime = time;
+                            draw()
+                            time = Date.now();
+                            frameTime = (time - oldTime) / 1000;
+                            setFrameRate(Math.floor(1 / frameTime));
+                            player.walk_speed = WALK_SPEED * frameTime;
+                            player.rotate_speed = ROTATE_SPEED * frameTime;
+                            player.mouse_sensitivity = MOUSE_SENSITIVITY * frameTime;			
+                            animationFrameId = window.requestAnimationFrame(render)
+                        }
+                        render();
                     }
-                    render();
-                }, 200)
+                }, 50)
             }
         }
         return () => {

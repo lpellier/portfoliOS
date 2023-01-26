@@ -35,7 +35,7 @@ export const GridTile = ({content}: {content: number}) => {
 	else if (content === 10) typeId = "brick";
 	else if (content === 11) typeId = "blue-metal";
 	else if (content === 12) typeId = "blue-metal-door";
-	else if (content === 13) typeId = "stone-world-map";
+	else if (content === 14) typeId = "stone-world-map";
 	else if (content === -1) typeId = "guard";
 	else if (content === -2) typeId = "officer";
 	else if (content === -3) typeId = "table-1";

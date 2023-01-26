@@ -19,8 +19,7 @@ export class Player {
 	constructor(info: {pos: Vector, dir: Vector}, grid: number[][]) {
 		this.pos = new Vector(info.pos.x + 0.5, info.pos.y + 0.5);
 		this.dir = info.dir;
-		this.plane = new Vector(-0.66, 0);
-
+		this.plane = new Vector(this.dir.y * -(FOV / 100), this.dir.x * (FOV / 100));
 
 		this.rays = [];
 		this.walk_speed = 0;

@@ -8,16 +8,14 @@ import Player from "./Tiles/Player";
 import Objects from "./Tiles/Objects";
 import Enemies from "./Tiles/Enemies";
 
-// ! on mouse hold, put multiple tiles
-// ! add a way to direct player orientation
-// ! transform grid to canvas (think about it first)
 // ! map check : can't remove external walls, player spawn is a must
-
 
 const MapEditor: FunctionComponent = () => {
 	const [grid, setGrid] = useState<number[][]>([]);
 	const [tile_selected, setTile] = useState<number>(2);
 	const [menu_selected, setMenuState] = useState<string>("walls");
+	const [mouse_down, setMouseDown] = useState<boolean>(false);
+	const [force_update, setForcedUpdate] = useState<boolean>(false);
 
 	const defaultMap = () => {
 		setGrid([
@@ -85,6 +83,26 @@ const MapEditor: FunctionComponent = () => {
 		})
 	}, [])
 
+	const mouseMoveHandler = (e: any) => {
+		if (mouse_down) {	
+			calculateGridIndexes(e);
+			setForcedUpdate(current => !current);
+		}
+	}
+
+	const mouseDownHandler = (e: any) => {
+		if (e.button !== 0)
+			return;
+		calculateGridIndexes(e);
+		setMouseDown(true);
+	}
+
+	const mouseUpHandler = (e: any) => {
+		if (e.button !== 0)
+			return;
+		setMouseDown(false);
+	}
+
 	const calculateGridIndexes = (e: any) => {
 		let rect = document.getElementById("map-editor-grid")?.getBoundingClientRect();
 		if (!rect || e.button !== 0)
@@ -95,6 +113,17 @@ const MapEditor: FunctionComponent = () => {
 		if ((grid.length > 0 && x >= 0 && x < grid[0].length) && (y >= 0 && y < grid.length)) {
 			setGrid((current) => {
 				let newGrid = current;
+				if (tile_selected > 1 && tile_selected < 2) { // ? if placing a spawn tile
+					// ? remove existing spawn tile
+					for (let i = 0; i < newGrid.length; i++) {
+						for (let j = 0; j < newGrid[i].length; j++) {
+							if (newGrid[i][j] > 1 && newGrid[i][j] < 2)
+								newGrid[i][j] = 0;
+						}
+					}
+				}
+				else if (newGrid[y][x] > 1 && newGrid[y][x] < 2)
+					return newGrid;
 				newGrid[y][x] = tile_selected;
 				return newGrid;
 			})
@@ -116,7 +145,7 @@ const MapEditor: FunctionComponent = () => {
 		<div id='map-editor'>
 			<div id='map-editor-flex'>
 				<Scrollbar>
-					<div id="map-editor-grid" onMouseDown={calculateGridIndexes}>
+					<div id="map-editor-grid" onMouseDown={mouseDownHandler} onMouseUp={mouseUpHandler} onMouseLeave={mouseUpHandler} onMouseMove={mouseMoveHandler}>
 						{
 							grid.map((row) => {
 								row_key++;

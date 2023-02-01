@@ -1,13 +1,12 @@
 import p5 from "p5";
-import { FunctionComponent, useEffect } from "react";
+import { useEffect } from "react";
 import { defineSketch } from "./Sketch";
 import "styles/Dice.css"
-import { ISketch } from "../../../../types";
 import { default_win_height, default_win_width } from "../../../../consts";
 
 let p: any = null;
 
-const Dice: FunctionComponent<ISketch> = () => {
+const Dice = () => {
 	useEffect(() => {
 		let spoonSketch = defineSketch(default_win_width, default_win_height)
 		p = new p5(spoonSketch)

@@ -1,10 +1,9 @@
-import { FunctionComponent, useState } from "react";
+import { useState } from "react";
 import "styles/Cub3D.css"
-import { ISketch } from "../../../../types";
 import MapEditor from "./MapEditor";
-import Canvas from "./Canvas";
+import Canvas from "./Sketch/Canvas";
 
-const Cub3D: FunctionComponent<ISketch> = () => {
+const Cub3D = () => {
 	const [selected_app, setApp] = useState<number>(0);
 
 	const goToMapEditor = () => {

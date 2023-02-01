@@ -1,6 +1,3 @@
-import { FunctionComponent, ReactNode } from "react"
-import { ReactElement } from "react-markdown/lib/react-markdown"
-
 export interface IFile {
 	name: string,
 	content_path: string,

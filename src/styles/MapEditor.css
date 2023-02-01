@@ -43,7 +43,7 @@
 
 .button-up {
 	background: linear-gradient(to bottom, var(--black) 0% 50%, var(--red) 50% 100%);
-	background-size: 200% 200%;
+	background-size: 210% 210%;
 	background-repeat: no-repeat;
 }
 .button-up:hover {
@@ -53,7 +53,7 @@
 
 .button-down {
 	background: linear-gradient(to top, var(--black) 0% 50%, var(--red) 50% 100%);
-	background-size: 200% 200%;
+	background-size: 210% 210%;
 	background-position: 0% 100%;
 	background-repeat: no-repeat;
 }

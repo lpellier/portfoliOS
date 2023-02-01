@@ -1,9 +1,9 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { useState } from 'react';
 import 'styles/AppBar.css';
 import { RED } from '../../../consts';
 import { IAppBar } from '../../../types';
 
-const AppBar: FunctionComponent<IAppBar> = ({opened_apps, spawnWindow}) => {
+const AppBar = ({opened_apps, spawnWindow}: IAppBar) => {
 	const [app_info_text, setAppInfoText] = useState("Server Projects");
 
 	const changeDiceValues = (die_nbr: number) => {

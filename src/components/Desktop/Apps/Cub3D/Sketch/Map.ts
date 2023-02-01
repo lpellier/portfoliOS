@@ -1,7 +1,7 @@
 import p5, { Vector } from "p5";
 import { BLUE, RED, YELLOW } from "../../../../../consts";
 import { DEFAULT_MAP_HEIGHT, DEFAULT_MAP_WIDTH } from "./constants";
-import { PREVIEW_BLOCK_HEIGHT, PREVIEW_BLOCK_WIDTH } from "./Sketch";
+import { PREVIEW_BLOCK_HEIGHT, PREVIEW_BLOCK_WIDTH } from "./constants";
 
 export class Map {
 	grid:	number[][];

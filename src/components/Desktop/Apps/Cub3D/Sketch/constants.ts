@@ -17,3 +17,6 @@ export const WALK_SPEED = 4;
 export const ROTATE_SPEED = 150;
 export const MOUSE_SENSITIVITY = 3.5;
 
+export let PREVIEW_BLOCK_WIDTH = 10;
+export let PREVIEW_BLOCK_HEIGHT = 10;
+export let PLAYER_RADIUS = PREVIEW_BLOCK_WIDTH;

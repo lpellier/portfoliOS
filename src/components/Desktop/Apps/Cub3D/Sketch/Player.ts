@@ -3,7 +3,7 @@ import { GREEN, RED } from "../../../../../consts";
 import { FOV, RAY_COUNT } from "./constants";
 import { degreesToRadians, perpendicularClockWise, perpendicularCounterClockWise } from "./helper";
 import { Ray } from "./Ray";
-import { PLAYER_RADIUS, PREVIEW_BLOCK_HEIGHT, PREVIEW_BLOCK_WIDTH } from "./Sketch";
+import { PLAYER_RADIUS, PREVIEW_BLOCK_HEIGHT, PREVIEW_BLOCK_WIDTH } from "./constants";
 
 export class Player {
 	pos: Vector;

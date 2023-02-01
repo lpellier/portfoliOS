@@ -1,12 +1,12 @@
 import p5, { Vector } from "p5";
 import { useEffect, useRef, useState } from "react";
 import "styles/Canvas.css"
-import { RAYCASTER_WIDTH, RAYCASTER_HEIGHT, RAY_COUNT, TEX_WIDTH, TEX_HEIGHT, WALK_SPEED, ROTATE_SPEED, MOUSE_SENSITIVITY, SPRITE_WIDTH, SPRITE_HEIGHT } from "./Sketch/constants";
-import { perpendicularClockWise, perpendicularCounterClockWise } from "./Sketch/helper";
-import { Map } from "./Sketch/Map";
-import { Player } from "./Sketch/Player";
-import texturesData from "./walls.json"
-import spritesData from "./objects.json"
+import { RAYCASTER_WIDTH, RAYCASTER_HEIGHT, RAY_COUNT, TEX_WIDTH, TEX_HEIGHT, WALK_SPEED, ROTATE_SPEED, MOUSE_SENSITIVITY, SPRITE_WIDTH, SPRITE_HEIGHT } from "./constants";
+import { perpendicularClockWise, perpendicularCounterClockWise } from "./helper";
+import { Map } from "./Map";
+import { Player } from "./Player";
+import texturesData from "../walls.json"
+import spritesData from "../objects.json"
 
 const TEX_SHEET_WIDTH = 384;
 const TEX_SHEET_HEIGHT = 1216;
@@ -302,14 +302,9 @@ const preload = () => {
 
 const keyDownHandler = (e: KeyboardEvent) => {
     
-    if (walking.indexOf(e.key) === -1 && (e.key === 'w' || e.key === 'z' || e.key === 's' || e.key === 'q' || e.key === 'a' || e.key === 'd')) {
+    if (walking.indexOf(e.key) === -1 && (e.key === 'w' || e.key === 'z' || e.key === 's' || e.key === 'q' || e.key === 'a' || e.key === 'd' || e.key === 'e')) {
         walking += e.key;
     }
-}
-
-const mouseHandler = (e: MouseEvent) => {
-    if (player)
-        player.rotateDir(map.grid, e.movementX * player.mouse_sensitivity);	
 }
 
 const keyUpHandler = (e: KeyboardEvent) => {
@@ -339,7 +334,6 @@ const setup = () => {
     player.rotate_speed = ROTATE_SPEED;
     player.mouse_sensitivity = MOUSE_SENSITIVITY;
     walking = "";
-    canvas.requestPointerLock();
 }
 
 const initializeSprites = () => {
@@ -376,18 +370,12 @@ const draw = () => {
 
     if (walking.length > 0) {
         let walking_direction = new Vector(0, 0);
-        if (walking.indexOf('z') >= 0 || walking.indexOf('w') >= 0) {
-            walking_direction.add(new Vector(player.dir.x, player.dir.y))
-        }
-        if (walking.indexOf('s') >= 0) {
-            walking_direction.add(p5.Vector.mult(player.dir, -1))
-        }
-        if (walking.indexOf('q') >= 0 || walking.indexOf('a') >= 0) {
-            walking_direction.add(perpendicularClockWise(player.dir))
-        }
-        if (walking.indexOf('d') >= 0) {
-            walking_direction.add(perpendicularCounterClockWise(player.dir))
-        }
+        if (walking.includes('z')) walking_direction.add(new Vector(player.dir.x, player.dir.y))
+        if (walking.includes('s')) walking_direction.add(p5.Vector.mult(player.dir, -1))
+        if (walking.includes('q')) walking_direction.add(perpendicularClockWise(player.dir))
+        if (walking.includes('d')) walking_direction.add(perpendicularCounterClockWise(player.dir))
+		if (walking.includes('a')) player.rotateDir(map.grid, -player.rotate_speed)
+		if (walking.includes('e')) player.rotateDir(map.grid, player.rotate_speed);	
         player.addPos(walking_direction, map.grid)
     } 
 
@@ -396,18 +384,14 @@ const draw = () => {
     rayCasting();
     spriteCasting();
     context.putImageData(canvasData, 0, 0)
+	console.log('draw')
 }
 
 const Canvas = () => {
 	const [frameRate, setFrameRate] = useState<number>(0);
     const canvasRef = useRef<(HTMLCanvasElement | null)>(null);
 
-	const requestPointerLock = () => {
-		if (canvas)
-			canvas.requestPointerLock();
-	}
-
-    useEffect(() => {
+	useEffect(() => {
         canvas = canvasRef.current;
         if (canvas) {
             canvas.width = RAYCASTER_WIDTH;
@@ -421,7 +405,6 @@ const Canvas = () => {
                         setup();
                         document.addEventListener('keydown', keyDownHandler);
                         document.addEventListener('keyup', keyUpHandler);
-                        document.addEventListener('mousemove', mouseHandler);
         
                         const render = () => {
                             frameCount++;
@@ -443,7 +426,6 @@ const Canvas = () => {
         return () => {
             document.removeEventListener('keydown', keyDownHandler);
             document.removeEventListener('keyup', keyUpHandler);
-            document.removeEventListener('mousemove', mouseHandler);
             window.cancelAnimationFrame(animationFrameId);
         }
     }, [])
@@ -451,7 +433,7 @@ const Canvas = () => {
     return (
 		<div>
 			<h3 style={{position: "absolute", zIndex: 10, color: "var(--yellow)", top: "15px"}}>{frameRate}</h3>
-			<canvas onClick={requestPointerLock} id='cub3d-canvas' ref={canvasRef}/>
+			<canvas id='cub3d-canvas' ref={canvasRef}/>
 		</div>
     )
 }

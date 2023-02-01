@@ -1,8 +1,8 @@
-import { FunctionComponent, useEffect } from "react";
+import { useEffect } from "react";
 import "styles/Folder.css"
 import { IFolder } from "../../../../types";
 
-const Folder: FunctionComponent<IFolder> = ({name, spawnWindow}) => {
+const Folder = ({name, spawnWindow}: IFolder) => {
 	useEffect(() => {
 	}, []);
 

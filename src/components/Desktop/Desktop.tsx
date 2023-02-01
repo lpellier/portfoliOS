@@ -1,26 +1,15 @@
 import Background from						'./Background/Background'
 import AppBar from							'./AppBar/AppBar'
 import										'styles/Desktop.css';
-import React, {useState, useRef, FunctionComponent, lazy, Suspense} from	'react';
+import React, {useState, useRef, lazy, Suspense} from	'react';
 import { IWin } from '../../types';
 import { default_win_height, default_win_width } from '../../consts';
 
 // ? Bugs
-	// TODO Shouldn't register key presses and mouse cliks for apps not in focus
-	// TODO no immediate rerender after window class change
-	// TODO in cub3d menu, separator sticking out
-	// TODO in cub3d map editor, resizing window should cause the scrollbar to update
-	// TODO shouldn't be able to remove the external walls of cub3d map
-	// TODO map should be centered when window is big enough
-	// TODO when map is ready in Map class, clean it up of 2s and ennemies maybe to make them their own class
-	// TODO on button switch menus, be sure to make the background a bit bigger to cover for potentiel holes
-	// TODO add scrollbar to map editor menu
+	// TODO when app maximized then minimized, can't open it
 
 // ! Important
 	// TODO Mobile webapp
-	// TODO Code Cub3D in javascript
-		// ? Map editor
-			// ? Could be a canvas for performance
 	// TODO Presentation for each of my projects
 	// TODO Interesting background
 	// TODO Settings -> modify appearance of website
@@ -29,14 +18,10 @@ import { default_win_height, default_win_width } from '../../consts';
 		// ? Ability to change font-size, icon-size ?
 
 // ? Eventually
-	// ? Probably need to pass width/height of window as props to content
-		// ? to create a useEffect rerendering whenever these values change
 	// ? Click effect on button (to give feedback)
 	// ? Redo login animation
 	// ? When a window is dragged to a side, snap it to that side
 	// ? Some sort of tutorial message / tool tips ?
-	// ? Create a logo
-	// ? Togglable funny pop-ups ? "Coders hate him", "Wanna make your code 20% shorter"
 	// ? Custom mouse pointer ?
 	// ? Window resizable from all directions
 
@@ -44,11 +29,10 @@ import { default_win_height, default_win_width } from '../../consts';
 	//	 Should I redesign pong menu in react, only starting a p5 sketch when a match is started
 		// cons -> lose the retro style
 		// pros -> stay coherent to style website, looks beautiful af, needs much less code for the app
-	//   Backend for pong multiplayer
 
 const Window = lazy(() => import("./Window/Window"))
 
-const Desktop: FunctionComponent = () => {
+const Desktop = () => {
 	const [windows, setWindows] = useState<IWin[]>([]);
 	const [win_dragged, setDraggedWindow] = useState<string>("");
 	const [currentKey, setKey] = useState<number>(0);

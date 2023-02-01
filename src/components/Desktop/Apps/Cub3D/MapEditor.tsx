@@ -1,16 +1,13 @@
 import "styles/MapEditor.css"
 import "styles/Tiles.css"
-import { FunctionComponent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Scrollbar } from "react-scrollbars-custom";
 import { GridTile } from "./tiles";
 import Walls from "./Tiles/Walls";
 import Player from "./Tiles/Player";
 import Objects from "./Tiles/Objects";
-import Enemies from "./Tiles/Enemies";
 
-// ! map check : can't remove external walls, player spawn is a must
-
-const MapEditor: FunctionComponent = () => {
+const MapEditor = () => {
 	const [grid, setGrid] = useState<number[][]>([]);
 	const [tile_selected, setTile] = useState<number>(2);
 	const [menu_selected, setMenuState] = useState<string>("walls");
@@ -110,6 +107,10 @@ const MapEditor: FunctionComponent = () => {
 		let x = Math.floor((e.clientX - rect.left) / 16);
 		let y = Math.floor((e.clientY - rect.top) / 16);
 		
+		// ? If attempting to replace outer walls, do nothing
+		if (x === 0 || y === 0 || x === grid.length - 1 || y === grid.length - 1) 
+			return ;
+
 		if ((grid.length > 0 && x >= 0 && x < grid[0].length) && (y >= 0 && y < grid.length)) {
 			setGrid((current) => {
 				let newGrid = current;
@@ -122,7 +123,7 @@ const MapEditor: FunctionComponent = () => {
 						}
 					}
 				}
-				else if (newGrid[y][x] > 1 && newGrid[y][x] < 2)
+				else if (newGrid[y][x] > 1 && newGrid[y][x] < 2) // ? if tile to replace is a spawn tile, don't replace it
 					return newGrid;
 				newGrid[y][x] = tile_selected;
 				return newGrid;
@@ -167,7 +168,6 @@ const MapEditor: FunctionComponent = () => {
 						{ menu_selected === 'player' && <Player selectTile={selectTile}/> }
 						{ menu_selected === 'walls' && <Walls selectTile={selectTile}/> }
 						{ menu_selected === 'objects' && <Objects selectTile={selectTile}/> }
-						{ menu_selected === 'enemies' && <Enemies selectTile={selectTile}/> }
 					</Scrollbar>
 					<div id="map-editor-button-separator"/>
 					<button onClick={() => setMenuState('player')} className={"map-editor-menu-button button-up " + (menu_selected === 'player' ? 'selected-u' : '')}>Player</button>
@@ -175,8 +175,6 @@ const MapEditor: FunctionComponent = () => {
 					<button onClick={() => setMenuState('walls')} className={"map-editor-menu-button button-down " + (menu_selected === 'walls' ? 'selected-d' : '')}>Walls</button>
 					<div id="map-editor-button-separator"/>
 					<button onClick={() => setMenuState('objects')} className={"map-editor-menu-button button-up " + (menu_selected === 'objects' ? 'selected-u' : '')}>Objects</button>
-					<div id="map-editor-button-separator"/>
-					<button onClick={() => setMenuState('enemies')} className={"map-editor-menu-button button-down " + (menu_selected === 'enemies' ? 'selected-d' : '')}>Enemies</button>
 				</div>
 			</div>
 			<button className="map-editor-button button-save" onClick={saveMap}><h3>Save</h3></button>

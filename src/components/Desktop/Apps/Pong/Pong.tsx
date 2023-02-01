@@ -1,10 +1,9 @@
 import p5 from "p5";
-import { FunctionComponent, useEffect } from "react";
+import { useEffect } from "react";
 import { defineSketch } from "./Sketch";
 import "styles/Pong.css"
 import "styles/buttons.css"
 import "styles/inputs.css"
-import { ISketch } from "../../../../types";
 import { default_win_height, default_win_width } from "../../../../consts";
 
 class AudioFiles {
@@ -203,7 +202,7 @@ class AudioFiles {
 export let audio_files : AudioFiles;
 let p: any = null;
 
-const Pong: FunctionComponent<ISketch> = () => {
+const Pong = () => {
 	useEffect(() => {
 		audio_files = new AudioFiles();
 		let pongSketch = defineSketch(default_win_width, default_win_height)

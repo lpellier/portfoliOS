@@ -1,7 +1,7 @@
-import React, { FunctionComponent } from 'react';
+import React from 'react';
 import 'styles/Background.css';
 
-const Background: FunctionComponent = () => {
+const Background = () => {
 	const clickEffect = (e: any) => {
 		let d = document.createElement("div");
 		d.className = "clickEffect";

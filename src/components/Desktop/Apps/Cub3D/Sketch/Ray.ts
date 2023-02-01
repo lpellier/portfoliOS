@@ -1,7 +1,7 @@
 import p5, { Vector } from "p5";
 import { RED } from "../../../../../consts";
 import { getCanvasPos } from "./helper";
-import { PREVIEW_BLOCK_HEIGHT, PREVIEW_BLOCK_WIDTH } from "./Sketch";
+import { PREVIEW_BLOCK_HEIGHT, PREVIEW_BLOCK_WIDTH } from "./constants";
 
 export class Ray {
 	pos: Vector;

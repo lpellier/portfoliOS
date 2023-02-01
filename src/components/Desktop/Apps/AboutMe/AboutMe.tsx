@@ -1,7 +1,7 @@
-import { FunctionComponent, useEffect } from "react";
+import { useEffect } from "react";
 import "styles/AboutMe.css"
 
-const AboutMe: FunctionComponent = (props: any) => {
+const AboutMe = (props: any) => {
 	useEffect(() => {
 	}, []);
 

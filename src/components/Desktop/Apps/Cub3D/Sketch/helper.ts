@@ -1,5 +1,5 @@
 import { Vector } from "p5";
-import { PREVIEW_BLOCK_HEIGHT, PREVIEW_BLOCK_WIDTH } from "./Sketch";
+import { PREVIEW_BLOCK_HEIGHT, PREVIEW_BLOCK_WIDTH } from "./constants";
 
 export function getCanvasPos(pos: Vector, w: number, h: number) {
 	return new Vector(pos.x * PREVIEW_BLOCK_WIDTH + w / 2, pos.y * PREVIEW_BLOCK_HEIGHT + h / 2);

@@ -1,4 +1,4 @@
-import React, {FunctionComponent, lazy, ReactElement, Suspense, useCallback, useEffect, useState} from 'react';
+import React, {lazy, ReactElement, Suspense, useCallback, useEffect, useState} from 'react';
 import 'styles/Window.css';
 import { RED } from '../../../consts';
 import { IWindow } from '../../../types';
@@ -25,9 +25,9 @@ const Settings = lazy(() => import("./../Apps/Settings/Settings"));
 const PDFViewer = lazy(() => import("./../Apps/PDFViewer/PDFViewer"));
 const File = lazy(() => import("./../Apps/File/File"));
 
-const Window: FunctionComponent<IWindow> = ({name, pos, z_index, unMinimized, dragWindow, spawnWindow, destroyWindow}): ReactElement => {
-	const [classes, setClasses] = useState<string>("WindowDefault WindowSpawn")
-	const [component, setComponent] = useState<ReactElement | undefined>(undefined)
+const Window = ({name, pos, z_index, unMinimized, dragWindow, spawnWindow, destroyWindow}: IWindow): ReactElement => {
+	const [classes, setClasses] = useState<string>("WindowDefault WindowSpawn");
+	const [component, setComponent] = useState<ReactElement | undefined>(undefined);
 
 	const getComponent = useCallback((win_name: string): ReactElement | undefined => {
 		if (win_name === "Dice")
@@ -62,7 +62,7 @@ const Window: FunctionComponent<IWindow> = ({name, pos, z_index, unMinimized, dr
 			setClasses("WindowDefault");
 		}, 500)
 	}, [unMinimized])
-	
+
 	const handleMouseDown = (event: any) => {
 		dragWindow(name, event);
 	}

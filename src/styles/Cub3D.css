@@ -23,7 +23,7 @@
 
 #cub3d-button-1 {
 	background: linear-gradient(to right, var(--black) 0% 50%, var(--red) 50% 100%);
-	background-size: 200% 200%;
+	background-size: 210% 210%;
 	background-repeat: no-repeat;
 	color: var(--red);
 }
@@ -34,7 +34,7 @@
 
 #cub3d-button-2 {
 	background: linear-gradient(to right, var(--red) 0% 50%, var(--black) 50% 100%);
-	background-size: 200% 200%;
+	background-size: 210% 210%;
 	background-position: 100% 0%;
 	background-repeat: no-repeat;
 	color: var(--red);

@@ -1,11 +1,11 @@
-import { FunctionComponent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack5';
 import { Scrollbar } from "react-scrollbars-custom";
 import "styles/PDFViewer.css"
 import { IPDFViewer } from "../../../../types";
 import { default_win_width, default_win_height } from "../../../../consts";
 
-const PDFViewer: FunctionComponent<IPDFViewer> = ({name, pdf_path}) => {
+const PDFViewer = ({name, pdf_path}: IPDFViewer) => {
 	const [numPages, setNumPages] = useState(1);
 	const [pageNumber, setPageNumber] = useState(1);
 	const [scale, setScale] = useState(1);

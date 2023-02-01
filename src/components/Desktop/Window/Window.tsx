@@ -77,9 +77,9 @@ const Window = ({name, pos, z_index, unMinimized, dragWindow, spawnWindow, destr
 				<h3 className="WindowTitle">{name}</h3>
 				<div className='ButtonFlex'>
 					{!name.includes("window-") && <button className="WindowButton" id='MinimizeButton' onClick={() => {
-						if (classes.includes("WindowMaximized"))
-							setClasses("WindowDefault WindowMaximizedMinimized");
-						else
+						// if (classes.includes("WindowMaximized"))
+						// 	setClasses("WindowDefault WindowMaximizedMinimized");
+						// else
 							setClasses("WindowDefault WindowMinimized");
 					}}>
 						<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-minimize" viewBox="0 0 24 24" strokeWidth="2" stroke={RED} fill="none" strokeLinecap="round" strokeLinejoin="round">

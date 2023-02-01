@@ -103,7 +103,6 @@ svg path { transition: 0.2s; }
 .WindowQuit 				{ animation: quitWindow					0.5s ease forwards; }
 .WindowMaximized	 		{ animation: maximizeWindow				0.5s ease forwards; }
 .WindowMaximizedReverse		{ animation: maximizeWindowReverse		0.5s ease forwards; }
-.WindowMaximizedMinimized	{ animation: minimizeMaximizedWindow	0.5s ease forwards; }
 .WindowMinimized 			{ animation: minimizeWindow				0.5s ease forwards; }
 
 @keyframes maximizeWindowReverse {
@@ -112,25 +111,6 @@ svg path { transition: 0.2s; }
 		left: 0;
 		width: 100vw;
 		height: 100vh;
-	}
-}
-
-@keyframes minimizeMaximizedWindow {
-	0% {
-		top: 0;
-		left: 0;
-		width: 100vw;
-		height: 100vh;	
-		display: block;
-		transform: scale(1);
-	}
-	99% {
-		display: block;
-		transform: scale(0);
-	}
-	100% {
-		display: none;
-		transform: scale(0);
 	}
 }
 

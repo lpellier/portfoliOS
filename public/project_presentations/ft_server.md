@@ -5,17 +5,34 @@
 [![Built With][built-with-docker]][project-url]
 
 ## Getting Started
+The goal of this project is to setup a server running Wordpress aswell as a MySQL database with phpMyAdmin, secured with a SSL certificate.
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
+The whole thing being contained in a docker container.
 ### Prerequisites
+  * Having Docker installed.
+  * That's it!
 
 ### Installation
+`git clone https://github.com/lpellier/ft_server.git && cd ft_server`
+
+You can build a Docker image with the following command :
+
+`docker build -t server .`
 
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Now to actually run this image in a container, use the command :
+
+`docker run --name ft_server -it -p 80:80 -p 443:443 server`
+
+The following addresses are now available :
+https://localhost/wordpress
+https://localhost -> redirects to wordpress
+https://localhost/phpmyadmin
+
+If you'd like to test everything, you should create a Wordpress account (directly on localhost/wordpress) to setup the website.
+
+phpmyadmin will require a username ('user') and a password ('password').
 
 ## Contact
 
@@ -24,6 +41,8 @@ Use this space to show useful examples of how a project can be used. Additional 
 Lucas PELLIER - - pellierlucas@gmail.com
 
 Project Link: [ft_server](https://github.com/lpellier/ft_server)
+
+
 
 [built-with-docker]: https://img.shields.io/badge/built%20with-Docker-blue
 

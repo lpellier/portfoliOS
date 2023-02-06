@@ -5,17 +5,26 @@
 [![Built With][built-with-kubernetes]][project-url]
 
 ## Getting Started
+The goal of this project is to setup an infrastructure composed of different services (WordPress, phpMyADming, FTPS, Grafana, InfluxDB) with Kubernetes.
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+Each service runs in its own container and restarts in case of a crash or stop of one of its component parts.
+
+If one of the databases containers (MySQL or InfluxDB) crashes or stops, the data persists.
 
 ### Prerequisites
+  * This project is supposed to run on the school computers, which is why we're using minikube.
+  * To run it yourself, you would need to install minikube, kubectl and docker. 
 
 ### Installation
+Simply execute the setup.sh script.
 
 ## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+A Load Balancer (MetalLB) manages redirections between services.
+* Grafana is available on port 3000
+* WordPress on 5050
+* Nginx on 80 (http) and 443 (https)
+* FTPS on 21
+* phpMyAdmin on 5000
 
 ## Contact
 
@@ -25,7 +34,9 @@ Lucas PELLIER - - pellierlucas@gmail.com
 
 Project Link: [ft_services](https://github.com/lpellier/ft_services)
 
-[built-with-kubernetes]: https://img.shields.io/badge/built%20with-Kubernetes-orange
+
+
+[built-with-kubernetes]: https://img.shields.io/badge/built%20with-Kubernetes-yellow
 
 [project-url]: https://github.com/lpellier/ft_services
 

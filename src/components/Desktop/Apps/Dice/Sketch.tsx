@@ -228,8 +228,8 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 			slider_speed = p.createSlider(1, 15, 6, 1);
 			slider_speed.parent(parent)
 			slider_speed.addClass("dice-slider");
-			slider_speed.position(20, 30);
-			slider_speed.style("width", initialWidth / 10 + 20 + "px");
+			slider_speed.position(20, 40);
+			slider_speed.style("width", initialWidth / 10 + 10 + "px");
 
 			p.textFont(font);
 
@@ -274,7 +274,7 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 			p.text(info_text, 0, height / 2 * 0.85)
 			p.pop();
 			let slide_speed_text = "speed";
-			p.text(slide_speed_text, -width / 2 + 120, -height / 2 + 48)
+			p.text(slide_speed_text, -width / 2 + 120, -height / 2 + 24)
 			p.pop();
 		}
 

@@ -6,29 +6,20 @@ import { IWin } from '../../types';
 import { default_win_height, default_win_width } from '../../consts';
 
 // ? Bugs
-	// TODO when app maximized then minimized, can't open it
+	// TODO Opened file will sometimes appear behind folder window
 
 // ! Important
 	// TODO Mobile webapp
 	// TODO Presentation for each of my projects
 	// TODO Interesting background
+	// TODO About me -> my cv styled in markdown
 	// TODO Settings -> modify appearance of website
 		// ? Ability to change the background ?
 		// ? Ability to change the color theme ?
 		// ? Ability to change font-size, icon-size ?
 
 // ? Eventually
-	// ? Click effect on button (to give feedback)
-	// ? Redo login animation
-	// ? When a window is dragged to a side, snap it to that side
 	// ? Some sort of tutorial message / tool tips ?
-	// ? Custom mouse pointer ?
-	// ? Window resizable from all directions
-
-//   Maybe
-	//	 Should I redesign pong menu in react, only starting a p5 sketch when a match is started
-		// cons -> lose the retro style
-		// pros -> stay coherent to style website, looks beautiful af, needs much less code for the app
 
 const Window = lazy(() => import("./Window/Window"))
 
@@ -52,7 +43,7 @@ const Desktop = () => {
 			return ;
 
 		// if (!(event.clientY / rect.bottom >= 0.9 && event.clientX / rect.right >= 0.9))
-		if (event.clientY - rect.top <= 55) // ? Drag is only active when click the window header
+		if (event.clientY - rect.top <= 55) // ? Drag is only active when clicking the window header
 			setDraggedWindow(win_name);
 	}
 

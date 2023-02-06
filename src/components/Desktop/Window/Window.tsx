@@ -43,9 +43,9 @@ const Window = ({name, pos, z_index, unMinimized, dragWindow, spawnWindow, destr
 		else if (win_name === "Settings")
 			return <Settings/>
 		else if (win_name.includes("Subject ")) // ? Subject is the prefix for files opened 
-			return <PDFViewer name={win_name} pdf_path={`./assets/${win_name.substring(8)}.subject.pdf`}/>
+			return <PDFViewer name={win_name} pdf_path={`./project_subjects/${win_name.substring(8)}.subject.pdf`}/>
 		else if (filesList.includes(win_name))
-			return <File name={win_name} content_path={`./assets/${win_name}.md`} spawnWindow={spawnWindow}/>
+			return <File name={win_name} content_path={`./project_presentations/${win_name}.md`} spawnWindow={spawnWindow}/>
 		else {
 			console.error('win name not recognized:', win_name);
 			return undefined;

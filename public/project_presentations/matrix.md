@@ -2,20 +2,23 @@
 [![Total Lines][total-lines]][project-url]
 [![Stargazers][stars-shield]][stars-url]
 
-[![Built With][built-with-c++]][project-url]
+[![Built With][built-with-C++]][project-url]
 
 ## Getting Started
+The aim of this project is to code a Matrix and Vector class in C++. 
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+These classes contain helper methods such as transpose, determinant, inverse etc... 
 
-### Prerequisites
+It also provides operator overloads for scaling, adding, substracting and multiplying vectors and matrices.
+
+I also wrote a test script with unit tests to make sure everything's right.
 
 ### Installation
+`git clone https://github.com/lpellier/matrix.git && cd matrix`
 
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Include the general header file in your code and that's it.
 
 ## Contact
 
@@ -25,7 +28,7 @@ Lucas PELLIER - - pellierlucas@gmail.com
 
 Project Link: [matrix](https://github.com/lpellier/matrix)
 
-[built-with-c++]: https://img.shields.io/badge/built%20with-C++-green
+[built-with-C++]: https://img.shields.io/badge/built%20with-C++-green
 
 [project-url]: https://github.com/lpellier/matrix
 

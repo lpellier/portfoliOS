@@ -2,20 +2,15 @@
 [![Total Lines][total-lines]][project-url]
 [![Stargazers][stars-shield]][stars-url]
 
-[![Built With][built-with-c++]][project-url]
+[![Built With][built-with-C++]][project-url]
 
 ## Getting Started
+This project is all about boolean logic and algebra.
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
+It teaches about boolean evaluation, truth tables, set theory and more.
 
 ### Installation
-
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+`git clone https://github.com/lpellier/ready_set_boole.git && cd ready_set_boole`
 
 ## Contact
 
@@ -25,7 +20,7 @@ Lucas PELLIER - - pellierlucas@gmail.com
 
 Project Link: [ready_set_boole](https://github.com/lpellier/ready_set_boole)
 
-[built-with-c++]: https://img.shields.io/badge/built%20with-C++-green
+[built-with-C++]: https://img.shields.io/badge/built%20with-C++-green
 
 [project-url]: https://github.com/lpellier/ready_set_boole
 

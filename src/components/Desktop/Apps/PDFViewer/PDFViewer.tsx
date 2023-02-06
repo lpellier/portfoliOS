@@ -8,7 +8,7 @@ import { default_win_width, default_win_height } from "../../../../consts";
 const PDFViewer = ({name, pdf_path}: IPDFViewer) => {
 	const [numPages, setNumPages] = useState(1);
 	const [pageNumber, setPageNumber] = useState(1);
-	const [scale, setScale] = useState(1);
+	const [scale, setScale] = useState(1.5);
   
 	function onDocumentLoadSuccess({ numPages }: any) {
 	  setNumPages(numPages);

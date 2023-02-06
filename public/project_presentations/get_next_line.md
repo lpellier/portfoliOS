@@ -2,20 +2,19 @@
 [![Total Lines][total-lines]][project-url]
 [![Stargazers][stars-shield]][stars-url]
 
-[![Built With][built-with-c]][project-url]
+[![Built With][built-with-docker]][project-url]
 
 ## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
+The aim of this project is to code a function that reads the next line on any subsequent call from a file descriptor.
 
 ### Installation
+`git clone https://github.com/lpellier/get_next_line.git && cd get_next_line`
 
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Just include the header file in your code and you're good to go!
+
+The bonus function can handle as many as 1024 file descriptors at the same time.
 
 ## Contact
 
@@ -25,7 +24,7 @@ Lucas PELLIER - - pellierlucas@gmail.com
 
 Project Link: [get_next_line](https://github.com/lpellier/get_next_line)
 
-[built-with-c]: https://img.shields.io/badge/built%20with-C-blueviolet
+[built-with-docker]: https://img.shields.io/badge/built%20with-C-blueviolet
 
 [project-url]: https://github.com/lpellier/get_next_line
 

@@ -6,7 +6,6 @@ import { IWin } from '../../types';
 import { default_win_height, default_win_width } from '../../consts';
 
 // ? Bugs
-	// TODO Opened file will sometimes appear behind folder window
 
 // ! Important
 	// TODO Mobile webapp

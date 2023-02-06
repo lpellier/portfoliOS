@@ -34,8 +34,6 @@ Lucas PELLIER - - pellierlucas@gmail.com
 
 Project Link: [ft_services](https://github.com/lpellier/ft_services)
 
-
-
 [built-with-kubernetes]: https://img.shields.io/badge/built%20with-Kubernetes-yellow
 
 [project-url]: https://github.com/lpellier/ft_services

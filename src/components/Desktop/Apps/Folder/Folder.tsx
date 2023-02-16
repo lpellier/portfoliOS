@@ -73,6 +73,15 @@ const Folder = ({name, spawnWindow}: IFolder) => {
 						</svg>
 						<h1 className="file-name">101_C</h1>
 					</div>
+					<div id="file-ft_printf" className="file-div" onClick={() => fileClicked("file-ft_printf")}>
+						<svg xmlns="http://www.w3.org/2000/svg" className="icon-file" viewBox="0 0 24 24" strokeWidth="1.5" stroke="var(--red)" fill="none" strokeLinecap="round" strokeLinejoin="round">
+							<path d="M14 3v4a1 1 0 0 0 1 1h4" />
+							<path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+							<path d="M10 13l-1 2l1 2" />
+							<path d="M14 13l1 2l-1 2" />
+						</svg>
+						<h1 className="file-name">ft_printf</h1>
+					</div>
 					<div id="file-get_next_line" className="file-div" onClick={() => fileClicked("file-get_next_line")}>
 						<svg xmlns="http://www.w3.org/2000/svg" className="icon-file" viewBox="0 0 24 24" strokeWidth="1.5" stroke="var(--red)" fill="none" strokeLinecap="round" strokeLinejoin="round">
 							<path d="M14 3v4a1 1 0 0 0 1 1h4" />
@@ -82,32 +91,14 @@ const Folder = ({name, spawnWindow}: IFolder) => {
 						</svg>
 						<h1 className="file-name">get_next_line</h1>
 					</div>
-					<div id="file-matrix" className="file-div" onClick={() => fileClicked("file-matrix")}>
+					<div id="file-push_swap" className="file-div" onClick={() => fileClicked("file-push_swap")}>
 						<svg xmlns="http://www.w3.org/2000/svg" className="icon-file" viewBox="0 0 24 24" strokeWidth="1.5" stroke="var(--red)" fill="none" strokeLinecap="round" strokeLinejoin="round">
 							<path d="M14 3v4a1 1 0 0 0 1 1h4" />
 							<path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
 							<path d="M10 13l-1 2l1 2" />
 							<path d="M14 13l1 2l-1 2" />
 						</svg>
-						<h1 className="file-name">matrix</h1>
-					</div>
-					<div id="file-ready_set_boole" className="file-div" onClick={() => fileClicked("file-ready_set_boole")}>
-						<svg xmlns="http://www.w3.org/2000/svg" className="icon-file" viewBox="0 0 24 24" strokeWidth="1.5" stroke="var(--red)" fill="none" strokeLinecap="round" strokeLinejoin="round">
-							<path d="M14 3v4a1 1 0 0 0 1 1h4" />
-							<path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
-							<path d="M10 13l-1 2l1 2" />
-							<path d="M14 13l1 2l-1 2" />
-						</svg>
-						<h1 className="file-name">ready_set_boole</h1>
-					</div>
-					<div id="file-minishell" className="file-div" onClick={() => fileClicked("file-minishell")}>
-						<svg xmlns="http://www.w3.org/2000/svg" className="icon-file" viewBox="0 0 24 24" strokeWidth="1.5" stroke="var(--red)" fill="none" strokeLinecap="round" strokeLinejoin="round">
-							<path d="M14 3v4a1 1 0 0 0 1 1h4" />
-							<path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
-							<path d="M10 13l-1 2l1 2" />
-							<path d="M14 13l1 2l-1 2" />
-						</svg>
-						<h1 className="file-name">minishell</h1>
+						<h1 className="file-name">push_swap</h1>
 					</div>
 					<div id="file-philosophers" className="file-div" onClick={() => fileClicked("file-philosophers")}>
 						<svg xmlns="http://www.w3.org/2000/svg" className="icon-file" viewBox="0 0 24 24" strokeWidth="1.5" stroke="var(--red)" fill="none" strokeLinecap="round" strokeLinejoin="round">
@@ -118,23 +109,41 @@ const Folder = ({name, spawnWindow}: IFolder) => {
 						</svg>
 						<h1 className="file-name">philosophers</h1>
 					</div>
-					<div id="file-ft_printf" className="file-div" onClick={() => fileClicked("file-ft_printf")}>
+					<div id="file-minishell" className="file-div" onClick={() => fileClicked("file-minishell")}>
 						<svg xmlns="http://www.w3.org/2000/svg" className="icon-file" viewBox="0 0 24 24" strokeWidth="1.5" stroke="var(--red)" fill="none" strokeLinecap="round" strokeLinejoin="round">
 							<path d="M14 3v4a1 1 0 0 0 1 1h4" />
 							<path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
 							<path d="M10 13l-1 2l1 2" />
 							<path d="M14 13l1 2l-1 2" />
 						</svg>
-						<h1 className="file-name">ft_printf</h1>
+						<h1 className="file-name">minishell</h1>
 					</div>
-					<div id="file-push_swap" className="file-div" onClick={() => fileClicked("file-push_swap")}>
+					<div id="file-ft_containers" className="file-div" onClick={() => fileClicked("file-ft_containers")}>
 						<svg xmlns="http://www.w3.org/2000/svg" className="icon-file" viewBox="0 0 24 24" strokeWidth="1.5" stroke="var(--red)" fill="none" strokeLinecap="round" strokeLinejoin="round">
 							<path d="M14 3v4a1 1 0 0 0 1 1h4" />
 							<path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
 							<path d="M10 13l-1 2l1 2" />
 							<path d="M14 13l1 2l-1 2" />
 						</svg>
-						<h1 className="file-name">push_swap</h1>
+						<h1 className="file-name">ft_containers</h1>
+					</div>
+					<div id="file-ready_set_boole" className="file-div" onClick={() => fileClicked("file-ready_set_boole")}>
+						<svg xmlns="http://www.w3.org/2000/svg" className="icon-file" viewBox="0 0 24 24" strokeWidth="1.5" stroke="var(--red)" fill="none" strokeLinecap="round" strokeLinejoin="round">
+							<path d="M14 3v4a1 1 0 0 0 1 1h4" />
+							<path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+							<path d="M10 13l-1 2l1 2" />
+							<path d="M14 13l1 2l-1 2" />
+						</svg>
+						<h1 className="file-name">ready_set_boole</h1>
+					</div>
+					<div id="file-matrix" className="file-div" onClick={() => fileClicked("file-matrix")}>
+						<svg xmlns="http://www.w3.org/2000/svg" className="icon-file" viewBox="0 0 24 24" strokeWidth="1.5" stroke="var(--red)" fill="none" strokeLinecap="round" strokeLinejoin="round">
+							<path d="M14 3v4a1 1 0 0 0 1 1h4" />
+							<path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+							<path d="M10 13l-1 2l1 2" />
+							<path d="M14 13l1 2l-1 2" />
+						</svg>
+						<h1 className="file-name">matrix</h1>
 					</div>
 				</div>
 			}

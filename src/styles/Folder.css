@@ -39,16 +39,22 @@
 	height: 100%;	
 }
 
+.file-div:hover .file-name {
+	color: var(--red);
+	font-size: 18px;
+}
+
 .file-name {
-	font: var(--size-10) "Outfit";
+	font: "Outfit";
+	font-size: 14px;
 	color: var(--text-color);
+	transition: color 100ms, font-size 100ms;
 	z-index: 1;
 }
 
 .file-clicked {
 	position: absolute;
 	background-color: #7798AB;
-	margin-top: -8px;
 
 	border: 1px solid #7798AB;
 	border-radius: 10px;
@@ -67,8 +73,8 @@
 	}
 	100% {
 		opacity: 0.2;
-		height: 100px;
-		width: 100px;
+		height: 90px;
+		width: 110px;
 		border-width: 0.03em;
 	}
 }

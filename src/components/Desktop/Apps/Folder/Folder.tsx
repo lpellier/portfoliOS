@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import React, { memo, useEffect, useRef } from "react";
 import "styles/Folder.css"
 import { IFolder } from "../../../../types";
 

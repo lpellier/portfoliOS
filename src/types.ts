@@ -14,17 +14,6 @@ export interface IFolder {
 	spawnWindow: Function
 }
 
-export interface ISketch {
-}
-
-export interface ISettings {
-
-}
-
-export interface IAboutMe {
-	
-}
-
 export interface IPos {
 	x: number,
 	y: number
@@ -42,10 +31,11 @@ export interface IGridTile {
 // ? Type of the actual window component
 export interface IWindow {
 	name: string,
-	key: number,
 	pos: IPos,
+	size: IPos,
 	z_index: number,
 	unMinimized: boolean,
+	key: number,
 	dragWindow: Function,
 	spawnWindow: Function,
 	destroyWindow: Function

@@ -19,20 +19,20 @@
 }
 
 svg path { transition: 0.2s; }
-.icon-tabler-minimize:hover #minimizeButtonPath1 { d: path("M14 18v-2a2 2 0 0 1 2 -2h2") }
-.icon-tabler-minimize:hover #minimizeButtonPath2 { d: path("M14 6v2a2 2 0 0 0 2 2h2") }
-.icon-tabler-minimize:hover #minimizeButtonPath3 { d: path("M6 14h2a2 2 0 0 1 2 2v2") }
-.icon-tabler-minimize:hover #minimizeButtonPath4 { d: path("M6 10h2a2 2 0 0 0 2 -2v-2") }
+.icon-tabler-minimize:hover .minimizeButtonPath1 { d: path("M14 18v-2a2 2 0 0 1 2 -2h2") }
+.icon-tabler-minimize:hover .minimizeButtonPath2 { d: path("M14 6v2a2 2 0 0 0 2 2h2") }
+.icon-tabler-minimize:hover .minimizeButtonPath3 { d: path("M6 14h2a2 2 0 0 1 2 2v2") }
+.icon-tabler-minimize:hover .minimizeButtonPath4 { d: path("M6 10h2a2 2 0 0 0 2 -2v-2") }
 
-.icon-tabler-maximize:hover #maximizeButtonPath1 { d: path("M2 6v-2a2 2 0 0 1 2 -2h2") }
-.icon-tabler-maximize:hover #maximizeButtonPath2 { d: path("M2 18v2a2 2 0 0 0 2 2h2") }
-.icon-tabler-maximize:hover #maximizeButtonPath3 { d: path("M18 2h2a2 2 0 0 1 2 2v2") }
-.icon-tabler-maximize:hover #maximizeButtonPath4 { d: path("M18 22h2a2 2 0 0 0 2 -2v-2") }
+.icon-tabler-maximize:hover .maximizeButtonPath1 { d: path("M2 6v-2a2 2 0 0 1 2 -2h2") }
+.icon-tabler-maximize:hover .maximizeButtonPath2 { d: path("M2 18v2a2 2 0 0 0 2 2h2") }
+.icon-tabler-maximize:hover .maximizeButtonPath3 { d: path("M18 2h2a2 2 0 0 1 2 2v2") }
+.icon-tabler-maximize:hover .maximizeButtonPath4 { d: path("M18 22h2a2 2 0 0 0 2 -2v-2") }
 
-.icon-tabler-square-off:hover #quitButtonPath1 { d: path("M 5,5 12,12") }
-.icon-tabler-square-off:hover #quitButtonPath2 { d: path("M 19,19 12,12") }
-.icon-tabler-square-off:hover #quitButtonPath3 { d: path("M 19,5 12,12") }
-.icon-tabler-square-off:hover #quitButtonPath4 { d: path("M 5,19 12,12") }
+.icon-tabler-square-off:hover .quitButtonPath1 { d: path("M 5,5 12,12") }
+.icon-tabler-square-off:hover .quitButtonPath2 { d: path("M 19,19 12,12") }
+.icon-tabler-square-off:hover .quitButtonPath3 { d: path("M 19,5 12,12") }
+.icon-tabler-square-off:hover .quitButtonPath4 { d: path("M 5,19 12,12") }
 
 .window-header {
 	display: flex;
@@ -57,6 +57,10 @@ svg path { transition: 0.2s; }
 	z-index: 2;
 	animation: showTitle 1s ease-in;
 	flex-basis: 100%;
+
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 
 .content {
@@ -83,21 +87,14 @@ svg path { transition: 0.2s; }
 	position:absolute;
 	display: block;
 	margin: 0;
-	width: var(--default-win-width);
-	height: var(--default-win-height);
-	min-width: 500px;
-	min-height: 200px;
 	
 	background-color: var(--black);
 	border: none;
 	border: 1px solid #00000050;
 	border-radius: 8px;
 	box-shadow: 5px 5px 5px #00000020;
-	resize: both;
 	opacity: 1;
 	overflow: hidden;
-
-	transition: width 100ms, height 100ms;
 }
 
 .WindowSpawn 				{ animation: spawnWindow				0.5s ease forwards; }

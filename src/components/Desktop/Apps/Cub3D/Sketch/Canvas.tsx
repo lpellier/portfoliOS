@@ -384,7 +384,6 @@ const draw = () => {
     rayCasting();
     spriteCasting();
     context.putImageData(canvasData, 0, 0)
-	console.log('draw')
 }
 
 const Canvas = () => {
@@ -432,7 +431,7 @@ const Canvas = () => {
 
     return (
 		<div>
-			<h3 style={{position: "absolute", zIndex: 10, color: "var(--yellow)", top: "15px"}}>{frameRate}</h3>
+			<h3 style={{position: "absolute", zIndex: 10, color: "var(--yellow)", top: "15px"}}>{frameRate.toString()}</h3>
 			<canvas id='cub3d-canvas' ref={canvasRef}/>
 		</div>
     )

@@ -4,19 +4,21 @@
 
 [![Built With][built-with-docker]][project-url]
 
-## Getting Started
+# Getting Started
 The aim of this project is to code a function that reads the next line on any subsequent call from a file descriptor.
 
-### Installation
-`git clone https://github.com/lpellier/get_next_line.git && cd get_next_line`
+## Installation
+```bash
+git clone https://github.com/lpellier/get_next_line.git && cd get_next_line
+```
 
-## Usage
+# Usage
 
-Just include the header file in your code and you're good to go!
+Just include the header file in your code and compile the src files - you're good to go!
 
 The bonus function can handle as many as 1024 file descriptors at the same time.
 
-## Contact
+# Contact
 
 [![LinkedIn][linkedin-shield]][linkedin-url]
 

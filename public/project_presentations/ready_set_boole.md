@@ -4,15 +4,17 @@
 
 [![Built With][built-with-C++]][project-url]
 
-## Getting Started
+# Getting Started
 This project is all about boolean logic and algebra.
 
 It teaches about boolean evaluation, truth tables, set theory and more.
 
-### Installation
-`git clone https://github.com/lpellier/ready_set_boole.git && cd ready_set_boole`
+## Installation
+```bash
+git clone https://github.com/lpellier/ready_set_boole.git && cd ready_set_boole
+```
 
-## Contact
+# Contact
 
 [![LinkedIn][linkedin-shield]][linkedin-url]
 

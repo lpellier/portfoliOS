@@ -10,10 +10,6 @@ import Window from './Window/Window';
 
 // ! Important
 	// TODO Mobile webapp
-	// TODO bug where closing a folder when one of its files is opened closes the file aswell
-	// TODO bug where closing all of the files of a folder keeps the folder in "opened" state even if closed
-	// TODO bug when resizing win to minimum
-	// TODO MEMOIZATION OF WIN COMPONENTS -> SHOULDNT RERENDER COMPONENTS WHEN WINDOW IS MOVED
 	// TODO Presentation for each of my projects
 	// TODO Interesting background
 	// TODO About me -> my cv styled in markdown
@@ -63,7 +59,6 @@ const Desktop = () => {
 			return ;
 
 		let check = event.clientY - rect.top;
-		console.log(check)
 		if (check <= 40 && document.body.style.cursor === "default") // ? Drag is only active when clicking the window header
 			win_dragged.current = (win_name);
 	}, [putWindowToFront]);
@@ -216,13 +211,13 @@ const Desktop = () => {
 					let bottom = ["s-resize", "sw-resize", "se-resize"];
 					let left = ["w-resize", "nw-resize", "sw-resize"];
 					if (right.includes(resizeDirection.current))
-						size.x = global.current.x - win.pos.x;
+						size.x = Math.max(global.current.x - win.pos.x, 200);
 					else if (left.includes(resizeDirection.current)) {
 						size.x = Math.max(window.innerWidth - (global.current.x) - (window.innerWidth - pos.x - size.x), 200);
 						pos.x = Math.min(global.current.x, resize_break.current.x - size.x);
 					}
 					if (bottom.includes(resizeDirection.current))
-						size.y = global.current.y - win.pos.y;
+						size.y = Math.max(global.current.y - win.pos.y, 100);
 					else if (up.includes(resizeDirection.current)) {
 						size.y = Math.max(window.innerHeight - (global.current.y) - (window.innerHeight - pos.y - size.y), 100);
 						pos.y = Math.min(global.current.y, resize_break.current.y - size.y);
@@ -234,6 +229,8 @@ const Desktop = () => {
 			setWindows(new_windows);
 		}
 	}
+
+	console.log(windows);
 
 	return (
 		<div id="Desktop" className="Desktop" onMouseDown={handleMouseDown} onMouseMove={handleMouseMove} onMouseLeave={handleMouseUp} onMouseUp={handleMouseUp}>

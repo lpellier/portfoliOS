@@ -15,8 +15,6 @@ const Dice = ({forcedUpdate}: {forcedUpdate: boolean}) => {
 			break;
 	}, []);
 
-	useEffect(() => {}, [forcedUpdate]);
-
 	return (
 		<div className="Canvas" id={"canvas-dice-parent"}>
 

@@ -1,5 +1,7 @@
 import React, { memo, useEffect, useRef } from "react";
+import { Scrollbar } from "react-scrollbars-custom";
 import "styles/Folder.css"
+import { default_win_height, default_win_width } from "../../../../consts";
 import { IFolder } from "../../../../types";
 
 let file_icon = <svg xmlns="http://www.w3.org/2000/svg" className="icon-file" viewBox="0 0 24 24" strokeWidth="1.5" stroke="var(--red)" fill="none" strokeLinecap="round" strokeLinejoin="round">
@@ -9,10 +11,8 @@ let file_icon = <svg xmlns="http://www.w3.org/2000/svg" className="icon-file" vi
 				<path d="M14 13l1 2l-1 2" />
 			</svg>
 
-const Folder = ({name, spawnWindow, forcedUpdate}: IFolder) => {
+const Folder = ({name, spawnWindow, size, forcedUpdate}: IFolder) => {
 	const clicked = useRef<string>("");
-
-	useEffect(() => {}, [forcedUpdate]);
 
 	const fileClicked = (filename: string): void => {
 		// ? Remove any existing outlines
@@ -44,68 +44,73 @@ const Folder = ({name, spawnWindow, forcedUpdate}: IFolder) => {
 
 	}
 
+	let width = document.getElementById(name)?.clientWidth;
+	let height = document.getElementById(name)?.clientHeight;
+
 	return (
 		<div>
-			{name === "Server Projects" &&
-				<div id={name} className="folder">
-					<div id="file-ft_server" className="file-div" onClick={() => fileClicked("file-ft_server")}>
-						{ file_icon }
-						<h1 className="file-name">ft_server</h1>
+			<Scrollbar  style={{ width: width ? width : default_win_width, height: height? height : default_win_height}}>
+				{ name === "Server Projects" &&
+					<div id={name} className="folder">
+						<div id="file-ft_server" className="file-div" onClick={() => fileClicked("file-ft_server")}>
+							{ file_icon }
+							<h1 className="file-name">ft_server</h1>
+						</div>
+						<div id="file-ft_services" className="file-div" onClick={() => fileClicked("file-ft_services")}>
+							{ file_icon }
+							<h1 className="file-name">ft_services</h1>
+						</div>
+						<div id="file-webserv" className="file-div" onClick={() => fileClicked("file-webserv")}>
+							{ file_icon }
+							<h1 className="file-name">webserv</h1>
+						</div>
 					</div>
-					<div id="file-ft_services" className="file-div" onClick={() => fileClicked("file-ft_services")}>
-						{ file_icon }
-						<h1 className="file-name">ft_services</h1>
+				}
+				{name === "C/C++ Projects" && 
+					<div id={name} className="folder">
+						<div id="file-101_C" className="file-div" onClick={() => fileClicked("file-101_C")}>
+							{ file_icon }
+							<h1 className="file-name">101_C</h1>
+						</div>
+						<div id="file-ft_printf" className="file-div" onClick={() => fileClicked("file-ft_printf")}>
+							{ file_icon }
+							<h1 className="file-name">ft_printf</h1>
+						</div>
+						<div id="file-get_next_line" className="file-div" onClick={() => fileClicked("file-get_next_line")}>
+							{ file_icon }
+							<h1 className="file-name">get_next_line</h1>
+						</div>
+						<div id="file-cub3d" className="file-div" onClick={() => fileClicked("file-cub3d")}>
+							{ file_icon }
+							<h1 className="file-name">cub3d</h1>
+						</div>
+						<div id="file-push_swap" className="file-div" onClick={() => fileClicked("file-push_swap")}>
+							{ file_icon }
+							<h1 className="file-name">push_swap</h1>
+						</div>
+						<div id="file-philosophers" className="file-div" onClick={() => fileClicked("file-philosophers")}>
+							{ file_icon }
+							<h1 className="file-name">philosophers</h1>
+						</div>
+						<div id="file-minishell" className="file-div" onClick={() => fileClicked("file-minishell")}>
+							{ file_icon }
+							<h1 className="file-name">minishell</h1>
+						</div>
+						<div id="file-ft_containers" className="file-div" onClick={() => fileClicked("file-ft_containers")}>
+							{ file_icon }
+							<h1 className="file-name">ft_containers</h1>
+						</div>
+						<div id="file-ready_set_boole" className="file-div" onClick={() => fileClicked("file-ready_set_boole")}>
+							{ file_icon }
+							<h1 className="file-name">ready_set_boole</h1>
+						</div>
+						<div id="file-matrix" className="file-div" onClick={() => fileClicked("file-matrix")}>
+							{ file_icon }
+							<h1 className="file-name">matrix</h1>
+						</div>
 					</div>
-					<div id="file-webserv" className="file-div" onClick={() => fileClicked("file-webserv")}>
-						{ file_icon }
-						<h1 className="file-name">webserv</h1>
-					</div>
-				</div>
-			}
-			{name === "C/C++ Projects" && 
-				<div id={name} className="folder">
-					<div id="file-101_C" className="file-div" onClick={() => fileClicked("file-101_C")}>
-						{ file_icon }
-						<h1 className="file-name">101_C</h1>
-					</div>
-					<div id="file-ft_printf" className="file-div" onClick={() => fileClicked("file-ft_printf")}>
-						{ file_icon }
-						<h1 className="file-name">ft_printf</h1>
-					</div>
-					<div id="file-get_next_line" className="file-div" onClick={() => fileClicked("file-get_next_line")}>
-						{ file_icon }
-						<h1 className="file-name">get_next_line</h1>
-					</div>
-					<div id="file-cub3d" className="file-div" onClick={() => fileClicked("file-cub3d")}>
-						{ file_icon }
-						<h1 className="file-name">cub3d</h1>
-					</div>
-					<div id="file-push_swap" className="file-div" onClick={() => fileClicked("file-push_swap")}>
-						{ file_icon }
-						<h1 className="file-name">push_swap</h1>
-					</div>
-					<div id="file-philosophers" className="file-div" onClick={() => fileClicked("file-philosophers")}>
-						{ file_icon }
-						<h1 className="file-name">philosophers</h1>
-					</div>
-					<div id="file-minishell" className="file-div" onClick={() => fileClicked("file-minishell")}>
-						{ file_icon }
-						<h1 className="file-name">minishell</h1>
-					</div>
-					<div id="file-ft_containers" className="file-div" onClick={() => fileClicked("file-ft_containers")}>
-						{ file_icon }
-						<h1 className="file-name">ft_containers</h1>
-					</div>
-					<div id="file-ready_set_boole" className="file-div" onClick={() => fileClicked("file-ready_set_boole")}>
-						{ file_icon }
-						<h1 className="file-name">ready_set_boole</h1>
-					</div>
-					<div id="file-matrix" className="file-div" onClick={() => fileClicked("file-matrix")}>
-						{ file_icon }
-						<h1 className="file-name">matrix</h1>
-					</div>
-				</div>
-			}
+				}
+			</Scrollbar>
 		</div>
 	)
 }

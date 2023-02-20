@@ -22,9 +22,6 @@ const File = ({name, content_path, spawnWindow, size, forcedUpdate}: IFile) => {
 			})
 	}, [content_path]);
 
-	useEffect(() => {
-	}, [size, forcedUpdate])
-
 	let width = document.getElementById(name)?.clientWidth;
 	let height = document.getElementById(name)?.clientHeight;
 	return (

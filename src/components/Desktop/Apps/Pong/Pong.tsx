@@ -216,8 +216,6 @@ const Pong = ({forcedUpdate}: {forcedUpdate: boolean}) => {
 		  };
 	}, []);
 
-	useEffect(() => {}, [forcedUpdate]);
-
 	return (
 		<div className="Canvas" id={"canvas-pong-parent"}>
 			<div id="main-menu-button-grid">

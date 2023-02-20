@@ -2,30 +2,41 @@
 [![Total Lines][total-lines]][project-url]
 [![Stargazers][stars-shield]][stars-url]
 
-[![Built With][built-with-c]][project-url]
+[![Built With][built-with-C++]][project-url]
+ 
+<img class="banner-image" src="./../images/minishell.gif" alt="a gif of the project building.."/>
 
-## Getting Started
+# 1. Getting started 
+This project is about recreating a shell.
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+## 1.1 Features
+* Working history (`up` and `down` arrows)
+* Can execute any binary located in one of the folders of `$PATH`
+* Signal handling (`CTRL+C`, `CTRL+\`, `CTRL+D`)
+* `\`, `;`, `'`, `"`, `<`, `>`, `>>`, `|`, `$?` implementations
+* Environment variables handling
+* The following builtins : `echo -[n]`, `cd`, `pwd`, `export`, `unset`, `env`, `exit`
 
-### Prerequisites
+## 1.2 Installation 
+```bash
+$ git clone https://github.com/lpellier/minishell.git && cd minishell
+$ make
+```
 
-### Installation
-
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-## Contact
-
+# 2. Usage
+```bash
+# Run the executable
+# The -d option serves for debugging purposes only
+$ ./minishell -[d]
+```
+# 3. Contact
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 Lucas PELLIER - - pellierlucas@gmail.com
 
 Project Link: [minishell](https://github.com/lpellier/minishell)
 
-[built-with-c]: https://img.shields.io/badge/built%20with-C-blueviolet
+[built-with-C++]: https://img.shields.io/badge/built%20with-C++-green
 
 [project-url]: https://github.com/lpellier/minishell
 

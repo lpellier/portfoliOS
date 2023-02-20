@@ -13,7 +13,7 @@ I was in charge of parsing requests and sending appropriate responses.
 
 ## 1.1 Installation 
 ```bash
-git clone https://github.com/lpellier/webserv.git && cd webserv
+$ git clone https://github.com/lpellier/webserv.git && cd webserv
 ```
 
 # 2. Classes
@@ -125,17 +125,17 @@ routes:
 
 Lucas PELLIER - - pellierlucas@gmail.com
 
-Project Link: [webserv](https://github.com/ChevalierSoft/webserv)
+Project Link: [webserv](https://github.com/lpellier/webserv)
 
 [built-with-C++]: https://img.shields.io/badge/built%20with-C++-green
 
-[project-url]: https://github.com/ChevalierSoft/webserv
+[project-url]: https://github.com/lpellier/webserv
 
-[total-lines]: https://img.shields.io/tokei/lines/github/ChevalierSoft/webserv
-[last-commit]: https://img.shields.io/github/last-commit/ChevalierSoft/webserv?style=flat
+[total-lines]: https://img.shields.io/tokei/lines/github/lpellier/webserv
+[last-commit]: https://img.shields.io/github/last-commit/lpellier/webserv?style=flat
 
-[stars-shield]: https://img.shields.io/github/stars/ChevalierSoft/webserv.svg?style=flat
-[stars-url]: https://github.com/ChevalierSoft/webserv/stargazers
+[stars-shield]: https://img.shields.io/github/stars/lpellier/webserv.svg?style=flat
+[stars-url]: https://github.com/lpellier/webserv/stargazers
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?flat&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [product-screenshot]: images/screenshot.png

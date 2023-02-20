@@ -8,13 +8,14 @@ export interface IFile {
 
 export interface IPDFViewer {
 	name: string,
+	size: IPos,
 	forcedUpdate: boolean,
-	pdf_path: string,
-	size: IPos
+	pdf_path: string
 }
 
 export interface IFolder {
 	name: string,
+	size: IPos,
 	forcedUpdate: boolean
 	spawnWindow: Function
 }

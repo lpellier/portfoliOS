@@ -1,4 +1,4 @@
-import React, {lazy, ReactElement, Suspense, useEffect, useRef, useState} from 'react';
+import React, {lazy, Suspense, useEffect, useRef, useState} from 'react';
 import 'styles/Window.css';
 import { RED } from '../../../consts';
 import { IWindow } from '../../../types';
@@ -112,7 +112,7 @@ const Window = ({name, pos, size, z_index, unMinimized, dragWindow, spawnWindow,
 					{name === "Dice" && <Dice forcedUpdate={forceUpdateChild}/> }
 					{name === "Cub3D" && <Cub3D forcedUpdate={forceUpdateChild}/> }
 					{name === "Pong" && <Pong forcedUpdate={forceUpdateChild}/> }
-					{name.includes("Projects") && <Folder name={name} spawnWindow={spawnWindow} forcedUpdate={forceUpdateChild}/> }
+					{name.includes("Projects") && <Folder name={name} spawnWindow={spawnWindow} size={size} forcedUpdate={forceUpdateChild}/> }
 					{name === "About me" && <AboutMe forcedUpdate={forceUpdateChild}/> }
 					{name === "Settings" && <Settings forcedUpdate={forceUpdateChild}/> }
 					{name.includes("Subject") && <PDFViewer name={name} pdf_path={`./project_subjects/${name.substring(8)}.subject.pdf`} size={size} forcedUpdate={forceUpdateChild}/> }

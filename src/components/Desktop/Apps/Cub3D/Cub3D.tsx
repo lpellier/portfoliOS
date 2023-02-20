@@ -6,8 +6,6 @@ import Canvas from "./Sketch/Canvas";
 const Cub3D = ({forcedUpdate}: {forcedUpdate: boolean}) => {
 	const [selected_app, setApp] = useState<number>(0);
 
-	useEffect(() => {}, [forcedUpdate]);
-
 	const goToMapEditor = () => {
 		animateMenuShrink();
 		setTimeout(() => setApp(-1), 250);

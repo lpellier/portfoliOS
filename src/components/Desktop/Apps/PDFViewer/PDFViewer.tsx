@@ -9,9 +9,7 @@ const PDFViewer = ({name, pdf_path, forcedUpdate, size}: IPDFViewer) => {
 	const [numPages, setNumPages] = useState(1);
 	const [pageNumber, setPageNumber] = useState(1);
 	const [scale, setScale] = useState(1.5);
-  
-	useEffect(() => {}, [forcedUpdate, size]);
-	
+
 	function onDocumentLoadSuccess({ numPages }: any) {
 	  setNumPages(numPages);
 	}

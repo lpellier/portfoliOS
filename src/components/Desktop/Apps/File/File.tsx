@@ -11,7 +11,7 @@ import { Scrollbar } from "react-scrollbars-custom";
 import { IFile } from "../../../../types";
 import { default_win_height, default_win_width } from "../../../../consts";
 
-const File = ({name, content_path, spawnWindow, size}: any) => {
+const File = ({name, content_path, spawnWindow, size, forcedUpdate}: IFile) => {
 	const [markdown, setMarkdown] = useState('');
 
 	useEffect(() => {
@@ -23,7 +23,7 @@ const File = ({name, content_path, spawnWindow, size}: any) => {
 	}, [content_path]);
 
 	useEffect(() => {
-	}, [size])
+	}, [size, forcedUpdate])
 
 	let width = document.getElementById(name)?.clientWidth;
 	let height = document.getElementById(name)?.clientHeight;

@@ -1,12 +1,12 @@
 import p5 from "p5";
-import { useEffect } from "react";
+import { memo, useEffect } from "react";
 import { defineSketch } from "./Sketch";
 import "styles/Dice.css"
 import { default_win_height, default_win_width } from "../../../../consts";
 
 let p: any = null;
 
-const Dice = () => {
+const Dice = ({forcedUpdate}: {forcedUpdate: boolean}) => {
 	useEffect(() => {
 		let spoonSketch = defineSketch(default_win_width, default_win_height)
 		p = new p5(spoonSketch)
@@ -15,6 +15,8 @@ const Dice = () => {
 			break;
 	}, []);
 
+	useEffect(() => {}, [forcedUpdate]);
+
 	return (
 		<div className="Canvas" id={"canvas-dice-parent"}>
 
@@ -22,4 +24,4 @@ const Dice = () => {
 	)
 }
 
-export default Dice;
+export default memo(Dice);

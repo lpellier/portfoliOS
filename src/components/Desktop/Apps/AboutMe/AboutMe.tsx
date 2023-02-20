@@ -1,9 +1,8 @@
-import { useEffect } from "react";
+import { memo, useEffect } from "react";
 import "styles/AboutMe.css"
 
-const AboutMe = (props: any) => {
-	useEffect(() => {
-	}, []);
+const AboutMe = ({forcedUpdate}: {forcedUpdate: boolean}) => {
+	useEffect(() => {}, [forcedUpdate]);
 
 	return (
 		<div id="AboutMe" className="file">
@@ -11,4 +10,4 @@ const AboutMe = (props: any) => {
 	)
 }
 
-export default AboutMe;
+export default memo(AboutMe);

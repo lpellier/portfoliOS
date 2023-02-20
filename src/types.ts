@@ -1,16 +1,21 @@
 export interface IFile {
 	name: string,
 	content_path: string,
+	size: IPos,
+	forcedUpdate: boolean,
 	spawnWindow: Function
 }
 
 export interface IPDFViewer {
 	name: string,
-	pdf_path: string
+	forcedUpdate: boolean,
+	pdf_path: string,
+	size: IPos
 }
 
 export interface IFolder {
 	name: string,
+	forcedUpdate: boolean
 	spawnWindow: Function
 }
 

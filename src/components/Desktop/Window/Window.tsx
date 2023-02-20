@@ -6,6 +6,7 @@ import { IWindow } from '../../../types';
 const filesList: string[] = [
 	'ft_server',
 	'ft_services',
+	'webserv',
 	'101_C',
 	'get_next_line',
 	'matrix',
@@ -14,7 +15,8 @@ const filesList: string[] = [
 	'philosophers',
 	'ft_containers',
 	'ft_printf',
-	'push_swap'
+	'push_swap',
+	'cub3d'
 ];
 
 const Dice = lazy(() => import("./../Apps/Dice/Dice"));
@@ -28,11 +30,13 @@ const File = lazy(() => import("./../Apps/File/File"));
 
 const Window = ({name, pos, size, z_index, unMinimized, dragWindow, spawnWindow, destroyWindow}: IWindow) => {
 	const [classes, setClasses] = useState<string>("WindowDefault WindowSpawn");
-	
+	const [forceUpdateChild, forceUpdate] = useState<boolean>(false);
+
 	useEffect(() => {
 		setClasses("WindowDefault WindowSpawn")
 		setTimeout(() => {
 			setClasses("WindowDefault");
+			forceUpdate(current => !current);
 		}, 500)
 	}, [unMinimized]);
 
@@ -48,10 +52,15 @@ const Window = ({name, pos, size, z_index, unMinimized, dragWindow, spawnWindow,
 			setClasses("WindowDefault WindowMaximizedReverse");
 			setTimeout(() => {
 				setClasses("WindowDefault");
+				forceUpdate(current => !current);
 			}, 500)
 		}
-		else
+		else {
 			setClasses("WindowDefault WindowMaximized");
+			setTimeout(() => {
+				forceUpdate(current => !current);
+			}, 500)
+		}
 	}
 	const handleQuit = () => {
 		setClasses("WindowDefault WindowQuit");
@@ -100,14 +109,14 @@ const Window = ({name, pos, size, z_index, unMinimized, dragWindow, spawnWindow,
 			</div>
 			<div className='content'>
 				<Suspense>
-					{name === "Dice" && <Dice/> }
-					{name === "Cub3D" && <Cub3D/> }
-					{name === "Pong" && <Pong/> }
-					{name.includes("Projects") && <Folder name={name} spawnWindow={spawnWindow}/> }
-					{name === "About me" && <AboutMe/> }
-					{name === "Settings" && <Settings/> }
-					{name.includes("Subject") && <PDFViewer name={name} pdf_path={`./project_subjects/${name.substring(8)}.subject.pdf`}/> }
-					{filesList.includes(name) && <File name={name} content_path={`./project_presentations/${name}.md`} spawnWindow={spawnWindow} size={size}/> }
+					{name === "Dice" && <Dice forcedUpdate={forceUpdateChild}/> }
+					{name === "Cub3D" && <Cub3D forcedUpdate={forceUpdateChild}/> }
+					{name === "Pong" && <Pong forcedUpdate={forceUpdateChild}/> }
+					{name.includes("Projects") && <Folder name={name} spawnWindow={spawnWindow} forcedUpdate={forceUpdateChild}/> }
+					{name === "About me" && <AboutMe forcedUpdate={forceUpdateChild}/> }
+					{name === "Settings" && <Settings forcedUpdate={forceUpdateChild}/> }
+					{name.includes("Subject") && <PDFViewer name={name} pdf_path={`./project_subjects/${name.substring(8)}.subject.pdf`} size={size} forcedUpdate={forceUpdateChild}/> }
+					{filesList.includes(name) && <File name={name} content_path={`./project_presentations/${name}.md`} spawnWindow={spawnWindow} size={size} forcedUpdate={forceUpdateChild}/> }
 				</Suspense>
 			</div>
 		</div>

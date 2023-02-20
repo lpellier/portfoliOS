@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { memo, useEffect, useState } from "react";
 import "styles/Cub3D.css"
 import MapEditor from "./MapEditor";
 import Canvas from "./Sketch/Canvas";
 
-const Cub3D = () => {
+const Cub3D = ({forcedUpdate}: {forcedUpdate: boolean}) => {
 	const [selected_app, setApp] = useState<number>(0);
+
+	useEffect(() => {}, [forcedUpdate]);
 
 	const goToMapEditor = () => {
 		animateMenuShrink();
@@ -99,4 +101,4 @@ const Cub3D = () => {
 	)
 }
 
-export default Cub3D;
+export default memo(Cub3D);

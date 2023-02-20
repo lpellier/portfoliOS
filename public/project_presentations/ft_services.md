@@ -4,21 +4,21 @@
 
 [![Built With][built-with-kubernetes]][project-url]
 
-# Getting Started
+# 1. Getting Started
 The goal of this project is to setup an infrastructure composed of different services (WordPress, phpMyADming, FTPS, Grafana, InfluxDB) with Kubernetes.
 
 Each service runs in its own container and restarts in case of a crash or stop of one of its component parts.
 
 If one of the databases containers (MySQL or InfluxDB) crashes or stops, the data persists.
 
-## Prerequisites
+## 1.1 Prerequisites
   * This project is supposed to run on the school computers, which is why we're using minikube.
   * To run it yourself, you would need to install minikube, kubectl and docker. 
 
-## Installation
+## 1.2 Installation
 Simply execute the setup.sh script.
 
-# Usage
+# 2. Usage
 A Load Balancer (MetalLB) manages redirections between services.
 * Grafana is available on port 3000
 * WordPress on 5050
@@ -26,8 +26,7 @@ A Load Balancer (MetalLB) manages redirections between services.
 * FTPS on 21
 * phpMyAdmin on 5000
 
-# Contact
-
+# 3. Contact
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 Lucas PELLIER - - pellierlucas@gmail.com

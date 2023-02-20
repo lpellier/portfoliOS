@@ -43,7 +43,6 @@ svg path { transition: 0.2s; }
 	background-color: var(--black);
 	outline: 2px solid var(--background-color);
 	box-shadow: 5px 5px 5px #00000020;
-	backdrop-filter: blur(8px);
 }
 
 .WindowTitle {

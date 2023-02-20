@@ -230,8 +230,6 @@ const Desktop = () => {
 		}
 	}
 
-	console.log(windows);
-
 	return (
 		<div id="Desktop" className="Desktop" onMouseDown={handleMouseDown} onMouseMove={handleMouseMove} onMouseLeave={handleMouseUp} onMouseUp={handleMouseUp}>
 			<Background/>

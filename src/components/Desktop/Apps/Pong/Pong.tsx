@@ -1,5 +1,5 @@
 import p5 from "p5";
-import { useEffect } from "react";
+import { memo, useEffect } from "react";
 import { defineSketch } from "./Sketch";
 import "styles/Pong.css"
 import "styles/buttons.css"
@@ -202,7 +202,7 @@ class AudioFiles {
 export let audio_files : AudioFiles;
 let p: any = null;
 
-const Pong = () => {
+const Pong = ({forcedUpdate}: {forcedUpdate: boolean}) => {
 	useEffect(() => {
 		audio_files = new AudioFiles();
 		let pongSketch = defineSketch(default_win_width, default_win_height)
@@ -215,6 +215,8 @@ const Pong = () => {
 			audio_files.deleteAudio();
 		  };
 	}, []);
+
+	useEffect(() => {}, [forcedUpdate]);
 
 	return (
 		<div className="Canvas" id={"canvas-pong-parent"}>
@@ -248,4 +250,4 @@ const Pong = () => {
 	)
 }
 
-export default Pong;
+export default memo(Pong);

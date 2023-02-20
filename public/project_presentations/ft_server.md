@@ -4,10 +4,9 @@
 
 [![Built With][built-with-docker]][project-url]
 
-<img class="image" src="./../Animation.gif" alt=""/>
+<img class="banner-image" src="./../images/ft_server.gif" alt="a gif of the project building.."/>
 
 # 1. Getting started
-
 The goal of this project is to setup a server running Wordpress aswell as a MySQL database with phpMyAdmin, secured with an SSL certificate.
 
 The whole thing being contained in a Docker container.
@@ -17,17 +16,15 @@ The whole thing being contained in a Docker container.
   * That's it!
 
 ## 1.2 Installation
-
 ```bash
 $ git clone https://github.com/lpellier/ft_server.git && cd ft_server
 # Build Docker image
 $ docker build -t server .
 ```
 # 2. Usage
-
 ```bash
 # Run the server image in a container
-docker run --name ft_server -it -p 80:80 -p 443:443 server
+$ docker run --name ft_server -it -p 80:80 -p 443:443 server
 ```
 
 The following addresses are now available :
@@ -41,9 +38,13 @@ https://localhost/phpmyadmin
 If you'd like to test everything, you should create a Wordpress account (directly on localhost/wordpress) to setup the website.
 
 phpmyadmin will require a username (`user`) and a password (`password`).
+<br/>
+
+<img class="usage-image" src="./../images/ft_server_wp.gif" alt="a gif showing the wordpress website"/>
+
+<img class="usage-image" src="./../images/ft_server_php.gif" alt="a gif showing the php database"/>
 
 # 3. Contact
-
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 Lucas PELLIER - - pellierlucas@gmail.com

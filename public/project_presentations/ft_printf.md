@@ -2,30 +2,39 @@
 [![Total Lines][total-lines]][project-url]
 [![Stargazers][stars-shield]][stars-url]
 
-[![Built With][built-with-c]][project-url]
+[![Built With][built-with-C]][project-url]
 
-## Getting Started
+# 1. Getting Started
+This project is about recreating at least partially the function `printf`.
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+# 1.1 Features
+* Types supported : `int`, `uint`, `float`, `char`, `string`, `address`, `hexadecimal`
+* Flags supported : `-`, `0`, `*`
+* Precision handling
+* Width handling
 
-### Prerequisites
+## 1.2 Installation
+```bash
+$ git clone https://github.com/lpellier/ft_printf.git && cd ft_printf
+```
 
-### Installation
+# 2. Usage
+Just include the header file in your code and compile the .a file with your source files - you're good to go!
 
-## Usage
+```c
+// Prototype of ft_printf
+int ft_printf(const char *format, ...);
+// Format format : %[flags][width][.precision][size]type
+```
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-## Contact
-
+# 3. Contact
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 Lucas PELLIER - - pellierlucas@gmail.com
 
 Project Link: [ft_printf](https://github.com/lpellier/ft_printf)
 
-[built-with-c]: https://img.shields.io/badge/built%20with-C-blueviolet
+[built-with-C]: https://img.shields.io/badge/built%20with-C-blueviolet
 
 [project-url]: https://github.com/lpellier/ft_printf
 

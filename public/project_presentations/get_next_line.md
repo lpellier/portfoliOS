@@ -2,31 +2,34 @@
 [![Total Lines][total-lines]][project-url]
 [![Stargazers][stars-shield]][stars-url]
 
-[![Built With][built-with-docker]][project-url]
+[![Built With][built-with-C]][project-url]
 
-# Getting Started
+# 1. Getting Started
 The aim of this project is to code a function that reads the next line on any subsequent call from a file descriptor.
 
-## Installation
+## 1.1 Installation
 ```bash
-git clone https://github.com/lpellier/get_next_line.git && cd get_next_line
+$ git clone https://github.com/lpellier/get_next_line.git && cd get_next_line
 ```
 
-# Usage
-
-Just include the header file in your code and compile the src files - you're good to go!
+# 2. Usage
+Just include the header file in your code and compile the source files - you're good to go!
 
 The bonus function can handle as many as 1024 file descriptors at the same time.
 
-# Contact
+```c
+// Prototype of gnl
+int get_next_line(int fd, char **line);
+```
 
+# 3. Contact
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 Lucas PELLIER - - pellierlucas@gmail.com
 
 Project Link: [get_next_line](https://github.com/lpellier/get_next_line)
 
-[built-with-docker]: https://img.shields.io/badge/built%20with-C-blueviolet
+[built-with-C]: https://img.shields.io/badge/built%20with-C-blueviolet
 
 [project-url]: https://github.com/lpellier/get_next_line
 

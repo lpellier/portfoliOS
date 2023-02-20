@@ -6,11 +6,13 @@
 	font-size: 14px;
 	color: var(--text-color);
 	user-select: text;
-	width: 95%;
-	left: 0;
-	right: 0;
-	margin-left: auto;
-	margin-right: auto;
+	--margin-left: 15px;
+	margin-left: var(--margin-left);
+	width: calc(100% - var(--margin-left) * 2);
+}
+
+.Scrollbar {
+	margin-top: 3px;
 }
 
 @font-face {
@@ -18,13 +20,17 @@
 	src: url("./../../public/assets/fonts/SourceCodePro-Italic-VariableFont_wght.ttf");
 }
 
-.markdown .image {
+.banner-image {
 	position: relative;
-	left: 0;
-	right: 0;
-	margin-left: auto;
-	margin-right: auto;
-	width: 100%;
+	margin-left: var(--margin-left);
+	max-width: calc(100% - var(--margin-left) * 2);
+	height: auto;
+}
+
+.usage-image {
+	--margin-left: 45px;
+	margin-left: var(--margin-left);
+	max-width: calc(100% - var(--margin-left) * 2);
 	height: auto;
 }
 
@@ -37,54 +43,54 @@
 .markdown p { padding: 0; margin: 0; }
 .markdown pre { padding: 0; margin: 0; }
 
-.markdown h1 ~ p, .markdown h1 ~ pre {
-	margin-left: 20px;
-}
-.markdown h1 ~ ul {
-	margin-left: 40px;
+.markdown h1 ~ p, .markdown h1 ~ pre	{ --margin-left: 20px;}
+.markdown h1 ~ ul						{ --margin-left: 40px; }
+
+.markdown h2 ~ p, .markdown h2 ~ pre	{ --margin-left: 50px; }
+.markdown h2 ~ ul						{ --margin-left: 70px; }
+
+.markdown h3 ~ p, .markdown h3 ~ pre	{ --margin-left: 75px; }
+.markdown h3 ~ ul						{ --margin-left: 95px; }
+
+.markdown p, .markdown pre, .markdown ul {
+	margin-left: var(--margin-left);
+	width: calc(100% - var(--margin-left) - 15px);
 }
 
-.markdown h2 ~ p, .markdown h2 ~ pre {
-	margin-left: 35px;
-}
-.markdown h2 ~ ul {
-	margin-left: 55px;
-}
-
-/* .markdown p,  .markdown pre {
-	line-height: 30px;
-	padding-right: 100px;
-} */
-
-/* .markdown code {
-	display: inline-block;
+.markdown code {
 	background-color: #1E1F24;
 	border-radius: 5px;
 	padding: 2px;
-	line-height: 15px;
-} */
-
-.markdown h1, .markdown h2, .markdown h3 {
-	display: inline-block;
-	background-color: #1E1F2490;
-	margin-left: 15px;
-	width: calc(100% - 85px);
-	border-radius: 5px;
-	padding: 2px;
-	padding-left: 25px;
-	padding-right: 25px;
-	border: 2px solid #1E1F24;
 }
 
 .markdown h1 {
 	background-color: #1E1F24;
+	--padding: 10px;
+	width: calc(100% - var(--margin-left) * 2 - var(--padding) * 2);
 }
 .markdown h2 {
-	padding-left: 15px;
-	padding-right: 15px;
-	margin-left: 35px;
+	background-color: #1E1F2490;
+	--padding: 10px;
+	--margin-left: 45px;
 	width: auto;
 }
+.markdown h3 {
+	background-color: #1E1F2490;
+	--padding: 10px;
+	--margin-left: 70px;
+	width: auto;
+}
+
+.markdown h1, .markdown h2, .markdown h3 {
+	display: inline-block;
+	margin-left: var(--margin-left);
+	border-radius: 5px;
+	padding: 2px;
+	padding-left: var(--padding);
+	padding-right: var(--padding);
+	border: 2px solid #1E1F24;
+}
+
 
 a:link { 
 	color: var(--red);

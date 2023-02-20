@@ -9,11 +9,10 @@ let file_icon = <svg xmlns="http://www.w3.org/2000/svg" className="icon-file" vi
 				<path d="M14 13l1 2l-1 2" />
 			</svg>
 
-const Folder = ({name, spawnWindow}: IFolder) => {
+const Folder = ({name, spawnWindow, forcedUpdate}: IFolder) => {
 	const clicked = useRef<string>("");
 
-	useEffect(() => {
-	}, []);
+	useEffect(() => {}, [forcedUpdate]);
 
 	const fileClicked = (filename: string): void => {
 		// ? Remove any existing outlines
@@ -77,6 +76,10 @@ const Folder = ({name, spawnWindow}: IFolder) => {
 						{ file_icon }
 						<h1 className="file-name">get_next_line</h1>
 					</div>
+					<div id="file-cub3d" className="file-div" onClick={() => fileClicked("file-cub3d")}>
+						{ file_icon }
+						<h1 className="file-name">cub3d</h1>
+					</div>
 					<div id="file-push_swap" className="file-div" onClick={() => fileClicked("file-push_swap")}>
 						{ file_icon }
 						<h1 className="file-name">push_swap</h1>
@@ -107,4 +110,4 @@ const Folder = ({name, spawnWindow}: IFolder) => {
 	)
 }
 
-export default Folder;
+export default memo(Folder);

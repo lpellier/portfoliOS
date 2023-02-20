@@ -4,7 +4,7 @@
 
 [![Built With][built-with-C++]][project-url]
 
-# Getting Started
+# 1. Getting Started
 The aim of this project is to code a Matrix and Vector class in C++. 
 
 These classes contain helper methods such as transpose, determinant, inverse etc... 
@@ -13,18 +13,18 @@ It also provides operator overloads for scaling, adding, substracting and multip
 
 I also wrote a test script with unit tests to make sure everything's right.
 
-## Installation
+## 1.1 Installation
 ```bash
-git clone https://github.com/lpellier/matrix.git && cd matrix
+$ git clone https://github.com/lpellier/matrix.git && cd matrix
 # Test one of the test files
-./test.sh tests/<test_name>.cpp
+$ ./test.sh tests/<test_name>.cpp
 ```
 
-# Usage
+# 2. Usage
 
 Include the general header file in your code and that's it.
 
-# Contact
+# 3. Contact
 
 [![LinkedIn][linkedin-shield]][linkedin-url]
 

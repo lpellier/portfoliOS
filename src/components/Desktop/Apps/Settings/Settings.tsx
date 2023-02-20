@@ -1,12 +1,13 @@
-import { useEffect } from "react";
+import { memo, useEffect } from "react";
 import "styles/Settings.css"
 
-export default function Settings(props: any) {
-	useEffect(() => {
-	}, []);
+const Settings = ({forcedUpdate}: {forcedUpdate: boolean}) => {
+	useEffect(() => {}, [forcedUpdate]);
 
 	return (
 		<div id="Settings" className="file">
 		</div>
 	)
 }
+
+export default memo(Settings);

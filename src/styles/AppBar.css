@@ -1,7 +1,7 @@
 .OpenedState {
 	position: absolute;
 	bottom: 0%;
-	margin-left: 30px;
+	margin-left: 25px;
 	transition: transform 0.2s, opacity 0.2s;
 	opacity: 0;
 	width: 10px;

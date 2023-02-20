@@ -29,9 +29,11 @@ const File = ({name, content_path, spawnWindow, size, forcedUpdate}: IFile) => {
 	let height = document.getElementById(name)?.clientHeight;
 	return (
 		<div id="File" className="file">
-			<button className="subject-button" onClick={() => spawnWindow(`Subject ${name}`)}>
-				<h1>Subject</h1>
-			</button>
+			{ name !== "101_C" && 
+				<button className="subject-button" onClick={() => spawnWindow(`Subject ${name}`)}>
+					<h1>Subject</h1>
+				</button>
+			}
 			<Scrollbar style={{ width: width ? width : default_win_width, height: height? height : default_win_height}} className='Scrollbar'>
       			<ReactMarkdown components={{
 					code({node, inline, className, children, ...props}) {

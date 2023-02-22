@@ -1,5 +1,13 @@
 # portfoliOS
 
+[![Last Commit][last-commit]][project-url]
+[![Total Lines][total-lines]][project-url]
+[![Stargazers][stars-shield]][stars-url]
+
+[![Built With][built-with-C++]][project-url]
+
+<br/>
+
 <img src="./portfolios.gif" alt="portfoliOS" ></img>
 
 ## What is this ?
@@ -31,3 +39,22 @@ $ npm run start
 ```
 Then visit: http://localhost:3000
 
+## Contact
+[![LinkedIn][linkedin-shield]][linkedin-url]
+
+Lucas PELLIER - - pellierlucas@gmail.com
+
+[built-with-C++]: https://img.shields.io/badge/built%20with-C++-green
+
+[project-url]: https://github.com/lpellier/cub3d
+
+[total-lines]: https://img.shields.io/tokei/lines/github/lpellier/cub3d
+[last-commit]: https://img.shields.io/github/last-commit/lpellier/cub3d?style=flat
+
+[stars-shield]: https://img.shields.io/github/stars/lpellier/cub3d.svg?style=flat
+[stars-url]: https://github.com/lpellier/cub3d/stargazers
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?flat&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/linkedin_username
+[product-screenshot]: images/screenshot.png
+[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[React-url]: https://reactjs.org/ 

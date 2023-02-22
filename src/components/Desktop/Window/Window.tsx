@@ -23,7 +23,6 @@ const Dice = lazy(() => import("./../Apps/Dice/Dice"));
 const Cub3D = lazy(() => import("./../Apps/Cub3D/Cub3D"));
 const Pong = lazy(() => import("./../Apps/Pong/Pong"));
 const Folder = lazy(() => import("./../Apps/Folder/Folder"));
-const AboutMe = lazy(() => import("./../Apps/AboutMe/AboutMe"));
 const Settings = lazy(() => import("./../Apps/Settings/Settings"));
 const PDFViewer = lazy(() => import("./../Apps/PDFViewer/PDFViewer"));
 const File = lazy(() => import("./../Apps/File/File"));
@@ -113,7 +112,8 @@ const Window = ({name, pos, size, z_index, unMinimized, dragWindow, spawnWindow,
 					{name === "Cub3D" && <Cub3D forcedUpdate={forceUpdateChild}/> }
 					{name === "Pong" && <Pong forcedUpdate={forceUpdateChild}/> }
 					{name.includes("Projects") && <Folder name={name} spawnWindow={spawnWindow} size={size} forcedUpdate={forceUpdateChild}/> }
-					{name === "About me" && <AboutMe forcedUpdate={forceUpdateChild}/> }
+					{/* // ? About me is just my cv in markdown, so it's a File */}
+					{name === "About me" && <File name={name} content_path={`./project_presentations/about_me.md`} spawnWindow={spawnWindow} size={size} forcedUpdate={forceUpdateChild}/> }
 					{name === "Settings" && <Settings forcedUpdate={forceUpdateChild}/> }
 					{name.includes("Subject") && <PDFViewer name={name} pdf_path={`./project_subjects/${name.substring(8)}.subject.pdf`} size={size} forcedUpdate={forceUpdateChild}/> }
 					{filesList.includes(name) && <File name={name} content_path={`./project_presentations/${name}.md`} spawnWindow={spawnWindow} size={size} forcedUpdate={forceUpdateChild}/> }

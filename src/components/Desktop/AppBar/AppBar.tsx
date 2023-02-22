@@ -214,7 +214,7 @@ const AppBar = ({opened_apps, spawnWindow}: IAppBar) => {
 					</svg>
 					<div style={{opacity: (opened_apps.includes("About me") ? 1 : 0)}} className='OpenedState'/>
 				</div>
-				<div>
+				{/* <div> // ? Removing settings for now
 					<svg xmlns="http://www.w3.org/2000/svg" className="App" id="icon-settings"
 						onMouseEnter={() => changeInfoText("Settings", true)} 
 						onMouseLeave={() => changeInfoText("Settings", false)} 
@@ -226,7 +226,7 @@ const AppBar = ({opened_apps, spawnWindow}: IAppBar) => {
 						<circle cx="12" cy="12" r="3"/>
 					</svg>
 					<div style={{opacity: (opened_apps.includes("Settings") ? 1 : 0)}} className='OpenedState'/>
-				</div>
+				</div> */}
 			</div>
 		</div>
 	)

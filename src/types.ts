@@ -6,6 +6,8 @@ export interface IFile {
 	spawnWindow: Function
 }
 
+export type IAboutMe = Omit<IFile, 'spawnWindow'>;
+
 export interface IPDFViewer {
 	name: string,
 	size: IPos,

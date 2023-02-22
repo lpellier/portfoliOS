@@ -198,7 +198,7 @@
 	animation: fade-in 0.5s forwards;
 }
 
-#profile-pic {
+/* #profile-pic {
 	width: var(--size-100);
 	height: var(--size-100);
 
@@ -209,7 +209,7 @@
 	background-position: center;
 	background-size: cover;
 	border: 3px solid var(--red);
-}
+} */
 
 #profile-name {
 	color: white;

@@ -10,13 +10,9 @@ import Window from './Window/Window';
 
 // ! Important
 	// TODO Mobile webapp
-	// todo list of epitech projets
 	// TODO Pop ups to explain website
 	// TODO Can probably remove login animation
-	// TODO Remove settings
 	// TODO Interesting background
-	// TODO About me -> my cv styled in markdown
-		// ? Cool markdown github profile : https://github.com/abhisheknaiidu/awesome-github-profile-readme
 
 const Desktop = () => {
 	const [windows, setWindows] = useState<IWin[]>([]);

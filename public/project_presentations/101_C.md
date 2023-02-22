@@ -11,7 +11,18 @@ Here you'll find a collection of projects and lessons I did whenever I gave less
 ## 1.2 epitech_projects
 I helped a student at Epitech School on a number of his projects, which are all in this folder.
 
-These are not the cleanest projects since i'm only doing these to prepare classes for my student.
+Some of these projects are unfinished since I did them only to prepare my classes.
+
+* 101pong: a simple ball trajectory calculator
+* encryption: encrypt and decrypt using keys
+* sokoban: simple game
+* maze_dante: maze generation
+* tetris: tetris
+* antman_giantman: (loss-less) compression and decompression of files
+* bsq: find biggest empty square in 2d array
+* navy: signal handling to play navy between two terminals
+* minishell1: small shell
+* Nanotek: electronic circuit simulator
 
 ## 1.3 learn_c
 Lessons I made, consisting of information on specific "chapters" of C accompagnied by related exercices.

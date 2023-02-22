@@ -115,6 +115,7 @@ const Window = ({name, pos, size, z_index, unMinimized, dragWindow, spawnWindow,
 					{/* // ? About me is just my cv in markdown, so it's a File */}
 					{name === "About me" && <File name={name} content_path={`./project_presentations/about_me.md`} spawnWindow={spawnWindow} size={size} forcedUpdate={forceUpdateChild}/> }
 					{name === "Settings" && <Settings forcedUpdate={forceUpdateChild}/> }
+					{name === "CV" && <PDFViewer name={name} pdf_path={`./project_subjects/cv.pdf`} size={size} forcedUpdate={forceUpdateChild}/> }
 					{name.includes("Subject") && <PDFViewer name={name} pdf_path={`./project_subjects/${name.substring(8)}.subject.pdf`} size={size} forcedUpdate={forceUpdateChild}/> }
 					{filesList.includes(name) && <File name={name} content_path={`./project_presentations/${name}.md`} spawnWindow={spawnWindow} size={size} forcedUpdate={forceUpdateChild}/> }
 				</Suspense>

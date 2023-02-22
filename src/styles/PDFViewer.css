@@ -42,6 +42,11 @@
 	right: 22px;
 }
 
+#button-pdf-download {
+	bottom: 11px;
+	right: 22px;
+}
+
 #page-number {
 	position: absolute;
 	margin: 0;

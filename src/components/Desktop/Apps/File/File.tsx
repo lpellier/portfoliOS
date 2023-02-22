@@ -26,9 +26,14 @@ const File = ({name, content_path, spawnWindow, size, forcedUpdate}: IFile) => {
 	let height = document.getElementById(name)?.clientHeight;
 	return (
 		<div id="File" className="file">
-			{ name !== "101_C" && 
+			{ name !== "101_C" && name !== "About me" && 
 				<button className="subject-button" onClick={() => spawnWindow(`Subject ${name}`)}>
 					<h1>Subject</h1>
+				</button>
+			}
+			{ name === "About me" && 
+				<button className="subject-button" onClick={() => spawnWindow(`CV`)}>
+					<h1>CV</h1>
 				</button>
 			}
 			<Scrollbar style={{ width: width ? width : default_win_width, height: height? height : default_win_height}} className='Scrollbar'>

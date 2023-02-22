@@ -4,7 +4,8 @@
 [![Total Lines][total-lines]][project-url]
 [![Stargazers][stars-shield]][stars-url]
 
-[![Built With][built-with-C++]][project-url]
+[![Built With][built-with-Typescript]][project-url]
+![React.js]
 
 <br/>
 
@@ -14,19 +15,15 @@
 This is my portfolio! Inspired by modern desktop environments, portfoliOS is in itself a desktop experience.
 You can open up apps which come in resizable windows.
 
+Written in Typescript with React.
+
 ## Apps
-### Server Projects
-Folder containing files which are presentations of server projects I've completed at 42.
-### C/C++ Projects
-Folder containing files which are presentations of C/C++ projects I've completed at 42.
-### Dice
-Simple dice app.
-### Cub3D
-Revisited Cub3D (raycasting engine) with a map editor !
-### Pong
-Pong game directly taken from my work on ft_transcendence. Multiplayer is disabled because my portfolio has no backend.
-### About me
-Compilation of information about myself, including my CV.
+* Server Projects: Folder containing files which are presentations of server projects I've completed at 42.
+* C/C++ Projects: Folder containing files which are presentations of C/C++ projects I've completed at 42.
+* Dice: Simple dice app.
+* Cub3D: Revisited Cub3D (raycasting engine) with a map editor !
+* Pong: Pong game directly taken from my work on ft_transcendence. Multiplayer is disabled because my portfolio has no backend.
+* About me: Compilation of information about myself, including my CV.
 
 ## Usage
 The website is available at the following address: `<pending>`
@@ -46,15 +43,14 @@ Then visit: http://localhost:3000
 
 Lucas PELLIER - - pellierlucas@gmail.com
 
-[built-with-C++]: https://img.shields.io/badge/built%20with-C++-green
+[built-with-Typescript]: https://img.shields.io/badge/built%20with-Typescript-green
 
-[project-url]: https://github.com/lpellier/cub3d
+[total-lines]: https://img.shields.io/tokei/lines/github/lpellier/portfoliOS
+[last-commit]: https://img.shields.io/github/last-commit/lpellier/portfoliOS?style=flat
+[project-url]: https://github.com/lpellier/portfoliOS
 
-[total-lines]: https://img.shields.io/tokei/lines/github/lpellier/cub3d
-[last-commit]: https://img.shields.io/github/last-commit/lpellier/cub3d?style=flat
-
-[stars-shield]: https://img.shields.io/github/stars/lpellier/cub3d.svg?style=flat
-[stars-url]: https://github.com/lpellier/cub3d/stargazers
+[stars-shield]: https://img.shields.io/github/stars/lpellier/portfoliOS.svg?style=flat
+[stars-url]: https://github.com/lpellier/portfoliOS/stargazers
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?flat&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [product-screenshot]: images/screenshot.png

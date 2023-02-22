@@ -2,30 +2,54 @@
 [![Total Lines][total-lines]][project-url]
 [![Stargazers][stars-shield]][stars-url]
 
-[![Built With][built-with-c]][project-url]
+[![Built With][built-with-C++]][project-url]
 
-## Getting Started
+<img class="banner-image" src="./../images/philos.png" alt="an image depicting 6 philosophers wondering how to eat"/>
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+# 1. Getting started 
+A table of 5 philosophers are seated at a round table.<br/>
 
-### Prerequisites
+They all have a fork in front of them and a huge plate of pasta in the middle of the table.<br/>
 
-### Installation
+They must eat or they will die. They must sleep or they will die.<br/>
 
-## Usage
+To eat, one needs two forks - which means he'll have to borrow a neighbour's fork.<br/>
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+He will instantly starts sleeping after having eaten.<br/>
 
-## Contact
+They are bound to this round table.<br/><br/>
 
+How to keep them all alive ?
+
+
+## 1.1 The code
+Each philosopher is a thread in a multi-thread program. <br/>
+Every fork is protected by a mutex (which prevents the same fork from being held by two threads) <br/><br/>
+The program outputs the actions of every thread as they perform these actions.<br/>
+If a philosopher dies, the program stops.<br/>
+
+## 1.2 Installation 
+```bash
+$ git clone https://github.com/lpellier/philosophers.git && cd philosophers/philo
+$ make
+```
+
+# 2. Usage
+```bash
+# Execute philosophers
+$ ./philoshopers <nbr_of_philos> <time_to_die> <time_to_eat> <time_to_sleep>
+```
+
+<img class="usage-image" src="./../images/philosophers.gif" alt="a gif of the project running"/>
+
+# 3. Contact
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 Lucas PELLIER - - pellierlucas@gmail.com
 
 Project Link: [philosophers](https://github.com/lpellier/philosophers)
 
-[built-with-c]: https://img.shields.io/badge/built%20with-C-blueviolet
+[built-with-C++]: https://img.shields.io/badge/built%20with-C++-green
 
 [project-url]: https://github.com/lpellier/philosophers
 

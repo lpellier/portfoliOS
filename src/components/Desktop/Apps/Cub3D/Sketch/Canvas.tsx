@@ -44,6 +44,20 @@ let visibleSprites: Sprite[];
 let spriteOrder: number[];
 let spriteDistance: number[];
 
+// const printMap = () => {
+// 	let str = "";
+// 	str += "grid = [\n"
+// 	for (let y of map.grid) {
+// 		str += "[ "
+// 		for (let x of y) {
+// 			str += x + ", ";
+// 		}
+// 		str += "],\n";
+// 	}
+// 	str += "];";
+// 	console.log(str)
+// } 
+
 const setPixelInCanvas = (pos: {x: number, y: number}, color: {r: number, g: number, b: number, a: number}) => {
     if (!context)
         return;
@@ -335,6 +349,7 @@ const setup = () => {
     player.mouse_sensitivity = MOUSE_SENSITIVITY;
     walking = "";
 }
+
 
 const initializeSprites = () => {
     visibleSprites = [];

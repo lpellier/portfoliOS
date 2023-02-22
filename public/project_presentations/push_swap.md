@@ -2,30 +2,54 @@
 [![Total Lines][total-lines]][project-url]
 [![Stargazers][stars-shield]][stars-url]
 
-[![Built With][built-with-c]][project-url]
+[![Built With][built-with-C++]][project-url]
 
-## Getting Started
+# 1. Getting started 
+The goal of this project is to code and optimize a sorting algorithm.<br/><br/>
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+The algorithm must be constrained by a few rules:<br/>
+* You have two stacks named `a` and `b`.
+* The stack `a` contains a random amount of negative and/or positive numbers which cannot be duplicated.
+* The stack `b` is empty.
+* The goal is to sort in ascending order numbers into stack a. To do so you the following operations at your disposal: `sa`, `sb`, `ss`, `pa`, `pb`, `ra`, `rb`, `rr`, `rra`, `rrb`, `rrr`
+<br/><br/>
 
-### Prerequisites
+The push_swap executable takes a list of integers as argument(s).<br/>
+It outputs the list of operations required to sort the list.<br/>
+The goal is to have as few operations as possible.<br/><br/>
 
-### Installation
+The checker executable takes a list of integers and the operations required to sort the list. <br/>
+It then applies each operation to the list and checks if the resulting list is sorted.<br/>
 
-## Usage
+## 1.1 Algorithm
+The algorithm I chose to implement is the radix sort amlgorithm. It is easy to implement and to understand - it works like this : <br/>
+* Iterate over each number and look at `n`th bit.
+* If the bit is 0, push to `b` stack.
+* Once there are no more numbers to check, put all of the numbers from stack `b` to stack `a`.
+* Repeat the process for each bit.
+* List is sorted !
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+## 1.2 Installation 
+```bash
+$ git clone https://github.com/lpellier/push_swap.git && cd push_swap
+$ make
+```
 
-## Contact
-
+# 2. Usage
+```bash
+# Execute push_swap
+$ ARG="<list of numbers separated by spaces>"; ./push_swap $ARG
+# Execute checker as well
+$ ARG="<list of numbers separated by spaces>"; ./push_swap $ARG | ./checker $ARG
+```
+# 3. Contact
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 Lucas PELLIER - - pellierlucas@gmail.com
 
 Project Link: [push_swap](https://github.com/lpellier/push_swap)
 
-[built-with-c]: https://img.shields.io/badge/built%20with-C-blueviolet
+[built-with-C++]: https://img.shields.io/badge/built%20with-C++-green
 
 [project-url]: https://github.com/lpellier/push_swap
 

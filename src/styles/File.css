@@ -21,10 +21,17 @@
 }
 
 .banner-image {
+	display: block;
 	position: relative;
-	margin-left: var(--margin-left);
-	max-width: calc(100% - var(--margin-left) * 2);
-	height: auto;
+	/* margin-left: var(--margin-left);
+	width: calc(80% - var(--margin-left) * 2);
+	height: auto; */
+	
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	width: 80%;
 }
 
 .usage-image {
@@ -38,7 +45,6 @@
 	cursor: text;
 }
 
-.markdown br {line-height: 50px;}
 .markdown ul { padding: 0; margin: 0; }
 .markdown p { padding: 0; margin: 0; }
 .markdown pre { padding: 0; margin: 0; }

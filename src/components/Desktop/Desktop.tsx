@@ -10,17 +10,12 @@ import Window from './Window/Window';
 
 // ! Important
 	// TODO Mobile webapp
-	// TODO Presentation for each of my projects
+	// TODO Pop ups to explain website
+	// TODO Can probably remove login animation
+	// TODO Remove settings
 	// TODO Interesting background
 	// TODO About me -> my cv styled in markdown
 		// ? Cool markdown github profile : https://github.com/abhisheknaiidu/awesome-github-profile-readme
-	// TODO Settings -> modify appearance of website
-		// ? Ability to change the background ?
-		// ? Ability to change the color theme ?
-		// ? Ability to change font-size, icon-size ?
-
-// ? Eventually
-	// ? Some sort of tutorial message / tool tips ?
 
 const Desktop = () => {
 	const [windows, setWindows] = useState<IWin[]>([]);

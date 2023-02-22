@@ -39,6 +39,8 @@ $ npm run start
 ```
 Then visit: http://localhost:3000
 
+<img src="./portfolio-banner.png" alt="portfoliOS" ></img>
+
 ## Contact
 [![LinkedIn][linkedin-shield]][linkedin-url]
 

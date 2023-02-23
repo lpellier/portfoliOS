@@ -21,18 +21,22 @@
 }
 
 .button-pdf {
+	display: flex;
+	align-items: center;
 	position: absolute;
-	width: 40px;
-	height: 40px;
-	border: none;
 	background: none;
-	backdrop-filter: blur(8px);
-	border-radius: 50%;
 	transition: transform 100ms;
 	font-family: "Outfit";
-	font-size: 20px;
+	font-size: 10px;
 	z-index: 2;
+	border: none;
+	color: var(--red);
 }
+
+.button-pdf-text {
+	
+}
+
 .button-pdf:hover {
 	transform: scale(1.2);
 }

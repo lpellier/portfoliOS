@@ -25,6 +25,8 @@ const File = ({name, content_path, spawnWindow, size, forcedUpdate}: IFile) => {
 	const downloadFile = (): void => {
 		let pdf_path = `https://lpellier.github.io/portfoliOS/project_subjects/${name}.subject.pdf`
 		
+		if (name === "About me") pdf_path = `https://lpellier.github.io/portfoliOS/project_subjects/CV.pdf`;
+
 		fetch(pdf_path).then(response => {
             response.blob().then(blob => {
                 // Creating new object of PDF file
@@ -33,7 +35,8 @@ const File = ({name, content_path, spawnWindow, size, forcedUpdate}: IFile) => {
                 let alink = document.createElement('a');
                 alink.href = fileURL;
                 alink.download = `${name}.pdf`;
-                alink.click();
+                if (name === "About me") alink.download = 'lpellier-cv.pdf';
+				alink.click();
             })
         })
 	}
@@ -49,7 +52,7 @@ const File = ({name, content_path, spawnWindow, size, forcedUpdate}: IFile) => {
 					<polyline points="7 11 12 16 17 11" />
 					<line x1="12" y1="4" x2="12" y2="16" />
 				</svg>
-				<h1>{name === "About me" ? "CV" : "Subject"}</h1>
+				<h1 className="button-pdf-text" >{name === "About me" ? "CV" : "Subject"}</h1>
 			</button>
 			<Scrollbar style={{ width: width ? width : default_win_width, height: height? height : default_win_height}} className='Scrollbar'>
       			<ReactMarkdown components={{

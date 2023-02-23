@@ -20,6 +20,27 @@
 	src: url("./../../public/assets/fonts/SourceCodePro-Italic-VariableFont_wght.ttf");
 }
 
+.button-pdf {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	border: none;
+	background: none;
+	backdrop-filter: blur(8px);
+	border-radius: 50%;
+	transition: transform 100ms;
+	font-family: "Outfit";
+	font-size: 20px;
+	z-index: 2;
+}
+.button-pdf:hover {
+	transform: scale(1.2);
+}
+#button-pdf-download {
+	bottom: 11px;
+	right: 22px;
+}
+
 
 #profile-pic {
 	display: block;

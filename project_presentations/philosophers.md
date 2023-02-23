@@ -4,7 +4,7 @@
 
 [![Built With][built-with-C++]][project-url]
 
-<img class="banner-image" src="https://lpellier.github.io/portfoliOS/images/philos.gif" alt="an image depicting 6 philosophers wondering how to eat"/>
+<img class="banner-image" src="https://lpellier.github.io/portfoliOS/images/philos.png" alt="an image depicting 6 philosophers wondering how to eat"/>
 
 # 1. Getting started 
 A table of 5 philosophers are seated at a round table.<br/>

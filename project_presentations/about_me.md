@@ -1,5 +1,5 @@
 
-<img src="./../images/pdp2.jpg" id="profile-pic" alt="a picture of me" ></img>
+<img src="https://lpellier.github.io/portfoliOS/images/pdp2.jpg" id="profile-pic" alt="a picture of me" ></img>
 
 # Hi there 👋
 

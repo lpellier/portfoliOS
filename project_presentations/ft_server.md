@@ -40,9 +40,9 @@ If you'd like to test everything, you should create a Wordpress account (directl
 phpmyadmin will require a username (`user`) and a password (`password`).
 <br/>
 
-<img class="usage-image" src="./../images/ft_server_wp.gif" alt="a gif showing the wordpress website"/>
+<img class="usage-image" src="https://lpellier.github.io/portfoliOS/images/ft_server_wp.gif" alt="a gif showing the wordpress website"/>
 
-<img class="usage-image" src="./../images/ft_server_php.gif" alt="a gif showing the php database"/>
+<img class="usage-image" src="https://lpellier.github.io/portfoliOS/images/ft_server_php.gif" alt="a gif showing the php database"/>
 
 # 3. Contact
 [![LinkedIn][linkedin-shield]][linkedin-url]

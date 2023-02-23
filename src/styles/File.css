@@ -24,7 +24,9 @@
 	display: flex;
 	align-items: center;
 	position: absolute;
-	background: none;
+	border-radius: 15px;
+	background-color: #1E1F2450;
+	/* backdrop-filter: blur(8px); */
 	transition: transform 100ms;
 	font-family: "Outfit";
 	font-size: 10px;

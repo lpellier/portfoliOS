@@ -35,6 +35,8 @@ const Desktop = () => {
 	}, [windows.length]);
 
 	const putWindowToFront = useCallback((win_name: string): void => {
+		if (document.body.style.cursor.includes("resize"))
+			return ;
 		setWindows(current => current.map(win => {
 			if (win.name === win_name) return {...win, z_index: getLastZIndex()};
 			else if (win.z_index > 0) return {...win, z_index: win.z_index - 1};

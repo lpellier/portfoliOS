@@ -4,7 +4,7 @@
 
 [![Built With][built-with-docker]][project-url]
 
-<img class="banner-image" src="./../images/ft_server.gif" alt="a gif of the project building.."/>
+<img class="banner-image" src="https://lpellier.github.io/portfoliOS/images/ft_server.gif" alt="a gif of the project building.."/>
 
 # 1. Getting started
 The goal of this project is to setup a server running Wordpress aswell as a MySQL database with phpMyAdmin, secured with an SSL certificate.

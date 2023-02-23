@@ -1,7 +1,7 @@
 {
   "name": "portfolio-os",
   "version": "0.1.0",
-  "homepage": "https://lpellier.github.io/portfoliOS/",
+  "homepage": "https://lpellier.github.io/portfoliOS",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.5",

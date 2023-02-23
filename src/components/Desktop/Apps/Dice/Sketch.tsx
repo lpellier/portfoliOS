@@ -217,7 +217,7 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 		let font : any;
 
 		p.preload = () => {
-			font = p.loadFont("/assets/Outfit-Regular.ttf")
+			font = p.loadFont(`${process.env.PUBLIC_URL}/assets/fonts/Outfit-Regular.ttf`)
 		}
 
 		// ? called once upon load

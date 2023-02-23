@@ -873,19 +873,19 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 			this.LEFT_BOUND = 0;
 			this.RIGHT_BOUND = this.WIDTH;
 
-			this.FONT = p.loadFont("/assets/fonts/PressStart2P-Regular.ttf");
+			this.FONT = p.loadFont(`${process.env.PUBLIC_URL}/assets/fonts/PressStart2P-Regular.ttf`);
 
-			this.RETURN_ICON = p.loadImage("/assets/icons/return-button2.png");
+			this.RETURN_ICON = p.loadImage(`${process.env.PUBLIC_URL}/assets/icons/return-button2.png`);
 
-			this.CROSS_ICON = p.loadImage("/assets/icons/red-cross.png");
-			this.CROSS_ICON2 = p.loadImage("/assets/icons/red-cross.png");
-			this.MARK_ICON = p.loadImage("/assets/icons/green-mark.png");
+			this.CROSS_ICON = p.loadImage(`${process.env.PUBLIC_URL}/assets/icons/red-cross.png`);
+			this.CROSS_ICON2 = p.loadImage(`${process.env.PUBLIC_URL}/assets/icons/red-cross.png`);
+			this.MARK_ICON = p.loadImage(`${process.env.PUBLIC_URL}/assets/icons/green-mark.png`);
 
-			this.EYE_ICON = p.loadImage("/assets/icons/eye-icon.png");
-			this.SOUND_ICON = p.loadImage("/assets/icons/sfx_icon.png");
+			this.EYE_ICON = p.loadImage(`${process.env.PUBLIC_URL}/assets/icons/eye-icon.png`);
+			this.SOUND_ICON = p.loadImage(`${process.env.PUBLIC_URL}/assets/icons/sfx_icon.png`);
 
-			this.CITY_BACKGROUND = p.loadImage("/assets/backgrounds/city.jpg");
-			this.TOKYO_BACKGROUND = p.loadImage("/assets/backgrounds/tokyo.png");
+			this.CITY_BACKGROUND = p.loadImage(`${process.env.PUBLIC_URL}/assets/backgrounds/city.jpg`);
+			this.TOKYO_BACKGROUND = p.loadImage(`${process.env.PUBLIC_URL}/assets/backgrounds/tokyo.png`);
 		}
 
 
@@ -1297,14 +1297,14 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 		right: any;
 
 		constructor() {
-			this.w = p.loadImage("/assets/keys/w-key.gif");
-			this.a = p.loadImage("/assets/keys/tile-a.png");
-			this.s = p.loadImage("/assets/keys/s-key.gif");
-			this.d = p.loadImage("/assets/keys/tile-d.png");
-			this.up = p.loadImage("/assets/keys/up-key.gif");
-			this.left = p.loadImage("/assets/keys/tile-left.png");
-			this.down = p.loadImage("/assets/keys/down-key.gif");
-			this.right = p.loadImage("/assets/keys/tile-right.png");
+			this.w = p.loadImage(`${process.env.PUBLIC_URL}/assets/keys/w-key.gif`);
+			this.a = p.loadImage(`${process.env.PUBLIC_URL}/assets/keys/tile-a.png`);
+			this.s = p.loadImage(`${process.env.PUBLIC_URL}/assets/keys/s-key.gif`);
+			this.d = p.loadImage(`${process.env.PUBLIC_URL}/assets/keys/tile-d.png`);
+			this.up = p.loadImage(`${process.env.PUBLIC_URL}/assets/keys/up-key.gif`);
+			this.left = p.loadImage(`${process.env.PUBLIC_URL}/assets/keys/tile-left.png`);
+			this.down = p.loadImage(`${process.env.PUBLIC_URL}/assets/keys/down-key.gif`);
+			this.right = p.loadImage(`${process.env.PUBLIC_URL}/assets/keys/tile-right.png`);
 		}
 	}
 
@@ -1830,8 +1830,8 @@ export const defineSketch = (initialWidth: number, initialHeight: number) : any 
 		consts = new Consts();
 		keys = new Keys();
 
-		spritedata = p.loadJSON("/assets/sprites/bumper.json");
-		spritesheet = p.loadImage("/assets/sprites/bumper.png");
+		spritedata = p.loadJSON(`${process.env.PUBLIC_URL}/assets/sprites/bumper.json`);
+		spritesheet = p.loadImage(`${process.env.PUBLIC_URL}/assets/sprites/bumper.png`);
 	};
 
 	let parent: any;

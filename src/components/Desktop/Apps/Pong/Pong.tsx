@@ -30,35 +30,35 @@ class AudioFiles {
 	max_volume: number;
 
 	constructor() {
-		this.PADDLE_HIT_1 = new Audio("/assets/sfx/paddle_hit_1.mp3");
-		this.PADDLE_HIT_2 = new Audio("/assets/sfx/paddle_hit_2.mp3");
+		this.PADDLE_HIT_1 = new Audio(`${process.env.PUBLIC_URL}/assets/sfx/paddle_hit_1.mp3`);
+		this.PADDLE_HIT_2 = new Audio(`${process.env.PUBLIC_URL}/assets/sfx/paddle_hit_2.mp3`);
 
-		this.BUMPER_HIT_1 = new Audio("/assets/sfx/bumper_hit_1.mp3");
-		this.BUMPER_HIT_2 = new Audio("/assets/sfx/bumper_hit_2.mp3");
+		this.BUMPER_HIT_1 = new Audio(`${process.env.PUBLIC_URL}/assets/sfx/bumper_hit_1.mp3`);
+		this.BUMPER_HIT_2 = new Audio(`${process.env.PUBLIC_URL}/assets/sfx/bumper_hit_2.mp3`);
 
-		this.WALL_HIT_1 = new Audio("/assets/sfx/paddle_hit_1.mp3");
-		this.WALL_HIT_2 = new Audio("/assets/sfx/paddle_hit_2.mp3");
+		this.WALL_HIT_1 = new Audio(`${process.env.PUBLIC_URL}/assets/sfx/paddle_hit_1.mp3`);
+		this.WALL_HIT_2 = new Audio(`${process.env.PUBLIC_URL}/assets/sfx/paddle_hit_2.mp3`);
 
-		this.BIP = new Audio("/assets/sfx/bip.mp3");
-		this.BIP_FINAL = new Audio("/assets/sfx/bip-final.mp3");
+		this.BIP = new Audio(`${process.env.PUBLIC_URL}/assets/sfx/bip.mp3`);
+		this.BIP_FINAL = new Audio(`${process.env.PUBLIC_URL}/assets/sfx/bip-final.mp3`);
 
-		this.SCORE = new Audio("/assets/sfx/score.mp3");
+		this.SCORE = new Audio(`${process.env.PUBLIC_URL}/assets/sfx/score.mp3`);
 
 		this.max_volume = 0;
 
-		this.CASINO_MUSIC = new Audio("/assets/music/casino.mp3");
+		this.CASINO_MUSIC = new Audio(`${process.env.PUBLIC_URL}/assets/music/casino.mp3`);
 		this.CASINO_MUSIC.loop = true;
 		this.CASINO_MUSIC.volume = this.max_volume;
 
-		this.CITY_MUSIC = new Audio("/assets/music/city.mp3");
+		this.CITY_MUSIC = new Audio(`${process.env.PUBLIC_URL}/assets/music/city.mp3`);
 		this.CITY_MUSIC.loop = true;
 		this.CITY_MUSIC.volume = this.max_volume;
 
-		this.ORIGINAL_MUSIC = new Audio("/assets/music/original.mp3");
+		this.ORIGINAL_MUSIC = new Audio(`${process.env.PUBLIC_URL}/assets/music/original.mp3`);
 		this.ORIGINAL_MUSIC.loop = true;
 		this.ORIGINAL_MUSIC.volume = this.max_volume;
 
-		this.MENU_MUSIC = new Audio("/assets/music/menu.mp3");
+		this.MENU_MUSIC = new Audio(`${process.env.PUBLIC_URL}/assets/music/menu.mp3`);
 		this.MENU_MUSIC.loop = true;
 		this.MENU_MUSIC.volume = this.max_volume;
 

@@ -89,7 +89,7 @@ const getTextures = () => {
     if (!ctx)
         return ;
     let texturesSheet = new Image();
-    texturesSheet.src = './assets/textures/walls.png';
+    texturesSheet.src = `${process.env.PUBLIC_URL}/assets/textures/walls.png`;
     texturesSheet.crossOrigin = 'anonymous';
     texturesSheet.onload = () => {
         if (!ctx)
@@ -114,7 +114,7 @@ const getSprites = () => {
     if (!ctx)
         return ;
     let spritesSheet = new Image();
-    spritesSheet.src = './assets/sprites/objects.png';
+    spritesSheet.src = `${process.env.PUBLIC_URL}/assets/sprites/objects.png`;
     spritesSheet.crossOrigin = 'anonymous';
     spritesSheet.onload = () => {
         if (!ctx)

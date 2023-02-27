@@ -21,7 +21,7 @@ Written in Typescript with React.
 * Server Projects: Folder containing files which are presentations of server projects I've completed at 42.
 * C/C++ Projects: Folder containing files which are presentations of C/C++ projects I've completed at 42.
 * Dice: Simple dice app.
-* Cub3D: Revisited Cub3D (raycasting engine) with a map editor !
+* Cub3D: Revisited Cub3D (raycasting engine) with a map editor ! (zqsd to move, ae to rotate)
 * Pong: Pong game directly taken from my work on ft_transcendence. Multiplayer is disabled because my portfolio has no backend.
 * About me: Compilation of information about myself, including my CV.
 

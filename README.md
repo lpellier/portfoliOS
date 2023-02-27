@@ -26,7 +26,7 @@ Written in Typescript with React.
 * About me: Compilation of information about myself, including my CV.
 
 ## Usage
-The website is available at the following address: https://lpellier.github.io/portfoliOS/
+The website is available at the following address: https://lpellier.fr
 
 You might want to run this build locally :
 ```bash

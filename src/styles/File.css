@@ -26,17 +26,13 @@
 	position: absolute;
 	border-radius: 15px;
 	background-color: #1E1F2450;
-	/* backdrop-filter: blur(8px); */
 	transition: transform 100ms;
 	font-family: "Outfit";
 	font-size: 10px;
+	line-height: 8px;
 	z-index: 2;
 	border: none;
 	color: var(--red);
-}
-
-.button-pdf-text {
-	
 }
 
 .button-pdf:hover {

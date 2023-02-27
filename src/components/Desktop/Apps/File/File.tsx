@@ -23,9 +23,9 @@ const File = ({name, content_path, spawnWindow, size, forcedUpdate}: IFile) => {
 	}, [content_path]);
 
 	const downloadFile = (): void => {
-		let pdf_path = `https://lpellier.github.io/portfoliOS/project_subjects/${name}.subject.pdf`
+		let pdf_path = `https://lpellier.fr/project_subjects/${name}.subject.pdf`
 		
-		if (name === "About me") pdf_path = `https://lpellier.github.io/portfoliOS/project_subjects/CV.pdf`;
+		if (name === "About me") pdf_path = `https://lpellier.fr/project_subjects/CV.pdf`;
 
 		fetch(pdf_path).then(response => {
             response.blob().then(blob => {

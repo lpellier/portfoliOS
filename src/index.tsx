@@ -1,5 +1,4 @@
 import React from 'react';
-import { CookiesProvider } from 'react-cookie';
 import ReactDOM from 'react-dom/client';
 import 'styles/index.css';
 import Portfolio from './Portfolio';
@@ -9,8 +8,6 @@ const root = ReactDOM.createRoot(
 );
 root.render(
 	// <React.StrictMode>
-	<CookiesProvider>
-		<Portfolio/>
-	</CookiesProvider>
+	<Portfolio/>
 	// </React.StrictMode>
 );

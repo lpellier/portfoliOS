@@ -6,7 +6,7 @@
 
 <br/>
 
-<img class="banner-image" src="https://lpellier.github.io/portfoliOS/images/cub3d-map.gif" alt="a gif of the executable launch"/>
+<img class="banner-image" src="https://lpellier.frimages/cub3d-map.gif" alt="a gif of the executable launch"/>
 
 # 1. Getting started 
 This project is about recoding a raycasting algorithm, the same one used in older games like Doom or Wolfenstein 3D.<br/><br/>
@@ -44,7 +44,7 @@ $ ./cub3d <path_to_map>
 $ ./cub3d_bonus <path_to_map>
 ```
 
-<img class="usage-image" src="https://lpellier.github.io/portfoliOS/images/cub3d-game.gif" alt="a gif of the game running"/>
+<img class="usage-image" src="https://lpellier.frimages/cub3d-game.gif" alt="a gif of the game running"/>
 
 # 3. Contact
 [![LinkedIn][linkedin-shield]][linkedin-url]

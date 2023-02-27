@@ -4,7 +4,7 @@
 
 [![Built With][built-with-C++]][project-url]
  
-<img class="banner-image" src="https://lpellier.frimages/ft_containers.gif" alt="a gif of the project building.."/>
+<img class="banner-image" src="https://lpellier.fr/images/ft_containers.gif" alt="a gif of the project building.."/>
 
 # 1. Getting started 
 The goal of this project is to code 3 already existing C++ containers: `Vector`, `Stack` and `Map`.<br/>

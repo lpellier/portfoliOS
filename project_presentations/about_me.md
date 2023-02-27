@@ -1,5 +1,5 @@
 
-<img src="https://lpellier.frimages/pdp2.jpg" id="profile-pic" alt="a picture of me" ></img>
+<img src="https://lpellier.fr/images/pdp2.jpg" id="profile-pic" alt="a picture of me" ></img>
 
 # Hi there 👋
 

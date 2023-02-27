@@ -4,7 +4,7 @@
 
 [![Built With][built-with-C++]][project-url]
 
-<img class="banner-image" src="https://lpellier.frimages/philos.png" alt="an image depicting 6 philosophers wondering how to eat"/>
+<img class="banner-image" src="https://lpellier.fr/images/philos.png" alt="an image depicting 6 philosophers wondering how to eat"/>
 
 # 1. Getting started 
 A table of 5 philosophers are seated at a round table.<br/>
@@ -40,7 +40,7 @@ $ make
 $ ./philoshopers <nbr_of_philos> <time_to_die> <time_to_eat> <time_to_sleep>
 ```
 
-<img class="usage-image" src="https://lpellier.frimages/philosophers.gif" alt="a gif of the project running"/>
+<img class="usage-image" src="https://lpellier.fr/images/philosophers.gif" alt="a gif of the project running"/>
 
 # 3. Contact
 [![LinkedIn][linkedin-shield]][linkedin-url]

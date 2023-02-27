@@ -4,7 +4,7 @@
 
 [![Built With][built-with-docker]][project-url]
 
-<img class="banner-image" src="https://lpellier.frimages/ft_server.gif" alt="a gif of the project building.."/>
+<img class="banner-image" src="https://lpellier.fr/images/ft_server.gif" alt="a gif of the project building.."/>
 
 # 1. Getting started
 The goal of this project is to setup a server running Wordpress aswell as a MySQL database with phpMyAdmin, secured with an SSL certificate.
@@ -40,9 +40,9 @@ If you'd like to test everything, you should create a Wordpress account (directl
 phpmyadmin will require a username (`user`) and a password (`password`).
 <br/>
 
-<img class="usage-image" src="https://lpellier.frimages/ft_server_wp.gif" alt="a gif showing the wordpress website"/>
+<img class="usage-image" src="https://lpellier.fr/images/ft_server_wp.gif" alt="a gif showing the wordpress website"/>
 
-<img class="usage-image" src="https://lpellier.frimages/ft_server_php.gif" alt="a gif showing the php database"/>
+<img class="usage-image" src="https://lpellier.fr/images/ft_server_php.gif" alt="a gif showing the php database"/>
 
 # 3. Contact
 [![LinkedIn][linkedin-shield]][linkedin-url]
